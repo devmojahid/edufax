@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zxx">
+
+<head>
+	<!-- Basic metas
+    ======================================== -->
+	<meta charset="utf-8">
+	<meta name="author" content="">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+
+	<!-- Mobile specific metas
+    ======================================== -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Documentation" />
+	<meta property="og:url" content="index.html" />
+	<!-- Page Title
+    ======================================== -->
+	<title>Shofy WordPress Documentation</title>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png">
+
+	<!-- fonts
+	======================================== -->
+	<link rel="stylesheet" type="text/css" href="assets/css/elegantFont.css">
+
+	<!-- Bootstrap -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom css -->
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
+</head>
+
+<body>
+	<!--[if lte IE 9]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+	<![endif]-->
+	<!-- Header starts -->
+	<a href="#top" class="back-to-top"><i class="fal fa-arrow-up"></i></a>
+
+	<header class="page-header sticky-top" id="top">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-3 col-md-4 col-sm-6 col-6">
+					<div class="logo">
+						<a href="index.html" class="nav-brand">
+							<img src="assets/images/logo.svg" alt="logo" width="155">
+						</a>
+					</div>
+				</div>
+				<div class="col-lg-9 col-md-8 col-sm-6 col-6">
+					<div class="right-part d-flex justify-content-end align-items-center">
+						<form action="#" class="search-form d-none d-lg-block">
+							<div class="input-group">
+								<input type="text" class="search-input" placeholder="Search item">
+							</div>
+						</form>
+						<div class="nav-list">
+							<a class="support-link d-none d-md-inline-block" href="https://help.themepure.net/"
+								target="_blank">request support</a>
+							<a class="e-btn d-none d-md-inline-block"
+								href="https://themeforest.net/user/theme_pure/portfolio" target="_blank">Visit
+								Themes</a>
+							<a href="#" class="toggle-navbar"><i class="icon_menu"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End of .container -->
+	</header>
+	<div class="main-content-wrapper">
+		<div class="container ">
+			<div class="row doc-container">
+				<div class="col-xl-3">
+					<aside class="sidebar-navigation sticky-top doc-sidebar">
+						<h3>Doc Navigation</h3>
+						<!-- <nav class="nav"> -->
+						<ul class="themepure-doc-nav  nav-sidebar doc-nav">
+							<li class="nav-item">
+								<a class="nav-link" href="#getting_started"><img
+										src="assets/images/icon/start-button.png"> Getting Started </a>
+								<span class="icon">
+									<i class="icon_plus"></i>
+									<i class="icon_minus-06"></i>
+								</span>
+								<ul class="submenu dropdown_nav">
+									<li class="nav-item"><a class="nav-link" href="#requirements">Requirements</a></li>
+									<li class="nav-item"><a class="nav-link" href="#what_included">What's Included</a>
+									</li>
+								</ul>
+							</li>
+
+							<li class="nav-item">
+								<a class="nav-link" href="#wordpress_installation"><img
+										src="assets/images/icon/wordpress.png"> WordPress Installation</a>
+							</li>
+
+							<li class="nav-item">
+								<a class="nav-link" href="#installation_the_theme"><img
+										src="assets/images/icon/analytics.png"> Installing the theme</a>
+								<span class="icon">
+									<i class="icon_plus"></i>
+									<i class="icon_minus-06"></i>
+								</span>
+								<ul class="submenu dropdown_nav">
+									<li class="nav-item"><a class="nav-link" href="#using_theme_uploader">Using Theme
+											Uploader</a></li>
+									<li class="nav-item"><a class="nav-link" href="#using_ftp_uploader">Using FTP
+											Clients</a></li>
+									<li class="nav-item">
+										<a class="nav-link" href="#updating_theme">Updating Theme</a>
+									</li>
+									<li class="nav-item"><a href="#installing_required_plugins"
+											class="nav-link">Installing required plugins</a></li>
+								</ul>
+							</li class="nav-item">
+
+							<li class="nav-item">
+								<a class="nav-link" href="#section-4"><img src="assets/images/icon/export-file.png">
+									Importing Demo Contents</a>
+								<span class="icon">
+									<i class="icon_plus"></i>
+									<i class="icon_minus-06"></i>
+								</span>
+								<ul class="submenu dropdown_nav">
+									<li class="sub-nav nav-item ">
+										<a class="nav-link" href="#section-4-1">Automatic Import</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="#section-4-2">Manual Import</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="#section-4-3">Where Is My Purchase Code?</a>
+									</li>
+								</ul>
+							</li>
+
+							<li class="nav-item">
+								<a class="nav-link" href="#basic_site_setting"><img
+										src="assets/images/icon/settings.png"> Basic Site Setting</a>
+								<span class="icon">
+									<i class="icon_plus"></i>
+									<i class="icon_minus-06"></i>
+								</span>
+								<ul class="submenu dropdown_nav">
+									<li class="nav-item"><a class="nav-link" href="#customize_menu">Customize Menu</a>
+									</li>
+									<li class="nav-item"><a class="nav-link" href="#favicon_setting">Change Site Title
+											and Favicon</a></li>
+									<li class="nav-item"><a class="nav-link" href="#colors_setting">Change Global
+											Colors</a></li>
+									<li class="nav-item"><a class="nav-link" href="#logo_setting">Change Logo</a></li>
+									<li class="nav-item"><a class="nav-link" href="#typography_setting">Change
+											Typography</a></li>
+									<li class="nav-item"><a class="nav-link" href="#blog_page_setting">Set Home and Blog
+											Page</a></li>
+								</ul>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#theme_options"><img src="assets/images/icon/admin.png"> Theme
+									Options</a>
+								<span class="icon">
+									<i class="icon_plus"></i>
+									<i class="icon_minus-06"></i>
+								</span>
+								<ul class="submenu dropdown_nav">
+									<li class="nav-item"><a class="nav-link" href="#general_options">General</a></li>
+									<li class="nav-item"><a class="nav-link" href="#options_header">Header</a></li>
+									<li class="nav-item"><a class="nav-link" href="#options_footer">Footer</a></li>
+									<li class="nav-item"><a class="nav-link" href="#options_archive">Blog Archive</a>
+									</li>
+									<li class="nav-item"><a class="nav-link" href="#options_404">Error Page Settings</a>
+									</li>
+									<li class="nav-item"><a class="nav-link" href="#options_breadcrumb">Breadcrumb
+											Setting</a></li>
+									<li class="nav-item"><a class="nav-link" href="#options_offcanvas">Offcanvas
+											Setting</a></li>
+									<li class="nav-item"><a class="nav-link" href="#options_preloader">Preloader
+											Setting</a></li>
+									<li class="nav-item"><a class="nav-link" href="#options_backtotop">Back To Top
+											Setting</a></li>
+								</ul>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#creating_a_project"><img
+										src="assets/images/icon/gallery.png"> WooCommerce</a>
+								<span class="icon">
+									<i class="icon_plus"></i>
+									<i class="icon_minus-06"></i>
+								</span>
+								<ul class="submenu dropdown_nav">
+									<li class="nav-item"><a class="nav-link" href="#shop_layout">Shop Layout</a></li>
+									<li class="nav-item"><a class="nav-link" href="#product_grid">Product Grid
+											Layout</a></li>
+									<li class="nav-item"><a class="nav-link" href="#trending_badge">Trending Badge</a>
+									</li>
+									<li class="nav-item"><a class="nav-link" href="#hot_badge">Hot Badge</a></li>
+									<li class="nav-item"><a class="nav-link" href="#free_shipping">Free Shipping Bar</a>
+									</li>
+									<li class="nav-item"><a class="nav-link" href="#product_single">Product Single</a>
+									</li>
+									<li class="nav-item"><a class="nav-link" href="#add_coupon">Coupon Add</a></li>
+								</ul>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#elementor_widgets"><img
+										src="assets/images/icon/elementors.png"> Elementor Widgets</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#translating_theme"><img
+										src="assets/images/icon/translate.png"> Translating Theme</a>
+							</li>
+
+							<li class="nav-item">
+								<a class="nav-link" href="#404_error_in_all_pages"><img
+										src="assets/images/icon/not-found.png"> 404 Error in all pages</a>
+							</li>
+						</ul>
+						<!-- </nav> -->
+					</aside>
+				</div>
+				<div class="col-xl-9 col-lg-12">
+					<div class="main-content">
+						<main class="main">
+							<div class="filterable-wrapper">
+								<article id="getting_started" class="section-main doc-section">
+									<div class="steps-panel">
+										<ol class="ordered-list">
+											<li>
+												<strong>Item Name : </strong>Shofy - Multipurpose WooCommerce Theme
+											</li>
+											<li>
+												<strong>Created: </strong> 8 Sept 2023
+											</li>
+											<li><strong>Item Version : </strong> v 1.0.0</li>
+											<li>
+												<strong>Author : </strong>
+												<a href="https://themeforest.net/user/theme_pure/portfolio"
+													target="_blank">theme_pure</a>
+											</li>
+											<li>
+												<strong>Support Ticket: </strong>
+												<a href="https://help.themepure.net/"
+													target="_blank">https://help.themepure.net/</a>
+											</li>
+										</ol>
+									</div>
+									<figure>
+										<img class="max-100" src="assets/images/screenshot.png" alt="">
+									</figure>
+
+									<section>
+										<h2>Introduction</h2>
+										<h4 class="title">Shofy - WooCommerce Theme Documentation</h4>
+										<div class="top-support">For any support please don't hesitate to contact us at
+											<a href="https://help.themepure.net/support/"><b>Support Center</b></a>. We
+											provide 13 hours real-time support for our customers.
+										</div>
+										<p>We would like to thank you for choosing Shofy - Multipurpose WooCommerce
+											Theme.</p>
+										<p>Shofy - Multipurpose WooCommerce Theme. This Theme  comes with high-quality 5 Prebuild Home Pages and many built-in  awesome inner pages. An WooCommerce Theme is a powerful tool for creating a professional and visually appealing online store. With a well-designed theme, you can quickly and easily build an eCommerce website that not only looks great but also functions seamlessly. These templates provide the basic structure and layout for your online store, including pages for product listings, shopping carts, checkout processes, and more. Whether you're just starting out with your eCommerce business or looking to revamp your existing website, an WooCommerce Theme can be a valuable resource for creating a high-quality online store that meets your unique needs</p>
+									</section>
+									<!-- End of #getting_started -->
+									<section id="requirements">
+										<h3>Getting started</h3>
+										<p>You need at least WordPress version 6.0.0+ installed for this theme to work
+											properly. It is strongly recommended that you always use the latest stable
+											version of Wordpress to ensure all known bugs and security issues are fixed.
+											Other getting_started:</p>
+
+										<div class="steps-panel">
+											<ul class="ordered-list">
+												<li>PHP version 5.6 or greater. But for maximum speed gain we recommend
+													you to use PHP version 7.3+.</li>
+												<li>MySQL version 5.6 or greater OR MariaDB version 10.0 or greater.
+												</li>
+												<li>WordPress memory limit of 128 MB or greater.</li>
+											</ul>
+										</div>
+
+										<h4>Recommended PHP configuration limits</h4>
+										<ul class="code">
+											<li>max_execution_time 900</li>
+											<li>memory_limit 512M</li>
+											<li>post_max_size 256M</li>
+											<li>upload_max_filesize 500M</li>
+											<li>max_input_time = 900</li>
+											<li>max_input_vars = 1000</li>
+										</ul>
+										<p><b>Server getting_started</b>: <a target="_blank"
+												href="https://make.wordpress.org/hosting/handbook/handbook/server-environment">https://make.wordpress.org/hosting/handbook/handbook/server-environment</a>
+										</p>
+									</section>
+									<!-- End of #requirements -->
+									<section id="what_included">
+										<h3>What's Included</h3>
+										<p>After purchasing Shofy theme on themeforest.net with your Envato account, go
+											to your
+											Download page. You can choose to download Shofy theme only (Installable
+											WordPress
+											Theme) or the entire Shofy theme package which contains the following files:
+										</p>
+										<figure>
+											<img class="max-100" src="assets/images/include/1.png" alt="">
+										</figure>
+										<h4>The contents of the theme package downloaded from ThemeForest</h4>
+										<div class="steps-panel">
+											<ul class="ordered-list">
+												<li><strong>shofy.zip</strong> - An Installable WordPress Theme zip
+													file. this file you need to upload to WordPress.</li>
+												<li><strong>shofy-child.zip</strong> - This file contains the basic
+													child theme that you can use with our theme. Just installing it
+													won’t hurt and in case you decide to make some changes/extend the
+													source code of the theme, it will be very helpful because it helps
+													not to lose your custom changes after updating the parent theme. <a
+														href="https://codex.wordpress.org/Child_Themes">More on child
+														themes</a></li>
+												<li><strong>Plugins</strong> - This folder contains plugins required to
+													work with our theme.</li>
+												<li><strong>Demo Data</strong> - This folder contains the demo content
+													file which will help you to import the demo manually.</li>
+												<li><strong>Licensing</strong> - This folder contains the terms and
+													conditions of the license.</li>
+												<li><strong>Documentation</strong> - This folder contains what you are
+													reading now :)</li>
+											</ul>
+										</div>
+									</section>
+									<!-- End of #what_included -->
+								</article>
+
+								<article id="wordpress_installation" class="section-main doc-section">
+									<section>
+										<h2>WordPress Installation</h2>
+										<p>Please follow the instructions in the video to see how you can install
+											WordPress on your
+											hosting:</p>
+
+										<div class="steps-panel">
+											<ol class="ordered-list">
+												<li><b>For local host:</b> <a
+														href="https://www.youtube.com/watch?v=snFzbPm_RUE"
+														target="_blank">https://www.youtube.com/watch?v=snFzbPm_RUE</a>
+												</li>
+												<li><b>For cPanel:</b> <a
+														href="https://www.youtube.com/watch?v=t-YBqV2ReR0"
+														target="_blank">https://www.youtube.com/watch?v=t-YBqV2ReR0</a>
+												</li>
+											</ol>
+										</div>
+									</section>
+								</article>
+
+								<article id="installation_the_theme" class="section-main doc-section">
+									<!-- End of #installation -->
+									<section>
+										<h2>Installing the theme</h2>
+										<blockquote class="media notice notice-warning">
+											<i class="icon_ribbon_alt"></i>
+											<div class="media-body">
+												<p><strong>Important!</strong> if you download the All Files archive
+													from ThemeForest and try to upload it to your WordPress, you will
+													receive this error: <strong>Theme is missing the style.css
+														stylesheet.</strong> Please make sure you unzipped the main
+													archive and are uploading the correct file to your WordPress.</p>
+											</div>
+										</blockquote>
+										<p>When you are ready to install a theme, you must first upload the theme files
+											and then
+											activate the theme itself. The theme files can be uploaded in two ways:</p>
+									</section>
+									<!-- End of #installation -->
+									<section id="using_theme_uploader">
+										<h3>1. Using Theme
+											Uploader</h3>
+										<p>Follow the steps as instructed in the images below:</p>
+										<div class="steps-panel">
+											<ol class="ordered-list">
+												<li>From the dashboard go to <span class="direction_steps"><span
+															class="direction_step">Appearance</span><span
+															class="direction_step">Themes</span><span
+															class="direction_step">Add New</span> <span
+															class="direction_step"> Upload Theme</span> </span></li>
+												<li>Click on <strong> “Choose File” </strong> and select
+													<strong>shofy.zip</strong>
+												</li>
+												<li>Click on <strong>“Install Now”</strong>.</li>
+												<li>Active the Theme</li>
+											</ol>
+										</div>
+										<p><b>N.B:</b> All plugins must be installed and activated if you want your site
+											to look exactly like demo.</p>
+										<figure>
+											<img src="assets/images/theme-install/1.jpg" alt="3.1.1" class="doc-image">
+											<figcaption class="text-center">Appearance → Themes → Add New </figcaption>
+										</figure>
+										<figure>
+											<img src="assets/images/theme-install/2.jpg" alt="3.1.1" class="doc-image">
+											<figcaption class="text-center">Click on “Choose File” and select shofy.zip
+												and Click on “Install Now”.</figcaption>
+										</figure>
+										<figure>
+											<img src="assets/images/theme-install/3.jpg" alt="3.1.1" class="doc-image">
+											<figcaption class="text-center">Active Shofy Theme</figcaption>
+										</figure>
+									</section>
+									<!-- End of #using_theme_uploader -->
+
+									<section id="using_ftp_uploader">
+										<h3>2. Using FTP Clients</h3>
+										<p>Follow the following steps to upload your theme using FTP clients:</p>
+										<div class="steps-panel">
+											<ol class="ordered-list">
+												<li>Use an FTP such as FileZilla and go to your WordPress installation
+													director </li>
+												<li>Navigate to <strong>/wp-content/themes/</strong> folder and upload
+													the theme folder there</li>
+												<li>Log in to your WP Admin Dashboard and open the <span
+														class="direction_steps"><span
+															class="direction_step">Appearance</span><span
+															class="direction_step">Themes</span></span> menu</li>
+
+												<li>You will now see <strong>Shofy</strong> Theme listed among the other
+													themes. <strong>Click on Activate</strong> and you’re done!</li>
+											</ol>
+										</div>
+									</section>
+									<!-- End of #using_ftp_uploader -->
+
+									<section id="updating_theme">
+										<h3>3. Updating Theme</h3>
+										<p>Occationally we provide updates which includes new features and bugfixes.
+											Updating WordPress theme is standard WordPress functionality.</p>
+										<p class="mt30" style="color:red;"><b><u>Before Updating Theme</u></b>:</p>
+										<div style="color:red;"><i><b>** Before updating please make sure to keep a
+													backup of your installed theme and plugins (eg. Shofy Core) to be on
+													safe side.</b></i></div>
+										<p>You can use this plugin to keep the backup: <a target="_blank"
+												href="https://wordpress.org/plugins/wp-theme-plugin-download/">https://wordpress.org/plugins/wp-theme-plugin-download/</a>
+										</p>
+										<p class="mt30">There are few ways to update WordPress theme. You can follow any
+											of the methods described below:</p>
+										<p><b><u>Method 1: Automatic Update by Using Envato Market Plugin</u></b></p>
+										<div class="steps-panel">
+											<ol class="ordered-list">
+												<li>Install and activate the "Envato Market" plugin manually. Here's the
+													plugin zip file: <a
+														href="http://envato.github.io/wp-envato-market/dist/envato-market.zip">http://envato.github.io/wp-envato-market/dist/envato-market.zip</a>
+												</li>
+												<li>From WordPress Admin Panel, navigate to <b>"Envato Market"</b> menu.
+												</li>
+												<li>In this page, you'll find a field for insering Envato Token. Insert
+													your Envato Token Code from there. You can generate this code from
+													this link: <a
+														href="https://build.envato.com/create-token/?purchase:download=t&amp;purchase:verify=t&amp;purchase:list=t">https://build.envato.com/create-token/?purchase:download=t&purchase:verify=t&purchase:list=t</a>.</br><i>Remember,
+														while generating the token, you have to login using the same
+														envato id which you used to purchase theme.</i></li>
+												<li>After completed the above steps successfully, Navigate to
+													<b>Appearance -> Themes</b>. Here you'll see an "Update now" link
+													beside your theme. Click on that link and your theme will be updated
+													automatically.
+												</li>
+											</ol>
+										</div>
+										<p>Here's a quick video tutorial explaining this method:</p>
+										<p><iframe width="640" height="360"
+												src="https://www.youtube.com/embed/fhRFhXnuP1I" frameborder="0"
+												allowfullscreen></iframe></p>
+										<p class="mt30"><b><u>Method 2: By Uploading zip File</u></b></p>
+										<div class="steps-panel">
+											<ol class="ordered-list">
+												<li>From WordPress Admin Panel, Navigate to <b>Appearance -> Themes</b>.
+												</li>
+												<li>Activate any other theme (eg. Twenty Seventeen) than the current
+													one.</li>
+												<li>Delete <b><i>Shofy</i></b> Theme.</li>
+												<li>Now you have to upload the updated theme zip file. To do this,
+													Navigate to <b>Appearance -> Themes -> Add New -> Upload</b>. Go to
+													browse, and select the zipped theme folder. Hit "Install Now" and
+													the theme will be uploaded and installed.</li>
+											</ol>
+										</div>
+										<p><b><u>Method 3: By FTP</u></b></p>
+										<div class="steps-panel">
+											<ol class="ordered-list">
+												<li>Using your FTP client, navigate to "/wp-content/themes/" folder on
+													your server and delete the "Shofy" folder from there.</li>
+												<li>Now upload the latest non-zipped theme folder into that
+													"/wp-content/themes/" folder .</li>
+											</ol>
+										</div>
+										<p class="mt30" style="color:red;"><b><u>After Updating Theme</u></b>:</p>
+										<p style="color:red;"><i><b>** After updating the theme please update all
+													plugins which come with the theme.</b></i></p>
+									</section>
+
+									<section id="installing_required_plugins">
+										<h3>4. Installing required plugins</h3>
+										<p>Shofy theme requires a set of core and additional plugins to function
+											correctly. A plugin is an additional component that offers functionality and
+											features beyond a typical WordPress installation. Without them, most of its
+											functionality is not available. After installing the theme you will be
+											prompted to install the required plugins at the top of your dashboard.
+										</p>
+										<div class="steps-panel">
+											<ol class="ordered-list">
+												<li>From the dashboard go to <span class="direction_steps"><span
+															class="direction_step">Appearance </span><span
+															class="direction_step">Install Plugins</span></span></li>
+												<li>Toggle all the required plugins and hint <strong>“Install”</strong>;
+												</li>
+												<li>The last step will be activating the plugins.</li>
+											</ol>
+										</div>
+										<figure>
+											<img src="assets/images/plugins/1.png" alt="">
+											<figcaption class="text-center">Click on the begin installing plugins link
+												to install all the required plugins.</figcaption>
+										</figure>
+										<figure>
+											<img src="assets/images/plugins/2.png" alt="">
+											<figcaption class="text-center">Select all and install</figcaption>
+										</figure>
+										<figure>
+											<img src="assets/images/plugins/3.png" alt="">
+											<figcaption class="text-center">Select all and Activate</figcaption>
+										</figure>
+									</section>
+
+								</article>
+
+								<article id="installation_the_theme" class="section-main doc-section">
+									<section id="section-4">
+										<h2>Importing Demo Contents</h2>
+
+										<p>We are providing you two methods for importing demo contents: Automatic and
+											Alternative. You can follow either one of these methods.</p>
+										<ol class="pl-10">
+											<li><b>One Click Method (Recommended)</b>: This method will remove all your
+												existing data, so use this method only in fresh website. This procedure
+												will be faster because you just have to do one click and then everything
+												will happen automatically. If you want an exact clone of demo website
+												without doing any manual configuration after importing data then this
+												method is appropiate for you.</li>
+											<li class="mt10"><b>Manually Import</b>: Use this method only if:
+												<ul class="pl-5">
+													<li>Automatic demo import method fails ( Only few of our customers
+														like 5% have experienced this issue due to their hosting limits,
+														in that case we also provide free demo importing service if you
+														contact with us).</li>
+													<li>You already have a working website with existing contents(eg.
+														posts, pages etc).</li>
+												</ul>
+											</li>
+										</ol>
+									</section>
+									<!-- End of #section-4 -->
+
+									<section id="section-4-1">
+										<h3>1. One Click Method</h3>
+										<p>Want to build your site like the demo? You can do it by only one click!</p>
+										<blockquote class="media notice notice-danger">
+											<i class="icon_ribbon_alt"></i>
+											<div class="media-body">
+												<p><strong>Note: </strong> Please remember that when you are done with
+													the demo import, your some existing settings will be replaced by the
+													demo contents Like: Your menu, Customizer. So it is recommended that
+													you should only do this in fresh site.</p>
+											</div>
+										</blockquote>
+										<div class="steps-panel">
+											<ol class="ordered-list">
+												<li>Ensure, that the <strong>One-Click Import</strong> plugin is
+													installed and activated;</li>
+												<li>From the dashboard go to <span class="direction_steps"><span
+															class="direction_step">Appearance </span><span
+															class="direction_step">Import Demo Data</span></span></li>
+												<li>Choose the demo you want to install and click on the
+													<strong>“Import”</strong> button​ below​;
+												</li>
+												<li><strong>And change the permalink: </strong> From the dashboard go to
+													<span class="direction_steps"><span class="direction_step">Settings
+														</span><span class="direction_step">Permalink</span></span>
+												</li>
+											</ol>
+										</div>
+										<figure>
+											<img src="assets/images/demo/1.png" alt="4.1.1" class="doc-image">
+											<figcaption class="text-center">go to Appearance -> Import Demo Data -> Click
+												on the "Import" button
+											</figcaption>
+										</figure>
+										<figure>
+											<img src="assets/images/demo/2.png" alt="4.1.1" class="doc-image">
+											<figcaption class="text-center">Click "Yes, Import" Button</figcaption>
+										</figure>
+										<figure>
+											<img src="assets/images/demo/3.png" alt="4.1.1" class="doc-image">
+											<figcaption class="text-center"><strong> Import Complete!</strong> Congrats,
+												your demo was imported successfully. You can now begin editing your
+												site.</figcaption>
+										</figure>
+										<figure>
+											<img src="assets/images/demo/4.png" alt="4.1.1" class="doc-image">
+											<figcaption class="text-center">Change permalink</figcaption>
+										</figure>
+
+
+									</section>
+
+									<section id="section-4-2">
+										<h3>2. Manual Import</h3>
+
+										<p>Please follow the instructions below:</p>
+										<div class="steps-panel">
+											<ol class="ordered-list">
+												<li>Click <strong>switch to manual import</strong> from right corner.
+												</li>
+												<li>Choose <strong>contents-demo.xml</strong> file for all content
+													import</li>
+												<li>Choose <strong>widget-settings.json</strong> file for widget import
+												</li>
+												<li>Choose <strong>customizer-data.dat</strong> file for customizer
+													import</li>
+												<li>and last click <strong>Import demo data</strong> button</li>
+											</ol>
+										</div>
+
+										<blockquote class="media notice notice-success">
+											<i class="icon_ribbon_alt"></i>
+											<div class="media-body">
+												<p><strong>Note:</strong> We have added all the above files to the
+													<strong>Theme package -&gt; Demo Data</strong> folder.
+												</p>
+											</div>
+										</blockquote>
+
+										<figure>
+											<img src="assets/images/demo/5.png" alt="4.1.1" class="doc-image">
+											<figcaption class="text-center">Click Switch to manual</figcaption>
+										</figure>
+										<figure>
+											<img src="assets/images/demo/6.png" alt="4.1.1" class="doc-image">
+											<figcaption class="text-center">Choose all file and click the "import demo
+												data" button</figcaption>
+										</figure>
+									</section>
+									<!-- End of #section-4 -->
+									<section id="section-4-3">
+										<h3>Where Is My Purchase Code?</h3>
+										<p> To learn about how to find
+											your purchase code. When you buy a product from envato you get a purchase
+											code. visit the following link:</p>
+										<a href="https://help.market.envato.com/hc/en-us/articles/202822600-Where-Can-I-Find-my-Purchase-Code"
+											target="_blank">Purchase Code</a>
+									</section>
+								</article>
+
+
+								<article id="basic_site_setting" class="section-main doc-section">
+									<h2>Basic Site Setting</h2>
+									<section id="customize_menu">
+										<h3>Customize Menu</h3>
+										<p>To customize the menu and megamenu please login to wp-admin and navigate to
+											<span class="direction_steps"><span class="direction_step">Dashboard
+												</span><span class="direction_step">Appearance</span><span
+													class="direction_step">Menus</span></span> and follow the following
+											steps:
+										</p>
+										<figure>
+											<img src="assets/images/site-settings/menu.png" alt="8.2.1"
+												class="doc-image">
+										</figure>
+										<figure>
+											<img src="assets/images/site-settings/mega-menu.png" alt="8.2.1"
+												class="doc-image">
+										</figure>
+									</section>
+									<section id="favicon_setting">
+										<h3>Change Site Title and Favicon Basic Site Setting</h3>
+										<p>To change your Site title and Favicon login to wp-admin and navigate to <span
+												class="direction_steps"><span class="direction_step">Dashboard
+												</span><span class="direction_step">Appearance</span><span
+													class="direction_step">Customize</span><span
+													class="direction_step">Site Identity</span></span> and follow the
+											following steps:</p>
+										<figure>
+											<img src="assets/images/site-settings/site-title-facicon.png" alt="5"
+												class="doc-image">
+										</figure>
+									</section>
+									<!-- End of #section-5 -->
+
+									<section id="colors_setting">
+										<h3>Change Global Colors</h3>
+
+										<p>To change all global colors login to wp-admin and navigate to
+											<span class="direction_steps">
+												<span class="direction_step">Dashboard </span>
+												<span class="direction_step">Appearance</span>
+												<span class="direction_step">Customize</span>
+												<span class="direction_step">Shofy Customizer</span>
+												<span class="direction_step">Colors Options</span>
+											</span>
+											and follow the following steps:
+										</p>
+										<figure>
+											<img src="assets/images/site-settings/color.png" alt="6" class="doc-image">
+										</figure>
+									</section>
+									<!-- End of #section-6 -->
+
+									<section id="logo_setting">
+										<h3>Change Logo</h3>
+										<p>To change the site logo login to your wp-admin and navigate to
+											<span class="direction_steps">
+												<span class="direction_step">Dashboard </span>
+												<span class="direction_step">Appearance</span>
+												<span class="direction_step">Customize</span>
+												<span class="direction_step">Shofy Customizer</span>
+												<span class="direction_step">Header</span>
+											</span>
+											and follow the following steps:
+										</p>
+										<figure>
+											<img src="assets/images/site-settings/change-logo.png" alt="7.1.1"
+												class="doc-image">
+										</figure>
+									</section>
+									<!-- End of #section-7 -->
+
+									<section id="typography_setting">
+										<h3>Change Typography</h3>
+										<p>To change the typography of your site navigate to
+											<span class="direction_steps">
+												<span class="direction_step">Dashboard </span>
+												<span class="direction_step">Appearance</span>
+												<span class="direction_step">Customize</span>
+												<span class="direction_step">Shofy Customizer</span>
+												<span class="direction_step">Typography</span>
+											</span>
+											and follow the following steps:
+										</p>
+										<figure>
+											<img src="assets/images/site-settings/typo.png" alt="8"
+												class="doc-image"><br>
+										</figure>
+									</section>
+									<!-- End of #section-8 -->
+
+									<section id="blog_page_setting">
+										<h3>Set Home and Blog Page</h3>
+										<p>To set the home and blog page, login to wp-admin and go to
+											<span class="direction_steps">
+												<span class="direction_step">Dashboard </span>
+												<span class="direction_step">Settings </span>
+												<span class="direction_step">Reading</span>
+											</span> and follow the following steps:
+										</p>
+										<figure>
+											<img src="assets/images/site-settings/set-home-blog.png" alt="8.2"
+												class="doc-image">
+										</figure>
+									</section>
+									<!-- End of #section-8-1 -->
+									<!-- End of #section-8-2 -->
+								</article>
+
+								<article id="theme_options" class="section-main doc-section">
+									<section id="general_options">
+										<h2>Theme Options</h2>
+										<h3>Header</h3>
+										<p>To change Theme Options header navigate to
+											<span class="direction_steps">
+												<span class="direction_step">Dashboard </span>
+												<span class="direction_step">Appearance</span>
+												<span class="direction_step">Customize</span>
+												<span class="direction_step">Shofy Customizer</span>
+												<span class="direction_step">Header</span>
+											</span>
+											and follow the following steps:
+										</p>
+										<figure>
+											<img src="assets/images/theme-options/header/header-1.png" alt="11"
+												class="doc-image">
+											<img src="assets/images/theme-options/header/header-2.png" alt="11"
+												class="doc-image">
+										</figure>
+									</section>
+									<!-- End of #section-9 -->
+
+									<section id="options_header">
+										<h3>Header / Header layout</h3>
+										<p>You can choose default header or elementor header</p>
+										<p>To change Theme Options navigate to
+											<span class="direction_steps">
+												<span class="direction_step">Dashboard </span>
+												<span class="direction_step">Appearance</span>
+												<span class="direction_step">Customize</span>
+												<span class="direction_step">Shofy Customizer</span>
+												<span class="direction_step">Header</span>
+											</span>
+											and follow the following steps:
+										</p>
+										<figure>
+											<img src="assets/images/theme-options/header/header-default.png"
+												alt="11.2.1" class="doc-image">
+											<img src="assets/images/theme-options/header/header-elementor.png"
+												alt="11.2.1" class="doc-image">
+										</figure>
+
+										<h3>Header Topbar</h3>
+										<p>Customize header topbar as you want by enable or disable the switches</p>
+										<img src="assets/images/theme-options/header/header-topbar.png" alt="11.2.1"
+											class="doc-image">
+										</figure>
+
+									</section>
+
+									<section id="options_footer">
+										<h3>Footer Layout</h3>
+										<p>You can choose default header or elementor header</p>
+										<p>To change Theme Options navigate to
+											<span class="direction_steps">
+												<span class="direction_step">Dashboard </span>
+												<span class="direction_step">Appearance</span>
+												<span class="direction_step">Customize</span>
+												<span class="direction_step">Shofy Customizer</span>
+												<span class="direction_step">Footer</span>
+											</span>
+											and follow the following steps:
+										</p>
+										<figure>
+											<img src="assets/images/theme-options/footer/footer-default.png"
+												alt="11.3.2" class="doc-image">
+											<img src="assets/images/theme-options/footer/footer-elementor.png"
+												alt="11.3.2" class="doc-image">
+										</figure>
+									</section>
+									<section id="getting_started1-3-1">
+										<h3> Footer & Footer Copyright Info</h3>
+										<p>To change Theme Options navigate to
+											<span class="direction_steps">
+												<span class="direction_step">Dashboard </span>
+												<span class="direction_step">Appearance</span>
+												<span class="direction_step">Customize</span>
+												<span class="direction_step">Shofy Customizer</span>
+												<span class="direction_step">Footer</span>
+											</span>
+											and follow the following steps:
+										</p>
+										<figure>
+											<img src="assets/images/theme-options/footer/footer-copyright.png"
+												alt="11.3.2" class="doc-image">
+										</figure>
+									</section>
+
+
+									<section id="options_archive">
+										<h3>Archive (Blog / Archive)</h3>
+										<p>To change Theme Options navigate to
+											<span class="direction_steps">
+												<span class="direction_step">Dashboard </span>
+												<span class="direction_step">Appearance</span>
+												<span class="direction_step">Customize</span>
+												<span class="direction_step">Shofy Customizer</span>
+												<span class="direction_step">Blog Settings</span>
+											</span>
+											and follow the following steps:
+										</p>
+										<figure>
+											<img src="assets/images/theme-options/blog-archive.png" alt="11.6.1"
+												class="doc-image">
+										</figure>
+									</section>
+									<!-- End of #getting_started1-4 -->
+
+									<section id="options_404">
+										<h3>Settings (Error Page Settings)</h3>
+										<p>To change Theme Options navigate to
+											<span class="direction_steps">
+												<span class="direction_step">Dashboard </span>
+												<span class="direction_step">Appearance</span>
+												<span class="direction_step">Customize</span>
+												<span class="direction_step">Shofy Customizer</span>
+												<span class="direction_step">Error Page</span>
+											</span>
+											and follow the following steps:
+										</p>
+										<figure>
+											<img src="assets/images/theme-options/error.png" alt="11.8.1"
+												class="doc-image">
+										</figure>
+									</section>
+									<!-- End of #getting_started1-4 -->
+
+									<section id="options_breadcrumb">
+										<h3>Breadcrumb Settings</h3>
+										<p>To change Theme Options navigate to
+											<span class="direction_steps">
+												<span class="direction_step">Dashboard </span>
+												<span class="direction_step">Appearance</span>
+												<span class="direction_step">Customize</span>
+												<span class="direction_step">Shofy Customizer</span>
+												<span class="direction_step">Breadcrumb</span>
+											</span>
+											and follow the following steps:
+										</p>
+										<figure>
+											<img src="assets/images/theme-options/breadcrumb.png" alt="11.5.1"
+												class="doc-image">
+										</figure>
+									</section>
+
+									<section id="options_offcanvas">
+										<h3>Offcanvas Settings</h3>
+										<p>To change Theme Options navigate to
+											<span class="direction_steps">
+												<span class="direction_step">Dashboard </span>
+												<span class="direction_step">Appearance</span>
+												<span class="direction_step">Customize</span>
+												<span class="direction_step">Shofy Customizer</span>
+												<span class="direction_step">Offcanvas</span>
+											</span>
+											and follow the following steps:
+										</p>
+										<figure>
+											<img src="assets/images/theme-options/offcanvas.png" alt="11.5.1"
+												class="doc-image">
+										</figure>
+									</section>
+
+									<section id="options_preloader">
+										<h3>Prealoder Settings</h3>
+										<p>To change Theme Options navigate to
+											<span class="direction_steps">
+												<span class="direction_step">Dashboard </span>
+												<span class="direction_step">Appearance</span>
+												<span class="direction_step">Customize</span>
+												<span class="direction_step">Shofy Customizer</span>
+												<span class="direction_step">Preloader</span>
+											</span>
+											and follow the following steps:
+										</p>
+										<figure>
+											<img src="assets/images/theme-options/preloader.png" alt="11.5.1"
+												class="doc-image">
+										</figure>
+									</section>
+
+									<section id="options_backtotop">
+										<h3>Prealoder Settings</h3>
+										<p>To change Theme Options navigate to
+											<span class="direction_steps">
+												<span class="direction_step">Dashboard </span>
+												<span class="direction_step">Appearance</span>
+												<span class="direction_step">Customize</span>
+												<span class="direction_step">Shofy Customizer</span>
+												<span class="direction_step">Preloader</span>
+											</span>
+											and follow the following steps:
+										</p>
+										<figure>
+											<img src="assets/images/theme-options/back-to-top.png" alt="11.5.1"
+												class="doc-image">
+										</figure>
+									</section>
+
+
+									<!-- End of #getting_started1-4 -->
+								</article>
+
+								<article id="creating_a_project" class="section-main doc-section">
+									<section class="image-no-100">
+										<h2>WooCommerce Archive</h2>
+
+										<h3>Change Shop Layout</h3>
+										<p>To change Theme Options navigate to
+											<span class="direction_steps">
+												<span class="direction_step">Dashboard </span>
+												<span class="direction_step">Appearance</span>
+												<span class="direction_step">Customize</span>
+												<span class="direction_step">Shofy Customizer</span>
+												<span class="direction_step">Shop Setting</span>
+											</span>
+											and follow the following steps:
+										</p>
+										<figure id="shop_layout">
+											<img src="assets/images/woo/shop-layout.png">
+											<figcaption class="text-center">Change Shop Layout</figcaption>
+										</figure>
+
+										<h3>Change Product Grid Layout</h3>
+										<figure id="product_grid">
+											<img src="assets/images//woo/product-grid.png">
+											<figcaption class="text-center">Change Product Grid</figcaption>
+										</figure>
+										<h3>Trending Badge Settings</h3>
+										<figure id="trending_badge">
+											<img src="assets/images/woo/trending-badge.png">
+											<figcaption class="text-center">Trending Badge Settings</figcaption>
+										</figure>
+										<h3>Product Badge Settings</h3>
+										<figure id="hot_badge">
+											<img src="assets/images/woo/hot-badge.png">
+											<figcaption class="text-center">Hot Badge Settings</figcaption>
+										</figure>
+
+										<h3>Free Shipping Bar Settings</h3>
+										<figure id="free_shipping">
+											<img src="assets/images/woo/free-shipping.png">
+											<figcaption class="text-center">Customize Free Shipping Bar</figcaption>
+										</figure>
+
+										<h3>Product Single Settings</h3>
+										<figure id="product_single">
+											<img src="assets/images/woo/product-single-1.png">
+											<img src="assets/images/woo/product-single-2.png">
+											<figcaption class="text-center">Customize Product Single</figcaption>
+										</figure>
+
+										<h3>Add Coupon</h3>
+										<figure id="add_coupon">
+											<img src="assets/images/woo/coupon-1.png">
+											<figcaption class="text-center">Add New Coupon</figcaption>
+										</figure>
+										<figure>
+											<img src="assets/images/woo/coupon-2.png">
+											<figcaption class="text-center">Customize Your Coupon</figcaption>
+										</figure>
+										<figure>
+											<img src="assets/images/woo/coupon-1.png">
+											<figcaption class="text-center">
+												Add Shortcode to page
+												<code>
+													[shofy_woo_coupon_shortcode]
+												</code>
+											</figcaption>
+
+										</figure>
+
+
+									</section>
+
+								</article>
+
+								<article id="elementor_widgets" class="section-main doc-section">
+									<section class="image-no-100">
+										<h3>Elementor Widgets</h3>
+										<p>Elementor Page Builder has a lot of built-in widgets by default. But for your
+											convenience we've created several custom Elementor Widgets that you can use
+											in your website and extend website functionality. You can find them under
+											<b><i>Shofy Core</i></b> section on Elementor edit mode.
+										</p>
+										<figure>
+											<img class="mr-3" src="assets/images/elementor/elementor-1.png">
+											<img class="mr-3" src="assets/images/elementor/elementor-2.png">
+											<img class="mr-3" src="assets/images/elementor/elementor-3.png">
+											<img class="mr-3" src="assets/images/elementor/elementor-4.png">
+										</figure>
+									</section>
+								</article>
+
+								<article id="translating_theme" class="section-main doc-section">
+									<section id="getting_started3">
+										<h2>Translating Theme</h2>
+										<p>You can translate this theme to another language easily. You have to
+											translate several things for your website to work properly:</p>
+
+										<div class="steps-panel">
+											<ol class="ordered-list">
+												<li>Theme: Shofy</li>
+												<li>Plugin: Shofy Core</li>
+											</ol>
+										</div>
+
+										<p>There are many tools available for translation. But the easiest way is to use
+											plugin "<b>Loco Translate</b>". Using this plugin, you can literally
+											translate any WordPress themes or plugins if it supports translation.</p>
+										<p class="mt30"><b>--- Here's a step by step tutorial about translating any
+												themes and plugins using "Loco Translate":</b></p>
+										<p class="mt30"><b><u>Step 1:</u></b> Install and activate plugin "Loco
+											Translate".</p>
+										<p class="mt10"><img src="assets/images/translate/loco.png"></p>
+										<p class="mt30"><b><u>Step 2:</u></b> Select the Theme or Plugin you want to
+											translate from "Loco Translate" menu.</p>
+										<p class="mt30"><b><u>Step a:</u></b> Theme Translate</p>
+										<p class="mt10"><img src="assets/images/translate/translate-theme.png"></p>
+										<p class="mt30"><b><u>Step b:</u></b> Plugin Translate</p>
+										<p class="mt10"><img src="assets/images/translate/translate-plugin.png"></p>
+
+										<p class="mt10"><img src="assets/images/translate/translate-3.png"></p>
+										<p class="mt30"><b><u>Step 3:</u></b> Click on <b><i>New language</i></b> link.
+										</p>
+
+										<p class="mt10"><img src="assets/images/translate/translate-4.png"></p>
+										<p class="mt30"><b><u>Step 4:</u></b> Select your preferred language, and also
+											select your location as "System". Then click on "Start Translating" button.
+										</p>
+										<p class="mt10"><img src="assets/images/translate/loco-final.jpg"></p>
+										<p class="mt30"><b><u>Step 4:</u></b> Click on the "Sync" button for the first
+											time. Then start translating strings like the image below.</p>
+										<p>Here's a quick video tutorial about how to use <b>Loco Translate</b>:</p>
+										<p><iframe width="640" height="360"
+												src="https://www.youtube.com/embed/bQI50tUXN6c" frameborder="0"
+												allowfullscreen></iframe></p>
+									</section>
+								</article>
+
+
+								<article id="404_error_in_all_pages" class="section-main doc-section">
+									<section id="getting_started6">
+										<h2>404 Error in all pages</h2>
+										<p>If you face this type of issue, please update your permalink. To update
+											permalink, navigate to <b>Settings -> Permalink</b> and then click on
+											<b>Save Settings</b> button.
+										</p>
+										<img src="assets/images/translate/404-permalink.png">
+									</section>
+								</article>
+								<section id="getting_started7">
+									<h3>17. Contact</h3>
+									<p style="color:red;font-weight:bold;">If you face any issue please contact us at
+										<a class="black-color" href="https://help.themepure.net">Support Ticket</a>. We
+										provide 15 hours real-time support for our customers.
+									</p>
+									<p>Thank you for purchasing our theme.</p>
+									<p class="mt50"></p>
+								</section>
+								<!-- End of #getting_started1-4 -->
+
+							</div>
+
+
+
+							<!-- End of .filterable-wrapper -->
+						</main>
+					</div>
+				</div>
+			</div>
+			<!-- End of .main-content -->
+		</div>
+		<!-- End of .container -->
+	</div>
+	<!-- End of .main-content -->
+
+	<footer class="tp-footer">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-md-8">
+					<div class="page-footer">
+						<p>© 2023 All Rights Reserved by <a
+								href="https://themeforest.net/user/theme_pure/portfolio">theme_pure</a>.</p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="social-footer text-md-end">
+						<a href="https://www.youtube.com/@themepure"><i class="social_youtube"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+
+	<!-- End of .page-footer -->
+
+	<!-- Javascripts
+		======================================= -->
+	<!-- jQuery -->
+	<script src="assets/js/vendor/jquery.min.js"></script>
+	<script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+
+	<!-- Custom Script -->
+	<script src="assets/js/onpage-menu.js"></script>	
+	<script src="assets/js/main.js"></script>	
+
+</body>
+
+</html>

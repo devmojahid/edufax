@@ -1,0 +1,3144 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Edufax\n"
+"POT-Creation-Date: 2023-09-05 10:59+0600\n"
+"PO-Revision-Date: 2023-09-05 10:58+0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"X-Generator: Poedit 3.3.2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: style.css\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+
+#: 404.php:13
+msgid "Oops! Page not found"
+msgstr ""
+
+#: 404.php:14
+msgid "Back To Home"
+msgstr ""
+
+#: 404.php:15
+msgid ""
+"Whoops, this is embarassing. Looks like the page you were looking for was "
+"not found."
+msgstr ""
+
+#: 404.php:27
+msgid "Error 404"
+msgstr ""
+
+#: comments.php:25
+msgid " Comments"
+msgstr ""
+
+#: comments.php:25
+msgid " Comment "
+msgstr ""
+
+#: comments.php:48
+msgid "Comment navigation"
+msgstr ""
+
+#: comments.php:51
+msgid "&larr; Older "
+msgstr ""
+
+#: comments.php:54
+msgid "Newer &rarr;"
+msgstr ""
+
+#: comments.php:79
+msgid "Enter Name"
+msgstr ""
+
+#: comments.php:81
+msgid "Enter Email"
+msgstr ""
+
+#: comments.php:83
+msgid "Enter Website"
+msgstr ""
+
+#: comments.php:96
+msgid "Enter Your Comment"
+msgstr ""
+
+#: comments.php:101 comments.php:118
+msgid "Post Comment"
+msgstr ""
+
+#: comments.php:105
+msgid "You must be"
+msgstr ""
+
+#: comments.php:105
+msgid "logged in"
+msgstr ""
+
+#: comments.php:105
+msgid "to post a comment."
+msgstr ""
+
+#: comments.php:110
+msgid "Logged in as"
+msgstr ""
+
+#: comments.php:110
+msgid "Log out of this account"
+msgstr ""
+
+#: comments.php:110
+msgid "Log out?"
+msgstr ""
+
+#: comments.php:115
+msgid "Leave a Reply"
+msgstr ""
+
+#. translators: %s is product title
+#: comments.php:116 woocommerce/single-product-reviews.php:77
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr ""
+
+#: comments.php:117
+msgid "Cancel reply"
+msgstr ""
+
+#: functions.php:48
+msgid "Main Menu"
+msgstr ""
+
+#: functions.php:49
+msgid "Category Menu"
+msgstr ""
+
+#: functions.php:50
+msgid "Grocery Menu"
+msgstr ""
+
+#: functions.php:311 inc/woocommerce/tp-woocommerce.php:253
+#: template-parts/header/header-5.php:96
+msgid "Search"
+msgstr ""
+
+#. Theme Name of the plugin/theme
+#: header.php:31 inc/kirki-customizer.php:400
+msgid "Edufax"
+msgstr ""
+
+#: header.php:32 inc/kirki-customizer.php:410
+msgid "Loading"
+msgstr ""
+
+#: header.php:52 inc/template-helper.php:264 inc/template-helper.php:268
+#: inc/template-helper.php:288 inc/template-helper.php:289
+#: inc/template-helper.php:308 inc/template-helper.php:312
+#: inc/template-helper.php:351 template-parts/offcanvas/offcanvas-1.php:59
+#: template-parts/offcanvas/offcanvas-2.php:44
+msgid "logo"
+msgstr ""
+
+#: inc/add_plugin.php:29
+msgid "Elementor Page Builder"
+msgstr ""
+
+#: inc/add_plugin.php:34
+msgid "Edufax Core "
+msgstr ""
+
+#: inc/add_plugin.php:41
+msgid "Pure Metafields "
+msgstr ""
+
+#: inc/add_plugin.php:48
+msgid "WP Classic Editor"
+msgstr ""
+
+#: inc/add_plugin.php:53
+msgid "Contact Form 7"
+msgstr ""
+
+#: inc/add_plugin.php:58
+msgid "One Click Demo Import"
+msgstr ""
+
+#: inc/add_plugin.php:63
+msgid "Kirki Customizer Framework"
+msgstr ""
+
+#: inc/add_plugin.php:68
+msgid "Breadcrumb NavXT"
+msgstr ""
+
+#: inc/add_plugin.php:73
+msgid "WooCommerce"
+msgstr ""
+
+#: inc/add_plugin.php:78
+msgid "WPC Smart Wishlist"
+msgstr ""
+
+#: inc/add_plugin.php:83
+msgid "WPC Smart Compare"
+msgstr ""
+
+#: inc/add_plugin.php:88
+msgid "WPC Smart Quick View"
+msgstr ""
+
+#: inc/add_plugin.php:93
+msgid "YITH WooCommerce Ajax Product Filter"
+msgstr ""
+
+#: inc/add_plugin.php:109 inc/class-tgm-plugin-activation.php:288
+msgid "Install Required Plugins"
+msgstr ""
+
+#: inc/add_plugin.php:110 inc/class-tgm-plugin-activation.php:289
+msgid "Install Plugins"
+msgstr ""
+
+#. translators: %s: plugin name.
+#: inc/add_plugin.php:111 inc/class-tgm-plugin-activation.php:291
+#, php-format
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#. translators: %s: plugin name.
+#: inc/add_plugin.php:112 inc/class-tgm-plugin-activation.php:293
+#, php-format
+msgid "Updating Plugin: %s"
+msgstr ""
+
+#: inc/add_plugin.php:113 inc/class-tgm-plugin-activation.php:294
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#. translators: 1: plugin name(s).
+#: inc/add_plugin.php:115 inc/class-tgm-plugin-activation.php:297
+#, php-format
+msgid "This theme requires the following plugin: %1$s."
+msgid_plural "This theme requires the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: plugin name(s).
+#: inc/add_plugin.php:120 inc/class-tgm-plugin-activation.php:303
+#, php-format
+msgid "This theme recommends the following plugin: %1$s."
+msgid_plural "This theme recommends the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: plugin name(s).
+#: inc/add_plugin.php:125 inc/class-tgm-plugin-activation.php:309
+#, php-format
+msgid ""
+"The following plugin needs to be updated to its latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgid_plural ""
+"The following plugins need to be updated to their latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: plugin name(s).
+#: inc/add_plugin.php:130 inc/class-tgm-plugin-activation.php:315
+#, php-format
+msgid "There is an update available for: %1$s."
+msgid_plural "There are updates available for the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: plugin name(s).
+#: inc/add_plugin.php:135 inc/class-tgm-plugin-activation.php:321
+#, php-format
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: plugin name(s).
+#: inc/add_plugin.php:140 inc/class-tgm-plugin-activation.php:327
+#, php-format
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgid_plural "The following recommended plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/add_plugin.php:145 inc/class-tgm-plugin-activation.php:332
+msgid "Begin installing plugin"
+msgid_plural "Begin installing plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/add_plugin.php:150 inc/class-tgm-plugin-activation.php:337
+msgid "Begin updating plugin"
+msgid_plural "Begin updating plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/add_plugin.php:155 inc/class-tgm-plugin-activation.php:342
+msgid "Begin activating plugin"
+msgid_plural "Begin activating plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/add_plugin.php:159 inc/class-tgm-plugin-activation.php:346
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: inc/add_plugin.php:160 inc/class-tgm-plugin-activation.php:348
+#: inc/class-tgm-plugin-activation.php:3201
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: inc/add_plugin.php:161 inc/class-tgm-plugin-activation.php:349
+#: inc/class-tgm-plugin-activation.php:2995
+msgid "The following plugin was activated successfully:"
+msgid_plural "The following plugins were activated successfully:"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: plugin name.
+#: inc/add_plugin.php:162 inc/class-tgm-plugin-activation.php:351
+#, php-format
+msgid "No action taken. Plugin %1$s was already active."
+msgstr ""
+
+#. translators: 1: plugin name.
+#: inc/add_plugin.php:163 inc/class-tgm-plugin-activation.php:353
+#, php-format
+msgid ""
+"Plugin not activated. A higher version of %s is needed for this theme. "
+"Please update the plugin."
+msgstr ""
+
+#. translators: 1: dashboard link.
+#: inc/add_plugin.php:164 inc/class-tgm-plugin-activation.php:355
+#, php-format
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
+#: inc/add_plugin.php:165 inc/class-tgm-plugin-activation.php:356
+msgid "Dismiss this notice"
+msgstr ""
+
+#: inc/add_plugin.php:166 inc/class-tgm-plugin-activation.php:357
+msgid ""
+"There are one or more required or recommended plugins to install, update or "
+"activate."
+msgstr ""
+
+#: inc/add_plugin.php:167 inc/class-tgm-plugin-activation.php:358
+msgid "Please contact the administrator of this site for help."
+msgstr ""
+
+#: inc/class-navwalker.php:383
+msgid "Home"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:347
+#: inc/class-tgm-plugin-activation.php:866
+#: inc/class-tgm-plugin-activation.php:2576
+#: inc/class-tgm-plugin-activation.php:3622
+msgid "Return to the Dashboard"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:561
+msgid "This plugin needs to be updated to be compatible with your theme."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:562
+msgid "Update Required"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:973
+msgid ""
+"The remote plugin package does not contain a folder with the desired slug "
+"and renaming did not work."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:973
+#: inc/class-tgm-plugin-activation.php:976
+msgid ""
+"Please contact the plugin provider and ask them to package their plugin "
+"according to the WordPress guidelines."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:976
+msgid ""
+"The remote plugin package consists of more than one file, but the files are "
+"not packaged in a folder."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:1162
+#: inc/class-tgm-plugin-activation.php:2991
+msgctxt "plugin A *and* plugin B"
+msgid "and"
+msgstr ""
+
+#. translators: %s: version number
+#: inc/class-tgm-plugin-activation.php:2025
+#, php-format
+msgid "TGMPA v%s"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2316
+msgid "Required"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2319
+msgid "Recommended"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2335
+msgid "WordPress Repository"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2338
+msgid "External Source"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2341
+msgid "Pre-Packaged"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2358
+msgid "Not Installed"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2362
+msgid "Installed But Not Activated"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2364
+msgid "Active"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2370
+msgid "Required Update not Available"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2373
+msgid "Requires Update"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2376
+msgid "Update recommended"
+msgstr ""
+
+#. translators: 1: install status, 2: update status
+#: inc/class-tgm-plugin-activation.php:2385
+#, php-format
+msgctxt "Install/Update Status"
+msgid "%1$s, %2$s"
+msgstr ""
+
+#. translators: 1: number of plugins.
+#: inc/class-tgm-plugin-activation.php:2431
+#, php-format
+msgctxt "plugins"
+msgid "All <span class=\"count\">(%s)</span>"
+msgid_plural "All <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: number of plugins.
+#: inc/class-tgm-plugin-activation.php:2435
+#, php-format
+msgid "To Install <span class=\"count\">(%s)</span>"
+msgid_plural "To Install <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: number of plugins.
+#: inc/class-tgm-plugin-activation.php:2439
+#, php-format
+msgid "Update Available <span class=\"count\">(%s)</span>"
+msgid_plural "Update Available <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: number of plugins.
+#: inc/class-tgm-plugin-activation.php:2443
+#, php-format
+msgid "To Activate <span class=\"count\">(%s)</span>"
+msgid_plural "To Activate <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/class-tgm-plugin-activation.php:2525
+msgctxt "as in: \"version nr unknown\""
+msgid "unknown"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2533
+msgid "Installed version:"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2541
+msgid "Minimum required version:"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2553
+msgid "Available version:"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2576
+msgid "No plugins to install, update or activate."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2590
+msgid "Plugin"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2591
+msgid "Source"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2592
+msgid "Type"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2596
+msgid "Version"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2597
+#: woocommerce/myaccount/my-orders.php:16
+msgid "Status"
+msgstr ""
+
+#. translators: %2$s: plugin name in screen reader markup
+#: inc/class-tgm-plugin-activation.php:2646
+#, php-format
+msgid "Install %2$s"
+msgstr ""
+
+#. translators: %2$s: plugin name in screen reader markup
+#: inc/class-tgm-plugin-activation.php:2651
+#, php-format
+msgid "Update %2$s"
+msgstr ""
+
+#. translators: %2$s: plugin name in screen reader markup
+#: inc/class-tgm-plugin-activation.php:2657
+#, php-format
+msgid "Activate %2$s"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2727
+msgid "Upgrade message from the plugin author:"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2760
+msgid "Install"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2766
+#: woocommerce/cart/shipping-calculator.php:91
+msgid "Update"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2769
+msgid "Activate"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2800
+msgid "No plugins were selected to be installed. No action taken."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2802
+msgid "No plugins were selected to be updated. No action taken."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2843
+msgid "No plugins are available to be installed at this time."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2845
+msgid "No plugins are available to be updated at this time."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2951
+msgid "No plugins were selected to be activated. No action taken."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2977
+msgid "No plugins are available to be activated at this time."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:3200
+msgid "Plugin activation failed."
+msgstr ""
+
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+#: inc/class-tgm-plugin-activation.php:3540
+#, php-format
+msgid "Updating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#. translators: 1: plugin name, 2: error message.
+#: inc/class-tgm-plugin-activation.php:3543
+#, php-format
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+
+#. translators: 1: plugin name.
+#: inc/class-tgm-plugin-activation.php:3545
+#, php-format
+msgid "The installation of %1$s failed."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:3549
+msgid ""
+"The installation and activation process is starting. This process may take a "
+"while on some hosts, so please be patient."
+msgstr ""
+
+#. translators: 1: plugin name.
+#: inc/class-tgm-plugin-activation.php:3551
+#, php-format
+msgid "%1$s installed and activated successfully."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:3551
+#: inc/class-tgm-plugin-activation.php:3559
+msgid "Show Details"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:3551
+#: inc/class-tgm-plugin-activation.php:3559
+msgid "Hide Details"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:3552
+msgid "All installations and activations have been completed."
+msgstr ""
+
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+#: inc/class-tgm-plugin-activation.php:3554
+#, php-format
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:3557
+msgid ""
+"The installation process is starting. This process may take a while on some "
+"hosts, so please be patient."
+msgstr ""
+
+#. translators: 1: plugin name.
+#: inc/class-tgm-plugin-activation.php:3559
+#, php-format
+msgid "%1$s installed successfully."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:3560
+msgid "All installations have been completed."
+msgstr ""
+
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+#: inc/class-tgm-plugin-activation.php:3562
+#, php-format
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: inc/common/edufax-breadcrumb.php:18 inc/common/edufax-breadcrumb.php:22
+msgid "Blog"
+msgstr ""
+
+#: inc/common/edufax-breadcrumb.php:34
+msgid "Shop"
+msgstr ""
+
+#: inc/common/edufax-breadcrumb.php:37
+msgid "Course Details"
+msgstr ""
+
+#: inc/common/edufax-breadcrumb.php:40
+msgid "Search Results for : "
+msgstr ""
+
+#: inc/common/edufax-breadcrumb.php:43
+msgid "Page not Found"
+msgstr ""
+
+#: inc/common/edufax-breadcrumb.php:137
+msgid "Search for product..."
+msgstr ""
+
+#: inc/common/edufax-breadcrumb.php:145
+msgid "Search by :"
+msgstr ""
+
+#: inc/common/edufax-scripts.php:62
+msgctxt "Google font: on or off"
+msgid "on"
+msgstr ""
+
+#: inc/common/edufax-widgets.php:20
+msgid "Blog Sidebar"
+msgstr ""
+
+#: inc/common/edufax-widgets.php:22
+msgid "Set Your Blog Widget"
+msgstr ""
+
+#: inc/common/edufax-widgets.php:33
+msgid "Services Sidebar"
+msgstr ""
+
+#: inc/common/edufax-widgets.php:35
+msgid "Set Your Service Widget"
+msgstr ""
+
+#: inc/common/edufax-widgets.php:47
+msgid "Product Sidebar"
+msgstr ""
+
+#: inc/common/edufax-widgets.php:49
+msgid "Set Your Product Widget"
+msgstr ""
+
+#: inc/common/edufax-widgets.php:62
+#, php-format
+msgid "Footer %1$s"
+msgstr ""
+
+#: inc/common/edufax-widgets.php:64
+#, php-format
+msgid "Footer column %1$s"
+msgstr ""
+
+#: inc/common/edufax-widgets.php:77 inc/common/edufax-widgets.php:79
+#, php-format
+msgid "Footer Style 2 : %1$s"
+msgstr ""
+
+#: inc/common/edufax-widgets.php:92 inc/common/edufax-widgets.php:94
+#, php-format
+msgid "Footer Style 3 : %1$s"
+msgstr ""
+
+#: inc/common/edufax-widgets.php:107 inc/common/edufax-widgets.php:109
+#, php-format
+msgid "Footer Style 4 : %1$s"
+msgstr ""
+
+#: inc/common/edufax-widgets.php:122 inc/common/edufax-widgets.php:124
+#, php-format
+msgid "Footer Style 5 : %1$s"
+msgstr ""
+
+#: inc/common/edufax-widgets.php:137 inc/common/edufax-widgets.php:139
+#, php-format
+msgid "Footer Style 6 : %1$s"
+msgstr ""
+
+#: inc/kirki-customizer.php:8
+msgid "Edufax Panel"
+msgstr ""
+
+#: inc/kirki-customizer.php:9
+msgid "Edufax Panel Description."
+msgstr ""
+
+#: inc/kirki-customizer.php:19
+msgid "Header Topbar Settings"
+msgstr ""
+
+#: inc/kirki-customizer.php:20
+msgid "Header Topbar Controls."
+msgstr ""
+
+#: inc/kirki-customizer.php:29
+msgid "Header Topbar Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:30
+msgid "Header Topbar switch On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:34 inc/kirki-customizer.php:47
+#: inc/kirki-customizer.php:61 inc/kirki-customizer.php:75
+#: inc/kirki-customizer.php:104 inc/kirki-customizer.php:191
+#: inc/kirki-customizer.php:263 inc/kirki-customizer.php:277
+#: inc/kirki-customizer.php:291 inc/kirki-customizer.php:305
+#: inc/kirki-customizer.php:319 inc/kirki-customizer.php:333
+#: inc/kirki-customizer.php:347 inc/kirki-customizer.php:361
+#: inc/kirki-customizer.php:389 inc/kirki-customizer.php:448
+#: inc/kirki-customizer.php:514 inc/kirki-customizer.php:528
+#: inc/kirki-customizer.php:655 inc/kirki-customizer.php:720
+#: inc/kirki-customizer.php:736 inc/kirki-customizer.php:752
+#: inc/kirki-customizer.php:768 inc/kirki-customizer.php:801
+#: inc/kirki-customizer.php:835 inc/kirki-customizer.php:851
+#: inc/kirki-customizer.php:867 inc/kirki-customizer.php:883
+#: inc/kirki-customizer.php:899 inc/kirki-customizer.php:915
+#: inc/kirki-customizer.php:931 inc/kirki-customizer.php:995
+#: inc/kirki-customizer.php:1029 inc/kirki-customizer.php:1050
+#: inc/kirki-customizer.php:1071 inc/kirki-customizer.php:1171
+#: inc/kirki-customizer.php:1205 inc/kirki-customizer.php:1219
+#: inc/kirki-customizer.php:1518 inc/kirki-customizer.php:1608
+#: inc/kirki-customizer.php:1621 inc/kirki-customizer.php:1634
+#: inc/kirki-customizer.php:1647 inc/kirki-customizer.php:1660
+msgid "Enable"
+msgstr ""
+
+#: inc/kirki-customizer.php:35 inc/kirki-customizer.php:48
+#: inc/kirki-customizer.php:62 inc/kirki-customizer.php:76
+#: inc/kirki-customizer.php:105 inc/kirki-customizer.php:192
+#: inc/kirki-customizer.php:264 inc/kirki-customizer.php:278
+#: inc/kirki-customizer.php:292 inc/kirki-customizer.php:306
+#: inc/kirki-customizer.php:320 inc/kirki-customizer.php:334
+#: inc/kirki-customizer.php:348 inc/kirki-customizer.php:362
+#: inc/kirki-customizer.php:390 inc/kirki-customizer.php:449
+#: inc/kirki-customizer.php:515 inc/kirki-customizer.php:529
+#: inc/kirki-customizer.php:656 inc/kirki-customizer.php:721
+#: inc/kirki-customizer.php:737 inc/kirki-customizer.php:753
+#: inc/kirki-customizer.php:769 inc/kirki-customizer.php:802
+#: inc/kirki-customizer.php:836 inc/kirki-customizer.php:852
+#: inc/kirki-customizer.php:868 inc/kirki-customizer.php:884
+#: inc/kirki-customizer.php:900 inc/kirki-customizer.php:916
+#: inc/kirki-customizer.php:932 inc/kirki-customizer.php:996
+#: inc/kirki-customizer.php:1030 inc/kirki-customizer.php:1051
+#: inc/kirki-customizer.php:1072 inc/kirki-customizer.php:1172
+#: inc/kirki-customizer.php:1206 inc/kirki-customizer.php:1220
+#: inc/kirki-customizer.php:1519 inc/kirki-customizer.php:1609
+#: inc/kirki-customizer.php:1622 inc/kirki-customizer.php:1635
+#: inc/kirki-customizer.php:1648 inc/kirki-customizer.php:1661
+msgid "Disable"
+msgstr ""
+
+#: inc/kirki-customizer.php:42
+msgid "Enable Bottom Menu Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:43
+msgid "Enable Bottom Menu On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:56
+msgid "Header Language Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:57
+msgid "Header Language On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:70
+msgid "Header Currency Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:71
+msgid "Header Currency On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:83
+msgid "Multi Currency Shortcode"
+msgstr ""
+
+#: inc/kirki-customizer.php:85
+msgid "[your_short_code]"
+msgstr ""
+
+#: inc/kirki-customizer.php:99
+msgid "Header Account Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:100
+msgid "Header Account On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:114
+msgid "Welcome Text"
+msgstr ""
+
+#: inc/kirki-customizer.php:116 template-parts/header/header-2.php:27
+msgid "FREE Express Shipping On Orders $570+"
+msgstr ""
+
+#: inc/kirki-customizer.php:123
+msgid "Phone Subtitle"
+msgstr ""
+
+#: inc/kirki-customizer.php:125
+msgid "Hotline: "
+msgstr ""
+
+#: inc/kirki-customizer.php:132
+msgid "Phone Number"
+msgstr ""
+
+#: inc/kirki-customizer.php:134
+msgid "+(402) 763 282 46 "
+msgstr ""
+
+#: inc/kirki-customizer.php:142
+msgid "Phone Number URL"
+msgstr ""
+
+#: inc/kirki-customizer.php:144
+msgid "402-763-282-46 "
+msgstr ""
+
+#: inc/kirki-customizer.php:152
+msgid "Facebook Text"
+msgstr ""
+
+#: inc/kirki-customizer.php:154 template-parts/header/header-1.php:27
+#: template-parts/header/header-2.php:30 template-parts/header/header-3.php:27
+#: template-parts/header/header-4.php:27 template-parts/header/header-5.php:27
+#: template-parts/header/header-6.php:27
+msgid "7500k Followers "
+msgstr ""
+
+#: inc/kirki-customizer.php:161
+msgid "Facebook Link"
+msgstr ""
+
+#: inc/kirki-customizer.php:163
+msgid "mybook.com"
+msgstr ""
+
+#: inc/kirki-customizer.php:175
+msgid "Header Main Settings"
+msgstr ""
+
+#: inc/kirki-customizer.php:176
+msgid "Header Main Controls."
+msgstr ""
+
+#: inc/kirki-customizer.php:186
+msgid "Header Custom/Elementor Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:187
+msgid "Header Custom/Elementor On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:200
+msgid "Chose Header Style"
+msgstr ""
+
+#: inc/kirki-customizer.php:241
+msgid "Elementor Header Template"
+msgstr ""
+
+#: inc/kirki-customizer.php:243 inc/kirki-customizer.php:476
+#: inc/kirki-customizer.php:494 inc/kirki-customizer.php:512
+#: inc/kirki-customizer.php:526 inc/kirki-customizer.php:541
+#: inc/kirki-customizer.php:653 inc/kirki-customizer.php:700
+#: inc/kirki-customizer.php:1143 inc/kirki-customizer.php:1499
+#: inc/kirki-customizer.php:1566
+msgid "Choose an option"
+msgstr ""
+
+#: inc/kirki-customizer.php:258
+msgid "Header Right Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:259
+msgid "Header Right On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:272
+msgid "Header Hamburger Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:273
+msgid "Header Hamburger On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:286
+msgid "Header Category Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:287
+msgid "Header Category On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:300
+msgid "Header Search Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:301
+msgid "Header Search On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:314
+msgid "Header Compare Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:315
+msgid "Header Compare On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:328
+msgid "Header Wishlist Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:329
+msgid "Header Wishlist On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:342
+msgid "Header Cart Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:343
+msgid "Header Cart On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:356
+msgid "Header Login Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:357
+msgid "Header Login On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:374
+msgid "Preloader Settings"
+msgstr ""
+
+#: inc/kirki-customizer.php:375
+msgid "Preloader Controls."
+msgstr ""
+
+#: inc/kirki-customizer.php:384 inc/kirki-customizer.php:443
+msgid "Preloader Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:385 inc/kirki-customizer.php:444
+msgid "Preloader On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:398
+msgid "Preloader Text"
+msgstr ""
+
+#: inc/kirki-customizer.php:408
+msgid "Preloader Loading Text"
+msgstr ""
+
+#: inc/kirki-customizer.php:418
+msgid "Preloader Logo Icon"
+msgstr ""
+
+#: inc/kirki-customizer.php:419
+msgid "Preloader Logo Here"
+msgstr ""
+
+#: inc/kirki-customizer.php:433
+msgid "Back To Top Settings"
+msgstr ""
+
+#: inc/kirki-customizer.php:434
+msgid "Back To Top Controls."
+msgstr ""
+
+#: inc/kirki-customizer.php:463 inc/kirki-customizer.php:464
+msgid "Shop Settings"
+msgstr ""
+
+#: inc/kirki-customizer.php:473
+msgid "Shop Layout"
+msgstr ""
+
+#: inc/kirki-customizer.php:478 inc/kirki-customizer.php:496
+#: inc/kirki-customizer.php:702 inc/kirki-customizer.php:1145
+#: inc/tp-metabox.php:74 inc/tp-metabox.php:127
+msgid "Default"
+msgstr ""
+
+#: inc/kirki-customizer.php:479
+msgid "Right Sidebar"
+msgstr ""
+
+#: inc/kirki-customizer.php:480
+msgid "Left Sidebar"
+msgstr ""
+
+#: inc/kirki-customizer.php:481
+msgid "No Sidebar"
+msgstr ""
+
+#: inc/kirki-customizer.php:482
+msgid "Full Layout"
+msgstr ""
+
+#: inc/kirki-customizer.php:483
+msgid "1600px Layout"
+msgstr ""
+
+#: inc/kirki-customizer.php:491
+msgid "Shop Grid Layout"
+msgstr ""
+
+#: inc/kirki-customizer.php:497
+msgid "Layout 2"
+msgstr ""
+
+#: inc/kirki-customizer.php:498
+msgid "Layout 3"
+msgstr ""
+
+#: inc/kirki-customizer.php:499
+msgid "Layout 4"
+msgstr ""
+
+#: inc/kirki-customizer.php:500
+msgid "Layout 5"
+msgstr ""
+
+#: inc/kirki-customizer.php:501
+msgid "Layout 6"
+msgstr ""
+
+#: inc/kirki-customizer.php:509
+msgid "Enable Countdown"
+msgstr ""
+
+#: inc/kirki-customizer.php:523
+msgid "Enable Trending Badge"
+msgstr ""
+
+#: inc/kirki-customizer.php:538
+msgid "Trending Badge Showing"
+msgstr ""
+
+#: inc/kirki-customizer.php:543
+msgid "Based On Sales"
+msgstr ""
+
+#: inc/kirki-customizer.php:544
+msgid "Based On Rating"
+msgstr ""
+
+#: inc/kirki-customizer.php:545
+msgid "Based On Review"
+msgstr ""
+
+#: inc/kirki-customizer.php:546
+msgid "Based On Views"
+msgstr ""
+
+#: inc/kirki-customizer.php:561
+msgid "Sales Count"
+msgstr ""
+
+#: inc/kirki-customizer.php:563 inc/kirki-customizer.php:1502
+msgid "2"
+msgstr ""
+
+#: inc/kirki-customizer.php:564
+msgid "How many sales are need to show this badge"
+msgstr ""
+
+#: inc/kirki-customizer.php:583
+msgid "Rating Count"
+msgstr ""
+
+#: inc/kirki-customizer.php:585 inc/kirki-customizer.php:1504
+msgid "4"
+msgstr ""
+
+#: inc/kirki-customizer.php:586
+msgid "How many rating are need to show this badge"
+msgstr ""
+
+#: inc/kirki-customizer.php:605
+msgid "Review Count"
+msgstr ""
+
+#: inc/kirki-customizer.php:607 inc/kirki-customizer.php:1503
+msgid "3"
+msgstr ""
+
+#: inc/kirki-customizer.php:608
+msgid "How many review are need to show this badge"
+msgstr ""
+
+#: inc/kirki-customizer.php:627
+msgid "View Count"
+msgstr ""
+
+#: inc/kirki-customizer.php:629
+msgid "5"
+msgstr ""
+
+#: inc/kirki-customizer.php:630
+msgid "How many views are need to show this badge"
+msgstr ""
+
+#: inc/kirki-customizer.php:650
+msgid "Enable Hot Badge"
+msgstr ""
+
+#: inc/kirki-customizer.php:665
+msgid "Date Differcence Count"
+msgstr ""
+
+#: inc/kirki-customizer.php:667
+msgid "10"
+msgstr ""
+
+#: inc/kirki-customizer.php:668
+msgid "How many days are showing this badge from upload date"
+msgstr ""
+
+#: inc/kirki-customizer.php:687
+msgid "Product Single"
+msgstr ""
+
+#: inc/kirki-customizer.php:688
+msgid "Product Single Settings."
+msgstr ""
+
+#: inc/kirki-customizer.php:697
+msgid "Product Signle Layout"
+msgstr ""
+
+#: inc/kirki-customizer.php:703
+msgid "List View"
+msgstr ""
+
+#: inc/kirki-customizer.php:704
+msgid "Grid View"
+msgstr ""
+
+#: inc/kirki-customizer.php:705
+msgid "Vertical Tab View"
+msgstr ""
+
+#: inc/kirki-customizer.php:706
+msgid "Carousel View"
+msgstr ""
+
+#: inc/kirki-customizer.php:715
+msgid "Category Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:716
+msgid "Category On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:731
+msgid "Buy Now Button Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:732
+msgid "Buy Now On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:747
+msgid "Stock Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:748
+msgid "Stock On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:763
+msgid "Flash Sale Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:764
+msgid "Flash Sale On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:778
+msgid "Sale Text"
+msgstr ""
+
+#: inc/kirki-customizer.php:780
+msgid "Flash Sale end in: "
+msgstr ""
+
+#: inc/kirki-customizer.php:796
+msgid "Stock Left Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:797
+msgid "Stock Left On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:811
+msgid "Stock Left Text"
+msgstr ""
+
+#: inc/kirki-customizer.php:812
+msgid "How many items are left when you want to show it"
+msgstr ""
+
+#: inc/kirki-customizer.php:813
+msgid "49"
+msgstr ""
+
+#: inc/kirki-customizer.php:830
+msgid "Compare Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:831
+msgid "Compare On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:846
+msgid "Wishlist Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:847
+msgid "Wishlist On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:862
+msgid "SKU Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:863
+msgid "SKU On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:878
+msgid "Categories Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:879
+msgid "Categories On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:894
+msgid "Tags Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:895
+msgid "Tags On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:910
+msgid "Social Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:911
+msgid "Social On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:926
+msgid "Payment Info Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:927
+msgid "Payment Info On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:942
+msgid "Payment Text"
+msgstr ""
+
+#: inc/kirki-customizer.php:944
+msgid "Guaranteed safe & secure checkout"
+msgstr ""
+
+#: inc/kirki-customizer.php:960
+msgid "Payment Image"
+msgstr ""
+
+#: inc/kirki-customizer.php:961
+msgid "Payment Image add/remove"
+msgstr ""
+
+#: inc/kirki-customizer.php:980
+msgid "Free Shipping Settings"
+msgstr ""
+
+#: inc/kirki-customizer.php:981
+msgid "Free Shipping Settings."
+msgstr ""
+
+#: inc/kirki-customizer.php:990
+msgid "Shipping Bar Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:991
+msgid "Shipping Bar On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:1005
+msgid "Goal Amount"
+msgstr ""
+
+#: inc/kirki-customizer.php:1006
+#, no-php-format
+msgid ""
+"Amount to reach 100% defined in your currency absolute value. For example: "
+"300"
+msgstr ""
+
+#: inc/kirki-customizer.php:1024
+msgid "Cartmini Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:1025
+msgid "Enable For Cartmini"
+msgstr ""
+
+#: inc/kirki-customizer.php:1045
+msgid "Cart Page Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:1046
+msgid "Enable For Cart Page"
+msgstr ""
+
+#: inc/kirki-customizer.php:1066
+msgid "Checkout Page Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:1067
+msgid "Enable For Checkout Page"
+msgstr ""
+
+#: inc/kirki-customizer.php:1087
+msgid "Initial Message"
+msgstr ""
+
+#: inc/kirki-customizer.php:1090
+msgid ""
+"Message to show before reaching the goal. Use shortcode [remainder] to "
+"display the amount left to reach the minimum."
+msgstr ""
+
+#: inc/kirki-customizer.php:1104
+msgid "Success message"
+msgstr ""
+
+#: inc/kirki-customizer.php:1107
+msgid "Message to show after reaching 100%."
+msgstr ""
+
+#: inc/kirki-customizer.php:1130
+msgid "Offcanvas Info"
+msgstr ""
+
+#: inc/kirki-customizer.php:1131
+msgid "Offcanvas Information."
+msgstr ""
+
+#: inc/kirki-customizer.php:1140
+msgid "Choose Offcanvas Style"
+msgstr ""
+
+#: inc/kirki-customizer.php:1146
+msgid "Dark Brown"
+msgstr ""
+
+#: inc/kirki-customizer.php:1147
+msgid "Brown"
+msgstr ""
+
+#: inc/kirki-customizer.php:1148
+msgid "Green"
+msgstr ""
+
+#: inc/kirki-customizer.php:1156
+msgid "Offcanvas Logo"
+msgstr ""
+
+#: inc/kirki-customizer.php:1157
+msgid "Offcanvas Logo Here"
+msgstr ""
+
+#: inc/kirki-customizer.php:1166
+msgid "Category Menu Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:1167
+msgid "Category Menu On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:1180
+msgid "Button Text"
+msgstr ""
+
+#: inc/kirki-customizer.php:1182 template-parts/offcanvas/offcanvas-1.php:34
+#: template-parts/offcanvas/offcanvas-2.php:19
+msgid "Contact Us"
+msgstr ""
+
+#: inc/kirki-customizer.php:1190
+msgid "Button URL"
+msgstr ""
+
+#: inc/kirki-customizer.php:1200
+msgid "Language Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:1201
+msgid "Language On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:1214
+msgid "Currency Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:1215
+msgid "Currency On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:1229
+msgid "Your Shortcode"
+msgstr ""
+
+#: inc/kirki-customizer.php:1231
+msgid "[shortcode]"
+msgstr ""
+
+#: inc/kirki-customizer.php:1252
+msgid "Header Social"
+msgstr ""
+
+#: inc/kirki-customizer.php:1253
+msgid "Header Social URL."
+msgstr ""
+
+#: inc/kirki-customizer.php:1263 inc/kirki-customizer.php:1313
+msgid "Facebook URL"
+msgstr ""
+
+#: inc/kirki-customizer.php:1273
+msgid "Twitter URL"
+msgstr ""
+
+#: inc/kirki-customizer.php:1283
+msgid "Linkedin URL"
+msgstr ""
+
+#: inc/kirki-customizer.php:1293
+msgid "Instagram URL"
+msgstr ""
+
+#: inc/kirki-customizer.php:1303
+msgid "Youtube URL"
+msgstr ""
+
+#: inc/kirki-customizer.php:1329 inc/kirki-customizer.php:1340
+msgid "Header Logo"
+msgstr ""
+
+#: inc/kirki-customizer.php:1330
+msgid "Header Logo Settings."
+msgstr ""
+
+#: inc/kirki-customizer.php:1341
+msgid "Theme Default/Primary Logo Here"
+msgstr ""
+
+#: inc/kirki-customizer.php:1349
+msgid "Header Secondary Logo"
+msgstr ""
+
+#: inc/kirki-customizer.php:1350
+msgid "Theme Secondary Logo Here"
+msgstr ""
+
+#: inc/kirki-customizer.php:1360
+msgid "Logo Width"
+msgstr ""
+
+#: inc/kirki-customizer.php:1362
+msgid "135"
+msgstr ""
+
+#: inc/kirki-customizer.php:1376
+msgid "Breadcrumb"
+msgstr ""
+
+#: inc/kirki-customizer.php:1377
+msgid "Breadcrumb Settings."
+msgstr ""
+
+#: inc/kirki-customizer.php:1387
+msgid "Breadcrumb Image"
+msgstr ""
+
+#: inc/kirki-customizer.php:1388
+msgid "Breadcrumb Image add/remove"
+msgstr ""
+
+#: inc/kirki-customizer.php:1395
+msgid "Breadcrumb BG Color"
+msgstr ""
+
+#: inc/kirki-customizer.php:1396
+msgid "You can change breadcrumb bg color from here."
+msgstr ""
+
+#: inc/kirki-customizer.php:1405
+msgid "Padding Control"
+msgstr ""
+
+#: inc/kirki-customizer.php:1406
+msgid "Padding"
+msgstr ""
+
+#: inc/kirki-customizer.php:1417 inc/kirki-customizer.php:1457
+msgid "Typography Control"
+msgstr ""
+
+#: inc/kirki-customizer.php:1418 inc/kirki-customizer.php:1458
+msgid "The full set of options."
+msgstr ""
+
+#: inc/kirki-customizer.php:1447
+msgid "Typography"
+msgstr ""
+
+#: inc/kirki-customizer.php:1448
+msgid "Typography Settings."
+msgstr ""
+
+#: inc/kirki-customizer.php:1486 inc/tp-metabox.php:122
+msgid "Footer"
+msgstr ""
+
+#: inc/kirki-customizer.php:1487
+msgid "Footer Settings."
+msgstr ""
+
+#: inc/kirki-customizer.php:1496
+msgid "Footer Widget Number"
+msgstr ""
+
+#: inc/kirki-customizer.php:1501
+msgid "1"
+msgstr ""
+
+#: inc/kirki-customizer.php:1513
+msgid "Footer Custom/Elementor Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:1514
+msgid "Footer Custom/Elementor On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:1527
+msgid "Footer Layout Control"
+msgstr ""
+
+#: inc/kirki-customizer.php:1564
+msgid "Elementor Footer Template"
+msgstr ""
+
+#: inc/kirki-customizer.php:1584 inc/tp-metabox.php:52
+msgid "Footer Payment Image"
+msgstr ""
+
+#: inc/kirki-customizer.php:1585
+msgid "Footer Payment Image add/remove"
+msgstr ""
+
+#: inc/kirki-customizer.php:1593
+msgid "Footer BG Color"
+msgstr ""
+
+#: inc/kirki-customizer.php:1594
+msgid "You can change footer bg color from here."
+msgstr ""
+
+#: inc/kirki-customizer.php:1603
+msgid "Footer Style 2 Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:1604
+msgid "Footer Style 2 On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:1616
+msgid "Footer Style 3 Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:1617
+msgid "Footer Style 3 On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:1629
+msgid "Footer Style 4 Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:1630
+msgid "Footer Style 4 On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:1642
+msgid "Footer Style 5 Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:1643
+msgid "Footer Style 5 On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:1655
+msgid "Footer Style 6 Switch"
+msgstr ""
+
+#: inc/kirki-customizer.php:1656
+msgid "Footer Style 6 On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:1669
+msgid "Footer Copyright"
+msgstr ""
+
+#: inc/kirki-customizer.php:1671 inc/template-helper.php:647
+msgid "© 2023 All Rights Reserved | WordPress Theme by Themepure"
+msgstr ""
+
+#: inc/kirki-customizer.php:1685
+msgid "Blog Section"
+msgstr ""
+
+#: inc/kirki-customizer.php:1686
+msgid "Blog Section Settings."
+msgstr ""
+
+#: inc/kirki-customizer.php:1695
+msgid "Blog BTN On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:1706 inc/kirki-customizer.php:1717
+#: inc/kirki-customizer.php:1727 inc/kirki-customizer.php:1738
+msgid "Blog Category Meta On/Off"
+msgstr ""
+
+#: inc/kirki-customizer.php:1750
+msgid "Blog Button Text"
+msgstr ""
+
+#: inc/kirki-customizer.php:1760
+msgid "Single Blog Social Share"
+msgstr ""
+
+#: inc/kirki-customizer.php:1777
+msgid "404 Page"
+msgstr ""
+
+#: inc/kirki-customizer.php:1778
+msgid "404 Page Settings."
+msgstr ""
+
+#: inc/kirki-customizer.php:1789
+msgid "Not Found Title"
+msgstr ""
+
+#: inc/kirki-customizer.php:1800
+msgid "Not Found description"
+msgstr ""
+
+#: inc/kirki-customizer.php:1811
+msgid "Error Link Text"
+msgstr ""
+
+#: inc/kirki-customizer.php:1827
+msgid "Custom Slug"
+msgstr ""
+
+#: inc/kirki-customizer.php:1828
+msgid "This section is for custom post type slug settings."
+msgstr ""
+
+#: inc/kirki-customizer.php:1838
+msgid "Enter Services Slug"
+msgstr ""
+
+#: inc/template-functions.php:38
+msgid "Post Tags : "
+msgstr ""
+
+#: inc/template-functions.php:76
+msgid "Image Alt Text"
+msgstr ""
+
+#: inc/template-helper.php:123 inc/template-helper.php:150
+#: inc/template-helper.php:183 inc/template-helper.php:207
+#: inc/template-helper.php:238
+msgid "English"
+msgstr ""
+
+#: inc/template-helper.php:151 inc/template-helper.php:208
+#: inc/template-helper.php:239
+msgid "Spanish"
+msgstr ""
+
+#: inc/template-helper.php:152 inc/template-helper.php:209
+#: inc/template-helper.php:240
+msgid "French"
+msgstr ""
+
+#: inc/template-helper.php:179
+msgid "language"
+msgstr ""
+
+#: inc/template-helper.php:365 inc/template-helper.php:366
+#: inc/template-helper.php:367 inc/template-helper.php:368
+#: inc/template-helper.php:369 inc/template-helper.php:402
+#: inc/template-helper.php:403 inc/template-helper.php:404
+#: inc/template-helper.php:405 inc/template-helper.php:406
+#: inc/template-helper.php:431 inc/template-helper.php:432
+#: inc/template-helper.php:433 inc/template-helper.php:434
+#: inc/template-helper.php:435 template-parts/offcanvas/offcanvas-1.php:35
+#: template-parts/offcanvas/offcanvas-2.php:20
+#: woocommerce/checkout/thankyou.php:88
+msgid "#"
+msgstr ""
+
+#: inc/tp-metabox.php:12
+msgid "TP Page Info"
+msgstr ""
+
+#: inc/tp-metabox.php:18
+msgid "Show Breadcrumb?"
+msgstr ""
+
+#: inc/tp-metabox.php:25
+msgid "Show Breadcrumb Image?"
+msgstr ""
+
+#: inc/tp-metabox.php:33
+msgid "Breadcrumb Background"
+msgstr ""
+
+#: inc/tp-metabox.php:43
+msgid "Enable Secondary Logo"
+msgstr ""
+
+#: inc/tp-metabox.php:69
+msgid "Header"
+msgstr ""
+
+#: inc/tp-metabox.php:75 inc/tp-metabox.php:128
+msgid "Custom"
+msgstr ""
+
+#: inc/tp-metabox.php:76 inc/tp-metabox.php:129
+msgid "Elementor"
+msgstr ""
+
+#: inc/tp-metabox.php:85
+msgid "Select Header Style"
+msgstr ""
+
+#: inc/tp-metabox.php:89
+msgid "Header 1"
+msgstr ""
+
+#: inc/tp-metabox.php:90
+msgid "Header 2"
+msgstr ""
+
+#: inc/tp-metabox.php:91
+msgid "Header 3"
+msgstr ""
+
+#: inc/tp-metabox.php:92
+msgid "Header 4"
+msgstr ""
+
+#: inc/tp-metabox.php:93
+msgid "Header 5"
+msgstr ""
+
+#: inc/tp-metabox.php:94
+msgid "Header 6"
+msgstr ""
+
+#: inc/tp-metabox.php:96
+msgid "Select a header"
+msgstr ""
+
+#: inc/tp-metabox.php:107
+msgid "Select Header Template"
+msgstr ""
+
+#: inc/tp-metabox.php:110 inc/tp-metabox.php:163
+msgid "Select a template"
+msgstr ""
+
+#: inc/tp-metabox.php:138
+msgid "Select Footer Style"
+msgstr ""
+
+#: inc/tp-metabox.php:142
+msgid "Footer 1"
+msgstr ""
+
+#: inc/tp-metabox.php:143
+msgid "Footer 2"
+msgstr ""
+
+#: inc/tp-metabox.php:144
+msgid "Footer 3"
+msgstr ""
+
+#: inc/tp-metabox.php:145
+msgid "Footer 4"
+msgstr ""
+
+#: inc/tp-metabox.php:146
+msgid "Footer 5"
+msgstr ""
+
+#: inc/tp-metabox.php:147
+msgid "Footer 6"
+msgstr ""
+
+#: inc/tp-metabox.php:149
+msgid "Select a footer"
+msgstr ""
+
+#: inc/tp-metabox.php:160
+msgid "Select Footer Template"
+msgstr ""
+
+#: inc/tp-metabox.php:173
+msgid "Select Offcanvas Style"
+msgstr ""
+
+#: inc/tp-metabox.php:177
+msgid "Offcanvas 1"
+msgstr ""
+
+#: inc/tp-metabox.php:178
+msgid "Offcanvas 2"
+msgstr ""
+
+#: inc/tp-metabox.php:180
+msgid "Select a offcanvas"
+msgstr ""
+
+#: inc/tp-metabox.php:188
+msgid "TP Gallery Post"
+msgstr ""
+
+#: inc/tp-metabox.php:194
+msgid "Gallery"
+msgstr ""
+
+#: inc/tp-metabox.php:206
+msgid "TP Video Post"
+msgstr ""
+
+#: inc/tp-metabox.php:212 inc/tp-metabox.php:267
+msgid "Video"
+msgstr ""
+
+#: inc/tp-metabox.php:217 inc/tp-metabox.php:272
+msgid "Place your video url."
+msgstr ""
+
+#: inc/tp-metabox.php:225
+msgid "TP Audio Post"
+msgstr ""
+
+#: inc/tp-metabox.php:231
+msgid "Audio"
+msgstr ""
+
+#: inc/tp-metabox.php:236
+msgid "Place your audio url.."
+msgstr ""
+
+#: inc/tp-metabox.php:244
+msgid "Product Single Features"
+msgstr ""
+
+#: inc/tp-metabox.php:251
+msgid "Product Single Layout"
+msgstr ""
+
+#: inc/tp-metabox.php:275
+msgid "Is Product On Trending?"
+msgstr ""
+
+#: inc/tp-metabox.php:281
+msgid "Is Product On Hot?"
+msgstr ""
+
+#: inc/tp-metabox.php:288
+msgid "Add Product Feature"
+msgstr ""
+
+#: inc/tp-metabox.php:307
+msgid "Product Main Thumbnail"
+msgstr ""
+
+#: inc/tp-metabox.php:320
+msgid "Add Coupon"
+msgstr ""
+
+#: inc/tp-metabox.php:326
+msgid "Upload Coupon Image"
+msgstr ""
+
+#: inc/tp-metabox.php:331
+msgid "Place Your Image"
+msgstr ""
+
+#: inc/woocommerce/tp-woocommerce.php:83
+msgid "payment-img"
+msgstr ""
+
+#: inc/woocommerce/tp-woocommerce.php:154
+msgid "-"
+msgstr ""
+
+#: inc/woocommerce/tp-woocommerce.php:210
+msgid "Shopping cart"
+msgstr ""
+
+#: inc/woocommerce/tp-woocommerce.php:244
+msgid "Store"
+msgstr ""
+
+#: inc/woocommerce/tp-woocommerce.php:269
+#: template-parts/header/header-1.php:131
+#: template-parts/header/header-2.php:120
+#: template-parts/header/header-3.php:130
+msgid "Wishlist"
+msgstr ""
+
+#: inc/woocommerce/tp-woocommerce.php:280
+msgid "Account"
+msgstr ""
+
+#: inc/woocommerce/tp-woocommerce.php:289
+msgid "Menu"
+msgstr ""
+
+#: inc/woocommerce/tp-woocommerce.php:401
+#: inc/woocommerce/tp-woocommerce.php:829
+#: inc/woocommerce/tp-woocommerce.php:944
+#: inc/woocommerce/tp-woocommerce.php:1047
+#, php-format
+msgid "( %s Review )"
+msgid_plural "( %s Reviews )"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/woocommerce/tp-woocommerce.php:428
+#: inc/woocommerce/tp-woocommerce.php:429
+#: inc/woocommerce/tp-woocommerce.php:430
+#: inc/woocommerce/tp-woocommerce.php:431
+#: inc/woocommerce/tp-woocommerce.php:626
+#: inc/woocommerce/tp-woocommerce.php:627
+#: inc/woocommerce/tp-woocommerce.php:628
+#: inc/woocommerce/tp-woocommerce.php:629
+msgid "0"
+msgstr ""
+
+#: inc/woocommerce/tp-woocommerce.php:428
+#: inc/woocommerce/tp-woocommerce.php:626
+msgid "D"
+msgstr ""
+
+#: inc/woocommerce/tp-woocommerce.php:429
+#: inc/woocommerce/tp-woocommerce.php:627
+msgid "H"
+msgstr ""
+
+#: inc/woocommerce/tp-woocommerce.php:430
+#: inc/woocommerce/tp-woocommerce.php:628
+msgid "M"
+msgstr ""
+
+#: inc/woocommerce/tp-woocommerce.php:431
+#: inc/woocommerce/tp-woocommerce.php:629
+msgid "S"
+msgstr ""
+
+#: inc/woocommerce/tp-woocommerce.php:446
+msgid "Hurry! Only"
+msgstr ""
+
+#: inc/woocommerce/tp-woocommerce.php:446
+msgid "units left in stock!"
+msgstr ""
+
+#: inc/woocommerce/tp-woocommerce.php:545
+#: inc/woocommerce/tp-woocommerce.php:552
+#: inc/woocommerce/tp-woocommerce.php:562
+#: inc/woocommerce/tp-woocommerce.php:572
+#: inc/woocommerce/tp-woocommerce.php:582
+#: inc/woocommerce/tp-woocommerce.php:1192
+#: inc/woocommerce/tp-woocommerce.php:1459
+msgid "Trending"
+msgstr ""
+
+#: inc/woocommerce/tp-woocommerce.php:597
+#: inc/woocommerce/tp-woocommerce.php:1198
+#: inc/woocommerce/tp-woocommerce.php:1465
+msgid "Hot"
+msgstr ""
+
+#: inc/woocommerce/tp-woocommerce.php:695
+#: inc/woocommerce/tp-woocommerce.php:798
+#: inc/woocommerce/tp-woocommerce.php:906
+#: inc/woocommerce/tp-woocommerce.php:1017
+#: inc/woocommerce/tp-woocommerce.php:1125
+#: inc/woocommerce/tp-woocommerce.php:1231
+#: inc/woocommerce/tp-woocommerce.php:1375
+#: inc/woocommerce/tp-woocommerce.php:1496
+msgid "Add To Compare"
+msgstr ""
+
+#: inc/woocommerce/tp-woocommerce.php:1279
+msgid "Quick View"
+msgstr ""
+
+#: inc/woocommerce/tp-woocommerce.php:1315
+msgid "Add To Wishlist"
+msgstr ""
+
+#: inc/woocommerce/tp-woocommerce.php:1335
+msgid "View Wishlist"
+msgstr ""
+
+#: inc/woocommerce/tp-woocommerce.php:1398
+msgid "View Compare"
+msgstr ""
+
+#: inc/woocommerce/tp-woocommerce.php:1583
+#: inc/woocommerce/tp-woocommerce.php:1592
+msgid "Add to Cart"
+msgstr ""
+
+#: inc/woocommerce/tp-woocommerce.php:1585
+msgid "Select Options"
+msgstr ""
+
+#: inc/woocommerce/tp-woocommerce.php:1587
+#: inc/woocommerce/tp-woocommerce.php:1760
+msgid "Buy Now"
+msgstr ""
+
+#: inc/woocommerce/tp-woocommerce.php:1589
+msgid "View Products"
+msgstr ""
+
+#: inc/woocommerce/tp-woocommerce.php:1730
+msgctxt "breadcrumb"
+msgid "Home"
+msgstr ""
+
+#: search.php:25
+msgid "Search Results For:"
+msgstr ""
+
+#: single.php:89
+msgid "Author"
+msgstr ""
+
+#: single.php:103
+msgid "Published"
+msgstr ""
+
+#: single.php:114
+msgid "Join the Conversation"
+msgstr ""
+
+#: single.php:122
+msgid "View"
+msgstr ""
+
+#: single.php:123
+msgid "views"
+msgstr ""
+
+#: single.php:177
+msgid "Previous Article"
+msgstr ""
+
+#: single.php:199
+msgid "Next Article"
+msgstr ""
+
+#: single.php:350
+msgid "Previous Post"
+msgstr ""
+
+#: single.php:361
+msgid "Next Post"
+msgstr ""
+
+#: template-parts/biography.php:21
+msgid "Written by"
+msgstr ""
+
+#: template-parts/blog/blog-details-meta.php:29
+msgid "By"
+msgstr ""
+
+#: template-parts/blog/search-result-meta.php:46
+msgid "Comments ("
+msgstr ""
+
+#: template-parts/blog/search-result-meta.php:46
+#: woocommerce/content-widget-product.php:46
+#: woocommerce/content-widget-reviews.php:45
+msgid ")"
+msgstr ""
+
+#: template-parts/content-none.php:14
+msgid "Nothing Found"
+msgstr ""
+
+#. translators: 1: link to WP admin new post page.
+#: template-parts/content-none.php:24
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: template-parts/content-none.php:37
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+
+#: template-parts/content-none.php:43
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+
+#: template-parts/content-page.php:5 template-parts/content-search.php:32
+#: template-parts/content.php:29
+msgid "Pages:"
+msgstr ""
+
+#: template-parts/content-page.php:9
+msgid "Page"
+msgstr ""
+
+#: template-parts/footer/footer-1.php:140
+#: template-parts/footer/footer-2.php:123
+#: template-parts/footer/footer-3.php:123
+#: template-parts/footer/footer-4.php:124
+#: template-parts/footer/footer-5.php:123
+#: template-parts/footer/footer-6.php:123
+msgid "payment"
+msgstr ""
+
+#: template-parts/header/header-1.php:26 template-parts/header/header-2.php:29
+#: template-parts/header/header-3.php:26 template-parts/header/header-4.php:26
+#: template-parts/header/header-5.php:26 template-parts/header/header-6.php:26
+msgid "info@edufax.com"
+msgstr ""
+
+#: template-parts/header/header-1.php:29 template-parts/header/header-2.php:33
+#: template-parts/header/header-3.php:29 template-parts/header/header-4.php:29
+#: template-parts/header/header-5.php:29 template-parts/header/header-6.php:29
+msgid "402763-282-46 "
+msgstr ""
+
+#: template-parts/header/header-1.php:30 template-parts/header/header-2.php:34
+#: template-parts/header/header-3.php:30 template-parts/header/header-4.php:30
+#: template-parts/header/header-5.php:30 template-parts/header/header-6.php:30
+msgid "+(402) 763 282 46  "
+msgstr ""
+
+#: template-parts/header/header-1.php:47 template-parts/header/header-2.php:52
+#: template-parts/header/header-3.php:47 template-parts/header/header-4.php:47
+#: template-parts/header/header-5.php:50 template-parts/header/header-6.php:47
+#: template-parts/offcanvas/offcanvas-1.php:40
+#: template-parts/offcanvas/offcanvas-2.php:25
+msgid "[shortcode here]"
+msgstr ""
+
+#: template-parts/header/header-1.php:104 template-parts/header/header-2.php:94
+#: template-parts/header/header-3.php:103
+#: template-parts/offcanvas/offcanvas-1.php:101
+#: template-parts/offcanvas/offcanvas-2.php:74
+msgid "USD"
+msgstr ""
+
+#: template-parts/header/header-1.php:105 template-parts/header/header-2.php:95
+#: template-parts/header/header-3.php:104
+#: template-parts/offcanvas/offcanvas-1.php:102
+#: template-parts/offcanvas/offcanvas-2.php:75
+msgid "YEAN"
+msgstr ""
+
+#: template-parts/header/header-1.php:106 template-parts/header/header-2.php:96
+#: template-parts/header/header-3.php:105
+#: template-parts/offcanvas/offcanvas-1.php:103
+#: template-parts/offcanvas/offcanvas-2.php:76
+msgid "EURO"
+msgstr ""
+
+#: template-parts/header/header-1.php:115
+#: template-parts/header/header-2.php:104
+#: template-parts/header/header-3.php:114
+msgid "Setting"
+msgstr ""
+
+#: template-parts/header/header-1.php:118
+#: template-parts/header/header-2.php:107
+#: template-parts/header/header-3.php:117
+msgid "My Profile"
+msgstr ""
+
+#: template-parts/header/header-1.php:136
+#: template-parts/header/header-2.php:125
+#: template-parts/header/header-3.php:135
+msgid "Cart"
+msgstr ""
+
+#: template-parts/header/header-1.php:141
+#: template-parts/header/header-2.php:130
+#: template-parts/header/header-3.php:140
+msgid "Logout"
+msgstr ""
+
+#: template-parts/header/header-1.php:145
+#: template-parts/header/header-2.php:134
+#: template-parts/header/header-3.php:144
+#: woocommerce/myaccount/form-login.php:37
+msgid "Login"
+msgstr ""
+
+#: template-parts/header/header-1.php:183
+#: template-parts/header/header-2.php:162
+#: template-parts/header/header-3.php:182
+msgid "Search for Products..."
+msgstr ""
+
+#: template-parts/header/header-2.php:32
+msgid "Hotline"
+msgstr ""
+
+#: template-parts/header/header-2.php:173
+msgid "All Items"
+msgstr ""
+
+#: template-parts/header/header-2.php:220
+#: template-parts/header/header-5.php:122
+#: template-parts/header/header-5.php:136
+msgid "Hello"
+msgstr ""
+
+#: template-parts/header/header-2.php:238
+msgid "Hello, Sign In"
+msgstr ""
+
+#: template-parts/header/header-2.php:239
+msgid "Your Account"
+msgstr ""
+
+#: template-parts/header/header-2.php:339
+msgid "All Departments"
+msgstr ""
+
+#: template-parts/header/header-5.php:88
+msgid "Search for products (e.g. eggs, milk, potato)"
+msgstr ""
+
+#: template-parts/header/header-5.php:136
+#: woocommerce/myaccount/form-login.php:74
+#: woocommerce/myaccount/form-login.php:111
+msgid "Register"
+msgstr ""
+
+#: template-parts/offcanvas/offcanvas-1.php:69
+msgid "All Categories"
+msgstr ""
+
+#: template-parts/offcanvas/offcanvas-1.php:99
+#: template-parts/offcanvas/offcanvas-2.php:72
+msgid "Currency : USD"
+msgstr ""
+
+#: woocommerce/cart/cart-empty.php:27 woocommerce/cart/mini-cart.php:116
+msgid "empty-cart"
+msgstr ""
+
+#: woocommerce/cart/cart-empty.php:38
+msgid "Return to shop"
+msgstr ""
+
+#: woocommerce/cart/cart.php:32 woocommerce/cart/cart.php:65
+#: woocommerce/checkout/review-order.php:23
+#: woocommerce/order/order-details.php:53
+msgid "Product"
+msgstr ""
+
+#: woocommerce/cart/cart.php:33 woocommerce/cart/cart.php:85
+msgid "Price"
+msgstr ""
+
+#: woocommerce/cart/cart.php:34 woocommerce/cart/cart.php:91
+#: woocommerce/global/quantity-input.php:28
+#: woocommerce/single-product/add-to-cart/simple.php:34
+#: woocommerce/single-product/add-to-cart/variation-add-to-cart-button.php:16
+msgid "Quantity"
+msgstr ""
+
+#: woocommerce/cart/cart.php:35 woocommerce/cart/cart.php:113
+#: woocommerce/checkout/review-order.php:24
+#: woocommerce/checkout/review-order.php:56
+msgid "Subtotal"
+msgstr ""
+
+#: woocommerce/cart/cart.php:36 woocommerce/cart/cart.php:124
+msgid "Remove"
+msgstr ""
+
+#: woocommerce/cart/cart.php:80
+msgid "Available on backorder"
+msgstr ""
+
+#: woocommerce/cart/cart.php:126 woocommerce/cart/mini-cart.php:68
+msgid "Remove this item"
+msgstr ""
+
+#: woocommerce/cart/cart.php:151
+msgid "Coupon:"
+msgstr ""
+
+#: woocommerce/cart/cart.php:154
+msgid "Enter Coupon Code"
+msgstr ""
+
+#: woocommerce/cart/cart.php:155 woocommerce/checkout/form-coupon.php:35
+msgid "Apply coupon"
+msgstr ""
+
+#: woocommerce/cart/cart.php:155 woocommerce/checkout/form-coupon.php:35
+msgid "Apply"
+msgstr ""
+
+#: woocommerce/cart/cart.php:163
+msgid "Update cart"
+msgstr ""
+
+#: woocommerce/cart/mini-cart.php:117
+msgid "Your Cart is empty"
+msgstr ""
+
+#: woocommerce/cart/mini-cart.php:118
+msgid "Go To Shop"
+msgstr ""
+
+#: woocommerce/cart/proceed-to-checkout-button.php:26
+msgid "Proceed to checkout"
+msgstr ""
+
+#: woocommerce/cart/shipping-calculator.php:24
+msgid "Calculate shipping"
+msgstr ""
+
+#: woocommerce/cart/shipping-calculator.php:30
+msgid "Country / region:"
+msgstr ""
+
+#: woocommerce/cart/shipping-calculator.php:32
+msgid "Select a country / region&hellip;"
+msgstr ""
+
+#: woocommerce/cart/shipping-calculator.php:51
+#: woocommerce/cart/shipping-calculator.php:57
+#: woocommerce/cart/shipping-calculator.php:70
+msgid "State / County"
+msgstr ""
+
+#: woocommerce/cart/shipping-calculator.php:56
+#: woocommerce/cart/shipping-calculator.php:69
+msgid "State / County:"
+msgstr ""
+
+#: woocommerce/cart/shipping-calculator.php:58
+msgid "Select an option&hellip;"
+msgstr ""
+
+#: woocommerce/cart/shipping-calculator.php:79
+#: woocommerce/myaccount/my-address.php:111
+#: woocommerce/myaccount/my-address.php:183
+#: woocommerce/order/order-details-customer.php:79
+#: woocommerce/order/order-details-customer.php:144
+msgid "City:"
+msgstr ""
+
+#: woocommerce/cart/shipping-calculator.php:80
+msgid "City"
+msgstr ""
+
+#: woocommerce/cart/shipping-calculator.php:86
+msgid "Postcode / ZIP:"
+msgstr ""
+
+#: woocommerce/cart/shipping-calculator.php:87
+msgid "Postcode / ZIP"
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:30
+msgid "You must be logged in to checkout."
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:59
+msgid "Your order"
+msgstr ""
+
+#: woocommerce/checkout/form-coupon.php:26
+msgid "Have a coupon?"
+msgstr ""
+
+#: woocommerce/checkout/form-coupon.php:26
+msgid "Click here to enter your code"
+msgstr ""
+
+#: woocommerce/checkout/form-coupon.php:32
+msgid "Coupon Code : "
+msgstr ""
+
+#: woocommerce/checkout/form-coupon.php:33
+msgid "Coupon"
+msgstr ""
+
+#: woocommerce/checkout/form-login.php:26
+msgid "Returning customer?"
+msgstr ""
+
+#: woocommerce/checkout/form-login.php:26
+msgid "Click here to login"
+msgstr ""
+
+#: woocommerce/checkout/form-login.php:33
+msgid ""
+"If you have shopped with us before, please enter your details below. If you "
+"are a new customer, please proceed to the Billing section."
+msgstr ""
+
+#: woocommerce/checkout/order-receipt.php:25
+msgid "Order number:"
+msgstr ""
+
+#: woocommerce/checkout/order-receipt.php:29
+msgid "Date:"
+msgstr ""
+
+#: woocommerce/checkout/order-receipt.php:33
+msgid "Total:"
+msgstr ""
+
+#: woocommerce/checkout/order-receipt.php:38
+msgid "Payment method:"
+msgstr ""
+
+#: woocommerce/checkout/payment.php:33
+msgid ""
+"Sorry, it seems that there are no available payment methods for your state. "
+"Please contact us if you require assistance or wish to make alternate "
+"arrangements."
+msgstr ""
+
+#: woocommerce/checkout/payment.php:33
+msgid "Please fill in your details above to see available payment methods."
+msgstr ""
+
+#. translators: $1 and $2 opening and closing emphasis tags respectively
+#: woocommerce/checkout/payment.php:42
+#, php-format
+msgid ""
+"Since your browser does not support JavaScript, or it is disabled, please "
+"ensure you click the %1$sUpdate Totals%2$s button before placing your order. "
+"You may be charged more than the amount stated above if you fail to do so."
+msgstr ""
+
+#: woocommerce/checkout/payment.php:44
+msgid "Update totals"
+msgstr ""
+
+#: woocommerce/checkout/review-order.php:103
+#: woocommerce/myaccount/my-orders.php:17
+#: woocommerce/order/order-details.php:54
+msgid "Total"
+msgstr ""
+
+#: woocommerce/checkout/thankyou.php:35
+msgid ""
+"Unfortunately your order cannot be processed as the originating bank/"
+"merchant has declined your transaction. Please attempt your purchase again."
+msgstr ""
+
+#: woocommerce/checkout/thankyou.php:38
+msgid "Pay"
+msgstr ""
+
+#: woocommerce/checkout/thankyou.php:40
+msgid "My account"
+msgstr ""
+
+#: woocommerce/checkout/thankyou.php:61
+msgid "Your Order Confirmed"
+msgstr ""
+
+#: woocommerce/checkout/thankyou.php:70
+msgid "Order Date:"
+msgstr ""
+
+#: woocommerce/checkout/thankyou.php:78 woocommerce/myaccount/my-address.php:91
+#: woocommerce/order/order-details-customer.php:59
+msgid "Email:"
+msgstr ""
+
+#: woocommerce/checkout/thankyou.php:87
+msgid "Order Number:"
+msgstr ""
+
+#: woocommerce/checkout/thankyou.php:96
+msgid "Payment Method:"
+msgstr ""
+
+#: woocommerce/checkout/thankyou.php:124
+msgid "Thank you. Your order has been received."
+msgstr ""
+
+#: woocommerce/content-widget-price-filter.php:27
+#: woocommerce/content-widget-price-filter.php:29
+msgid "Min price"
+msgstr ""
+
+#: woocommerce/content-widget-price-filter.php:31
+#: woocommerce/content-widget-price-filter.php:33
+msgid "Max price"
+msgstr ""
+
+#. translators: Filter: verb "to filter"
+#: woocommerce/content-widget-price-filter.php:46
+msgid "Price:"
+msgstr ""
+
+#: woocommerce/content-widget-price-filter.php:49
+msgid "Filter"
+msgstr ""
+
+#: woocommerce/content-widget-product.php:46
+#: woocommerce/content-widget-reviews.php:45
+msgid "("
+msgstr ""
+
+#: woocommerce/content-widget-reviews.php:53
+msgid "by "
+msgstr ""
+
+#. translators: %s: Quantity.
+#: woocommerce/global/quantity-input.php:28
+#, php-format
+msgid "%s quantity"
+msgstr ""
+
+#: woocommerce/global/quantity-input.php:48
+msgctxt "Product quantity input tooltip"
+msgid "Qty"
+msgstr ""
+
+#: woocommerce/loop/sale-flash.php:27
+msgid "Sale!"
+msgstr ""
+
+#: woocommerce/myaccount/downloads.php:45
+msgid "No downloads available yet."
+msgstr ""
+
+#: woocommerce/myaccount/downloads.php:45 woocommerce/myaccount/orders.php:103
+msgid "Browse products"
+msgstr ""
+
+#: woocommerce/myaccount/form-edit-account.php:27
+msgid "First name"
+msgstr ""
+
+#: woocommerce/myaccount/form-edit-account.php:31
+msgid "Last name"
+msgstr ""
+
+#: woocommerce/myaccount/form-edit-account.php:37
+msgid "Display name"
+msgstr ""
+
+#: woocommerce/myaccount/form-edit-account.php:38
+msgid ""
+"This will be how your name will be displayed in the account section and in "
+"reviews"
+msgstr ""
+
+#: woocommerce/myaccount/form-edit-account.php:43
+#: woocommerce/myaccount/form-login.php:90
+msgid "Email address"
+msgstr ""
+
+#: woocommerce/myaccount/form-edit-account.php:48
+msgid "Password change"
+msgstr ""
+
+#: woocommerce/myaccount/form-edit-account.php:51
+msgid "Current password (leave blank to leave unchanged)"
+msgstr ""
+
+#: woocommerce/myaccount/form-edit-account.php:55
+msgid "New password (leave blank to leave unchanged)"
+msgstr ""
+
+#: woocommerce/myaccount/form-edit-account.php:59
+msgid "Confirm new password"
+msgstr ""
+
+#: woocommerce/myaccount/form-edit-account.php:69
+msgid "Save changes"
+msgstr ""
+
+#: woocommerce/myaccount/form-edit-address.php:20
+#: woocommerce/myaccount/my-address.php:26
+#: woocommerce/myaccount/my-address.php:35
+msgid "Billing address"
+msgstr ""
+
+#: woocommerce/myaccount/form-edit-address.php:20
+#: woocommerce/myaccount/my-address.php:27
+msgid "Shipping address"
+msgstr ""
+
+#: woocommerce/myaccount/form-edit-address.php:46
+msgid "Save address"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:44
+msgid "Username or email address"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:48
+#: woocommerce/myaccount/form-login.php:97
+msgid "Password"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:56
+msgid "Remember me"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:59
+msgid "Log in"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:62
+msgid "Lost your password?"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:83
+msgid "Username"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:103
+msgid "A link to set a new password will be sent to your email address."
+msgstr ""
+
+#: woocommerce/myaccount/form-lost-password.php:25
+msgid ""
+"Lost your password? Please enter your username or email address. You will "
+"receive a link to create a new password via email."
+msgstr ""
+
+#: woocommerce/myaccount/form-lost-password.php:28
+msgid "Username or email"
+msgstr ""
+
+#: woocommerce/myaccount/form-lost-password.php:38
+msgid "Reset password"
+msgstr ""
+
+#: woocommerce/myaccount/form-reset-password.php:25
+msgid "Enter a new password below."
+msgstr ""
+
+#: woocommerce/myaccount/form-reset-password.php:28
+msgid "New password"
+msgstr ""
+
+#: woocommerce/myaccount/form-reset-password.php:32
+msgid "Re-enter new password"
+msgstr ""
+
+#: woocommerce/myaccount/form-reset-password.php:45
+msgid "Save"
+msgstr ""
+
+#: woocommerce/myaccount/my-address.php:46
+msgid "The following addresses will be used on the checkout page by default."
+msgstr ""
+
+#: woocommerce/myaccount/my-address.php:80
+#: woocommerce/order/order-details-customer.php:50
+msgid "Billing Address"
+msgstr ""
+
+#: woocommerce/myaccount/my-address.php:81
+#: woocommerce/myaccount/my-address.php:157
+msgid "Edit"
+msgstr ""
+
+#: woocommerce/myaccount/my-address.php:81
+#: woocommerce/myaccount/my-address.php:157
+msgid "Add"
+msgstr ""
+
+#: woocommerce/myaccount/my-address.php:86
+#: woocommerce/myaccount/my-address.php:162
+#: woocommerce/order/order-details-customer.php:54
+#: woocommerce/order/order-details-customer.php:123
+msgid "Name:"
+msgstr ""
+
+#: woocommerce/myaccount/my-address.php:95
+#: woocommerce/myaccount/my-address.php:167
+#: woocommerce/order/order-details-customer.php:63
+#: woocommerce/order/order-details-customer.php:128
+msgid "Phone number:"
+msgstr ""
+
+#: woocommerce/myaccount/my-address.php:99
+#: woocommerce/myaccount/my-address.php:171
+#: woocommerce/order/order-details-customer.php:67
+#: woocommerce/order/order-details-customer.php:132
+msgid "Company:"
+msgstr ""
+
+#: woocommerce/myaccount/my-address.php:103
+#: woocommerce/myaccount/my-address.php:175
+#: woocommerce/order/order-details-customer.php:71
+#: woocommerce/order/order-details-customer.php:136
+msgid "Address 1:"
+msgstr ""
+
+#: woocommerce/myaccount/my-address.php:107
+#: woocommerce/myaccount/my-address.php:179
+#: woocommerce/order/order-details-customer.php:75
+#: woocommerce/order/order-details-customer.php:140
+msgid "Address 2:"
+msgstr ""
+
+#: woocommerce/myaccount/my-address.php:115
+#: woocommerce/myaccount/my-address.php:187
+#: woocommerce/order/order-details-customer.php:83
+#: woocommerce/order/order-details-customer.php:148
+msgid "State/province/area:"
+msgstr ""
+
+#: woocommerce/myaccount/my-address.php:119
+#: woocommerce/myaccount/my-address.php:191
+#: woocommerce/order/order-details-customer.php:87
+#: woocommerce/order/order-details-customer.php:152
+msgid "Zip code:"
+msgstr ""
+
+#: woocommerce/myaccount/my-address.php:123
+#: woocommerce/myaccount/my-address.php:195
+#: woocommerce/order/order-details-customer.php:91
+#: woocommerce/order/order-details-customer.php:156
+msgid "Country:"
+msgstr ""
+
+#: woocommerce/myaccount/my-address.php:156
+#: woocommerce/order/order-details-customer.php:119
+msgid "Shipping Address"
+msgstr ""
+
+#: woocommerce/myaccount/my-orders.php:14
+msgid "Order"
+msgstr ""
+
+#: woocommerce/myaccount/my-orders.php:15
+msgid "Date"
+msgstr ""
+
+#: woocommerce/myaccount/my-orders.php:38
+msgid "Recent orders"
+msgstr ""
+
+#: woocommerce/myaccount/my-orders.php:64 woocommerce/myaccount/orders.php:50
+msgctxt "hash before order number"
+msgid "#"
+msgstr ""
+
+#. translators: 1: formatted order total 2: total order items
+#: woocommerce/myaccount/my-orders.php:76 woocommerce/myaccount/orders.php:62
+#, php-format
+msgid "%1$s for %2$s item"
+msgid_plural "%1$s for %2$s items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: woocommerce/myaccount/orders.php:92
+msgid "Previous"
+msgstr ""
+
+#: woocommerce/myaccount/orders.php:96
+msgid "Next"
+msgstr ""
+
+#: woocommerce/myaccount/orders.php:103
+msgid "No order has been made yet."
+msgstr ""
+
+#. translators: 1: order number 2: order date 3: order status
+#: woocommerce/myaccount/view-order.php:31
+#, php-format
+msgid "Order %1$s was placed on %2$s and is currently %3$s."
+msgstr ""
+
+#: woocommerce/myaccount/view-order.php:42 woocommerce/order/tracking.php:41
+msgid "Order updates"
+msgstr ""
+
+#: woocommerce/myaccount/view-order.php:48 woocommerce/order/tracking.php:47
+msgid "l jS \\o\\f F Y, h:ia"
+msgstr ""
+
+#: woocommerce/order/form-tracking.php:34
+msgid ""
+"To track your order please enter your Order ID in the box below and press "
+"the \"Track\" button. This was given to you on your receipt and in the "
+"confirmation email you should have received."
+msgstr ""
+
+#: woocommerce/order/form-tracking.php:36
+msgid "Order ID"
+msgstr ""
+
+#: woocommerce/order/form-tracking.php:36
+msgid "Found in your order confirmation email."
+msgstr ""
+
+#: woocommerce/order/form-tracking.php:37
+msgid "Billing email"
+msgstr ""
+
+#: woocommerce/order/form-tracking.php:37
+msgid "Email you used during checkout."
+msgstr ""
+
+#: woocommerce/order/form-tracking.php:49
+msgid "Track"
+msgstr ""
+
+#: woocommerce/order/order-again.php:22
+msgid "Order again"
+msgstr ""
+
+#: woocommerce/order/order-details.php:46
+msgid "Order details"
+msgstr ""
+
+#: woocommerce/order/order-details.php:106
+msgid "Note:"
+msgstr ""
+
+#: woocommerce/order/order-downloads.php:24
+msgid "Downloads"
+msgstr ""
+
+#: woocommerce/order/order-downloads.php:56
+msgid "&infin;"
+msgstr ""
+
+#: woocommerce/order/order-downloads.php:62
+msgid "Never"
+msgstr ""
+
+#. translators: 1: order number 2: order date 3: order status
+#: woocommerce/order/tracking.php:30
+#, php-format
+msgid "Order #%1$s was placed on %2$s and is currently %3$s."
+msgstr ""
+
+#: woocommerce/product-searchform.php:28
+msgid "Search..."
+msgstr ""
+
+#: woocommerce/product-searchform.php:29
+msgctxt "submit button"
+msgid "Search"
+msgstr ""
+
+#. translators: 1: reviews count 2: product name
+#: woocommerce/single-product-reviews.php:34
+#, php-format
+msgid "%1$s review for %2$s"
+msgid_plural "%1$s reviews for %2$s"
+msgstr[0] ""
+msgstr[1] ""
+
+#: woocommerce/single-product-reviews.php:37
+msgid "Reviews"
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:64
+msgid "There are no reviews yet."
+msgstr ""
+
+#. translators: %s is product title
+#: woocommerce/single-product-reviews.php:75
+msgid "Add a review"
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:75
+#, php-format
+msgid "Be the first to review &ldquo;%s&rdquo;"
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:81
+msgid "Submit"
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:89
+msgid "Name"
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:95
+msgid "Email"
+msgstr ""
+
+#. translators: %s opening and closing link tags respectively
+#: woocommerce/single-product-reviews.php:120
+#, php-format
+msgid "You must be %1$slogged in%2$s to post a review."
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:124
+msgid "Your rating"
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:125
+msgid "Rate&hellip;"
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:126
+msgid "Perfect"
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:127
+msgid "Good"
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:128
+msgid "Average"
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:129
+msgid "Not that bad"
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:130
+msgid "Very poor"
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:134
+msgid "Your review"
+msgstr ""
+
+#: woocommerce/single-product-reviews.php:141
+msgid ""
+"Only logged in customers who have purchased this product may leave a review."
+msgstr ""
+
+#: woocommerce/single-product/add-to-cart/variable.php:32
+msgid "This product is currently out of stock and unavailable."
+msgstr ""
+
+#: woocommerce/single-product/add-to-cart/variable.php:48
+msgid "Clear"
+msgstr ""
+
+#: woocommerce/single-product/add-to-cart/variation.php:22
+msgid ""
+"Sorry, this product is unavailable. Please choose a different combination."
+msgstr ""
+
+#: woocommerce/single-product/meta.php:36
+msgid "SKU:"
+msgstr ""
+
+#: woocommerce/single-product/meta.php:37
+msgid "N/A"
+msgstr ""
+
+#: woocommerce/single-product/meta.php:43
+msgid "Category:  "
+msgid_plural "Categories:  "
+msgstr[0] ""
+msgstr[1] ""
+
+#: woocommerce/single-product/meta.php:49
+msgid "Tag:"
+msgid_plural "Tags:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: woocommerce/single-product/product-image.php:154
+msgid "Awaiting product image"
+msgstr ""
+
+#: woocommerce/single-product/rating.php:52
+#, php-format
+msgid "%s Review"
+msgid_plural "%s Reviews"
+msgstr[0] ""
+msgstr[1] ""
+
+#: woocommerce/single-product/related.php:27
+msgid "Related products"
+msgstr ""
+
+#: woocommerce/single-product/related.php:38
+msgid " Next day Products"
+msgstr ""
+
+#: woocommerce/single-product/tabs/additional-information.php:22
+msgid "Additional information"
+msgstr ""
+
+#: woocommerce/single-product/tabs/description.php:22
+msgid "Description"
+msgstr ""
+
+#. Theme URI of the plugin/theme
+msgid "https://wp.themepure.net/edufax"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Edufax - Multipurpose WooCommerce WordPress Theme"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Theme_Pure"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://themeforest.net/user/theme_pure/"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Page Sidebar"
+msgstr ""

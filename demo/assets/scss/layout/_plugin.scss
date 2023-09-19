@@ -1,0 +1,55 @@
+@use '../utils' as *;
+
+/* header footer css start */
+
+.#{$theme-prifix}-plugin{
+    &-section{
+        &-title{
+            font-size: 50px;
+            @media #{$sm, $xs}{
+                font-size: 30px;
+            }
+    
+            &-wrapper{
+                & p{
+                    font-size: 20px;
+                    color: #5F6168;
+                }
+            }            
+        }
+    }
+    &-item{
+        height: 200px;
+        padding: 32px 15px 35px;
+        border-radius: 6px;
+    }
+    &-icon{
+        margin-bottom: 23px;
+        height: 80px;
+        @include flexbox();
+        align-items: end;
+        justify-content: center;
+    }
+    &-title{
+        font-size: 20px;
+        font-weight: 400;
+        margin-bottom: 0;
+    }
+    &-shape{
+        &-1{
+            position: absolute;
+            right: 18%;
+            top: 16%;
+            z-index: -1;
+
+            @media #{$xl}{
+                right: 3%;
+            }
+
+            @media #{$lg, $md, $sm, $xs}{
+                right: 2%;
+                top: 3%;
+            }
+        }
+    }
+}

@@ -1,0 +1,331 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer base {
+
+    html,
+    body {
+        font-family: 'Poppins', sans-serif;
+        font-size: 14px;
+        line-height: 26px;
+        color: #76767C;
+    }
+  
+    img,
+    svg{
+      display: inline-block;
+    }
+  
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6{
+        font-family: 'Poppins', sans-serif;
+        font-weight: 500;
+        line-height: 1.2;
+        margin-bottom: 15px;
+        color: #121420;
+    }
+  
+    h1 {
+        font-size: 40px;
+    }
+      
+    h2 {
+        font-size: 36px;
+    }
+    
+    h3 {
+        font-size: 24px;
+    }
+    
+    h4 {
+        font-size: 20px;
+    }
+    
+    h5 {
+        font-size: 16px;
+    }
+    
+    h6 {
+        font-size: 14px;
+    }
+  
+    p{
+        font-family: 'Poppins', sans-serif;
+        font-size: 14px;
+        line-height: 26px;
+        color: #76767C;
+        margin-bottom: 15px;
+    }
+  
+    
+    a,
+    .btn,
+    p,
+    button,
+    input,
+    select,
+    textarea,
+    li,
+    img,
+    .transition-3,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        -webkit-transition: all .3s ease-out 0s;
+        -moz-transition: all .3s ease-out 0s;
+        -ms-transition: all .3s ease-out 0s;
+        -o-transition: all .3s ease-out 0s;
+        transition: all .3s ease-out 0s;
+    }
+
+    .tpv-outline-0{
+      outline: 0;
+    }
+
+    .tpv-dashboard-icon-bg{
+      backdrop-filter: blur(10px);
+      border-radius: 10px;
+    }
+
+    .tpv-dashboard-tab-btn button{
+      position: relative;
+    }
+
+    .tpv-dashboard-tab-btn button::after{
+      position: absolute;
+      content: '';
+      right: 0;
+      height: 0%;
+      width: 3px;
+      border-radius: 12px 0 0 12px;
+      background-color: #3C42E0;
+      top: auto;
+      bottom: 0;
+      transition: all .3s ease-in-out;
+      display: none;
+    }
+    .tpv-dashboard-tab-btn button.active::after{
+     top: 0;
+     bottom: auto;
+     height: 100%;
+    }
+
+    .tpv-dashboard-icon-bg svg{
+      transform: translateY(-2px);
+    }
+  
+
+    .tpv-btn-purple{
+      display: inline-block;
+      background: linear-gradient(180deg, #547AFF 0%, #7176FF 0.01%, #3C42E0 100%);
+      box-shadow: 0px 1px 0px rgba(7, 51, 205, 0.7), 0px 2px 4px rgba(9, 32, 151, 0.5);
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 14px;
+      color: #FFFFFF;
+      padding: 8px 28px;
+      transition: all .2s ease-in-out;
+    }
+
+    .tpv-btn-purple:hover{
+      transform: translateY(-4px);
+    }
+    /* toggle button css start */
+    .tpv-toggle-switch-bg{
+        background: linear-gradient(180deg, #FFFFFF 0%, #D6DCEF 100%);
+        box-shadow: 1px 2px 3px rgba(18, 20, 32, 0.3);
+    }
+
+
+    .tpv-toggle-btn-input:checked ~ .tpv-toggle-btn-label {
+        right: 2px;
+        left: 57.5%;
+        transition: 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+        transition-property: left, right;
+        transition-delay: .08s, 0s;
+      }
+
+    .tpv-toggle-btn-label{
+
+        position: absolute;
+        left: 2px;
+        top: 2px;
+        bottom: 2px;
+        right: 57.5%;
+        background-color: #fff;
+        border-radius: 36px;
+        z-index: 1;
+        transition: 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+        transition-property: left, right;
+        transition-delay: 0s, .08s;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .tpv-toggle-btn-input{
+        position: absolute;
+        display: block;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        z-index: 6;
+    }
+
+
+    .tpv-toggle-btn-wrapper {
+        position: relative;
+        width: 50px;
+        height: 26px;
+        border-radius: 20px;
+        background-color: #C2CAE7;
+        overflow: hidden;
+      }
+      
+      .tpv-toggle-btn-input {
+        position: absolute;
+        display: block;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        z-index: 6;
+      }
+      
+      .tpv-toggle-btn-input:checked ~ .tpv-toggle-btn-label {
+        right: 3px;
+        left: 54%;
+        transition: 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+        transition-property: left, right;
+        transition-delay: .08s, 0s;
+      }
+      
+      .tpv-toggle-btn-label {
+        position: absolute;
+        left: 3px;
+        top: 3px;
+        bottom: 3px;
+        right: 54%;
+        background: linear-gradient(180deg, #FFFFFF 0%, #D6DCEF 100%);
+        box-shadow: 1px 2px 3px rgba(18, 20, 32, 0.3);
+        border-radius: 100%;
+        z-index: 1;
+        transition: 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+        transition-property: left, right;
+        transition-delay: 0s, .08s;
+      }
+
+       /* toggle button css end */
+
+      /* select dropdown css start */
+
+      .tpv-settings-option-select .choices[data-type*="select-one"]::after {
+        border: 0;
+        background-color: transparent;
+        transform: translateY(-50%);
+        margin-top: 0;
+        right: 16px;
+        content: '\f107';
+        font-family: "Font Awesome 6 Pro";
+        transform-origin: center;
+        color: #616266;
+        font-weight: 500;
+        height: auto;
+        width: auto;
+        transition: transform .2s ease-in-out;
+    }
+    .tpv-settings-option-select .choices.is-open[data-type*="select-one"]::after {
+        transform: translateY(-50%) rotate(-180deg);
+    }
+      .tpv-settings-option-select .choices__inner {
+        min-width: 180px;
+        height: 38px;
+        background-color: #F6F8F8;
+        border: 1.5px solid #F6F8F8;
+        border-radius: 8px;
+        padding: 0 !important;
+        padding-right: 16px !important;
+        transition: all .3s ease-in-out;
+      }
+      .tpv-settings-option-select .choices.is-focused .choices__inner {
+        background-color: #fff;
+        border-color: #EFEFEF;
+      }
+      .tpv-settings-option-select .choices__item.choices__item--selectable {
+        color: #121420;
+      }
+      .tpv-settings-option-select .choices__list--single{
+        padding: 0 16px;
+        height: 38px;
+        line-height: 43px;
+      }
+      .tpv-settings-option-select .choices__list--dropdown, 
+      .tpv-settings-option-select .choices__list[aria-expanded]{
+        transition: all .3s ease-in-out;
+        visibility: hidden;
+        opacity: 0;
+      }
+
+      .tpv-settings-option-select .is-active.choices__list--dropdown, 
+      .tpv-settings-option-select .is-active.choices__list[aria-expanded] {
+        visibility: visible;
+        opacity: 1;
+    }
+
+      .tpv-settings-option-select .is-flipped.is-open .choices__inner {
+        border-radius: 8px;
+    }
+
+    .tpv-settings-option-select .choices__list--dropdown, 
+    .is-flipped .choices__list[aria-expanded],
+    .tpv-settings-option-select .choices__list[aria-expanded] {
+        background-color: #fff;
+        border: 1.5px solid #EFEFEF;
+        border-radius: 8px;
+        min-width: 200px;
+    }
+
+    .tpv-settings-option-select .choices__list--dropdown .choices__item, .choices__list[aria-expanded] .choices__item{
+        padding: 0;
+        padding-left: 16px;
+        padding-bottom: 3px;
+        color: #76767C;
+    }
+
+    .tpv-settings-option-select .choices__list.choices__list--dropdown{
+        padding: 8px 0;
+        
+    }
+    .tpv-settings-option-select .choices[data-type*="select-one"] .choices__input{
+         display: none;
+    }
+    .tpv-settings-option-select .choices__item.choices__item--choice.is-selected{
+        color: #3C42E0;
+    }
+    .tpv-settings-option-select .choices__item.choices__item--choice:hover{
+        color: #3C42E0;
+    }
+       /* select dropdown css end */
+
+
+}
+
+@layer components{
+    .Toastify__toast-container{
+      @apply !mt-[32px];
+    }
+}

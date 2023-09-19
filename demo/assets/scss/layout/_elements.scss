@@ -1,0 +1,48 @@
+@use '../utils' as *;
+
+/* header footer css start */
+
+.#{$theme-prifix}-elements{
+    &-section-title{
+        font-size: 50px;
+        line-height: 1.12;
+        margin-bottom: 15px;
+        @media #{$sm, $xs}{
+            font-size: 30px;
+        }
+
+        &-wrapper{
+            & p{
+                font-size: 20px;
+            }
+        }
+    }
+
+    &-shape{
+        &-1{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: -1;
+        }
+    }
+
+    &-slider{
+        & .flickity-viewport{
+            height: 415px !important;
+        }
+    }
+}
+
+.horizontal-slider{
+    -webkit-animation: horizonalSlide 115s linear infinite;
+    animation: horizonalSlide 90s linear infinite;
+}
+
+@include keyframes(horizonalSlide){
+    100% {
+        -webkit-transform: translate3d(-50%, 0%, 0);
+        transform: translate3d(-50%, 0%, 0);
+    }
+}

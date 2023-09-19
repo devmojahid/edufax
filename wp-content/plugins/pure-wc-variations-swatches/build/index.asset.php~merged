@@ -1,0 +1,5 @@
+<<<<<<< HEAD
+<?php return array('dependencies' => array('react', 'react-dom', 'wp-components', 'wp-element'), 'version' => '90a22819e11d6164b617');
+=======
+<?php return array('dependencies' => array('react', 'react-dom', 'wp-components', 'wp-element'), 'version' => 'c0ba23415018b778363d');
+>>>>>>> 671c03f56... server commit

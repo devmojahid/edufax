@@ -1,0 +1,80 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  2.15 Section Title
+/*----------------------------------------*/
+
+.#{$theme-prifix}-section{
+    &-bg-text{
+        position: absolute;
+        left: 50%;
+        top: 0;
+        z-index: -1;
+        @include transform(translateX(-50%));
+        & span{
+            @extend %tp-ff-jost;
+            font-weight: 700;
+            font-size: 300px;
+            line-height: .73;  
+            @include tp-gradient((180deg, #0989FF 0%, rgba(9, 137, 255, 0) 70%));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            opacity: .8;
+
+            @media #{$xs}{
+                font-size: 210px;
+            }
+        }
+    }
+    &-subtitle{
+
+    }
+    &-title{
+        font-size: 50px;
+        position: relative;
+        z-index: 1;
+        margin-bottom: 15px;
+
+        @media #{$xl}{
+            font-size: 45px;
+        }
+
+        @media #{$lg}{
+            font-size: 35px;
+        }
+
+        @media #{$md, $sm, $xs}{
+            font-size: 30px;
+        }
+
+        &-inner{
+            position: relative;
+            z-index: 1;
+        }
+
+        &-wrapper{
+            & p{
+                font-size: 20px;
+                line-height: 1.5;
+
+                @media #{$md, $sm, $xs}{
+                    & br{
+                        display: none;
+                    }
+                }
+
+                @media #{$xs}{
+                    font-size: 16px;
+                }
+            }
+
+            &.is-white{
+                & p{
+                    color: rgba($color: $white, $alpha: .7);
+                }
+            }
+        }
+    }
+}

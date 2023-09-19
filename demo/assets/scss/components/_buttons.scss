@@ -1,0 +1,68 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  2.3 Buttons
+/*----------------------------------------*/
+
+.#{$theme-prifix}-btn{
+	display: inline-block;
+	font-family: var(--tp-ff-jost);
+	font-weight: 400;
+	font-size: 16px;
+	background-color: var(--tp-common-black);
+	padding: 9px 26px;
+	color: var(--tp-common-white);
+	border: 1px solid var(--tp-common-black);
+
+	& svg{
+		@extend %tp-svg-y-2;
+	}
+
+	&:hover{
+		color: var(--tp-common-black);
+		background-color: transparent;
+	}
+}
+
+.#{$theme-prifix}-btn-border{
+	display: inline-block;
+	font-size: 16px;
+	border: 1px solid var(--tp-common-black);
+	background-color: transparent;
+	padding: 8px 24px;
+	color: var(--tp-common-black);
+
+	&:hover{
+		background-color: var(--tp-theme-primary);
+		border-color: var(--tp-theme-primary);
+		color: var(--tp-common-white);
+	}
+}
+
+
+.#{$theme-prifix}-purchase-btn{
+	display: inline-block;
+	font-size: 16px;
+	font-weight: 500;
+	color: var(--tp-common-white);
+	background-color: var(--tp-theme-primary);
+	padding: 8px 23px;
+	text-align: center;
+	& svg{
+		@extend %tp-svg-y-2;
+	}
+
+	&:hover{
+		background-color: var(--tp-common-black);
+		color: var(--tp-common-white);
+	}
+	&-green{
+		background-color: #82B440;
+		padding: 11px 27px;
+
+		&:hover{
+			background-color: var(--tp-common-black);
+			color: var(--tp-common-white);
+		}
+	}
+}

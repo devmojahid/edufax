@@ -1,0 +1,120 @@
+@use '../utils' as *;
+
+/* testimonial css start */
+
+.#{$theme-prifix}-testimonial{
+    &-arrow{
+        & button{
+            position: absolute;
+            top: 50%;
+            left: 0;
+            @extend %translateY1_2;
+            background: var(--tp-common-white);
+            box-shadow: 0px 1px 1px rgba(1, 15, 28, 0.16);
+            border-radius: 50%;
+            height: 60px;
+            width: 60px;
+            line-height: 60px;
+            font-size: 18px;
+            color: var(--tp-common-black);
+            z-index: 1;
+            border: 1px solid rgba(1, 15, 28, 0.05);
+
+            &:hover{
+                background-color: var(--tp-theme-primary);
+                color: var(--tp-common-white);
+                box-shadow: none;
+            }
+
+            & svg{
+                @extend %tp-svg-y-2;
+            }
+
+            &.#{$theme-prifix}-testimonial-slider-button-next{
+                left: auto;
+                right: 0;
+            }
+        }
+    }
+    &-section-title{
+        font-weight: 400;
+        font-size: 20px;
+        margin-bottom: 50px;
+    }
+    &-content{
+        padding-left: 40px;
+        padding-right: 40px;
+
+        @media #{$lg, $md, $sm, $xs}{
+            padding-left: 0;
+            padding-right: 0;
+        }
+        & p{
+            font-weight: 400;
+            font-size: 30px;
+            line-height: 1.4;
+            color: var(--tp-common-black);
+            margin-bottom: 30px;
+
+            @media #{$xs}{
+                font-size: 27px;
+            }
+        }
+    }
+    &-rating{
+        margin-bottom: 25px;
+        & span{
+            font-size: 16px;
+            color: var(--tp-theme-secondary);
+        }
+    }
+    &-avater{
+        & img{
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+        }
+    }
+    &-user{
+        background: var(--tp-common-white);
+        border-radius: 40px;
+        padding: 10px;
+        padding-right: 27px;
+
+        &-translate{
+            @include transform(translateY(2px));
+        }
+        
+        &-title{
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 1;
+            margin-bottom: -2px;
+        }
+        &-designation{
+            font-size: 14px;
+            line-height: 1;
+        }
+        &-info{
+            text-align: left;
+        }
+    }
+    &-shape{
+        &-gradient{
+            position: absolute;
+            top: -65px;
+            left: 50%;
+            @extend %translateX1_2;
+            display: inline-block;
+            width: 432px;
+            height: 432px;
+            border-radius: 50%;
+            @include tp-gradient((180deg, rgba(9, 137, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%));
+            z-index: -1;
+            @media #{$xs}{
+                width: 280px;
+                height: 280px;
+            }
+        }
+    }
+}

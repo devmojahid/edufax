@@ -1,0 +1,42 @@
+@use '../utils' as *;
+
+/* counter css start */
+
+.#{$theme-prifix}-counter{
+    &-inner{
+        @media #{$md,$sm, $xs}{
+            padding-left: 0;
+        }
+    }
+    &-item{
+        @media #{$sm}{
+            flex: 0 0 auto;
+            width: 50%;
+        }
+        @media #{$xs}{
+            margin-right: 20px;
+        }
+    }
+    &-icon{
+        & span{
+            font-size: 26px;
+            color: var(--tp-theme-primary);
+        }
+    }
+    &-content{
+        & h4{
+            font-weight: 300;
+            font-size: 30px;
+            line-height: 1;
+            margin-bottom: 2px;
+
+            & span{
+                font-weight: 500;
+            }
+        }
+        & p{
+            margin-bottom: 0;
+            font-size: 16px;
+        }
+    }
+}

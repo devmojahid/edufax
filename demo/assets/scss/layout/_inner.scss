@@ -1,0 +1,101 @@
+@use '../utils' as *;
+
+/* inner css start */
+
+.#{$theme-prifix}-inner{
+    &-tab{
+        & .nav-tabs{
+            & .nav-link{
+                font-size: 20px;
+                color: var(--tp-common-white);
+                margin: 0 24px;
+                position: relative;
+
+                @media #{$xs}{
+                    margin-bottom: 20px;
+                }
+
+                &::after{
+                    position: absolute;
+                    content: '';
+                    left: auto;
+                    right: 0;
+                    bottom: -5px;
+                    width: 0;
+                    height: 2px;
+                    background-color: #D9D9D9;
+                    @extend %tp-transition;
+                }
+                &.active{
+                    background-color: transparent;
+                }
+
+                &.active,
+                &:hover{
+                    &::after{
+                        width: 100%;
+                        left: 0;
+                        right: auto;
+                    }
+                }
+            }
+        }
+    }
+    &-item{
+        border-radius: 6px;
+        & img{
+            border-radius: 6px;
+        }
+    }
+    &-shape{
+        &-1{
+            position: absolute;
+            top: 24%;
+            left: 9%;
+
+            @media #{$md, $sm, $xs}{
+                top: 7%;
+            }
+        }
+
+        &-2,
+        &-3,
+        &-4{
+            position: absolute;
+            display: inline-block;
+            background-color: rgba($color: #fff, $alpha: .1);
+            border-radius: 50%;
+            z-index: -1;
+        }
+        &-2{
+            bottom: -193px;
+            left: -163px;
+            width: 500px;
+            height: 500px;
+        }
+        &-3{
+            top: -260px;
+            right: -162px;
+            width: 450px;
+            height: 450px;
+        }
+        &-4{
+            left: 300px;
+            bottom: -60px;
+            width: 95px;
+            height: 95px;
+        }
+    }
+
+    &-product-scrollbar,
+    &-shop-scrollbar,
+    &-other-scrollbar{
+        width: 995px;
+        margin-left: auto;
+        margin-right: auto;
+
+        @media #{$lg, $md, $sm, $xs}{
+            width: 80%;
+        }
+    }
+}

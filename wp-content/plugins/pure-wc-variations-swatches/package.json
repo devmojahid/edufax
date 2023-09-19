@@ -1,0 +1,37 @@
+{
+  "name": "tp-woo-variations-swatches",
+  "version": "1.0.0",
+  "description": "Woocommerce color variations swatches",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "wp-scripts build",
+    "start": "wp-scripts start",
+    "format": "wp-scripts format",
+    "lint:js": "wp-scripts lint-js",
+    "packages-update": "wp-scripts packages-update"
+  },
+  "keywords": [
+    "woocommerce",
+    "variations-swatches"
+  ],
+  "author": "ThemePure",
+  "license": "ISC",
+  "devDependencies": {
+    "@wordpress/babel-preset-default": "^7.7.0",
+    "@wordpress/components": "^23.0.0",
+    "@wordpress/scripts": "^24.6.0",
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.20",
+    "react-router-dom": "^6.4.5",
+    "tailwindcss": "^3.2.4",
+    "wp-scripts": "^0.0.1-security"
+  },
+  "dependencies": {
+    "@wordpress/icons": "^9.13.0",
+    "@wordpress/plugins": "^4.20.0",
+    "react-modal-video": "^2.0.0",
+    "react-switch": "^7.0.0",
+    "react-toastify": "^9.1.1"
+  }
+}

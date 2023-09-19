@@ -1,0 +1,385 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+.tpwvs-hidden-select {
+   display: none !important;
+}
+
+.tpvws-variation-html.variation-html.tpwvs-type-image,
+.tpvws-variation-html.variation-html.tpwvs-type-color,
+.tpvws-variation-html.variation-html.tpwvs-type-select {
+   display: flex;
+   align-items: center;
+   width: 100%;
+   max-width: 300px;
+}
+
+.tpwvs-attr-image,
+.tpwvs-attr-color {
+   flex: 1 0 40px;
+   max-width: 40px;
+   cursor: pointer;
+   border: 1px solid transparent;
+   transition: all .3s ease-in-out;
+}
+
+.tpwvs-attr-image{
+   flex: 1 0 60px;
+   max-width: 60px;
+   position: relative;
+}
+.tpwvs-attr-image.rounded{
+   border-radius: 50% !important;
+}
+.tpwvs-attr-image:hover{
+   box-shadow: 0 8px 20px rgba(0,0,0,.2);
+}
+
+.tpwvs-attr-image:not(.square)::after{
+   position: absolute;
+   content: '';
+   top: 1px;
+   left: 1px;
+   width: calc(100% - 2px);
+   height: calc(100% - 2px);
+   background-color: transparent;
+   border: 5px solid #fff;
+   border-radius: 50%;
+   transition: all .3s ease-in-out;
+   visibility: hidden;
+   opacity: 0;
+}
+
+
+.tpwvs-attr-image:not(.square):hover::after,
+.tpwvs-attr-image.swatches-active-img::after{
+   visibility: visible;
+   opacity: 1;
+}
+
+.tpwvs-attr-image img {
+   border: 1px solid transparent;
+   transition: all .3s ease-in-out;
+}
+
+.tpwvs-tooltip{
+   border-radius: 50%;
+}
+.tpwvs-tooltip:not(:last-child){
+   margin-right: 4px;
+}
+
+.tpwvs-attr-color {
+   height: 26px;
+   width: 26px;
+}
+
+.variations{
+   border: none;
+   overflow: auto;
+}
+
+.tpwvs-shop-variations.variations tr:nth-child(2n){
+   margin-bottom: 15px;
+}
+.tpwvs-shop-variations .value{
+   padding: 0 !important;
+}
+
+.tpwvs-shop-variations.variations td,
+.tpwvs-shop-variations.variations th, 
+.tpwvs-shop-variations.variations tr,
+.variations td,
+.variations th,
+.variations tr {
+   border: none;
+}
+
+.tpwvs-shop-variations.variations td,
+.tpwvs-shop-variations.variations th{
+   display: flex!important;
+}
+
+.tpwvs-shop-variations.variations tr.left,
+.tpwvs-shop-variations.variations.left{
+   justify-content: flex-start;
+}
+
+.tpwvs-shop-variations.variations tr.right,
+.tpwvs-shop-variations.variations.right{
+   justify-content: end;
+}
+
+.tpwvs-shop-variations.variations tr.center,
+.tpwvs-shop-variations.variations.center{
+   justify-content: center;
+}
+
+.tpwvs-attr-image.swatches-active img,
+.tpwvs-attr-color.swatches-active,
+.tpwvs-attr-image:hover img,
+.tpwvs-attr-color:hover {
+   border-color: #000;
+   box-shadow: inset 0px 0px 0px 4px #fff;
+}
+
+.tpwvs-attr-color:first-child,
+.tpwvs-attr-image:first-child,
+.tpwvs-attr-button:first-child {
+   margin-left: 0;
+}
+
+.tpwvs-attr-color:last-child,
+.tpwvs-attr-image:last-child,
+.tpwvs-attr-button:last-child {
+   margin-right: 0;
+}
+
+
+.swatches-active-img img,
+.swatches-active {
+   border-color: #000;
+}
+
+
+.tpwvs-attr-button {
+   flex: 1 0 auto;
+   border: 1px solid #ccc;
+   color: #343434;
+   padding: 6px 10px;
+   margin: 3px;
+   display: inline-block;
+   text-align: center;
+   cursor: pointer;
+   font-size: 13px;
+}
+
+table.tpwvs-shop-variations{
+   margin-top: 0;
+   margin-bottom: 30px;
+}
+
+table.variations label{
+   font-size: 12px;
+   font-weight: 500;
+}
+table.variations tbody tr{
+   display: flex;
+}
+table.variations .reset_variations{
+   margin-left: 0;
+   margin-top: 5px;
+   font-size: 16px;
+}
+table.variations tbody tr:not(:last-child){
+   margin-bottom: 15px;
+}
+table.variations tbody tr th{padding: 0; display: block;}
+table.variations tbody tr td{padding: 0; display: block;}
+
+.tpwvs-attr-button:hover {
+   color: #000;
+   border-color: #000;
+   transition: 0.3s;
+}
+
+.button-active {
+   color: #000;
+   border-color: #000;
+   transition: 0.3s;
+}
+
+.variations .value {
+   display: flex;
+   align-items: center;
+   flex-wrap: wrap;
+   max-width: 300px;
+   justify-content: space-between;
+}
+
+.tpwvs-original-price,
+.tpwvs-original-thumbnail {
+   display: none;
+}
+
+.tpwvs-shop-variations.variations {
+   overflow: auto;
+   border: none;
+   width: 230px;
+}
+
+
+.tpwvs-attr-color.tpwvs-swatches.rounded,
+.tpwvs-attr-image.tpwvs-swatches.rounded img {
+   border-radius: 100px;
+}
+
+.tpwvs-attr-button.tpwvs-swatches.rounded{
+   border-radius: 6px;
+   padding: 7px 16px;
+}
+
+
+
+/* tooltip CSS */
+.tpwvs-tooltip {
+   display: inline-block;
+   position: relative;
+   text-align: left;
+}
+
+
+.tpwvs-tooltip .top,
+.tpwvs-tooltip .bottom,
+.tpwvs-tooltip .left,
+.tpwvs-tooltip .right{
+   position: absolute;
+   width: max-content;
+   padding: 7px 10px;
+   color: #FFFFFF;
+   background-color: #000000;
+   font-size: 14px;
+   line-height: 14px;
+   border-radius: 3px;
+   z-index: 99999999;
+   box-sizing: border-box;
+   box-shadow: 4px 4px 8px rgba(0,0,0,.3);
+   text-align: center;
+   visibility: hidden;
+   opacity: 0;
+   transition: opacity .3s ease,visibility .3s ease,transform .3s cubic-bezier(.71,1.7,.77,1.24),-webkit-transform .3s cubic-bezier(.71,1.7,.77,1.24);
+   
+}
+.tpwvs-tooltip .top span,
+.tpwvs-tooltip .bottom span,
+.tpwvs-tooltip .left span,
+.tpwvs-tooltip .right span{
+   position: relative;
+   z-index: 1;
+}
+
+/* remove i from code */
+.tpwvs-tooltip .top i,
+.tpwvs-tooltip .bottom i,
+.tpwvs-tooltip .left i,
+.tpwvs-tooltip .right i{
+   display: none;
+}
+
+.tpwvs-tooltip .top::after,
+.tpwvs-tooltip .bottom::after,
+.tpwvs-tooltip .left::after,
+.tpwvs-tooltip .right::after{
+   content: '';
+   position: absolute;
+   width: 12px;
+   height: 12px;
+   background-color: #000000;
+   
+}
+
+/* for top design */
+.tpwvs-tooltip .top {
+   bottom: 100%;
+   left: 50%;
+   transform: translateX(-50%);
+}
+
+.tpwvs-tooltip .top::after{
+   bottom: -12px;
+   left: 50%;
+   transform: translate(-50%, -50%) rotate(45deg);
+}
+.tpwvs-tooltip:hover .top{
+   visibility: visible;
+   opacity: 1;
+   transform: translateX(-50%) translateY(-12px);
+}
+
+/* for bottom design */
+.tpwvs-tooltip .bottom {
+   top: 100%;
+   left: 50%;
+   transform: translateX(-50%);
+}
+
+.tpwvs-tooltip .bottom::after{
+   top: -12px;
+   left: 50%;
+   transform: translate(-50%, 50%) rotate(45deg);
+}
+.tpwvs-tooltip:hover .bottom{
+   visibility: visible;
+   opacity: 1;
+   transform: translateX(-50%) translateY(12px);
+}
+
+
+
+/* for right design */
+.tpwvs-tooltip .right {
+   top: 50%;
+   left: 100%;
+   transform: translateY(-50%) translateX(20px);
+}
+
+.tpwvs-tooltip .right::after{
+   right: 100%;
+   top: 50%;
+   width: 10px;
+   height: 10px;
+   transform: translate(50%, -50%) rotate(45deg);
+}
+.tpwvs-tooltip:hover .right{
+   visibility: visible;
+   opacity: 1;
+   transform: translateY(-50%) translateX(12px);
+}
+
+
+/* for left design */
+.tpwvs-tooltip .left {
+   top: 50%;
+   right: 100%;
+   transform: translateY(-50%) translateX(-20px);
+}
+
+.tpwvs-tooltip .left::after{
+   left: 100%;
+   top: 50%;
+   width: 10px;
+   height: 10px;
+   transform: translate(-50%, -50%) rotate(45deg);
+}
+.tpwvs-tooltip:hover .left{
+   visibility: visible;
+   opacity: 1;
+   transform: translateY(-50%) translateX(-12px);
+}
+
+
+body.single-product{}
+body.single-product .tpwvs-attr-button{
+   line-height: 1;
+}
+body.single-product table.variations tr{
+   display: block;
+}
+
+
+
+/*twinty twinty theme code */
+
+ul.products li.product .woocommerce-loop-product__title{
+   margin: 0 !important;
+   padding: 0 !important;
+}
+
+table.variations label{
+   padding: 0 !important;
+   margin-bottom: 8px !important;
+   display: inline-block;
+}
+
+/*twinty twinty theme code end*/
