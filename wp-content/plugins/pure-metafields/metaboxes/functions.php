@@ -5,11 +5,9 @@
  */
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-
- /**
-  * Get the meta field value
-  */
-
+/**
+* Get the meta field value
+*/
 function tpmeta_field($meta_key, $post_id = NULL){
   if($post_id != NULL){
     $tpmeta_field_value = get_post_meta($post_id, $meta_key, true);
@@ -18,7 +16,11 @@ function tpmeta_field($meta_key, $post_id = NULL){
       if(is_null($tpmeta_get_field) || empty($tpmeta_get_field)){
         return false;
       }else{
-        return $tpmeta_get_field['default'];
+        if(isset($tpmeta_get_field['default'])){
+          return $tpmeta_get_field['default'];
+        }else{
+          return false;
+        }
       }
     }else{
       return $tpmeta_field_value;
@@ -26,10 +28,15 @@ function tpmeta_field($meta_key, $post_id = NULL){
   }else{
     global $post;
     if( !empty($post) ){
-      $tpmeta_field_value = get_post_meta($post->ID, $meta_key, true);
-      if(empty($tpmeta_field_value) || $tpmeta_field_value == ""){
-        $tpmeta_get_field = is_null(tpmeta_get_field_value_by_id($meta_key))? '' : tpmeta_get_field_value_by_id($meta_key)['default'];
-        return $tpmeta_get_field;
+      $tpmeta_field_value = get_post_meta($post->ID, $meta_key, true); 
+      if(!metadata_exists('post', $post->ID, $meta_key)){
+        if(is_null(tpmeta_get_field_value_by_id($meta_key))){
+          return false;
+        }
+        if(isset(tpmeta_get_field_value_by_id($meta_key)['default'])){
+          return isset(tpmeta_get_field_value_by_id($meta_key)['default'])? tpmeta_get_field_value_by_id($meta_key)['default'] : false;
+        }
+        return false;
       }else{
         return $tpmeta_field_value;
       }
@@ -38,7 +45,7 @@ function tpmeta_field($meta_key, $post_id = NULL){
       if(is_null($tpmeta_get_field) || empty($tpmeta_get_field)){
         return false;
       }else{
-        return $tpmeta_get_field['default'];
+        return isset($tpmeta_get_field['default'])? $tpmeta_get_field['default'] : false;
       }
     }
   }

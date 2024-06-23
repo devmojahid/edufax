@@ -3,6 +3,12 @@
  * Text
  */
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if(!isset($default)){
+    $default = false;
+}
+if(!isset($placeholder)){
+    $placeholder = '';
+}
 ?>
 <?php if(isset($row_db_value)): ?>
 <input 

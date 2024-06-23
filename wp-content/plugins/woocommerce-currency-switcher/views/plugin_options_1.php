@@ -238,7 +238,7 @@ $options = array(
                     <div class="wcf-control-section">
 
                         <div id="woocs_tools_panel">
-
+							<input type="hidden" name="woocs_currency_nonce" value="<?php echo wp_create_nonce('currency_nonce'); ?>" >
                             <div class="woocs-options-float-left">
 
                                 <a href="#" id="woocs_add_currency" class="woocs-panel-button dashicons-before dashicons-plus"><?php esc_html_e("Add Currency", 'woocommerce-currency-switcher') ?></a>
@@ -1154,14 +1154,14 @@ $options = array(
 
 
                 <section id="tab-smart-designer">
-
+					
                     <div id="woocs-sd-manage-area">
 
                         <h3><?php esc_html_e("Smart Designer", 'woocommerce-currency-switcher') ?></h3>
-
+						<input type="hidden" name="woocs_wpnonce_sd" value="<?php echo wp_create_nonce('woocs_wpnonce_sd'); ?>" >
                         <div class="woocs-notice"><?php esc_html_e("In this section you can create your own view of currency drop-down switcher", 'woocommerce-currency-switcher'); ?></div>
 
-
+						
                         <a href="#" id="woocs-sd-create" class="woocs-panel-button dashicons-before dashicons-plus"><?php esc_html_e("Create", 'woocommerce-currency-switcher') ?></a><br />
                         <br />
                         <?php
@@ -1245,7 +1245,8 @@ $options = array(
                             <div><a href="javascript: woocs_sd_save_exit();void(0);" class="woocs-panel-button dashicons-before dashicons-cloud-saved dashicons-exit"><?php esc_html_e("Save and exit", 'woocommerce-currency-switcher') ?></a>&nbsp;</div>
                             <div><a href="javascript: woocs_sd_exit_no_save();void(0);" class="woocs-panel-button dashicons-before dashicons-exit"><?php esc_html_e("Exit without save", 'woocommerce-currency-switcher') ?></a>&nbsp;</div>
                             <div><a href="javascript: woocs_sd_reset();void(0);" class="woocs-panel-button dashicons-before dashicons-dismiss"><?php esc_html_e("Reset to default", 'woocommerce-currency-switcher') ?></a>&nbsp;</div>
-                        </div>
+							
+						</div>
                     </template>
 
 

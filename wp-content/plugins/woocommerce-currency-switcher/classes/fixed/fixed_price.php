@@ -22,7 +22,7 @@ final class WOOCS_FIXED_PRICE extends WOOCS_FIXED_AMOUNT {
 	add_action('admin_footer', array($this, 'admin_footer'));
 	
 	$product_types = apply_filters('woocs_product_fixed_price_data_simple_types', array('simple', 'external', 'subscription', 'composite', 'bundle', 'box_product'));
-    if (in_array($_product->get_type(), $product_types)) {
+    if ($_product && in_array($_product->get_type(), $product_types)) {
 	    $data = array();
 	    $data['currencies'] = $WOOCS->get_currencies();
 	    $data['default_currency'] = $WOOCS->default_currency;

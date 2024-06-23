@@ -49,6 +49,13 @@ if ( ! class_exists( 'YITH_WCAN_Preset' ) ) {
 		protected $filters = array();
 
 		/**
+		 * Whenever ::get_filters is called, filters objects are created and stored here for future usage
+		 *
+		 * @var array
+		 */
+		protected $filters_objects = array();
+
+		/**
 		 * Preset filters that need deleting are stored here.
 		 *
 		 * @var array
@@ -74,7 +81,25 @@ if ( ! class_exists( 'YITH_WCAN_Preset' ) ) {
 		public function __construct( $preset = 0 ) {
 			// set default values.
 			$this->data = array(
+				/**
+				 * APPLY_FILTERS: yith_wcan_default_preset_title
+				 *
+				 * Filters default preset title.
+				 *
+				 * @param string $title Default title.
+				 *
+				 * @return string
+				 */
 				'title'    => apply_filters( 'yith_wcan_default_preset_title', '' ),
+				/**
+				 * APPLY_FILTERS: yith_wcan_default_preset_slug
+				 *
+				 * Filters default preset slug.
+				 *
+				 * @param string $slug Default slug.
+				 *
+				 * @return string
+				 */
 				'slug'     => apply_filters( 'yith_wcan_default_preset_slug', '' ),
 				'layout'   => 'default',
 				'selector' => '',
@@ -198,6 +223,16 @@ if ( ! class_exists( 'YITH_WCAN_Preset' ) ) {
 				$additional_classes[] = 'no-title';
 			}
 
+			/**
+			 * APPLY_FILTERS: yith_wcan_preset_additional_classes
+			 *
+			 * List of classes added to preset HTML wrapper.
+			 *
+			 * @param array            $classes List of preset classes.
+			 * @param YITH_WCAN_Preset $this    Preset object.
+			 *
+			 * @return array
+			 */
 			$additional_classes = apply_filters( 'yith_wcan_preset_additional_classes', $additional_classes, $this );
 
 			return implode( ' ', $additional_classes );
@@ -214,6 +249,46 @@ if ( ! class_exists( 'YITH_WCAN_Preset' ) ) {
 			}
 
 			return $this->post;
+		}
+
+		/**
+		 * Checks whether system should lazy load filters for this preset.
+		 *
+		 * @return bool Whether to lazy load or not.
+		 */
+		public function should_lazy_load_filters() {
+			/**
+			 * APPLY_FILTERS: yith_wcan_should_lazy_load_filters
+			 *
+			 * Whether to lazy load filters or not.
+			 *
+			 * @param bool             $lazy_load Whether to lazy load filters of not.
+			 * @param int              $preset_id Preset id.
+			 * @param YITH_WCAN_Preset $this      Preset object.
+			 *
+			 * @return bool
+			 */
+			return apply_filters( 'yith_wcan_should_lazy_load_filters', yith_plugin_fw_is_true( get_option( 'yith_wcan_lazy_load_filters' ) ), $this->get_id(), $this );
+		}
+
+		/**
+		 * Checks whether system should show placeholders instead of rendering actual filters for this preset.
+		 *
+		 * @return bool Whether to show placeholders for filters..
+		 */
+		public function should_show_filters_placeholders() {
+			/**
+			 * APPLY_FILTERS: yith_wcan_should_show_filters_placeholders
+			 *
+			 * Whether to show placeholders for filters.
+			 *
+			 * @param bool             $lazy_load Whether to show placeholders instead of rendering filters..
+			 * @param int              $preset_id Preset id.
+			 * @param YITH_WCAN_Preset $this      Preset object.
+			 *
+			 * @return bool
+			 */
+			return apply_filters( 'yith_wcan_should_show_filters_placeholders', $this->should_lazy_load_filters() && ! YITH_WCAN_Ajax::is_processing( 'render_filter' ), $this->get_id(), $this );
 		}
 
 		/**
@@ -251,7 +326,7 @@ if ( ! class_exists( 'YITH_WCAN_Preset' ) ) {
 		 * @param string $layout Filter preset layout.
 		 */
 		public function set_layout( $layout ) {
-			$layout = in_array( $layout, array_keys( YITH_WCAN_Preset_Factory::get_supported_layouts() ), true ) ? $layout : 'default';
+			$layout = in_array( $layout, array_keys( YITH_WCAN_Presets_Factory::get_supported_layouts() ), true ) ? $layout : 'default';
 
 			$this->set_prop( 'layout', $layout );
 		}
@@ -301,7 +376,15 @@ if ( ! class_exists( 'YITH_WCAN_Preset' ) ) {
 		 */
 		public function save() {
 			if ( $this->data_store ) {
-				// Trigger action before saving to the DB. Allows you to adjust object props before save.
+				/**
+				 * DO_ACTION: yith_wcan_before_$object_type_object_save
+				 *
+				 * Triggered before saving to the DB. Allows you to adjust object props before save.
+				 * <code>$object_type</code> will be replaced with the object type the operation will be performed to.
+				 *
+				 * @param YITH_WCAN_Preset $this Current object.
+				 * @param WC_Data_Store    $data_store Data store for current object.
+				 */
 				do_action( 'yith_wcan_before_' . $this->object_type . '_object_save', $this, $this->data_store );
 
 				if ( $this->get_id() ) {
@@ -361,6 +444,10 @@ if ( ! class_exists( 'YITH_WCAN_Preset' ) ) {
 				return false;
 			}
 
+			if ( $this->should_lazy_load_filters() ) {
+				return true;
+			}
+
 			foreach ( $filters as $filter ) {
 				if ( $filter->is_relevant() ) {
 					return true;
@@ -403,10 +490,16 @@ if ( ! class_exists( 'YITH_WCAN_Preset' ) ) {
 		/**
 		 * Returns filters for current preset
 		 *
+		 * @param int $page Page to retrieve; false if you want all filters (default: false).
+		 *
 		 * @return YITH_WCAN_Filter[]
 		 */
-		public function get_filters() {
-			$filters = $this->get_prop( 'filters', 'edit' );
+		public function get_filters( $page = false ) {
+			if ( ! empty( $this->filters_objects ) ) {
+				return $this->filters_objects;
+			}
+
+			$filters = $this->get_raw_filters( 'edit', $page );
 			$results = array();
 
 			if ( empty( $filters ) ) {
@@ -418,10 +511,27 @@ if ( ! class_exists( 'YITH_WCAN_Preset' ) ) {
 				$filter['id']        = $filter_id;
 				$filter['preset_id'] = $this->get_id();
 
-				$results[] = yith_wcan_get_filter( $filter );
+				$results[ $filter_id ] = yith_wcan_get_filter( $filter );
 			}
 
-			return apply_filters( 'yith_wcan_get_filters', $results );
+			/**
+			 * APPLY_FILTERS: yith_wcan_get_filters
+			 *
+			 * Filters the list of preset's filters.
+			 *
+			 * @param array    $filters Presets filters.
+			 * @param int|bool $page    Requested page of filters; false if all are needed.
+			 *
+			 * @return array
+			 */
+			$results = apply_filters( 'yith_wcan_get_filters', $results, $page );
+
+			if ( $page ) {
+				return $results;
+			}
+
+			$this->filters_objects = $results;
+			return $this->filters_objects;
 		}
 
 		/**
@@ -431,6 +541,17 @@ if ( ! class_exists( 'YITH_WCAN_Preset' ) ) {
 		 */
 		public function count_filters() {
 			return count( $this->get_raw_filters() );
+		}
+
+		/**
+		 * Returns max ID used for filters (useful when you need to assign ID to a new filter)
+		 *
+		 * @return int
+		 */
+		public function get_max_filter_id() {
+			$filters = $this->get_raw_filters();
+
+			return ! empty( $filters ) ?  max( array_keys( $filters ) ) : 0;
 		}
 
 		/**
@@ -462,13 +583,35 @@ if ( ! class_exists( 'YITH_WCAN_Preset' ) ) {
 		 *
 		 * @param int   $filter_id Id of the filter to set.
 		 * @param array $filter Formatted filter.
+		 * @param int   $prev Id of the filter that current filter should follow; if not provided,
+		 *                    filter will be appended. If -1 is provided, filter will be prepended.
 		 *
 		 * @return void
 		 */
-		public function set_filter( $filter_id, $filter ) {
-			$filters               = $this->get_raw_filters();
-			$filters[ $filter_id ] = $filter;
+		public function set_filter( $filter_id, $filter, $prev = false ) {
+			$filters = $this->get_raw_filters();
 
+			// remove filter with current ID from the list.
+			if ( isset( $filters[ $filter_id ] ) ) {
+				$filter  = array_merge( $filters[ $filter_id ], $filter );
+				unset( $filters[ $filter_id ] );
+			}
+
+			// append filter in the correct location.
+			if ( -1 === $prev ) {
+				$filters = array( $filter_id => $filter ) + $filters;
+			} elseif ( false !== $prev && isset( $filters[ $prev ] ) ) {
+				$pos = array_search( $prev, array_keys( $filters ), true );
+
+				$part_1 = array_slice( $filters, 0, $pos + 1, true );
+				$part_2 = array_slice( $filters, $pos + 1, null, true );
+
+				$filters = $part_1 + array( $filter_id => $filter ) + $part_2;
+			} else {
+				$filters[ $filter_id ] = $filter;
+			}
+
+			// set new value for filters prop.
 			$this->set_prop( 'filters', $filters );
 		}
 
@@ -572,6 +715,18 @@ if ( ! class_exists( 'YITH_WCAN_Preset' ) ) {
 				$default = true;
 			}
 
+			/**
+			 * APPLY_FILTERS: yith_wcan_preset_user_can
+			 *
+			 * Allow third party code filter the capability a user has over current preset
+			 *
+			 * @param bool             $can     Whether user has required cap over current preset.
+			 * @param int              $user_id Id of the user to test.
+			 * @param string           $cap     Capability to test.
+			 * @param YITH_WCAN_Preset $this    Preset object.
+			 *
+			 * @return bool
+			 */
 			return apply_filters( 'yith_wcan_preset_user_can', $default, $user_id, $cap, $this );
 		}
 
@@ -589,6 +744,17 @@ if ( ! class_exists( 'YITH_WCAN_Preset' ) ) {
 
 			$default = $this->user_can( get_current_user_id(), $cap );
 
+			/**
+			 * APPLY_FILTERS: yith_wcan_preset_current_user_can
+			 *
+			 * Allow third party code filter the capability current user has over current preset
+			 *
+			 * @param bool             $can     Whether current user has required cap over current preset.
+			 * @param string           $cap     Capability to test.
+			 * @param YITH_WCAN_Preset $this    Preset object.
+			 *
+			 * @return bool
+			 */
 			return apply_filters( 'yith_wcan_preset_current_user_can', $default, $cap, $this );
 		}
 	}

@@ -13,7 +13,7 @@ if ( ! defined( 'YITH_WCAN' ) ) {
 
 if ( ! class_exists( 'YITH_WCAN_Filter_Presets_Table' ) ) {
 	/**
-	 * WooCommerce Affiliates Table
+	 * WooCommerce Presets Table
 	 *
 	 * @since 1.0.0
 	 */
@@ -117,6 +117,14 @@ if ( ! class_exists( 'YITH_WCAN_Filter_Presets_Table' ) ) {
 				if ( method_exists( $this, $method ) ) {
 					$this->{$method}( $item );
 				} else {
+					/**
+					 * DO_ACTION: yith_wcan_preset_table_action
+					 *
+					 * Allows third party code to add custom actions handling upon presets items
+					 *
+					 * @param string           $action Action being executed
+					 * @param YITH_WCAN_Preset $item   Current item.
+					 */
 					do_action( 'yith_wcan_preset_table_action', $action, $item );
 				}
 			}
@@ -198,7 +206,6 @@ if ( ! class_exists( 'YITH_WCAN_Filter_Presets_Table' ) ) {
 					),
 				)
 			);
-
 		}
 
 		/**
@@ -229,8 +236,22 @@ if ( ! class_exists( 'YITH_WCAN_Filter_Presets_Table' ) ) {
 		 */
 		public function display() {
 			if ( $this->has_items() ) {
+				/**
+				 * DO_ACTION: yith_wcan_before_presets_table
+				 *
+				 * Triggered before presets table
+				 *
+				 * @param YITH_WCAN_Filter_Presets_Table $table Current table object.
+				 */
 				do_action( 'yith_wcan_before_presets_table', $this );
 				parent::display();
+				/**
+				 * DO_ACTION: yith_wcan_after_presets_table
+				 *
+				 * Triggered after presets table
+				 *
+				 * @param YITH_WCAN_Filter_Presets_Table $table Current table object.
+				 */
 				do_action( 'yith_wcan_after_presets_table', $this );
 			} else {
 				YITH_WCAN()->admin->show_empty_content(
@@ -265,10 +286,19 @@ if ( ! class_exists( 'YITH_WCAN_Filter_Presets_Table' ) ) {
 			}
 
 			// sets pagination arguments.
+			/**
+			 * APPLY_FILTERS: yith_wcan_filter_presets_per_page
+			 *
+			 * Allow to filter the number of presets to show for each page.
+			 *
+			 * @param int $count Number of items per page.
+			 *
+			 * @return int
+			 */
 			$per_page     = apply_filters( 'yith_wcan_filter_presets_per_page', 20 );
 			$current_page = $this->get_pagenum();
-			$total_items  = YITH_WCAN_Preset_Factory::count_presets( $query_arg );
-			$presets      = YITH_WCAN_Preset_Factory::get_presets(
+			$total_items  = YITH_WCAN_Presets_Factory::count_presets( $query_arg );
+			$presets      = YITH_WCAN_Presets_Factory::get_presets(
 				array_merge(
 					array(
 						'limit'   => $per_page,

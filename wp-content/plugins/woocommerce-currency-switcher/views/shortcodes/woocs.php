@@ -141,7 +141,7 @@ if (!isset($shortcode_params['sd'])) {
             echo "[woocs sd={$sd_id}]"; //fix for elementor to avoid showing loader
         } else {
             ?>
-            <div data-woocs-sd='<?php echo json_encode($sd_settings) ?>' data-woocs-ver='<?php echo WOOCS_VERSION ?>' style="width: <?php echo (isset($sd_settings['width']) ? esc_attr($sd_settings['width']) . 'px' : 'auto') ?>; max-width: 100%;" data-woocs-sd-currencies='<?php echo json_encode($currencies) ?>'><div class="woocs-lds-ellipsis"><div></div><div></div><div></div><div></div></div></div>
+            <div data-woocs-sd='<?php echo wc_esc_json(json_encode($sd_settings)) ?>' data-woocs-ver='<?php echo WOOCS_VERSION ?>' style="width: <?php echo (isset($sd_settings['width']) ? esc_attr($sd_settings['width']) . 'px' : 'auto') ?>; max-width: 100%;" data-woocs-sd-currencies='<?php echo wc_esc_json(json_encode($currencies)) ?>'><div class="woocs-lds-ellipsis"><div></div><div></div><div></div><div></div></div></div>
             <?php
         }
     }

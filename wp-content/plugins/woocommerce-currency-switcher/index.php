@@ -5,16 +5,16 @@
   Plugin URI: https://currency-switcher.com/
   Description: Currency Switcher for WooCommerce that allows to the visitors and customers on your woocommerce store site switch currencies and optionally apply selected currency on checkout
   Author: realmag777
-  Version: 1.4.1.1
+  Version: 1.4.1.9
   Requires at least: WP 4.9.0
-  Tested up to: WP 6.3
+  Tested up to: WP 6.5
   Requires PHP: 7.2
   Text Domain: woocommerce-currency-switcher
   Domain Path: /languages
   Forum URI: https://pluginus.net/support/forum/woocs-woocommerce-currency-switcher-multi-currency-and-multi-pay-for-woocommerce/
   Author URI: https://pluginus.net/
-  WC requires at least: 3.6.0
-  WC tested up to: 8.0
+  WC requires at least: 6.0
+  WC tested up to: 8.9
  */
 
 if (!defined('ABSPATH')) {
@@ -33,7 +33,7 @@ if (isset($_SERVER['SCRIPT_URI'])) {
     if ($uri[0] === 'wp-json') {
         $show_legacy = array('widget-types', 'sidebars', 'widgets', 'batch', 'collection-data', 'cart', 'store');
         $match = array_intersect($show_legacy, $uri);
-        //serialize($uri)();
+
         if (count($match) == 0) {
             $allow = ['woocs'];
             if (isset($uri[1]) AND !in_array($uri[1], $allow)) {
@@ -49,7 +49,11 @@ if (defined('DOING_AJAX')) {
     if (isset($_REQUEST['action'])) {
         //do not recalculate refund amounts when we are in order backend
         if ($_REQUEST['action'] == 'woocommerce_refund_line_items') {
-            if (!class_exists('WooCommerce_PDF_IPS_Pro') && !class_exists('WC_Smart_Coupons')) {
+            if (!class_exists('WooCommerce_PDF_IPS_Pro') && !class_exists('WC_Smart_Coupons') && !class_exists('ACFWF')) {
+                return;
+            }
+
+            if (apply_filters('woocs_disable_backend_refund_calculation', false)) {
                 return;
             }
         }
@@ -60,9 +64,9 @@ if (defined('DOING_AJAX')) {
     }
 }
 
-define('WOOCS_VERSION', '1.4.1.1');
+define('WOOCS_VERSION', '1.4.1.9');
 //define('WOOCS_VERSION', uniqid('woocs-'));
-define('WOOCS_MIN_WOOCOMMERCE', '3.6');
+define('WOOCS_MIN_WOOCOMMERCE', '6.0');
 define('WOOCS_PATH', plugin_dir_path(__FILE__));
 define('WOOCS_LINK', plugin_dir_url(__FILE__));
 define('WOOCS_PLUGIN_NAME', plugin_basename(__FILE__));
@@ -84,10 +88,10 @@ include_once WOOCS_PATH . 'classes/woocs_hpos.php';
 
 include_once WOOCS_PATH . 'classes/world_currencies.php';
 
-//23-08-2023
+//17-04-2024
 class WOOCS_STARTER {
 
-    private $default_woo_version = 3.6;
+    private $default_woo_version = 6.0;
     private $actualized = 0.0;
     private $version_key = "woocs_woo_version";
     private $_woocs = null;
@@ -115,7 +119,10 @@ class WOOCS_STARTER {
 
         if (count($this->disable_plugin) AND !is_admin() AND (isset($_SERVER['SCRIPT_URI']) || isset($_SERVER['REQUEST_URI']))) {
             $exclude = false;
-            $url = $_SERVER['SCRIPT_URI'];
+            $url = false;
+            if (isset($_SERVER['SCRIPT_URI'])) {
+                $url = $_SERVER['SCRIPT_URI'];
+            }
 
             if (!$url) {
                 $url = explode('?', $_SERVER['REQUEST_URI']);
@@ -168,7 +175,6 @@ class WOOCS_STARTER {
         $this->_woocs = new WOOCS();
         return $this->_woocs;
     }
-
 }
 
 //+++

@@ -100,6 +100,7 @@ class Tp_Wvs_Public {
 			.tpwvs-attr-color{
 				flex:1 0 ".esc_attr($get_options['swatch_size'])."px;
 				max-width:".esc_attr($get_options['swatch_size'])."px;
+				height: ".esc_attr($get_options['swatch_size'])."px;
 			}
 
 			.tpwvs-attr-color {
@@ -246,18 +247,18 @@ class Tp_Wvs_Public {
 			<?php if ( empty( $available_variations ) && false !== $available_variations ) { ?>
 				<p class="stock out-of-stock"><?php echo esc_html( apply_filters( 'woocommerce_out_of_stock_message', __( 'This product is currently out of stock and unavailable.', 'pure-wc-swatches' ) ) ); ?></p>
 			<?php } else { ?>
-				<table class="tpwvs-shop-variations variations <?php echo esc_attr($get_options['swatch_alignments']); ?>" cellspacing="0">
-					<tbody>
+				<div class="tpwvs-shop-variations variations <?php echo esc_attr($get_options['swatch_alignments']); ?>">
+					<ul>
 						<?php foreach ( $attributes as $attribute_name => $options ) { ?>
-							<tr class="<?php echo esc_attr($get_options['swatch_alignments']); ?>">
+							<li class="<?php echo esc_attr($get_options['swatch_alignments']); ?>">
 								<?php if ( $get_options['swatch_label'] == true ) { ?>
-								<th class="label woocommerce-loop-product__title <?php echo esc_attr($get_options['swatch_alignments']); ?>">
+								<div class="label woocommerce-loop-product__title <?php echo esc_attr($get_options['swatch_alignments']); ?>">
 									<label for="<?php echo esc_attr( sanitize_title( $attribute_name ) ); ?>">
 										<?php echo esc_html( wc_attribute_label( $attribute_name ) ); ?>
 									</label>
-								</th>
+								</div>
 								<?php } ?>
-								<td class="value">
+								<div class="value">
 									<?php
 									wc_dropdown_variation_attribute_options(
 										array(
@@ -268,11 +269,11 @@ class Tp_Wvs_Public {
 									);
 									echo end( $attribute_keys ) === $attribute_name ? wp_kses_post( apply_filters( 'woocommerce_reset_variations_link', '' ) ) : '';
 									?>
-								</td>
-							</tr>
+								</div>
+							</li>
 						<?php } ?>
-					</tbody>
-				</table>
+					</ul>
+				</div>
 			<?php } ?>
 		</div>
 		<?php
@@ -305,7 +306,7 @@ class Tp_Wvs_Public {
 				$custom_markup .= '</div>';
 				if($get_options['tooltip'] == true){
 					$custom_markup .= '<div class="'.esc_attr($get_options['tooltip_position']).'">
-							<span>'.ucwords(esc_html($term->slug)).'</span>
+							<span>'.ucwords(esc_html($term->name)).'</span>
 							
 						</div>
 					</div>';
@@ -328,7 +329,7 @@ class Tp_Wvs_Public {
 					$custom_markup .= sprintf('<div style="background:%s" class="tpwvs-attr-color tpwvs-swatches %s" data-attributes="%s"></div>', esc_html($get_term_value), esc_attr($get_options['swatch_style']), esc_attr($attr_json));
 					if($get_options['tooltip'] == true){
 						$custom_markup .= '<div class="'.esc_attr($get_options['tooltip_position']).'">
-								<span>'.ucwords(esc_html($term->slug)).'</span>
+								<span>'.ucwords(esc_html($term->name)).'</span>
 								
 							</div>
 						</div>';
@@ -342,8 +343,8 @@ class Tp_Wvs_Public {
 					"name"  => $attribute_name, 
 					"value" => $term->slug
 				));
-
-				$custom_markup = sprintf('<span class="tpwvs-attr-button tpwvs-swatches %s" data-attributes="%s">%s</span>', esc_attr($get_options['swatch_style']), esc_attr($attr_json), esc_html($term->name));
+				$get_term_value = isset($term->term_id)? get_term_meta($term->term_id, 'tpwvs_select', true) : $term->name;
+				$custom_markup 	= sprintf('<span class="tpwvs-attr-button tpwvs-swatches %1$s" data-attributes="%2$s" area-label="%3$s">%4$s</span>', esc_attr($get_options['swatch_style']), esc_attr($attr_json), esc_html($get_term_value), esc_html($term->name));
 				
 				break;
 		}
@@ -430,3 +431,4 @@ class Tp_Wvs_Public {
 	}
 
 }
+

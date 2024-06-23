@@ -4,7 +4,7 @@
  * The admin-specific functionality of the plugin.
  *
  * @link       https://themepure.net
- * @since      1.0.3
+ * @since      1.1.2
  *
  * @package    Tp_Wvs
  * @subpackage Tp_Wvs/admin
@@ -28,7 +28,7 @@ class Tp_Wvs_Admin {
 	/**
 	 * The ID of this plugin.
 	 *
-	 * @since    1.0.3
+	 * @since    1.1.2
 	 * @access   private
 	 * @var      string    $plugin_name    The ID of this plugin.
 	 */
@@ -37,7 +37,7 @@ class Tp_Wvs_Admin {
 	/**
 	 * The version of this plugin.
 	 *
-	 * @since    1.0.3
+	 * @since    1.1.2
 	 * @access   private
 	 * @var      string    $version    The current version of this plugin.
 	 */
@@ -47,7 +47,7 @@ class Tp_Wvs_Admin {
 	 * Current taxonomy id
 	 *
 	 * @var string
-	 * @since  1.0.3
+	 * @since  1.1.2
 	 */
 	public $taxonomy;
 
@@ -55,7 +55,7 @@ class Tp_Wvs_Admin {
 	 * Keep default values of all settings.
 	 *
 	 * @var array
-	 * @since  1.0.3
+	 * @since  1.1.2
 	 */
 	public $defaults = [
 		'tpwvs_general' => [
@@ -86,7 +86,7 @@ class Tp_Wvs_Admin {
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since    1.0.3
+	 * @since    1.1.2
 	 * @param      string    $plugin_name       The name of this plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
@@ -97,25 +97,10 @@ class Tp_Wvs_Admin {
 		$this->taxonomy = isset( $_REQUEST['taxonomy'] ) ? sanitize_title( $_REQUEST['taxonomy'] ) : '';
 	}
 
-
-	/**
-	 * Get all the settings from DB
-	 */
-
-	public function get_settings(){
-		$defaults = $this->defaults;
-		$settings = array();
-		foreach( $defaults as $key => $data ){
-			$settings[$key] = $this->get_option($key);
-		}
-
-		return $settings;
-	}
-
 	/**
 	 * Register the stylesheets for the admin area.
 	 *
-	 * @since    1.0.3
+	 * @since    1.1.2
 	 */
 	public function enqueue_styles() {
 
@@ -145,7 +130,7 @@ class Tp_Wvs_Admin {
 	 *
 	 * @param string $option option name to get value from.
 	 * @return array
-	 * @since  1.0.3
+	 * @since  1.1.2
 	 */
 	public function get_option( $option ) {
 		$db_values = get_option( $option, [] );
@@ -157,7 +142,7 @@ class Tp_Wvs_Admin {
 	 * Updates settings data in database.
 	 *
 	 * @return void
-	 * @since  1.0.3
+	 * @since  1.1.2
 	 */
 	public function tpwvs_update_settings() {
 		//check_ajax_referer( 'tpwvs_update_settings', 'security' );
@@ -193,27 +178,9 @@ class Tp_Wvs_Admin {
 	}
 
 	/**
-	 * Update dettings data in database
-	 *
-	 * @param string $key options key.
-	 * @param string $data user input to be saved in database.
-	 * @return boolean
-	 * @since  1.0.3
-	 */
-	public function update_settings( $key, $data ) {
-		$data = ! empty( $data) ? json_decode( stripslashes( $data ), true ) : array(); // phpcs:ignore
-		$default_data = $this->get_option( $key );
-		if ( $data === $default_data ) {
-			return true;
-		}
-		$data = wp_parse_args( $data, $default_data );
-		return update_option( $key, $data );
-	}
-
-	/**
 	 * Register the JavaScript for the admin area.
 	 *
-	 * @since    1.0.3
+	 * @since    1.1.2
 	 */
 	public function enqueue_scripts() {
 
@@ -230,8 +197,9 @@ class Tp_Wvs_Admin {
 		 */
 
 		wp_enqueue_media();
+		$_screen = get_current_screen();
 
-		if((isset($_GET['taxonomy']))){
+		if(isset($_screen->taxonomy) && isset($_screen->post_type) && 'product' == $_screen->post_type){
 			wp_enqueue_style( 'wp-color-picker' );
 			wp_enqueue_script( 'wp-color-picker' );
 	
@@ -256,7 +224,7 @@ class Tp_Wvs_Admin {
 
 		if( (isset($_GET['page']) && $_GET['page'] == 'pure-wc-variation-swatches') ){
 
-			wp_enqueue_script( 'react-script', plugin_dir_url( __DIR__ ) . 'build/index.js', array( 'wp-element', 'wp-components' ), '1.0.3', true );
+			wp_enqueue_script( 'react-script', plugin_dir_url( __DIR__ ) . 'build/index.js', array( 'wp-element', 'wp-components' ), '1.1.2', true );
 			wp_localize_script('react-script', 'tpwvs_admin_settings', array(
 				'menu_url' => $this->admin_react_base_url(),
 				'api_url'  => admin_url( 'admin-ajax.php' ),
@@ -266,33 +234,6 @@ class Tp_Wvs_Admin {
 			));
 		}
 		
-	}
-
-	/**
-	 * Adding taxonomy type as swatches
-	 *
-	 * @param array $fields default array with option 'select'.
-	 * @return array
-	 * @since  1.0.3
-	 */
-	public function add_swatch_types( $fields ) {
-		if ( ! function_exists( 'get_current_screen' ) ) {
-			return $fields;
-		}
-
-		$current_screen = get_current_screen();
-
-		if ( isset( $current_screen->base ) && 'product_page_product_attributes' === $current_screen->base ) {
-			$fields = wp_parse_args(
-				$fields,
-				[
-					'select' => esc_html__( 'Select', 'pure-wc-swatches' ),
-					'color'  => esc_html__( 'Color', 'pure-wc-swatches' ),
-					'image'  => esc_html__( 'Image', 'pure-wc-swatches' ),
-				]
-			);
-		}
-		return $fields;
 	}
 
 	/**
@@ -350,11 +291,38 @@ class Tp_Wvs_Admin {
 	}
 
 	/**
+	 * Adding taxonomy type as swatches
+	 *
+	 * @param array $fields default array with option 'select'.
+	 * @return array
+	 * @since  1.1.2
+	 */
+	public function add_swatch_types( $fields ) {
+		if ( ! function_exists( 'get_current_screen' ) ) {
+			return $fields;
+		}
+
+		$current_screen = get_current_screen();
+
+		if ( isset( $current_screen->base ) && 'product_page_product_attributes' === $current_screen->base ) {
+			$fields = wp_parse_args(
+				$fields,
+				[
+					'select' => esc_html__( 'Select', 'pure-wc-swatches' ),
+					'color'  => esc_html__( 'Color', 'pure-wc-swatches' ),
+					'image'  => esc_html__( 'Image', 'pure-wc-swatches' ),
+				]
+			);
+		}
+		return $fields;
+	}
+
+	/**
 	 * Term meta markup for add form
 	 *
 	 * @param object $term current term object.
 	 * @return void
-	 * @since  1.0.3
+	 * @since  1.1.2
 	 */
 	public function add_form_fields( $term ) {
 		$type         = TP_Wvs_Helper::get_attr_type_by_name( $this->taxonomy );
@@ -375,7 +343,7 @@ class Tp_Wvs_Admin {
 	 *
 	 * @param int $term_id cureent term id.
 	 * @return void
-	 * @since  1.0.3
+	 * @since  1.1.2
 	 */
 	public function save_term_fields( $term_id ) {
 		$meta_key = '';
@@ -386,6 +354,9 @@ class Tp_Wvs_Admin {
 		} elseif ( isset( $_REQUEST['tpwvs_image'] ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$meta_key = 'tpwvs_image';
 			$value    = esc_url_raw( $_REQUEST['tpwvs_image'] ); //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		} else{
+			$meta_key = 'tpwvs_select';
+			$value    = sanitize_text_field( $_REQUEST['tpwvs_select'] ); //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		}
 
 		update_term_meta( $term_id, $meta_key, $value );
@@ -396,7 +367,7 @@ class Tp_Wvs_Admin {
 	 *
 	 * @param array $columns Taxonomy header column.
 	 * @return array
-	 * @since  1.0.3
+	 * @since  1.1.2
 	 */
 	public function add_attribute_column( $columns ) {
 		global $taxnow;
@@ -405,7 +376,7 @@ class Tp_Wvs_Admin {
 		}
 
 		$attr_type = TP_Wvs_Helper::get_attr_type_by_name( $this->taxonomy );
-		if ( ! in_array( $attr_type, [ 'color', 'image' ], true ) ) {
+		if ( ! in_array( $attr_type, [ 'color', 'image', 'select' ], true ) ) {
 			return $columns;
 		}
 
@@ -426,7 +397,7 @@ class Tp_Wvs_Admin {
 	 * @param string $column current term column.
 	 * @param id     $term_id current term id.
 	 * @return mixed
-	 * @since  1.0.3
+	 * @since  1.1.2
 	 */
 	public function add_preview_markup( $columns, $column, $term_id ) {
 		global $taxnow;
@@ -436,7 +407,8 @@ class Tp_Wvs_Admin {
 		}
 
 		$attr_type = TP_Wvs_Helper::get_attr_type_by_name( $this->taxonomy );
-		if ( ! in_array( $attr_type, [ 'color', 'image' ], true ) ) {
+	
+		if ( ! in_array( $attr_type, [ 'color', 'image', 'select' ], true ) ) {
 			return $columns;
 		}
 
@@ -457,6 +429,10 @@ class Tp_Wvs_Admin {
 				$image_url = str_replace( ' ', '%20', $image_url );
 				printf( '<img class="tpwvs-preview" src="%s" width="44px" height="44px">', esc_url( $image_url ) );
 				break;
+			default:
+				$label  = !empty(get_term_meta( $term_id, 'tpwvs_select', true ))? get_term_meta( $term_id, 'tpwvs_select', true ) : 'No Label';
+				printf( '<span>%1$s</span>', esc_html( $label ) );
+				break;
 		}
 	}
 
@@ -465,7 +441,7 @@ class Tp_Wvs_Admin {
 	 *
 	 * @param string $type term meta type.
 	 * @return array
-	 * @since  1.0.3
+	 * @since  1.1.2
 	 */
 	public function term_meta_fields( $type ) {
 		if ( empty( $type ) ) {
@@ -485,6 +461,12 @@ class Tp_Wvs_Admin {
 				'id'    => 'tpwvs_product_attribute_image',
 				'type'  => 'image',
 			],
+			'select' => [
+				'label' => __( 'Tooltip Label', 'pure-wc-swatches' ),
+				'desc'  => __( 'A label that will show as tooltip', 'pure-wc-swatches' ),
+				'id'    => 'tpwvs_product_attribute_select',
+				'type'  => 'select',
+			],
 
 		];
 
@@ -497,7 +479,7 @@ class Tp_Wvs_Admin {
 	 * @param array  $field term meta type data array.
 	 * @param object $term current term data.
 	 * @return void
-	 * @since  1.0.3
+	 * @since  1.1.2
 	 */
 	public function term_meta_fields_markup( $field, $term ) {
 		if ( ! is_array( $field ) ) {
@@ -529,6 +511,12 @@ class Tp_Wvs_Admin {
 				<input id="tpwvs_color" class="tpwvs_color" type="text" name="tpwvs_color" value="<?php echo esc_attr( $value ); ?>" />
 				<?php
 				break;
+			default:
+				$value = ! empty( $value ) ? $value : '';
+				?>
+				<input id="tpwvs_select" class="tpwvs_select" type="text" name="tpwvs_select" value="<?php echo esc_attr( $value ); ?>" />
+				<?php
+				break;
 		}
 	}
 
@@ -538,7 +526,7 @@ class Tp_Wvs_Admin {
 	 *
 	 * @param object $term current term object.
 	 * @return void
-	 * @since  1.0.3
+	 * @since  1.1.2
 	 */
 	public function edit_form_fields( $term ) {
 		$type         = TP_Wvs_Helper::get_attr_type_by_name( $this->taxonomy );
@@ -556,6 +544,38 @@ class Tp_Wvs_Admin {
 			</tr>
 			<?php
 		}
+	}
+
+	/**
+	 * Update dettings data in database
+	 *
+	 * @param string $key options key.
+	 * @param string $data user input to be saved in database.
+	 * @return boolean
+	 * @since  1.1.2
+	 */
+	public function update_settings( $key, $data ) {
+		$data = ! empty( $data) ? json_decode( stripslashes( $data ), true ) : array(); // phpcs:ignore
+		$default_data = $this->get_option( $key );
+		if ( $data === $default_data ) {
+			return true;
+		}
+		$data = wp_parse_args( $data, $default_data );
+		return update_option( $key, $data );
+	}
+
+	/**
+	 * Get all the settings from DB
+	 */
+
+	public function get_settings(){
+		$defaults = $this->defaults;
+		$settings = array();
+		foreach( $defaults as $key => $data ){
+			$settings[$key] = $this->get_option($key);
+		}
+
+		return $settings;
 	}
 
 }

@@ -47,6 +47,15 @@ if ( ! class_exists( 'YITH_WCAN_Preset_Data_Store' ) ) {
 		 */
 		public function create( &$data ) {
 			$id = wp_insert_post(
+			/**
+			 * APPLY_FILTERS: yith_wcan_new_filter_preset_data
+			 *
+			 * Filters list of default post parameters used when crating a new preset post.
+			 *
+			 * @param array $params Post parameters.
+			 *
+			 * @return array
+			 */
 				apply_filters(
 					'yith_wcan_new_filter_preset_data',
 					array(
@@ -72,6 +81,14 @@ if ( ! class_exists( 'YITH_WCAN_Preset_Data_Store' ) ) {
 				$data->save_meta_data();
 				$data->apply_changes();
 
+				/**
+				 * DO_ACTION: yith_wcan_new_filter_preset
+				 *
+				 * Triggered after a new filter preset object is created in db.
+				 *
+				 * @param int              $id   Filter preset id.
+				 * @param YITH_WCAN_Preset $data Object used to create record in database.
+				 */
 				do_action( 'yith_wcan_new_filter_preset', $id, $data );
 			}
 		}
@@ -121,6 +138,13 @@ if ( ! class_exists( 'YITH_WCAN_Preset_Data_Store' ) ) {
 			$this->read_post_meta( $data );
 			$data->set_object_read( true );
 
+			/**
+			 * DO_ACTION: yith_wcan_filter_preset_read
+			 *
+			 * Triggered immediately after reading a filter preset record from database.
+			 *
+			 * @param int $id Filter preset id.
+			 */
 			do_action( 'yith_wcan_filter_preset_read', $data->get_id() );
 		}
 
@@ -128,7 +152,6 @@ if ( ! class_exists( 'YITH_WCAN_Preset_Data_Store' ) ) {
 		 * Method to update a preset in the database.
 		 *
 		 * @param YITH_WCAN_Preset $data Filter preset object.
-		 *
 		 */
 		public function update( &$data ) {
 			$data->save_meta_data();
@@ -177,6 +200,14 @@ if ( ! class_exists( 'YITH_WCAN_Preset_Data_Store' ) ) {
 
 			$data->apply_changes();
 
+			/**
+			 * DO_ACTION: yith_wcan_update_filter_preset
+			 *
+			 * Triggered immediately after a filter preset object is updated in db.
+			 *
+			 * @param int              $id   Filter preset id.
+			 * @param YITH_WCAN_Preset $data Object used to update record in database.
+			 */
 			do_action( 'yith_wcan_update_filter_preset', $data->get_id(), $data );
 		}
 
@@ -204,14 +235,38 @@ if ( ! class_exists( 'YITH_WCAN_Preset_Data_Store' ) ) {
 			$post_type = YITH_WCAN_Presets()->get_post_type();
 
 			if ( $args['force_delete'] ) {
+				/**
+				 * DO_ACTION: yith_wcan_before_delete_$post_type
+				 *
+				 * Triggered before deleting a preset from posts table.
+				 * <code>$post_type</code> is replaced with Presets post type.
+				 *
+				 * @param int $id Id of the preset being deleted.
+				 */
 				do_action( 'yith_wcan_before_delete_' . $post_type, $id );
 
 				wp_delete_post( $id );
 				$data->set_id( 0 );
 
+				/**
+				 * DO_ACTION: yith_wcan_delete_$post_type
+				 *
+				 * Triggered after deleting a preset from posts table.
+				 * <code>$post_type</code> is replaced with Presets post type.
+				 *
+				 * @param int $id Id of the preset being deleted.
+				 */
 				do_action( 'yith_wcan_delete_' . $post_type, $id );
 			} else {
 				wp_trash_post( $id );
+				/**
+				 * DO_ACTION: yith_wcan_trash_$post_type
+				 *
+				 * Triggered after trashing a preset from posts table.
+				 * <code>$post_type</code> is replaced with Presets post type.
+				 *
+				 * @param int $id Id of the preset being trashed.
+				 */
 				do_action( 'yith_wcan_trash_' . $post_type, $id );
 			}
 		}
@@ -220,7 +275,6 @@ if ( ! class_exists( 'YITH_WCAN_Preset_Data_Store' ) ) {
 		 * Method to clone a preset.
 		 *
 		 * @param YITH_WCAN_Preset $preset Filter preset object.
-		 *
 		 */
 		public function clone( &$preset ) {
 			$new_preset = clone( $preset );
@@ -354,11 +408,20 @@ if ( ! class_exists( 'YITH_WCAN_Preset_Data_Store' ) ) {
 			if ( $count_only ) {
 				return count( $presets );
 			} elseif ( ! empty( $presets ) ) {
-				$presets = array_map( array( 'YITH_WCAN_Preset_Factory', 'get_preset' ), $presets );
+				$presets = array_map( array( 'YITH_WCAN_Presets_Factory', 'get_preset' ), $presets );
 			} else {
 				$presets = array();
 			}
 
+			/**
+			 * APPLY_FILTERS: yith_wcan_get_presets
+			 *
+			 * Filters the result set of presets query.
+			 *
+			 * @param array $presets Result set.
+			 *
+			 * @return array
+			 */
 			return apply_filters( 'yith_wcan_get_presets', $presets, $args );
 		}
 
@@ -385,6 +448,15 @@ if ( ! class_exists( 'YITH_WCAN_Preset_Data_Store' ) ) {
 
 			$presets = array_combine( wp_list_pluck( $results, 'post_name' ), wp_list_pluck( $results, 'post_title' ) );
 
+			/**
+			 * APPLY_FILTERS: yith_wcan_list_presets
+			 *
+			 * Filters the slug => title list of existing presets.
+			 *
+			 * @param array $presets List of existing presets.
+			 *
+			 * @return array
+			 */
 			return apply_filters( 'yith_wcan_list_presets', $presets );
 		}
 

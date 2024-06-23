@@ -13,7 +13,7 @@ if( !empty($field['conditional']) ){
 
 $format = get_post_format() ? : 'standard';
 $field['field_type'] = isset($field_type)? $field_type : '';
-
+$field['post'] = $post;
 ?>
 
 <?php if(isset($field['post_format']) && $field['post_format'] != ""): ?>

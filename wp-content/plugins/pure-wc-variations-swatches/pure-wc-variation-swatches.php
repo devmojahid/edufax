@@ -9,14 +9,14 @@
  * that starts the plugin.
  *
  * @link              https://themepure.net
- * @since             1.0.3
+ * @since             1.1.2
  * @package           Tp_Wvs
  *
  * @wordpress-plugin
  * Plugin Name:       Pure WC Variation Swatches
  * Plugin URI:        https://themepure.net/plugin/pure-variation-swatches.zip
  * Description:       Nice and easy woocommerce product color variation swatches. Design your store with more modern looks.
- * Version:           1.0.3
+ * Version:           1.1.2
  * Author:            ThemePure
  * Author URI:        https://themepure.net
  * License:           GPL-2.0+
@@ -32,10 +32,10 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Currently plugin version.
- * Start at version 1.0.3 and use SemVer - https://semver.org
+ * Start at version 1.1.2 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'TP_WVS_VERSION', '1.0.3' );
+define( 'TP_WVS_VERSION', '1.1.2' );
 
 /**
  * The code that runs during plugin activation.
@@ -72,7 +72,7 @@ require plugin_dir_path( __FILE__ ) . 'shortcodes/pure-wc-swatches-shortcodes.ph
 if( !function_exists('pure_swatches_admin') ){
     function pure_swatches_admin(){
         if( !isset($GLOBALS['pure_swatches_admin_object']) ){
-            $GLOBALS['pure_swatches_admin_object'] = new Tp_Wvs_Admin('pure-wc-swatches', '1.0.3');
+            $GLOBALS['pure_swatches_admin_object'] = new Tp_Wvs_Admin('pure-wc-swatches', '1.1.2');
         }
 
         return $GLOBALS['pure_swatches_admin_object'];
@@ -86,7 +86,7 @@ if( !function_exists('pure_swatches_admin') ){
  * then kicking off the plugin from this point in the file does
  * not affect the page life cycle.
  *
- * @since    1.0.3
+ * @since    1.1.2
  */
 if( !function_exists('run_tp_wvs') ){
     function run_tp_wvs() {

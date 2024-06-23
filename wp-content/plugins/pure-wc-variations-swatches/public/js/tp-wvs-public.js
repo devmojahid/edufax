@@ -36,7 +36,7 @@
 		var thisName = attributes.name
 		var thisVal  = attributes.value
 		makeActiveSwatch($el);
-		$('select[name="'+thisName+'"]').val(thisVal).trigger('change');
+		$el.closest('.product').find('select[name="'+thisName+'"]').val(thisVal).trigger('change');
 	});
 
 	// reset variations
@@ -103,7 +103,7 @@
 					.find( '.tpwvs-original-thumbnail' )
 					.html( originalThumbnail );
 			}
-			thumbnail.attr( 'src', imageData.thumb_src );
+			thumbnail.attr( 'src', imageData.full_src );
 			thumbnail.attr( 'srcset', '' );
 		}else{
 			const listItem = swatch.closest( '.has-post-thumbnail' );
@@ -116,7 +116,7 @@
 					.find( '.tpwvs-original-thumbnail' )
 					.html( originalThumbnail );
 			}
-			thumbnail.attr( 'src', imageData.thumb_src );
+			thumbnail.attr( 'src', imageData.full_src );
 			thumbnail.attr( 'srcset', '' );
 		}
 		

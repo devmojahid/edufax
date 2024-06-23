@@ -6,13 +6,14 @@ window.addEventListener('load', function () {
     if (document.getElementById('woocs-sd-create')) {
         document.getElementById('woocs-sd-create').addEventListener('click', function (e) {
             e.preventDefault();
-
+	    let nonce = jQuery('input[name="woocs_wpnonce_sd"]').val(); 
             woocs_show_info_popup(woocs_sd.lang.creating, 7777);
             jQuery.ajax({
                 method: "POST",
                 url: ajaxurl,
                 data: {
-                    action: 'woocs_sd_create'
+                    action: 'woocs_sd_create',
+		    wpnonce_sd: nonce
                 },
                 success: function (id) {
                     let tr = document.createElement('tr');
@@ -75,12 +76,14 @@ window.addEventListener('load', function () {
 
 function woocs_sd_edit(id) {
     woocs_show_info_popup(woocs_sd.lang.loading, 7777);
+    let nonce = jQuery('input[name="woocs_wpnonce_sd"]').val(); 
     jQuery.ajax({
         method: "POST",
         url: ajaxurl,
         data: {
             action: 'woocs_sd_get',
-            id: id
+            id: id,
+	    wpnonce_sd: nonce
         },
         success: function (options) {
             woocs_show_info_popup(woocs_sd.lang.loaded, 111);
@@ -115,12 +118,14 @@ function woocs_sd_delete(id) {
     if (confirm(woocs_sd.lang.are_you_sure)) {
         woocs_show_info_popup(woocs_sd.lang.deleting, 7777);
         document.getElementById(`woocs-sd-dashboard-tr-${id}`).remove();
+	let nonce = jQuery('input[name="woocs_wpnonce_sd"]').val();
         jQuery.ajax({
             method: "POST",
             url: ajaxurl,
             data: {
                 action: 'woocs_sd_delete',
-                id: id
+                id: id,
+		wpnonce_sd: nonce
             },
             success: function () {
                 woocs_show_info_popup(woocs_sd.lang.deleted, 111);
@@ -161,13 +166,16 @@ function woocs_sd_click_tab(_this) {
 
 function woocs_sd_save() {
     woocs_show_info_popup(woocs_sd.lang.saving, 7777);
+    let nonce = jQuery('input[name="woocs_wpnonce_sd"]').val();
+    
     jQuery.ajax({
         method: "POST",
         url: ajaxurl,
         data: {
             action: 'woocs_sd_save',
             id: woocs_sd_current_edit_id,
-            options: JSON.stringify(woocs_sd_dd.settings)
+            options: JSON.stringify(woocs_sd_dd.settings),
+	    wpnonce_sd: nonce
         },
         success: function () {
             woocs_show_info_popup(woocs_sd.lang.saved, 111);

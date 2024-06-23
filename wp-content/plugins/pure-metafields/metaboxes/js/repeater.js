@@ -19,6 +19,33 @@
     })
 
     $(document).on('row_loaded', function(){
+        var rcntrlIsPressed;
+
+
+        $(document).keydown(function(event){
+            if(event.which=="17"){
+                rcntrlIsPressed = true;
+            }
+            $('.tm-repeater-select-field option').each(function(indx, e){
+                $(e).on('click', function(ev){
+                    if(rcntrlIsPressed){
+                        $(e).attr('selected', 'selected')
+                    }
+                })
+            });
+        });
+        
+        $(document).keyup(function(){
+            rcntrlIsPressed = false;
+        });
+
+        $('.tm-repeater-select-field option').each(function(indx, e){
+            $(e).on('click', function(ev){
+                if($(e).attr('selected') != undefined){
+                    $(e).removeAttr('selected')
+                }
+            })
+        });
         
         $('.tp-delete-row').on('click', function(){
             
@@ -27,17 +54,30 @@
                 $(this).parent().remove()
             }
         })
+
+        $('.tm-repeater-select-field.select2').each(function(indx, el){
+            $(this).select2();
+            $(el).on('select2:select', function (e) {
+                $(e.target).closest('.repeater-field').find('input[type="hidden"]').val(JSON.stringify($(e.target).val()));
+            });
+        });
+
+        $('.tm-repeater-select-field.normal').each(function(indx, el){
+            $(el).on('change', function (e) {
+                $(e.target).closest('.repeater-field').find('input[type="hidden"]').val(JSON.stringify($(e.target).val()));
+            });
+        });
     })
 
     const repeater_actions = function(){
 
         $('.tp-add-row').on('click', function(){
 
-            let $cloneElement = $(this).closest('.tp-repeater').find('.tp-metabox-repeater > .tp-metabox-repeater-row').first().clone()
-            console.log($cloneElement)
-            let classList = $(this).closest('.repeater').attr("class").split(" ")
-            let key = classList[classList.length - 1]
-            let value = $(this).closest('.tp-repeater').find('.tp-metabox-repeater-row').length
+            let $cloneElement = $(this).closest('.tp-repeater').find('.tp-metabox-repeater > .tp-metabox-repeater-row').first().clone();
+            // console.log($cloneElement)
+            let classList = $(this).closest('.repeater').attr("class").split(" ");
+            let key = classList[classList.length - 1];
+            let value = $(this).closest('.tp-repeater').find('.tp-metabox-repeater-row').length;
 
 
             let itemCount;
@@ -107,17 +147,14 @@
                 target_el.hide(400)
             }
         }
-
-        $( ".tp-metabox-repeater" ).sortable({
-            connectWith: ".connected-sortable",
-            stack: '.connected-sortable .tp-metabox-repeater-row',
-            start: function(event, ui){
-                ui.item.addClass('dragged')
+        
+        const repeaters = document.querySelectorAll(".tp-metabox-repeater");
+        dragula(Array.from(repeaters),{
+            moves: function (el, container, handle) {
+                return handle.classList.contains('tp-metabox-repeater-collapse');
             },
-            stop: function(event, ui){
-                ui.item.removeClass('dragged')
-            }
-        }).disableSelection();
+            direction:'vertical'
+        })
 
         imageFunctionality();
         galleryFunctionality();
@@ -241,5 +278,53 @@
             $($this).closest('.tm-gallery-field').find('.tm-gallery-value').val(ids.join(','));
             $($this).closest('.tm-gallery-item').remove();
         })
+
+        $('.tm-repeater-select-field.select2').each(function(indx, el){
+            $(this).select2();
+            $(el).on('select2:select', function (e) {
+                $(e.target).closest('.repeater-field').find('input[type="hidden"]').val(JSON.stringify($(e.target).val()));
+            });
+        });
+        $('.tm-repeater-select-field.select2').each(function(indx, el){
+            $(this).select2();
+            $(el).on('select2:unselect', function (e) {
+                console.log($(e.target).val())
+                $(e.target).closest('.repeater-field').find('input[type="hidden"]').val(JSON.stringify($(e.target).val()));
+            });
+        });
+
+        $('.tm-repeater-select-field.normal').each(function(indx, el){
+            $(el).on('change', function (e) {
+                $(e.target).closest('.repeater-field').find('input[type="hidden"]').val(JSON.stringify($(e.target).val()));
+            });
+        });
+
+        var rcntrlIsPressed;
+
+
+        $(document).keydown(function(event){
+            if(event.which=="17"){
+                rcntrlIsPressed = true;
+            }
+            $('.tm-repeater-select-field option').each(function(indx, e){
+                $(e).on('click', function(ev){
+                    if(rcntrlIsPressed){
+                        $(e).attr('selected', 'selected')
+                    }
+                })
+            });
+        });
+        
+        $(document).keyup(function(){
+            rcntrlIsPressed = false;
+        });
+
+        $('.tm-repeater-select-field option').each(function(indx, e){
+            $(e).on('click', function(ev){
+                if($(e).attr('selected') != undefined){
+                    $(e).removeAttr('selected')
+                }
+            })
+        });
     }
 })(jQuery)

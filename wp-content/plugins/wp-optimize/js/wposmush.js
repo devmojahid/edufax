@@ -14,7 +14,6 @@ var WP_Optimize_Smush = function() {
 		smush_images_optimization_message = $('#smush_info_images'),
 		smush_images_pending_tasks_container = $('#wpo_smush_images_pending_tasks_container'),
 		smush_images_pending_tasks_btn = $('#wpo_smush_images_pending_tasks_button'),
-		smush_images_save_options_btn = $('.wpo-fieldgroup #wpo_smush_images_save_options_button'),
 		smush_images_refresh_btn = $('#wpo_smush_images_refresh'),
 		smush_images_select_all_btn = $('#wpo_smush_images_select_all'),
 		smush_images_select_none_btn = $('#wpo_smush_images_select_none'),
@@ -71,6 +70,9 @@ var WP_Optimize_Smush = function() {
 		smush_manager_send_command('reset_webp_serving_method', {}, function(resp) {
 			if (!resp.success) {
 				console.log('[Failed] WebP server capability detection');
+				$('#enable_webp_conversion').prop("checked", false);
+				$('#smush-information-modal .smush-information').text(resp.error_message);
+				update_view_modal_message($('#smush-information-modal'))
 			} else {
 				$('#wpo_reset_webp_serving_method_done').show().delay(3000).fadeOut();
 			}
@@ -310,7 +312,7 @@ var WP_Optimize_Smush = function() {
 	});
 
 	/**
-	 * Diplays logs in a modal
+	 * Displays logs in a modal
 	 */
 	smush_view_logs_btn.off().on('click', function() {
 		$("#log-panel").text("Please wait, fetching logs.");
@@ -348,13 +350,6 @@ var WP_Optimize_Smush = function() {
 			smush_delete_backup_images_btn.prop('disabled', false);
 			done.css('display', 'inline-block').delay(3000).fadeOut();
 		});
-	});
-
-	/**
-	 * Saves options
-	 */
-	smush_images_save_options_btn.off().on('click', function(e) {
-		save_options();
 	});
 
 	/**
@@ -432,9 +427,9 @@ var WP_Optimize_Smush = function() {
 			image_quality = $('#custom_compression_slider').val();
 		} else {
 			// The '60' here has to be kept in sync with WP_Optimize::admin_page_wpo_images_smush()
-			image_quality = $('#enable_lossy_compression').is(":checked") ? 60 : 100;
+			image_quality = $('#enable_lossy_compression').is(":checked") ? 60 : 92;
 		}
-		lossy_compression = image_quality < 100 ? true : false;
+		lossy_compression = image_quality < 92 ? true : false;
 
 		smush_options = {
 			'compression_server': $("input[name='compression_server_" + image.attachment_id + "']:checked").val(),
@@ -553,7 +548,7 @@ var WP_Optimize_Smush = function() {
 		$(this).toggleClass('opened');
 	});
 
-	$('.wpo-fieldgroup .autosmush input, .wpo-fieldgroup .compression_level, .wpo-fieldgroup .image_options, #smush-show-metabox, #enable_webp_conversion').on('change', function(e) {
+	$('.wpo-fieldgroup .autosmush input, .wpo-fieldgroup .compression_level, .wpo-fieldgroup .image_options, #smush-show-metabox').on('change', function(e) {
 		save_options();
 	});
 
@@ -567,6 +562,37 @@ var WP_Optimize_Smush = function() {
 
 	$('body').on('change', '.smush-advanced input[type="radio"]', function() {
 		update_view_available_options();
+	});
+
+	$('#enable_webp_conversion').on('change', function(e) {
+		// only save when changing the options on the wpo dashboard.
+		if (!$('#wp-optimize-wrap').length) return;
+
+		$('#wpo_smush_images_save_options_spinner').show().delay(3000).fadeOut();
+		$('#enable_webp_conversion').prop("disabled", true);
+
+		var smush_options = get_smush_options();
+
+		smush_manager_send_command('update_webp_options', smush_options, function(resp) {
+			$('#wpo_smush_images_save_options_spinner').hide();
+			if (resp.hasOwnProperty('saved') && resp.saved) {
+				$('#wpo_smush_images_save_options_done').show().delay(3000).fadeOut();
+			} else {
+				$('#enable_webp_conversion').prop("checked", false);
+				if ('update_failed_no_working_webp_converter' === resp.error_code) {
+					var html_msg = '<p>'
+						+ wposmush.webp_conversion_tool_error
+						+ ' <a href="https://getwpo.com/faqs/#How-can-I-get-WebP-conversion-tools-to-work-" target="_blank">'
+						+ wposmush.webp_conversion_tool_how_to
+						+ '</a></p>';
+					$('#smush-information-modal .smush-information').html(html_msg);
+				} else {
+					$('#smush-information-modal .smush-information').text(resp.error_message);
+				}
+				update_view_modal_message($('#smush-information-modal'));
+			}
+			$('#enable_webp_conversion').prop("disabled", false);
+		});
 	});
 
 	convert_to_webp_btn.on('click', function(e){
@@ -667,10 +693,8 @@ var WP_Optimize_Smush = function() {
 			$('#wpo_smush_images_save_options_spinner').hide();
 			if (resp.hasOwnProperty('saved') && resp.saved) {
 				$('#wpo_smush_images_save_options_done').show().delay(3000).fadeOut();
-				smush_images_save_options_btn.hide();
 			} else {
 				$('#wpo_smush_images_save_options_fail').show().delay(3000).fadeOut();
-				smush_images_save_options_btn.show();
 			}
 		});
 	}
@@ -953,7 +977,6 @@ var WP_Optimize_Smush = function() {
 			smush_selected_images_btn,
 			smush_images_select_all_btn,
 			smush_images_select_none_btn,
-			smush_images_save_options_btn,
 			smush_images_refresh_btn,
 			smush_images_pending_tasks_btn,
 			smush_mark_as_compressed_btn,
@@ -1220,9 +1243,9 @@ var WP_Optimize_Smush = function() {
 			image_quality = $('#custom_compression_slider').val();
 		} else {
 			// The '90' here has to be kept in sync with WP_Optimize::admin_page_wpo_images_smush()
-			image_quality = $('#enable_lossy_compression').is(":checked") ? 60 : 100;
+			image_quality = $('#enable_lossy_compression').is(":checked") ? 60 : 92;
 		}
-		var lossy_compression = image_quality < 100 ? true : false;
+		var lossy_compression = image_quality < 92 ? true : false;
 
 		return {
 			'compression_server': $("input[name='compression_server']:checked").val(),

@@ -22,6 +22,7 @@
    cursor: pointer;
    border: 1px solid transparent;
    transition: all .3s ease-in-out;
+   margin: 4px;
 }
 
 .tpwvs-attr-image{
@@ -77,7 +78,6 @@
 
 .variations{
    border: none;
-   overflow: auto;
 }
 
 .tpwvs-shop-variations.variations tr:nth-child(2n){
@@ -204,15 +204,14 @@ table.variations tbody tr td{padding: 0; display: block;}
 }
 
 .tpwvs-shop-variations.variations {
-   overflow: auto;
    border: none;
-   width: 230px;
 }
 
 
 .tpwvs-attr-color.tpwvs-swatches.rounded,
 .tpwvs-attr-image.tpwvs-swatches.rounded img {
    border-radius: 100px;
+   margin: 4px;
 }
 
 .tpwvs-attr-button.tpwvs-swatches.rounded{
@@ -380,6 +379,29 @@ table.variations label{
    padding: 0 !important;
    margin-bottom: 8px !important;
    display: inline-block;
+}
+
+.tpwvs-shop-variations ul {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+}
+
+.tpwvs-shop-variations {
+   display: flex;
+   width: 100%;
+}
+
+.tpwvs-shop-variations.left{
+   justify-content: start;
+}
+
+.tpwvs-shop-variations.center{
+   justify-content: center;
+}
+
+.tpwvs-shop-variations.right{
+   justify-content: right;
 }
 
 /*twinty twinty theme code end*/

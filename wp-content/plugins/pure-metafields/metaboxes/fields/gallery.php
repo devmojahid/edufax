@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
         $image_src = wp_get_attachment_image_src($image_id, 'thumbnail');
         
     ?>
-    <div class="tm-gallery-item">
+    <div class="tm-gallery-item" data-image_id="<?php echo esc_attr($image_id); ?>">
         <div class="tm-gallery-img">
             <img src="<?php echo esc_url($image_src[0]); ?>" alt=""/>
         </div>
@@ -63,7 +63,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
         $image_src = wp_get_attachment_image_src($image_id, 'thumbnail');
         
     ?>
-    <div class="tm-gallery-item">
+    <div class="tm-gallery-item" data-image_id="<?php echo esc_attr($image_id); ?>">
         <div class="tm-gallery-img">
             <img src="<?php echo esc_url($image_src[0]); ?>" alt=""/>
         </div>
@@ -74,10 +74,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
     <?php endforeach; endif; ?>
     </div>
 </div>
+<!-- <script src="<?php echo esc_url(TPMETA_URL . '/metaboxes/js/dragula.min.js')?>"></script> -->
+<script type="text/javascript" >
+    ;(function($){
+        "use strict";
 
-<script type="text/javascript">
-    (function($){
-        $(document).ready(function(){
+        $( document ).ready(function(){
             var frame, editFrame;
 
             $('#<?php echo esc_attr($id); ?>-gallery').on('click', function(){
@@ -98,12 +100,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                     var attachments = frame.state().get('selection').toJSON();
                     var ids = $('#<?php echo esc_attr($id); ?>').val() != '' ? $('#<?php echo esc_attr($id); ?>').val().split(',') : [];
                     var attachmentURL;
-                   
+                    
                     attachments.map(function(el, i){
                         ids = [...ids, el.id];
                         attachmentURL = el.sizes.thumbnail? el.sizes.thumbnail.url : el.sizes.full.url;
                         $('#<?php echo esc_attr($id); ?>-g-container').append(`
-                        <div class="tm-gallery-item">
+                        <div class="tm-gallery-item" data-image_id="${el.id}">
                             <div class="tm-gallery-img">
                                 <img src="${attachmentURL}" alt=""/>
                             </div>
@@ -123,12 +125,13 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                         $('#<?php echo esc_attr($id); ?>').val(ids.join(','))
                         $(e.target).parent().parent().parent().remove()
                     })
+
+                    sortableGallery('<?php echo esc_attr($id); ?>');
                     
                 })
 
 
                 frame.on('open', function(){
-                    console.log('on Open')
                     
                 })
 
@@ -147,8 +150,28 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                 ids = ids.filter( id => id != selected );
                 $('#<?php echo esc_attr($id); ?>').val(ids.join(','));
                 $(e.target).parent().parent().parent().remove();
-            })
+            });
+                
+            function sortableGallery( gallery_id ){
+                const galleryItems = document.querySelectorAll(".tm-gallery-container");
+                const drake = dragula(Array.from(galleryItems),{
+                    direction:'horizontal',
+                    revertOnSpill:true,
+                    removeOnSpill:true,
+                });
+
+                drake.on('dragend', function( e ){
+                    
+                    const rearrangedGallery = $(e).parent().children('.tm-gallery-item');
+                    let ids = [];
+                    rearrangedGallery.each( (index, el) => {
+                        ids.push($(el).data('image_id'))
+                    })
+                    $(e).closest('.tm-gallery-field').find('input[type="hidden"]').val(ids.join(','))
+                })
+            }
+            sortableGallery('<?php echo esc_attr($id); ?>');
         })
-    })(jQuery)
+    })(jQuery);
 </script>
 <?php endif; ?>

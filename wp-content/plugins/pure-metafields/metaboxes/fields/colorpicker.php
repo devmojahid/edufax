@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
     class="tm-input tm-input-sm tm-colorpicker-input" 
     id="<?php echo esc_attr($id); ?>" 
     name="<?php echo esc_attr($id); ?>" 
-    value="<?php echo tpmeta_field($id)?? esc_html($default)?? '#2271b1'; ?>"
+    value="<?php echo esc_html(tpmeta_field($id))?? esc_html($default)?? esc_html('#2271b1'); ?>"
 />
 <?php else: ?>
 <input 

@@ -1,10 +1,11 @@
 === WPC Smart Quick View for WooCommerce ===
 Contributors: wpclever
 Donate link: https://wpclever.net
-Tags: woocommerce, woo, wpc, smart, quickview, quick-view
+Tags: woocommerce, wpc, quickview, quick-view
 Requires at least: 4.0
-Tested up to: 6.3
-Stable tag: 3.4.9
+Tested up to: 6.5
+Version: 4.0.5
+Stable tag: 4.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -39,12 +40,6 @@ Visit our [live demo 01](https://demo.wpclever.net/woosq/ "live demo 01") or [li
 - Premium: Add to Cart button can function as a single page or the archive page
 - Premium: Customizable the visibility and text for View Product Details button
 - Premium: Lifetime update and dedicated support
-
-= Translators =
-
-Available languages: English (Default), German, Vietnamese
-
-If you have created your own language pack, or have an update for an existing one, you can send [gettext PO and MO file](http://codex.wordpress.org/Translating_WordPress "Translating WordPress") to [us](https://wpclever.net/contact?utm_source=pot&utm_medium=woosq&utm_campaign=wporg "WPClever.net") so we can bundle it into WPC Smart Quick View.
 
 = Need more features? =
 
@@ -92,6 +87,50 @@ Example:
 });`
 
 == Changelog ==
+
+= 4.0.5 =
+* Fixed: Minor issues in backend
+
+= 4.0.4 =
+* Updated: Compatible with WP 6.5 & Woo 8.8
+
+= 4.0.3 =
+* Fixed: Minor issues in backend
+
+= 4.0.2 =
+* Updated: Search for a custom field
+
+= 4.0.1 =
+* Updated: Compatible with WP 6.4 & Woo 8.7
+* Added: Option "Back to close" - Close the popup when pressing on the browser's back button
+
+= 4.0.0 =
+* Updated: Optimized the code
+
+= 3.5.7 =
+* Added: Enable quick view for product link on shop/archive
+
+= 3.5.6 =
+* Updated: Compatible with WP 6.4 & Woo 8.5
+
+= 3.5.5 =
+* Updated: Optimized the code
+
+= 3.5.4 =
+* Added: Option to enable next/previous button
+
+= 3.5.3 =
+* Fixed: Redirect after added to cart to compatible with WPC Fly Cart & WPC Added To Cart Notification
+
+= 3.5.2 =
+* Fixed: Minor CSS/JS issue for the backend
+
+= 3.5.1 =
+* Fixed: Minor CSS/JS issue for the backend
+* Added: Filter hook 'woosq_button_rel'
+
+= 3.5.0 =
+* Fixed: Minor CSS/JS issues
 
 = 3.4.9 =
 * Updated: Compatible with WP 6.3 & Woo 8.0

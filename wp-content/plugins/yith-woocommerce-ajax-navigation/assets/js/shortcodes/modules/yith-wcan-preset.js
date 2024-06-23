@@ -2,7 +2,7 @@
 
 /* global globalThis, jQuery, yith_wcan_shortcodes, accounting */
 
-import { $ } from '../config.js';
+import { $, block, unblock } from '../globals.js';
 import YITH_WCAN_Dropdown from './yith-wcan-dropdown';
 
 export default class YITH_WCAN_Preset {
@@ -36,6 +36,12 @@ export default class YITH_WCAN_Preset {
 	originalFilters = null;
 	dirty = false;
 
+	// promise resolved when all async loading is complete.
+	loaded;
+
+	// flag to disable filtering
+	inhibitFilters = false;
+
 	// init object
 	constructor( el ) {
 		// main preset node
@@ -48,8 +54,8 @@ export default class YITH_WCAN_Preset {
 
 		this._regiterStatus();
 		this._initFilterButton();
-		this._initResponsive();
 		this._initFilters();
+		this._initResponsive();
 		this._initActions();
 
 		this.$preset
@@ -60,13 +66,11 @@ export default class YITH_WCAN_Preset {
 
 	// init filters
 	_initFilters() {
-		const self = this;
+		const filters = this.getFilters()
+			.get()
+			.map( ( filter ) => this._initFilter( $( filter ) ) );
 
-		this.getFilters().each( function () {
-			const $filter = $( this );
-
-			self._initFilter( $filter );
-		} );
+		this.loaded = Promise.all( filters );
 
 		this.maybeShowClearAllFilters();
 	}
@@ -131,8 +135,11 @@ export default class YITH_WCAN_Preset {
 						? $currentFilter.find( '.filter-item' ).not( $item )
 						: [];
 
+				if ( $currentFilter.is( '.filter-price-slider' ) ) {
+					return false;
+				}
+
 				if ( $item.is( '.disabled' ) && ! $item.is( '.active' ) ) {
-					ev.preventDefault();
 					return false;
 				}
 
@@ -157,58 +164,73 @@ export default class YITH_WCAN_Preset {
 				self.maybeToggleClearFilter( $currentFilter );
 			};
 
-		// handle filter activation/deactivation by click on label (no input involved)
-		$filter
-			.find( '.filter-item' )
-			.not( '.checkbox' )
-			.not( '.radio' )
-			.on( 'click', 'a', function ( ev ) {
+		// load filter when needed and then init it.
+		// eslint-disable-next-line no-shadow
+		return this._maybeLoadFilter( $filter ).then( ( $filter ) => {
+			// handle filter activation/deactivation by click on label (no input involved)
+			$filter.on( 'click', 'a', function ( ev ) {
 				const t = $( this ),
 					$item = t.closest( '.filter-item' );
 
-				if ( ! $( ev?.delegateTarget ).is( $item ) ) {
+				if (
+					! $item.length ||
+					$item.is( '.checkbox' ) ||
+					$item.is( '.radio' )
+				) {
+					return;
+				}
+
+				handleChange.call( this, ev );
+			} );
+
+			// handle filter activation/deactivation from input change
+			$filter.on( 'change', ':input', function ( ev ) {
+				const t = $( this ),
+					$item = t.closest( '.filter-item' );
+
+				if ( $item.is( '.disabled' ) && ! $item.is( '.active' ) ) {
+					t.prop( 'checked', false );
 					return false;
 				}
 
 				handleChange.call( this, ev );
 			} );
 
-		// handle filter activation/deactivation from input change
-		$filter.find( ':input' ).on( 'change', function ( ev ) {
-			const t = $( this ),
-				$item = t.closest( '.filter-item' );
+			// handle filter activation/deactivation by click on label (there is an input whose state can be switched)
+			$filter.on( 'click', 'label > a', function ( ev ) {
+				const t = $( this ),
+					$item = t.closest( '.filter-item' );
 
-			if ( $item.is( '.disabled' ) && ! $item.is( '.active' ) ) {
-				t.prop( 'checked', false );
-				return false;
-			}
+				ev.preventDefault();
 
-			handleChange.call( this, ev );
+				if ( $item.is( '.disabled' ) && ! $item.is( '.active' ) ) {
+					return false;
+				}
+
+				const $input = t.parent().find( ':input' );
+
+				if (
+					$input.is( '[type="radio"]' ) ||
+					$input.is( '[type="checkbox"]' )
+				) {
+					$input.prop( 'checked', ! $input.prop( 'checked' ) );
+				}
+
+				$input.change();
+			} );
+
+			// init children items, such as tooltip, dropdowns, etc.
+			this._initFilterChildren( $filter );
+
+			// init clear anchors
+			this.maybeShowClearFilter( $filter );
+
+			return $filter;
 		} );
+	}
 
-		// handle filter activation/deactivation by click on label (there is an input whose state can be switched)
-		$filter.find( 'label > a' ).on( 'click', function ( ev ) {
-			const t = $( this ),
-				$item = t.closest( '.filter-item' );
-
-			ev.preventDefault();
-
-			if ( $item.is( '.disabled' ) && ! $item.is( '.active' ) ) {
-				return false;
-			}
-
-			const $input = t.parent().find( ':input' );
-
-			if (
-				$input.is( '[type="radio"]' ) ||
-				$input.is( '[type="checkbox"]' )
-			) {
-				$input.prop( 'checked', ! $input.prop( 'checked' ) );
-			}
-
-			$input.change();
-		} );
-
+	// performs additional operations after filter init, such as adding tooltip, collapsable handles, custom dropdowns, etc.
+	_initFilterChildren( $filter ) {
 		// init tooltip
 		this._initTooltip( $filter );
 
@@ -221,19 +243,64 @@ export default class YITH_WCAN_Preset {
 		// init collapsable
 		this._initCollapsable( $filter );
 
-		// init clear anchors
-		this.maybeShowClearFilter( $filter );
+		// init show more link
+		this._initShowMore( $filter );
 
 		// init custom inputs
 		if ( this.$preset?.hasClass( 'custom-style' ) ) {
 			this._initCustomInput( $filter );
-			$filter.on( 'yith_wcan_dropdown_updated', function () {
-				const $dropdown = $( this ),
+			$filter.on( 'yith_wcan_dropdown_updated', ( ev ) => {
+				const $dropdown = $( ev.target ),
 					$current = $dropdown.closest( '.yith-wcan-filter' );
 
-				self._initCustomInput( $current );
+				this._initCustomInput( $current );
 			} );
 		}
+	}
+
+	// load filter via AJAX
+	_maybeLoadFilter( $filter ) {
+		// if filter doesn't require loading, return it as Promise resolve value.
+		if ( ! $filter.hasClass( 'filter-placeholder' ) ) {
+			return Promise.resolve( $filter );
+		}
+
+		// otherwise load filter via AJAX.
+		return new Promise( ( resolve ) => {
+			$.ajax( {
+				method: 'GET',
+				url: yith_wcan_shortcodes.base_url,
+				data: {
+					'wc-ajax': 'yith_wcan_render_filter',
+					_preset_id: this.getId(),
+					_filter_id: $filter.data( 'filter-id' ),
+					security: yith_wcan_shortcodes.nonces?.render_filter,
+					...this.originalFilters,
+				},
+			} ).then( ( data ) =>
+				resolve(
+					this._loadFilter(
+						$filter,
+						data.success ? data?.data?.html : ''
+					)
+				)
+			);
+		} );
+	}
+
+	// replace placeholder with actual filter template.
+	_loadFilter( $filter, filterHTML ) {
+		if ( ! filterHTML ) {
+			return $filter.remove();
+		}
+
+		const $newFilter = $( filterHTML );
+		$filter.replaceWith( $newFilter );
+
+		// old filters are outdated, clear them until next .getFilters()
+		this.$filters = false;
+
+		return $newFilter;
 	}
 
 	// init tooltip
@@ -302,7 +369,7 @@ export default class YITH_WCAN_Preset {
 	_initDropdown( $filter ) {
 		const $dropdown = $filter.find( 'select.filter-dropdown' );
 
-		if ( ! $dropdown.length ) {
+		if ( ! $dropdown.length || $dropdown.hasClass( 'enhanced' ) ) {
 			return;
 		}
 
@@ -313,9 +380,27 @@ export default class YITH_WCAN_Preset {
 			$dropdown.selectWoo( 'destroy' );
 		}
 
+		const self = this,
+			hasMore = $dropdown.data( 'has-more' );
+
 		this._initDropdownObject( $dropdown, {
 			paginate: true,
-			perPage: yith_wcan_shortcodes.terms_per_page,
+			hasMore,
+			perPage: parseInt( yith_wcan_shortcodes.terms_per_page ),
+			...( hasMore
+				? {
+						async getElements( search ) {
+							if (
+								( this.paginate || ! this.hasMore ) &&
+								! search
+							) {
+								return this._items;
+							}
+
+							return self._getTerms( $filter, search );
+						},
+				  }
+				: {} ),
 		} );
 	}
 
@@ -349,23 +434,26 @@ export default class YITH_WCAN_Preset {
 				}, 300 );
 			};
 
-		$filter.find( '.price-slider-ui' ).ionRangeSlider( {
-			skin: 'round',
-			type: 'double',
-			min,
-			max,
-			step,
-			from: currentMin,
-			to: currentMax,
-			min_interval: step,
-			values_separator: ' - ',
-			prettify: ( v ) => this.formatPrice( v ),
-			onChange: ( data ) => {
-				$minInput.val( data.from );
-				$maxInput.val( data.to );
-			},
-			onFinish: handleSliderChange,
-		} );
+		$filter
+			.find( '.price-slider-ui' )
+			.off( 'change' )
+			.ionRangeSlider( {
+				skin: 'round',
+				type: 'double',
+				min,
+				max,
+				step,
+				from: currentMin,
+				to: currentMax,
+				min_interval: step,
+				values_separator: ' - ',
+				prettify: ( v ) => this.formatPrice( v ),
+				onChange: ( data ) => {
+					$minInput.val( data.from );
+					$maxInput.val( data.to );
+				},
+				onFinish: handleSliderChange,
+			} );
 
 		$minInput
 			.add( $maxInput )
@@ -391,11 +479,83 @@ export default class YITH_WCAN_Preset {
 		this._initHierarchyCollapsable( $filter );
 	}
 
+	// init show more filters on click.
+	_initShowMore( $filter ) {
+		const $showMore = $filter
+			.find( '.filter-content' )
+			.children( '.show-more' );
+
+		if ( ! $showMore.length || $showMore.hasClass( 'initialized' ) ) {
+			return;
+		}
+
+		$showMore
+			.addClass( 'initialized' )
+			.on( 'click', () =>
+				this._loadItems( $filter ).then( () => $showMore.remove() )
+			);
+	}
+
+	_getTerms( $filter, search ) {
+		return new Promise( ( resolve ) => {
+			$.ajax( {
+				method: 'GET',
+				beforeSend: () => block( $filter ),
+				complete: () => unblock( $filter ),
+				url: yith_wcan_shortcodes.base_url,
+				data: {
+					'wc-ajax': 'yith_wcan_get_filter_terms',
+					_preset_id: this.getId(),
+					_filter_id: $filter.data( 'filter-id' ),
+					security: yith_wcan_shortcodes.nonces.get_filter_terms,
+					search,
+					...this.originalFilters,
+				},
+			} ).then( ( data ) => {
+				const $items = data.success ? data?.data?.items : {};
+				resolve( $items );
+			} );
+		} );
+	}
+
+	// load new page of terms via AJAX
+	_loadItems( $filter ) {
+		return new Promise( ( resolve ) => {
+			$.ajax( {
+				method: 'GET',
+				beforeSend: () => block( $filter ),
+				complete: () => unblock( $filter ),
+				url: yith_wcan_shortcodes.base_url,
+				data: {
+					'wc-ajax': 'yith_wcan_render_remaining_terms',
+					_preset_id: this.getId(),
+					_filter_id: $filter.data( 'filter-id' ),
+					security:
+						yith_wcan_shortcodes.nonces.render_remaining_terms,
+					...this.originalFilters,
+				},
+			} ).then( ( data ) => {
+				const $items = $filter
+					.find( '.filter-content' )
+					.children( '.filter-items' );
+
+				// append new items to filter existing ones.
+				$items.append( data.success ? data?.data?.html : '' );
+
+				// perform additional initalization of the new items in the filter.
+				this._initFilterChildren( $filter );
+
+				// resolve promise returning jQuery set of the new elements.
+				resolve( $items );
+			} );
+		} );
+	}
+
 	// init toggle on click of the title
 	_initTitleCollapsable( $filter ) {
 		const $title = $filter.find( '.collapsable' );
 
-		if ( ! $title.length ) {
+		if ( ! $title.length || $title.hasClass( 'toggle-initialized' ) ) {
 			return;
 		}
 
@@ -429,10 +589,15 @@ export default class YITH_WCAN_Preset {
 		}
 
 		$items.each( function () {
-			const $t = $( this ),
-				$toggle = $( '<span/>', {
-					class: 'toggle-handle',
-				} );
+			const $t = $( this );
+
+			if ( $t.hasClass( 'toggle-initialized' ) ) {
+				return;
+			}
+
+			const $toggle = $( '<span/>', {
+				class: 'toggle-handle',
+			} );
 
 			$toggle.appendTo( $t );
 
@@ -442,6 +607,10 @@ export default class YITH_WCAN_Preset {
 
 	// init toggle to generic toggle/target pair
 	_initToggle( $toggle, $container, $target ) {
+		if ( $container.hasClass( 'toggle-initialized' ) ) {
+			return;
+		}
+
 		if ( $container.hasClass( 'closed' ) ) {
 			$target.hide();
 		}
@@ -454,6 +623,8 @@ export default class YITH_WCAN_Preset {
 
 			$target.trigger( 'yith_wcan_after_toggle_element', [ $container ] );
 		} );
+
+		$container.addClass( 'toggle-initialized' );
 	}
 
 	// init custom input
@@ -492,7 +663,10 @@ export default class YITH_WCAN_Preset {
 
 	// register initial status
 	_regiterStatus() {
-		this.originalFilters = this.getFiltersProperties();
+		this.originalFilters = this.mergeProperties(
+			yith_wcan_shortcodes.query_vars,
+			this.getFiltersProperties()
+		);
 	}
 
 	// trigger handling after layout change
@@ -506,7 +680,7 @@ export default class YITH_WCAN_Preset {
 
 			this._addCloseModalButton();
 			this._addApplyFiltersModalButton();
-			this._switchToCollapsables();
+			this.loaded.then( () => this._switchToCollapsables() );
 
 			this.$filterButtons?.hide();
 		} else {
@@ -523,7 +697,7 @@ export default class YITH_WCAN_Preset {
 
 			this._removeCloseModalButton();
 			this._removeApplyFiltersModalButton();
-			this._switchBackCollapsables();
+			this.loaded.then( () => this._switchBackCollapsables() );
 
 			this.$filterButtons?.show();
 		}
@@ -612,7 +786,7 @@ export default class YITH_WCAN_Preset {
 
 	// close all collpasable before showing modal
 	_openAllCollapsables() {
-		this.$filters
+		this.getFilters()
 			.not( '.no-title' )
 			.not( ( i, v ) => {
 				return this.isFilterActive( $( v ) );
@@ -627,7 +801,7 @@ export default class YITH_WCAN_Preset {
 
 	// close all collpasable before showing modal
 	_closeAllCollapsables() {
-		this.$filters
+		this.getFilters()
 			.not( '.no-title' )
 			.not( ( i, v ) => {
 				return this.isFilterActive( $( v ) );
@@ -653,6 +827,11 @@ export default class YITH_WCAN_Preset {
 	maybeFilter( $initiator ) {
 		// register status change
 		this.maybeRegisterStatusChange();
+
+		// skip if filters are inhibited.
+		if ( this.inhibitFilters ) {
+			return;
+		}
 
 		// filter, or show filter button.
 		if ( yith_wcan_shortcodes.instant_filters && ! this.isMobile ) {
@@ -704,7 +883,7 @@ export default class YITH_WCAN_Preset {
 				}
 
 				// register new filters, clear status flag
-				this.originalFilters = this.getFiltersProperties();
+				this._regiterStatus();
 				this.dirty = false;
 			} );
 
@@ -713,6 +892,11 @@ export default class YITH_WCAN_Preset {
 			this.modalElements.applyFiltersButton?.hide();
 			this.closeModal();
 		}
+	}
+
+	// returns preset id
+	getId() {
+		return this.$preset.data( 'preset-id' );
 	}
 
 	// get all filter nodes
@@ -1048,7 +1232,7 @@ export default class YITH_WCAN_Preset {
 				let filterProperties = self.getFilterProperties( $filter ),
 					hasProp = false;
 
-				for ( const prop in properties ) {
+				for ( const prop of properties ) {
 					if (
 						[ 'min_price', 'max_price', 'price_ranges' ].includes(
 							prop
@@ -1186,6 +1370,8 @@ export default class YITH_WCAN_Preset {
 			$items = $filter.find( '.filter-item' ),
 			$activeItems = $items.filter( '.active' ),
 			$dropdown = $filter.find( '.filter-dropdown' );
+
+		this.inhibitFilters = true;
 
 		switch ( filterType ) {
 			case 'tax':
@@ -1393,6 +1579,7 @@ export default class YITH_WCAN_Preset {
 				break;
 		}
 
+		this.inhibitFilters = false;
 		this.activeFilters = false;
 
 		if ( doFilter ) {
@@ -1423,7 +1610,7 @@ export default class YITH_WCAN_Preset {
 	// deactivate filters that matches a specific set of properties
 	deactivateFilterByProperties( properties, doFilter ) {
 		const self = this,
-			$filters = this.getFiltersByProperties( properties );
+			$filters = this.getFiltersByProperties( Object.keys( properties ) );
 
 		if ( ! $filters.length ) {
 			return false;
@@ -1583,8 +1770,11 @@ export default class YITH_WCAN_Preset {
 							set1[ prop ] = set2[ prop ];
 						} else {
 							// we're dealing with taxonomy
-							const isAttr = 0 === prop.indexOf( 'filter_' ),
-								glue = isAttr ? ',' : '+';
+							const relation =
+									$filter?.data( 'relation' ) || 'and',
+								isAttr = 0 === prop.indexOf( 'filter_' ),
+								glue =
+									! isAttr && 'and' === relation ? '+' : ',';
 
 							let newValue =
 								set1[ prop ].replace( ',', glue ) +

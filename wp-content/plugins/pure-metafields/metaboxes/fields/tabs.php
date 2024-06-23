@@ -5,7 +5,9 @@
  * Tabs
  */
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
-
+if(!isset($default)){
+    $default = false;
+}
 ?>
 <?php if(!isset($row_db_value)): ?>
 <div class="tm-button-groups">

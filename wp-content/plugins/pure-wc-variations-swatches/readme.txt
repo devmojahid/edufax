@@ -1,17 +1,17 @@
 === Pure WC Variation Swatches ===
 Contributors: themepure
 Donate link: https://help.themepure.net/support/
-Tags: Pure WC Variations Swatches, woocommerce variation, woocommerce, variation swatches, woocommerce attributes, product attributes, product color, product size, variable product attributes, variation product swatches, color variation swatch, image variation swatch, printful color swatches
+Tags: Variations Swatches, woocommerce variation, woocommerce, color variation swatch, image variation swatch
 Requires PHP: 7.4
 Requires at least: 5.6
-Tested up to: 6.2
+Tested up to: 6.3
 WC requires at least: 5.6
-WC tested up to: 7.3
-Stable tag: 1.0.3
+WC tested up to: 8.0.3
+Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Pure WC Variation Swatches is a very useful plugin that works fine with woocommerce shop. It displays the product's availability in different shapes or colors, with different prices. The swatches are shown in colored dots, images corresponding to the color attributes.
+This plugin works fine with woocommerce stores. Shows color swatches and image swatches inside woocommerce default ugly looking colors variations.
 
 == Description ==
 
@@ -239,6 +239,42 @@ And your are ready to go.
 = 1.0.3  =
 
 * Update: PHP 8.0 compatibility added
+
+= 1.0.4  =
+
+* Update: Same Variation Swatches Issue Solved
+
+= 1.0.5  =
+
+* Update: Front End Issue Solved
+
+= 1.0.6  =
+
+* Update: Variation image size issue solved
+
+= 1.0.7  =
+
+* Update: Variations Tooltip Updated
+
+= 1.0.8  =
+
+* Update: CSS updated
+
+= 1.0.9  =
+
+* Update: JS updated
+
+= 1.1.0  =
+
+* Update: WooCommerce Bug fixed
+
+= 1.1.1  =
+
+* Update: Variation image upload issue fixed
+
+= 1.1.2  =
+
+* Update: Docs updated
 
 == Upgrade Notice ==
 

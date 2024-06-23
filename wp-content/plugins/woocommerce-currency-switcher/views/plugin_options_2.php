@@ -31,6 +31,26 @@ global $WOOCS;
                     </svg>
                 </span></h3>
             <i><?php printf(esc_html__('Actualized for WooCommerce v.%s.x', 'woocommerce-currency-switcher'), $this->actualized_for) ?></i>
+        
+        
+            <?php if ($WOOCS->notes_for_free): ?>
+                <a href="https://codecanyon.pluginus.net/item/woocommerce-currency-switcher/8085217" style="position: absolute;
+                   right: 0;
+                   top: 19px;
+                   background-color: #2f55d4;
+                   border-color: #2f55d4;
+                   color: #fff !important;
+                   box-shadow: 0 3px 5px 0 rgb(47 85 212 / 30%);
+                   display: flex;
+                   justify-content: stretch;
+                   align-items: center;
+                   line-height: 29px;
+                   "target="_blank" class="woocs__button"><span class="dashicons dashicons-money"></span>&nbsp;Get PRO</a>
+               <?php endif; ?>
+        
+        
+        
+        
         </div>
 
         <div id="tabs" class="woocs__tabs">
@@ -120,7 +140,7 @@ global $WOOCS;
 
                 <div id="woocs-tabs-1" class="woocs__tab-pane woocs-show woocs-active">
                     <div class="woocs__tab-content">
-
+						<input type="hidden" name="woocs_currency_nonce" value="<?php echo wp_create_nonce('currency_nonce'); ?>" >
                         <div class="woocs__tools-panel">
                             <div class="woocs__options">
                                 <a href="javascript: void(0)" id="woocs_add_currency" data-action="prepend" class="woocs__button"><span class="icon-plus"></span><?php esc_html_e("Prepend Currency", 'woocommerce-currency-switcher') ?></a>
@@ -1670,7 +1690,7 @@ global $WOOCS;
 
                                                                     <div class="woocs-card-item">
 
-                                                                        <div class="woocs-card woocs-transition woocs-text-center woocs-rounded">
+                                                                        <div class="woocs-card woocs-transition woocs-text-center woocs-rounded" style="cursor: pointer" onclick="window.open('https://pluginus.net/support/forum/woocs-woocommerce-currency-switcher-multi-currency-and-multi-pay-for-woocommerce/', '_blank')">
                                                                             <div class="woocs-card-body">
                                                                                 <img src="<?php echo WOOCS_LINK ?>img/icon/site-structure-optimization.svg" class="woocs-avatar woocs-avatar-small woocs-mb-3" alt="">
                                                                                     <h5 class="woocs-h5"><a href="https://pluginus.net/support/forum/woocs-woocommerce-currency-switcher-multi-currency-and-multi-pay-for-woocommerce/" class="woocs-text-dark" target="_blank"><?php esc_html_e('Support', 'woocommerce-currency-switcher'); ?></a></h5>
@@ -1682,7 +1702,7 @@ global $WOOCS;
 
                                                                     <div class="woocs-card-item">
 
-                                                                        <div class="woocs-card woocs-transition woocs-text-center woocs-rounded">
+                                                                        <div class="woocs-card woocs-transition woocs-text-center woocs-rounded" style="cursor: pointer" onclick="window.open('https://currency-switcher.com/faq', '_blank')">
                                                                             <div class="woocs-card-body">
                                                                                 <img src="<?php echo WOOCS_LINK ?>img/icon/features.svg" class="woocs-avatar woocs-avatar-small woocs-mb-3" alt="">
                                                                                     <h5 class="woocs-h5"><a href="https://currency-switcher.com/faq" class="woocs-text-dark" target="_blank"><?php esc_html_e('FAQ', 'woocommerce-currency-switcher'); ?></a></h5>
@@ -1694,7 +1714,7 @@ global $WOOCS;
 
                                                                     <div class="woocs-card-item">
 
-                                                                        <div class="woocs-card woocs-transition woocs-text-center woocs-rounded">
+                                                                        <div class="woocs-card woocs-transition woocs-text-center woocs-rounded" style="cursor: pointer" onclick="window.open('https://currency-switcher.com/codex/', '_blank')">
                                                                             <div class="woocs-card-body">
                                                                                 <img src="<?php echo WOOCS_LINK ?>img/icon/bookmarking.svg" class="woocs-avatar woocs-avatar-small woocs-mb-3" alt="">
                                                                                     <h5 class="woocs-h5"><a href="https://currency-switcher.com/codex/" class="woocs-text-dark" target="_blank"><?php esc_html_e('Codex', 'woocommerce-currency-switcher'); ?></a></h5>
@@ -1706,11 +1726,24 @@ global $WOOCS;
 
                                                                     <div class="woocs-card-item">
 
-                                                                        <div class="woocs-card woocs-transition woocs-text-center woocs-rounded">
+                                                                        <div class="woocs-card woocs-transition woocs-text-center woocs-rounded" style="cursor: pointer" onclick="window.open('https://currency-switcher.com/woocs-labs/', '_blank')">
                                                                             <div class="woocs-card-body">
                                                                                 <img src="<?php echo WOOCS_LINK ?>img/icon/clean-code.svg" class="woocs-avatar woocs-avatar-small woocs-mb-3" alt="">
                                                                                     <h5 class="woocs-h5"><a href="https://currency-switcher.com/woocs-labs/" class="woocs-text-dark" target="_blank"><?php esc_html_e('Labs', 'woocommerce-currency-switcher'); ?></a></h5>
                                                                                     <p><?php esc_html_e('Found incompatibility? We can help!', 'woocommerce-currency-switcher'); ?></p>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    
+                                                                    
+                                                                    <div class="woocs-card-item">
+
+                                                                        <div class="woocs-card woocs-transition woocs-text-center woocs-rounded" style="cursor: pointer" onclick="window.open('https://chat.openai.com/', '_blank')">
+                                                                            <div class="woocs-card-body">
+                                                                                <img src="<?php echo WOOCS_LINK ?>img/chat-gpt.jpg" class="woocs-avatar woocs-avatar-small woocs-mb-3" alt="">
+                                                                                    <h5 class="woocs-h5"><a href="https://chat.openai.com/" class="woocs-text-dark" target="_blank"><?php esc_html_e('Chat GPT', 'woocommerce-currency-switcher'); ?></a></h5>
+                                                                                    <p><?php esc_html_e('You can try to ask chat GPT about how to use this plugin. Use former name of the plugin WOOCS.', 'woocommerce-currency-switcher'); ?></p>
                                                                             </div>
                                                                         </div>
 
@@ -1841,19 +1874,21 @@ global $WOOCS;
                                                     </div>
 
                                                     <div id="tab-smart-designer" class="woocs__tab-pane woocs_settings_section">
+														
                                                         <div class="woocs__tab-content">
 
                                                             <div id="woocs-sd-manage-area">
 
                                                                 <div class="woocs__tools-panel">
                                                                     <h5><?php esc_html_e("Smart Designer", 'woocommerce-currency-switcher') ?></h5>
+																	<input type="hidden" name="woocs_wpnonce_sd" value="<?php echo wp_create_nonce('woocs_wpnonce_sd'); ?>" >
                                                                 </div>
 
 
                                                                 <div style="padding: 10px;">
                                                                     <div class="woocs__alert woocs__alert-success"><?php esc_html_e("In this section you can create your own view of currency drop-down switcher", 'woocommerce-currency-switcher'); ?></div>
 
-
+																	
                                                                     <a href="#" id="woocs-sd-create" class="woocs__button dashicons-before dashicons-plus"><?php esc_html_e("Create", 'woocommerce-currency-switcher') ?></a><br />
 
 
@@ -1941,7 +1976,8 @@ global $WOOCS;
                                                                     <div><a href="javascript: woocs_sd_save_exit();void(0);" class="woocs-panel-button dashicons-before dashicons-cloud-saved dashicons-exit"><?php esc_html_e("Save and exit", 'woocommerce-currency-switcher') ?></a>&nbsp;</div>
                                                                     <div><a href="javascript: woocs_sd_exit_no_save();void(0);" class="woocs-panel-button dashicons-before dashicons-exit"><?php esc_html_e("Exit without save", 'woocommerce-currency-switcher') ?></a>&nbsp;</div>
                                                                     <div><a href="javascript: woocs_sd_reset();void(0);" class="woocs-panel-button dashicons-before dashicons-dismiss"><?php esc_html_e("Reset to default", 'woocommerce-currency-switcher') ?></a>&nbsp;</div>
-                                                                </div>
+																	
+																</div>
                                                             </template>
 
 

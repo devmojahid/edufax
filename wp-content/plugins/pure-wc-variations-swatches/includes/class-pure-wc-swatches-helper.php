@@ -11,7 +11,7 @@
 	 * Keep default values of all settings.
 	 *
 	 * @var array
-	 * @since  1.0.3
+	 * @since  1.1.2
 	 */
 	public static $defaults = [
 		'tpwvs_general' => [
@@ -45,7 +45,7 @@
 	 *
 	 * @param string $name attribute name of product attribute.
 	 * @return mixed
-	 * @since  1.0.3
+	 * @since  1.1.2
 	 */
 	public static function get_attr_type_by_name( $name = '' ) {
 		if ( empty( $name ) || ! taxonomy_exists( $name ) ) {
@@ -64,7 +64,7 @@
 	 *
 	 * @param string $option option name to get value from.
 	 * @return array
-	 * @since  1.0.3
+	 * @since  1.1.2
 	 */
 	public static function get_option( $option ) {
 		$db_values = get_option( $option, [] );

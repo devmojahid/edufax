@@ -26,8 +26,10 @@ final class WOOCS_STORAGE {
 
         if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
             $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-        } else {
+        } elseif(isset($_SERVER['REMOTE_ADDR'])) {
             $ip = $_SERVER['REMOTE_ADDR'];
+        } else {
+            $ip='';
         }
         $this->user_ip = filter_var($ip, FILTER_VALIDATE_IP);
         $this->transient_key = substr(md5($this->user_ip), 7, 23);

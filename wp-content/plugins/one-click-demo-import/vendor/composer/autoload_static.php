@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitef3a658a88d521398d72929dc54fa111
+class ComposerStaticInit6e47effa5120540aea0a569fe4304cb6
 {
     public static $prefixLengthsPsr4 = array (
         'O' => 
@@ -28,11 +28,37 @@ class ComposerStaticInitef3a658a88d521398d72929dc54fa111
         ),
     );
 
+    public static $classMap = array (
+        'AwesomeMotive\\WPContentImporter2\\Importer' => __DIR__ . '/..' . '/awesomemotive/wp-content-importer-v2/src/Importer.php',
+        'AwesomeMotive\\WPContentImporter2\\WPImporterLogger' => __DIR__ . '/..' . '/awesomemotive/wp-content-importer-v2/src/WPImporterLogger.php',
+        'AwesomeMotive\\WPContentImporter2\\WPImporterLoggerCLI' => __DIR__ . '/..' . '/awesomemotive/wp-content-importer-v2/src/WPImporterLoggerCLI.php',
+        'AwesomeMotive\\WPContentImporter2\\WXRImportInfo' => __DIR__ . '/..' . '/awesomemotive/wp-content-importer-v2/src/WXRImportInfo.php',
+        'AwesomeMotive\\WPContentImporter2\\WXRImporter' => __DIR__ . '/..' . '/awesomemotive/wp-content-importer-v2/src/WXRImporter.php',
+        'OCDI\\CreateDemoContent\\DemoContentCreator' => __DIR__ . '/../..' . '/inc/CreateDemoContent/DemoContentCreator.php',
+        'OCDI\\CustomizerImporter' => __DIR__ . '/../..' . '/inc/CustomizerImporter.php',
+        'OCDI\\CustomizerOption' => __DIR__ . '/../..' . '/inc/CustomizerOption.php',
+        'OCDI\\Downloader' => __DIR__ . '/../..' . '/inc/Downloader.php',
+        'OCDI\\Helpers' => __DIR__ . '/../..' . '/inc/Helpers.php',
+        'OCDI\\ImportActions' => __DIR__ . '/../..' . '/inc/ImportActions.php',
+        'OCDI\\Importer' => __DIR__ . '/../..' . '/inc/Importer.php',
+        'OCDI\\Logger' => __DIR__ . '/../..' . '/inc/Logger.php',
+        'OCDI\\OneClickDemoImport' => __DIR__ . '/../..' . '/inc/OneClickDemoImport.php',
+        'OCDI\\PluginInstaller' => __DIR__ . '/../..' . '/inc/PluginInstaller.php',
+        'OCDI\\PluginInstallerSkin' => __DIR__ . '/../..' . '/inc/PluginInstallerSkin.php',
+        'OCDI\\PluginInstallerSkinSilent' => __DIR__ . '/../..' . '/inc/PluginInstallerSkinSilent.php',
+        'OCDI\\ReduxImporter' => __DIR__ . '/../..' . '/inc/ReduxImporter.php',
+        'OCDI\\ViewHelpers' => __DIR__ . '/../..' . '/inc/ViewHelpers.php',
+        'OCDI\\WPCLICommands' => __DIR__ . '/../..' . '/inc/WPCLICommands.php',
+        'OCDI\\WXRImporter' => __DIR__ . '/../..' . '/inc/WXRImporter.php',
+        'OCDI\\WidgetImporter' => __DIR__ . '/../..' . '/inc/WidgetImporter.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitef3a658a88d521398d72929dc54fa111::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitef3a658a88d521398d72929dc54fa111::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit6e47effa5120540aea0a569fe4304cb6::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit6e47effa5120540aea0a569fe4304cb6::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit6e47effa5120540aea0a569fe4304cb6::$classMap;
 
         }, null, ClassLoader::class);
     }

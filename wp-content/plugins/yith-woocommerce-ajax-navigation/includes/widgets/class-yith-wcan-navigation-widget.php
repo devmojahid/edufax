@@ -190,6 +190,13 @@ if ( ! class_exists( 'YITH_WCAN_Navigation_Widget' ) ) {
 						}
 					}
 
+					/**
+					 * DO_ACTION: yith_wcan_before_print_list
+					 *
+					 * Triggered before printing taxonomy list
+					 *
+					 * @param string $taxonomy Current taxonomy.
+					 */
 					do_action( 'yith_wcan_before_print_list', $taxonomy );
 
 					$this->add_reset_taxonomy_link( $taxonomy, $instance );
@@ -396,6 +403,19 @@ if ( ! class_exists( 'YITH_WCAN_Navigation_Widget' ) ) {
 					echo '</ul>';
 
 				} else {
+					/**
+					 * DO_ACTION: yith_wcan_widget_display_$display_type
+					 *
+					 * Can be used to implement custom display type for filters.
+					 * <code>$display_type</code> is replaced with custom type retrieved from widget options.
+					 *
+					 * @param array  $args              Widget options.
+					 * @param array  $instance          Widget instance.
+					 * @param string $display_type      Display type.
+					 * @param array  $terms             Array of terms to show.
+					 * @param string $taxonomy          Current taxonomy.
+					 * @param string $filter_term_field Parameter of the term object used to filter shop.
+					 */
 					do_action( "yith_wcan_widget_display_{$display_type}", $args, $instance, $display_type, $terms, $taxonomy, $filter_term_field );
 				}
 
@@ -457,7 +477,15 @@ if ( ! class_exists( 'YITH_WCAN_Navigation_Widget' ) ) {
 				</select>
 			</p>
 
-			<?php do_action( 'yith_wcan_after_widget_type' ); ?>
+			<?php
+			/**
+			 * DO_ACTION: yith_wcan_after_widget_type
+			 *
+			 * Triggered inside widget edit form, after type field.
+			 * Can be used to inject custom fields into the form.
+			 */
+			do_action( 'yith_wcan_after_widget_type' );
+			?>
 
 			<p>
 				<label for="<?php echo esc_attr( $this->get_field_id( 'query_type' ) ); ?>"><?php esc_html_e( 'Query Type:', 'yith-woocommerce-ajax-navigation' ); ?></label>
@@ -622,7 +650,9 @@ if ( ! class_exists( 'YITH_WCAN_Navigation_Widget' ) ) {
 						// Exclude query arg for current term archive term.
 						while ( $in_array_function( $term->slug, $data['terms'] ) ) {
 							$key = array_search( $current_term, $data ); // phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
-							unset( $data['terms'][ $key ] );
+							if ( $key ) {
+								unset( $data['terms'][ $key ] );
+							}
 						}
 
 						// Remove pa_ and sanitize.

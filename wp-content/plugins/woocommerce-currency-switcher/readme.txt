@@ -1,14 +1,15 @@
 === FOX - Currency Switcher Professional for WooCommerce ===
 Contributors: RealMag777
 Donate link: https://pluginus.net/affiliate/woocommerce-currency-switcher
-Tags: woocommerce, currency, switcher, currency switcher, converter, user role, role based pricing
+Tags: woocommerce, currency, switcher, currency switcher, converter
 Requires at least: 4.9.0
-Tested up to: 6.3
+Tested up to: 6.5
 Requires PHP: 7.2
-Stable tag: 1.4.1.1
+Stable tag: 1.4.1.9
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-
-FOX - Currency Switcher Professional for WooCommerce (former name is WOOCS) is free currency plugin for woocommerce and multi currency shop that allows to switch products prices and pay in the selected currency
+FOX - Currency Switcher Professional for WooCommerce (former name is WOOCS) is currency plugin for woocommerce and multi currency shop, switch & pay
 
 == Description ==
 
@@ -61,11 +62,7 @@ Also the plugin has ajaxed shortcode/widget of [currency converter](https://demo
 
 &#9989;&nbsp;**Currencies visibility**: possibility to set currencies as Public or as Private. In private mode currency not published in switchers and user cannot set it by link through '?currency=XXX'
 
-&#9989;&nbsp;**Light video to understand basics**:
-
-
-
-Note: for today design of the plugin is different of the video (is improved), see screenshots below!
+&#9989;&nbsp;You can **ask help to chatGPT** about the plugin using the plugin former name WOOCS, example: "How to use [[woocs]] shortcode?"
 
 &#9989;&nbsp;**Payments rules**: rules to hide/show payment gates on the checkout page depending on the current currency
 
@@ -119,11 +116,15 @@ Note: for today design of the plugin is different of the video (is improved), se
 
 &#9989;&nbsp;**Easy to use for administrators and shop customers**: install, set settings for couple of minutes and let your shop make more money!
 
+&#9989;&nbsp;**FOX is chatGPT friendly plugin** you can ask help to chat gpt about the plugin features using the plugin former name WOOCS, example: "How to use [woocs] shortcode?"
+
 &#9989;&nbsp;Compatible with [WPML](https://wpml.org/plugin/woocommerce-currency-switcher/)
 
 &#9989;&nbsp;Compatible with [WooCommerce Products Filter](https://products-filter.com/)
 
 &#9989;&nbsp;Compatible with [CTX Feed – WooCommerce Product Feed Generator](https://wordpress.org/plugins/webappick-product-feed-for-woocommerce/)
+
+&#9989;&nbsp;Compatible with [RnB - WooCommerce Booking & Rental Plugin](https://codecanyon.pluginus.net/item/rnb-woocommerce-rental-booking-system/14835145)
 
 &#9989;&nbsp;95% compatibility with different payment gates in multi currency mode, just try it!
 
@@ -184,6 +185,32 @@ R: [FAQ](https://currency-switcher.com/faq/)
 
 
 == Changelog ==
+
+= 1.4.1.9 =
+* 1 security issue fixed thanks to stealthcopter from Wordfence
+
+= 1.4.1.8 =
+* 1 security issue fixed thanks to Dhabaleshwar Das from patchstack.com
+* new feature - [https://share.pluginus.net/image/i20240306171529.png](https://share.pluginus.net/image/i20240306171529.png) you can update order rates, the data in the analytics table is also updated
+
+= 1.4.1.7 =
+* 1 security issue fixed thanks to Lucio Sá from wordfence.com
+* 1 minor fix
+
+= 1.4.1.6 =
+* 1 security issue fixed thanks to Lucio Sá from wordfence.com
+
+= 1.4.1.5 =
+* 1 security issue fixed thanks to Brandon Roldan from patchstack.com
+
+= 1.4.1.4 =
+* small fixes
+
+= 1.4.1.3 =
+* 1 fix for HPOS class WoocsHpos
+
+= 1.4.1.2 =
+* some fixes got from customer support
 
 = 1.4.1.1 =
 * 1 javascript fix active-filters-wrapper-frontend.js
@@ -439,7 +466,7 @@ Plugin release. Operate all the basic functions.
 
 == License ==
 
-This plugin is copyright pluginus.net &copy; 2012-2023 with [GNU General Public License][] by realmag777.
+This plugin is copyright pluginus.net &copy; 2012-2024 with [GNU General Public License][] by realmag777.
 
 This program is free software; you can redistribute it and/or modify it under the terms of the [GNU General Public License][] as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
 

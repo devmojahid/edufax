@@ -4,7 +4,7 @@
  * Fired during plugin deactivation
  *
  * @link       https://themepure.net
- * @since      1.0.3
+ * @since      1.1.2
  *
  * @package    Tp_Wvs
  * @subpackage Tp_Wvs/includes
@@ -15,7 +15,7 @@
  *
  * This class defines all code necessary to run during the plugin's deactivation.
  *
- * @since      1.0.3
+ * @since      1.1.2
  * @package    Tp_Wvs
  * @subpackage Tp_Wvs/includes
  * @author     ThemePure <themepure@gmail.com>
@@ -27,7 +27,7 @@ class Tp_Wvs_Deactivator {
 	 *
 	 * Long Description.
 	 *
-	 * @since    1.0.3
+	 * @since    1.1.2
 	 */
 	public static function deactivate() {
 

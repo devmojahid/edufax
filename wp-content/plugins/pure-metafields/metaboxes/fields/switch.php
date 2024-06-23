@@ -3,7 +3,9 @@
  * Switch
  */
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
-
+if(!isset($default)){
+    $default = false;
+}
 ?>
 <?php if(isset($field_type) && $field_type == 'repeater'): 
     

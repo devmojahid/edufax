@@ -26,8 +26,12 @@ if ( ! defined( 'YITH_WCAN' ) ) {
 			<form method="POST">
 				<?php
 				/**
-				 * Hook: yith_wcan_before_preset_filters.
+				 * DO_ACTION: yith_wcan_before_preset_filters.
 				 *
+				 * Triggered before preset filters.
+				 *
+				 * @param YITH_WCAN_Preset $preset   Current preset object.
+				 * @param string           $selector Selector used to locate DOM node containing products fo filter.
 				 * @hooked \YITH_WCAN_Frontend::filters_title - 10
 				 */
 				do_action( 'yith_wcan_before_preset_filters', $preset, $selector );
@@ -47,8 +51,12 @@ if ( ! defined( 'YITH_WCAN' ) ) {
 
 				<?php
 				/**
-				 * Hook: yith_wcan_after_preset_filters.
+				 * DO_ACTION: yith_wcan_after_preset_filters.
 				 *
+				 * Triggered before preset filters.
+				 *
+				 * @param YITH_WCAN_Preset $preset   Current preset object.
+				 * @param string           $selector Selector used to locate DOM node containing products fo filter.
 				 * @hooked \YITH_WCAN_Frontend::apply_filters_button - 10
 				 */
 				do_action( 'yith_wcan_after_preset_filters', $preset, $selector );

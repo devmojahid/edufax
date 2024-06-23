@@ -37,7 +37,7 @@
 		var thisName = attributes.name
 		var thisVal  = attributes.value
 		makeActiveSwatch($el);
-		$('select[name="'+thisName+'"]').val(thisVal).trigger('change');
+		$el.closest('.product').find('select[name="'+thisName+'"]').val(thisVal).trigger('change');
 	});
 
 	// reset variations
@@ -73,7 +73,7 @@
 			})
 			element.addClass('button-active');
 		}else{
-			// console.log('No matches!')
+			
 		}
 	}
 
@@ -85,7 +85,6 @@
 				thisForm.addClass( 'variation-function-added' );
 				thisForm.wc_variation_form();
 				thisForm.on( 'found_variation', function ( e, variation ) {
-					// console.log(variation);
 					updateThumbnail( thisForm, variation.image );
 					updatePrice( thisForm, variation );
 					updatebuttonData( thisForm, variation );
@@ -98,27 +97,28 @@
 		const listItem = swatch.closest( 'li' );
 		if(listItem.length > 1){
 			const thumbnail = listItem.find( 'img:first' );
-			if ( 0 === listItem.find( '.tpwvs-original-thumbnail' ).length ) {
-				const originalThumbnail = thumbnail.clone();
-				thumbnail.after( '<span class="tpwvs-original-thumbnail"></span>' );
-				listItem
-					.find( '.tpwvs-original-thumbnail' )
-					.html( originalThumbnail );
-			}
-			thumbnail.attr( 'src', imageData.thumb_src );
+			// if ( 0 === listItem.find( '.tpwvs-original-thumbnail' ).length ) {
+			// 	const originalThumbnail = thumbnail.clone();
+			// 	thumbnail.after( '<span class="tpwvs-original-thumbnail"></span>' );
+			// 	listItem
+			// 		.find( '.tpwvs-original-thumbnail' )
+			// 		.html( originalThumbnail );
+			// }
+			thumbnail.attr( 'src', imageData.full_src );
 			thumbnail.attr( 'srcset', '' );
 		}else{
 			const listItem = swatch.closest( '.has-post-thumbnail' );
 			const thumbnail = listItem.find( 'img:first' );
-			// console.log(swatch);
-			if ( 0 === thumbnail.find( '.tpwvs-original-thumbnail' ).length ) {
-				const originalThumbnail = thumbnail.clone();
-				thumbnail.after( '<span class="tpwvs-original-thumbnail"></span>' );
-				thumbnail
-					.find( '.tpwvs-original-thumbnail' )
-					.html( originalThumbnail );
-			}
-			thumbnail.attr( 'src', imageData.thumb_src );
+			console.log(thumbnail, thumbnail.find( '.tpwvs-original-thumbnail' ).length);
+			
+			// if ( 0 === thumbnail.find( '.tpwvs-original-thumbnail' ).length ) {
+			// 	const originalThumbnail = thumbnail.clone();
+			// 	thumbnail.after( '<span class="tpwvs-original-thumbnail"></span>' );
+			// 	thumbnail
+			// 		.find( '.tpwvs-original-thumbnail' )
+			// 		.html( originalThumbnail );
+			// }
+			thumbnail.attr( 'src', imageData.full_src );
 			thumbnail.attr( 'srcset', '' );
 		}
 		
@@ -132,13 +132,13 @@
 			const price = swatch.parents( 'li' ).find( '.price' );
 			price.replaceWith( variation.price_html );
 		} else {
-			const price = swatch.parents( 'li' ).find( '.price' );
+			const price = swatch.closest( '.product' ).find( '.price' );
 			
 			if( price.length > 1 ){
 				price.removeClass( 'price' ).addClass( 'tpwvs-original-price' );
 				price.after( variation.price_html );
 			}else{
-				const price = swatch.parents( '.has-post-thumbnail' ).find( '.price' );
+				const price = swatch.closest( '.has-post-thumbnail' ).find( '.price' );
 				price.removeClass( 'price' ).addClass( 'tpwvs-original-price' );
 				price.after( variation.price_html );
 			}

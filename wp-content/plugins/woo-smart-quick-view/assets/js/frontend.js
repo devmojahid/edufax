@@ -206,13 +206,14 @@ function woosq_open(id, effect, context) {
       fixedContentPos: true,
       tClose: woosq_vars.close,
       gallery: {
-        tPrev: woosq_vars.prev, tNext: woosq_vars.next, enabled: true,
+        tPrev: woosq_vars.prev,
+        tNext: woosq_vars.next,
+        enabled: woosq_vars.next_prev === 'yes',
       },
       ajax: {
         settings: {
           type: 'GET', data: {
-            action: 'woosq_quickview',
-            nonce: woosq_vars.nonce,
+            action: 'woosq_quickview', nonce: woosq_vars.nonce,
           },
         },
       },

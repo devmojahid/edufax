@@ -1,15 +1,15 @@
 === Pure Metafields ===
 Contributors: themepure
 Donate link: https://help.themepure.net/support/
-Tags: Metabox, Metafields, Custom Post Field, Post Metafield, Post Metabox, Page Metabox, Page Metafield, Custom Field
+Tags: Metabox, Metafields, Custom Post Field, Post Metafield, Page Metabox
 Requires PHP: 7.4
 Requires at least: 5.6
-Tested up to: 6.2
-Stable tag: 1.0.0
+Tested up to: 6.4
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Pure Metafields is a simple and very light weight plugin that is used to create custom metabox for wordpress any post type like page, post event your custom post can support it.
+Pure Metafields is very light weight plugin tused to create custom metabox for any post type like page, post and your custom post type support it.
 
 == Description ==
 
@@ -32,7 +32,7 @@ The Pure Metafields Plugin is a powerful tool designed to enhance the functional
 
 [Live Docs](https://themepure.net/plugins/puremetafields/)
 
-== Getting Started ==
+== Installation ==
 
 ### Automatic Install From WordPress Dashboard
 
@@ -65,7 +65,8 @@ If you are unable to use any of the methods due to internet connectivity and fil
 Paste the code to your theme's functions.php with the add_filter hook.
 
 ### Metbox Add
-```
+
+`<?php
 add_filter( 'tp_meta_boxes', 'themepure_metabox' );
 function themepure_metabox( $meta_boxes ) {
     $meta_boxes[] = array(
@@ -79,12 +80,12 @@ function themepure_metabox( $meta_boxes ) {
 
     return $meta_boxes;
 }
-```
 
-== Add Metabox Fields ==
+?>`
 
 ### Text Fields
-```
+
+`<?php
 // text field for normal text
 array(
     'label' => 'Text Field',
@@ -103,10 +104,11 @@ array(
     'default' 	  => '',
     'conditional' => array()
 )
-```
+?>`
 
 ### Image and Gallery Field
-```
+
+`<?php
 array(	
     'label'     => esc_html__( 'Your Title', 'textdomain' ),
     'id'        => "_your_id",
@@ -124,11 +126,12 @@ array(
     'default' => '',
     'conditional' => array()
 )
-```
+?>`
 
 
 ### Switch Field
-```
+
+`<?php
 array(
     'label'    => esc_html__( 'Your Title', 'textdomain' ),
     'id'      => "_your_id",
@@ -136,10 +139,36 @@ array(
     'default' => 'off',
     'conditional' => array()
 )
-```
+?>`
+
+
+### Checkbox
+
+`<?php 
+array(
+    'label'   => esc_html__( 'Files Included', 'pure' ),
+    'id'      => "{$prefix}_files_options",
+    'type'    => 'checkbox',
+    'default' => array(
+        'wordpress',
+        'react',
+        'html',
+        'psd',
+        'vue'
+    ),
+    'options' => array(
+        'wordpress' => 'Wordpress File Included?',
+        'react'     => 'React File Included?',
+        'html'		=> 'HTML File Included?',
+        'psd'		=> 'PSD Included?',
+        'vue'		=> 'Vue JS File Included?'
+    )
+)
+?>`
 
 ### Group Button
-```
+
+`<?php
 // multiple buttons group field like multiple radio buttons tabs
 array(
     
@@ -155,10 +184,11 @@ array(
     'default' => 'button_1',
     'conditional' => array()
 )
-```
+?>`
 
 ### Select Field
-```
+
+`<?php
 // select field dropdown
 array(
     
@@ -176,10 +206,11 @@ array(
     'conditional' => array(),
     'default' => ''
 )
-```
+?>`
 
 ### Datepicker Field
-```
+
+`<?php
 // Datepicker for date field
 array(
     'label' => 'Datepicker',
@@ -189,10 +220,11 @@ array(
     'default' 	  => '',
     'conditional' => array()
 )
-```
+?>`
 
 ### Colorpicker
-```
+
+`<?php
 // Colorpicker for color field
 array(
     'label' => 'Colorpicker',
@@ -202,10 +234,11 @@ array(
     'default' 	  => '',
     'conditional' => array()
 )
-```
+?>`
 
 ### Select any post type posts
-```
+
+`<?php
 // posts select dropdown field ( Lists any post types posts)
 array(
     
@@ -217,11 +250,12 @@ array(
     'conditional' => array(),
     'default' => ''
 )
-```
+?>`
 
 ### Repeater 
 In the above code example where fields array paste the repeater array inside fields array
-```
+
+`<?php
 array(
     'label'     => esc_html__('Field Title', 'textdomain'),
     'id'        => "_your_id",
@@ -269,10 +303,11 @@ array(
         )
     )
 )
-```
+?>`
 
 ### Conditional Field
-```
+
+`<?php
 array(
     'label'     => 'Text Field',
     'id'   	    => "_your_id",
@@ -294,10 +329,11 @@ array(
         "_field_id", "==", "_field_value"
     )
 )
-```
+?>`
 
 ### For bind with post format
-```
+
+`<?php
 add_filter( 'tp_meta_boxes', 'themepure_metabox' );
 function themepure_metabox( $meta_boxes ) {
     $meta_boxes[] = array(
@@ -358,52 +394,53 @@ function themepure_metabox( $meta_boxes ) {
     return $meta_boxes;
 }
 
-```
+?>`
 
 ### Get the meta value for current post
 
-```php
+`<?php
 $value = function_exists('tpmeta_field')? tpmeta_field('meta_key_id_here') : '';
-```
+?>`
 
 ### Get the meta value for specific post
 
-```php
+`<?php
 $value = function_exists('tpmeta_field')? tpmeta_field('meta_key_id_here', $post_id) : '';
-```
+?>`
 
 ### Get gallery images
 
-```php
+`<?php
 $tp_gallery_images = function_exists('tpmeta_gallery_field') ? tpmeta_gallery_field('gallery_meta_key') : ''; //tpmeta_gallery_field($string_ids, $size)
 
 foreach($tp_gallery_images as $single_image_src){
     echo $single_image_src['url'] ."<br>";
     echo $single_image_src['alt'] ."<br>";
 }
-```
+?>`
 
 ### Get single image
 
-```php
+`<?php
 $tp_image = function_exists('tpmeta_image_field') ? tpmeta_image_field('image_meta_key') : ''; // tpmeta_image_field($id, $size)
 
 echo $tp_image['url'];
 echo $tp_image['alt'];
-```
+?>`
 
 ### Get Repeater Data
 
-```php
+`<?php
 $tp_repeater = function_exists('tpmeta_field') ? tpmeta_field('repeater_meta_key') : ''; // tpmeta_field($meta_key, $post_id)
 
 foreach($tp_repeater as $row){ // Iterate the data with loop
 	echo $row['repeater_sub_field_key'] // get the subfield value by repeater inner array field key
 }
-```
+?>`
 
 ### Access Single Image and Gallery Images Inside Repeater
-```php
+
+`<?php
 $tp_repeater = function_exists('tpmeta_field') ? tpmeta_field('repeater_meta_key') : ''; // tpmeta_field($meta_key, $post_id)
 
 foreach($tp_repeater as $row){ // Iterate the data with loop
@@ -412,7 +449,7 @@ foreach($tp_repeater as $row){ // Iterate the data with loop
 
      $image = tpmeta_image($row['repeater_sub_field_key'], 'image_size');
 }
-```
+?>`
 
 
 == Frequently Asked Questions ==
@@ -451,27 +488,97 @@ Yes, contributions are welcome! If you have any ideas or improvements for the pl
 
 == Screenshots ==
 
-1. Variation Color Swatch Preview
-2. Variation Image Swatch Preview
-3. Variation Button / Label Swatch Preview
-4. Product QuickView Preview
-5. Out Of Stock Variation Preview
-6. Tooltip Preview
-7. Tooltip Setting
-8. Attribute Variation Shape
-9. Attribute Variation Display Behavior
-10. Variation Swatches Size and Font Setting
-11. Global Variation Image Swatches Attribute List Preview
-12. Global Variation Color Swatches Attribute List Preview
+1. Metafields With Page
+2. Metafields Repeater With Product
+3. How To Code
 
 == Changelog ==
 
 
-= 1.0.0  =
+= 1.3.1  =
 
-* Update: No Update
+* Update: No Update.
+
+= 1.0.1  =
+
+* Update: Docs Updated.
+
+= 1.0.2  =
+
+* Update: Docs Updated.
+
+= 1.0.3  =
+
+* Update: Final Docs Updated previous readme deleted.
+
+= 1.0.4  =
+
+* Update: New UI added.
+
+= 1.0.5  =
+
+* Update: New UI added.
+
+= 1.0.6  =
+
+* Update: User meta issue solved.
+
+= 1.0.7  =
+
+* Update: Fields Column Number Added.
+
+= 1.0.8  =
+
+* Update: Column Issue solved.
+
+= 1.0.9  =
+
+* Update: Checkbox field and multi select added.
+
+= 1.1.0  =
+
+* Update: “custom_settings_page” not found or invalid solved.
+
+= 1.1.1  =
+
+* Update: Repeater dragula js added.
+
+= 1.1.2  =
+
+* Update: Select field issue solved.
+
+= 1.1.3.1  =
+
+* Update: Fields issue solved.
+
+= 1.1.4  =
+
+* Update: Select Field Updated.
+= 1.1.5 =
+
+* Update: Select Field Updated.
+= 1.1.6  =
+
+* Update: Select Field Updated.
+
+= 1.1.7  =
+* Update: Default value key solved
+
+= 1.1.8  =
+* Update: Repeater issue solved
+
+= 1.1.9  =
+* Update: Repeater select field issue solved
+
+= 1.2  =
+* Update: Multiselect field issue solved
+
+= 1.3  =
+* Update: Multiselect field issue solved
+
+= 1.3.1  =
+* Update: Docs Updated
 
 == Upgrade Notice ==
-
 = 1.0.0 =
 You can use a pro version of this plugin.

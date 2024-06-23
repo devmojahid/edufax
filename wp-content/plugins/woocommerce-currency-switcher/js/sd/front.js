@@ -1,4 +1,5 @@
-'use strict'; 
+'use strict';
+
 window.addEventListener('load', function () {
 
     let selectrons = document.querySelectorAll('div[data-woocs-sd]');

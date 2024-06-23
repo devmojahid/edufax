@@ -4,7 +4,7 @@
  * The admin-specific functionality of the plugin.
  *
  * @link       https://themepure.net
- * @since      1.0.0
+ * @since      1.3.1
  *
  * @package    tpmeta
  * @subpackage tpmeta/admin
@@ -25,7 +25,7 @@ class tpmeta_admin {
 	/**
 	 * The ID of this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    1.3.1
 	 * @access   private
 	 * @var      string    $plugin_name    The ID of this plugin.
 	 */
@@ -34,7 +34,7 @@ class tpmeta_admin {
 	/**
 	 * The version of this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    1.3.1
 	 * @access   private
 	 * @var      string    $version    The current version of this plugin.
 	 */
@@ -43,7 +43,7 @@ class tpmeta_admin {
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since    1.0.0
+	 * @since    1.3.1
 	 * @param      string    $plugin_name       The name of this plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
@@ -57,7 +57,7 @@ class tpmeta_admin {
 	/**
 	 * Register the stylesheets for the admin area.
 	 *
-	 * @since    1.0.0
+	 * @since    1.3.1
 	 */
 	public function enqueue_styles() {
 
@@ -80,7 +80,7 @@ class tpmeta_admin {
 	/**
 	 * Register the JavaScript for the admin area.
 	 *
-	 * @since    1.0.0
+	 * @since    1.3.1
 	 */
 	public function enqueue_scripts() {
 

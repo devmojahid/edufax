@@ -36,7 +36,7 @@ if ( ! class_exists( 'YITH_WCAN_Shortcode_Filters' ) ) {
 			}
 
 			// retrieve preset.
-			$preset = YITH_WCAN_Preset_Factory::get_preset( $atts['slug'] );
+			$preset = YITH_WCAN_Presets_Factory::get_preset( $atts['slug'] );
 
 			if ( ! $preset || ! $preset->is_enabled() || ! $preset->get_filters() ) {
 				return false;
@@ -54,7 +54,9 @@ if ( ! class_exists( 'YITH_WCAN_Shortcode_Filters' ) ) {
 		 * @return array Array of configuration.
 		 */
 		public static function get_gutenberg_config() {
-			$presets         = YITH_WCAN_Preset_Factory::list_presets();
+			add_action( 'yith_plugin_fw_gutenberg_before_do_shortcode', array( __CLASS__, 'fix_for_gutenberg_block' ), 10, 1 );
+
+			$presets         = YITH_WCAN_Presets_Factory::list_presets();
 			$presets_options = array_merge(
 				array(
 					'' => _x( 'Choose an option', '[ELEMENTOR] Default preset option', 'yith-woocommerce-ajax-navigation' ),
@@ -69,6 +71,7 @@ if ( ! class_exists( 'YITH_WCAN_Shortcode_Filters' ) ) {
 					'title'          => _x( 'YITH AJAX Filters Preset', '[GUTENBERG]: block name', 'yith-woocommerce-ajax-navigation' ),
 					'description'    => _x( 'Show filters from a preset', '[GUTENBERG]: block description', 'yith-woocommerce-ajax-navigation' ),
 					'shortcode_name' => 'yith_wcan_filters',
+					'empty_message'  => _x( 'Please, choose the preset to render', '[GUTENBERG]: block empty message', 'yith-woocommerce-ajax-navigation' ),
 					'attributes'     => array(
 						'slug' => array(
 							'type'    => 'select',
@@ -81,6 +84,17 @@ if ( ! class_exists( 'YITH_WCAN_Shortcode_Filters' ) ) {
 			);
 
 			return $blocks;
+		}
+
+		/**
+		 * Prevent lazy loading when we're already rendering the shortcode in Preview mode via AJAX
+		 *
+		 * @param string $shortcode Shortcode being rendered.
+		 *
+		 * @return void
+		 */
+		public static function fix_for_gutenberg_block( $shortcode ) {
+			add_filter( 'yith_wcan_should_lazy_load_filters', '__return_false' );
 		}
 	}
 }

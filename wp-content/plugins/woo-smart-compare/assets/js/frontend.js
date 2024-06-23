@@ -18,8 +18,7 @@
     }
 
     $('.woosc-settings-fields').sortable({
-      handle: '.move',
-      update: function(event, ui) {
+      handle: '.move', update: function(event, ui) {
         woosc_save_settings();
       },
     });
@@ -80,8 +79,7 @@
     $('.woosc-share-content').addClass('woosc-loading');
 
     var data = {
-      action: 'woosc_share',
-      nonce: woosc_vars.nonce,
+      action: 'woosc_share', nonce: woosc_vars.nonce,
     };
 
     jQuery.post(woosc_vars.ajax_url, data, function(response) {
@@ -93,7 +91,16 @@
   $(document).
       on('click touch', '#woosc_copy_url, #woosc_copy_btn', function(e) {
         e.preventDefault();
-        woosc_copy_to_clipboard('#woosc_copy_url');
+        let $link = $('#woosc_copy_url');
+        let link = $link.val();
+
+        navigator.clipboard.writeText(link).then(function() {
+          alert(woosc_vars.copied_text.replace('%s', link));
+        }, function() {
+          alert('Failure to copy!');
+        });
+
+        $link.select();
       });
 
   // search
@@ -146,56 +153,62 @@
 
   // woovr
   $(document).on('woovr_selected', function(e, selected) {
-    var id = selected.attr('data-id');
-    var pid = selected.attr('data-pid');
+    if (woosc_vars.variations === 'yes') {
+      var id = selected.attr('data-id');
+      var pid = selected.attr('data-pid');
 
-    if (id > 0) {
-      $('.woosc-btn-' + pid).
-          removeClass('woosc-btn-added woosc-added').
-          attr('data-id', id);
-    } else {
-      $('.woosc-btn-' + pid).
-          removeClass('woosc-btn-added woosc-added').
-          attr('data-id', pid);
+      if (id > 0) {
+        $('.woosc-btn-' + pid).
+            removeClass('woosc-btn-added woosc-added').
+            attr('data-id', id);
+      } else {
+        $('.woosc-btn-' + pid).
+            removeClass('woosc-btn-added woosc-added').
+            attr('data-id', pid);
+      }
     }
   });
 
   // found variation
   $(document).on('found_variation', function(e, t) {
-    var product_id = $(e['target']).attr('data-product_id');
+    if (woosc_vars.variations === 'yes') {
+      var product_id = $(e['target']).attr('data-product_id');
 
-    $('.woosc-btn-' + product_id).
-        removeClass('woosc-btn-added woosc-added').
-        attr('data-id', t.variation_id);
+      $('.woosc-btn-' + product_id).
+          removeClass('woosc-btn-added woosc-added').
+          attr('data-id', t.variation_id);
 
-    $('.woosc-btn-' + product_id + ':not(.woosc-btn-has-icon)').
-        html(woosc_vars.button_text);
-    $('.woosc-btn-has-icon.woosc-btn-' + product_id).
-        find('.woosc-btn-icon').
-        removeClass(woosc_vars.button_added_icon).
-        addClass(woosc_vars.button_normal_icon);
-    $('.woosc-btn-has-icon.woosc-btn-' + product_id).
-        find('.woosc-btn-text').
-        html(woosc_vars.button_text);
+      $('.woosc-btn-' + product_id + ':not(.woosc-btn-has-icon)').
+          html(woosc_vars.button_text);
+      $('.woosc-btn-has-icon.woosc-btn-' + product_id).
+          find('.woosc-btn-icon').
+          removeClass(woosc_vars.button_added_icon).
+          addClass(woosc_vars.button_normal_icon);
+      $('.woosc-btn-has-icon.woosc-btn-' + product_id).
+          find('.woosc-btn-text').
+          html(woosc_vars.button_text);
+    }
   });
 
   // reset data
   $(document).on('reset_data', function(e) {
-    var product_id = $(e['target']).attr('data-product_id');
+    if (woosc_vars.variations === 'yes') {
+      var product_id = $(e['target']).attr('data-product_id');
 
-    $('.woosc-btn-' + product_id).
-        removeClass('woosc-btn-added woosc-added').
-        attr('data-id', product_id);
+      $('.woosc-btn-' + product_id).
+          removeClass('woosc-btn-added woosc-added').
+          attr('data-id', product_id);
 
-    $('.woosc-btn-' + product_id + ':not(.woosc-btn-has-icon)').
-        html(woosc_vars.button_text);
-    $('.woosc-btn-has-icon.woosc-btn-' + product_id).
-        find('.woosc-btn-icon').
-        removeClass(woosc_vars.button_added_icon).
-        addClass(woosc_vars.button_normal_icon);
-    $('.woosc-btn-has-icon.woosc-btn-' + product_id).
-        find('.woosc-btn-text').
-        html(woosc_vars.button_text);
+      $('.woosc-btn-' + product_id + ':not(.woosc-btn-has-icon)').
+          html(woosc_vars.button_text);
+      $('.woosc-btn-has-icon.woosc-btn-' + product_id).
+          find('.woosc-btn-icon').
+          removeClass(woosc_vars.button_added_icon).
+          addClass(woosc_vars.button_normal_icon);
+      $('.woosc-btn-has-icon.woosc-btn-' + product_id).
+          find('.woosc-btn-text').
+          html(woosc_vars.button_text);
+    }
   });
 
   // remove all
@@ -312,14 +325,26 @@
 
   // remove on page
   $(document).
-      on('click touch', '.woosc-page .woosc-remove',
-          function(e) {
-            e.preventDefault();
-            var product_id = $(this).attr('data-id');
+      on('click touch', '.woosc-page .woosc-remove', function(e) {
+        e.preventDefault();
+        var product_id = $(this).attr('data-id');
 
-            woosc_remove_product(product_id);
-            location.reload();
-          });
+        woosc_remove_product(product_id);
+        location.reload();
+      });
+
+  // remove all on page
+  $(document).
+      on('click touch', '.woosc-page .woosc-remove-all', function(e) {
+        e.preventDefault();
+        var r = confirm(woosc_vars.remove_all);
+
+        if (r == true) {
+          woosc_remove_product('all');
+        }
+
+        location.reload();
+      });
 
   // remove on sidebar
   $(document).on('click touch', '.woosc-sidebar-item-remove', function(e) {
@@ -344,33 +369,19 @@
 
   // close
   $(document).on('click touch', function(e) {
-    if ((
-        (woosc_vars.click_outside === 'yes') ||
-        ((woosc_vars.click_outside === 'yes_empty') &&
-            (parseInt($('.woosc-bar').attr('data-count')) === 0))
-    ) && (
-        $(e.target).closest('.wpc_compare_count').length === 0
-    ) && (
-        $(e.target).closest('.woosc-popup').length === 0
-    ) && (
-        $(e.target).closest('.woosc-btn').length === 0
-    ) && (
-        $(e.target).closest('.woosc-table').length === 0
-    ) && (
-        $(e.target).closest('.woosc-bar').length === 0
-    ) && (
-        $(e.target).closest('.woosc-menu-item a').length === 0
-    ) && (
-        $(e.target).closest('.woosc-menu a').length === 0
-    ) && (
-        $(e.target).closest('.woosc-sidebar-btn').length === 0
-    ) && (
-        (
-            woosc_vars.open_button === ''
-        ) || (
-            $(e.target).closest(woosc_vars.open_button).length === 0
-        )
-    )) {
+    if (((woosc_vars.click_outside === 'yes') ||
+            ((woosc_vars.click_outside === 'yes_empty') &&
+                (parseInt($('.woosc-bar').attr('data-count')) === 0))) &&
+        ($(e.target).closest('.wpc_compare_count').length === 0) &&
+        ($(e.target).closest('.woosc-popup').length === 0) &&
+        ($(e.target).closest('.woosc-btn').length === 0) &&
+        ($(e.target).closest('.woosc-table').length === 0) &&
+        ($(e.target).closest('.woosc-bar').length === 0) &&
+        ($(e.target).closest('.woosc-menu-item a').length === 0) &&
+        ($(e.target).closest('.woosc-menu a').length === 0) &&
+        ($(e.target).closest('.woosc-sidebar-btn').length === 0) &&
+        ((woosc_vars.open_button === '') ||
+            ($(e.target).closest(woosc_vars.open_button).length === 0))) {
       woosc_close();
     }
   });
@@ -490,9 +501,7 @@
   function woosc_set_cookie(cname, cvalue, exdays) {
     var d = new Date();
 
-    d.setTime(d.getTime() + (
-        exdays * 24 * 60 * 60 * 1000
-    ));
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
 
     var expires = 'expires=' + d.toUTCString();
 
@@ -728,9 +737,7 @@
 
   function woosc_load_data(get_data) {
     var data = {
-      action: 'woosc_load_data',
-      get_data: get_data,
-      nonce: woosc_vars.nonce,
+      action: 'woosc_load_data', get_data: get_data, nonce: woosc_vars.nonce,
     };
 
     if (get_data === 'table') {
@@ -830,8 +837,7 @@
     $('.woosc-bar').addClass('woosc-bar-open');
 
     $('.woosc-bar-items').sortable({
-      handle: 'img',
-      update: function(event, ui) {
+      handle: 'img', update: function(event, ui) {
         woosc_save_products();
       },
     });
@@ -972,23 +978,25 @@
   }
 
   function woosc_hide_empty() {
-    $('.woosc_table > tbody > tr').each(function() {
-      var $tr = $(this);
-      var _td = 0;
-      var _empty = true;
+    if (woosc_vars.hide_empty_row === 'yes') {
+      $('.woosc_table > tbody > tr').each(function() {
+        var $tr = $(this);
+        var _td = 0;
+        var _empty = true;
 
-      $tr.children('td').each(function() {
-        if ((_td > 0) && ($(this).html().length > 0)) {
-          _empty = false;
-          return false;
+        $tr.children('td').each(function() {
+          if ((_td > 0) && ($(this).html().length > 0)) {
+            _empty = false;
+            return false;
+          }
+          _td++;
+        });
+
+        if (_empty) {
+          $tr.addClass('tr-empty').remove();
         }
-        _td++;
       });
-
-      if (_empty) {
-        $tr.addClass('tr-empty').remove();
-      }
-    });
+    }
   }
 
   function woosc_highlight_differences() {
@@ -1041,47 +1049,9 @@
     }
   }
 
-  function woosc_copy_to_clipboard(el) {
-    // resolve the element
-    el = (typeof el === 'string') ? document.querySelector(el) : el;
-
-    // handle iOS as a special case
-    if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
-      // save current contentEditable/readOnly status
-      var editable = el.contentEditable;
-      var readOnly = el.readOnly;
-
-      // convert to editable with readonly to stop iOS keyboard opening
-      el.contentEditable = true;
-      el.readOnly = true;
-
-      // create a selectable range
-      var range = document.createRange();
-      range.selectNodeContents(el);
-
-      // select the range
-      var selection = window.getSelection();
-      selection.removeAllRanges();
-      selection.addRange(range);
-      el.setSelectionRange(0, 999999);
-
-      // restore contentEditable/readOnly to original state
-      el.contentEditable = editable;
-      el.readOnly = readOnly;
-    } else {
-      el.select();
-    }
-
-    // execute copy command
-    document.execCommand('copy');
-
-    // alert
-    alert(woosc_vars.copied_text.replace('%s', el.value));
-  }
-
   function woosc_get_cookie_products() {
-    return woosc_vars.user_id !== '' ?
-        'woosc_products_' + woosc_vars.user_id :
-        'woosc_products';
+    return woosc_vars.user_id !== ''
+        ? 'woosc_products_' + woosc_vars.user_id
+        : 'woosc_products';
   }
 })(jQuery);

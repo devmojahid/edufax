@@ -10,6 +10,12 @@ class WOOCS_SMART_DESIGNER {
 
         add_action('wp_ajax_woocs_sd_create', array($this, 'create'));
         add_action('wp_ajax_woocs_sd_delete', function () {
+			if (!current_user_can('manage_woocommerce')) {
+				die('0');
+			}			
+			if (!(isset($_POST['wpnonce_sd']) && wp_verify_nonce($_POST['wpnonce_sd'], 'woocs_wpnonce_sd'))) {
+				die();
+			}			
             $id = intval($_REQUEST['id']);
             delete_option('woocs_sd_' . $id);
             $designs = $this->get_designs();
@@ -20,6 +26,12 @@ class WOOCS_SMART_DESIGNER {
         });
         add_action('wp_ajax_woocs_sd_save', array($this, 'save'));
         add_action('wp_ajax_woocs_sd_get', function () {
+			if (!current_user_can('manage_woocommerce')) {
+				die('0');
+			}			
+			if (!(isset($_POST['wpnonce_sd']) && wp_verify_nonce($_POST['wpnonce_sd'], 'woocs_wpnonce_sd'))) {
+				die();
+			}			
             die(json_encode($this->get(intval($_REQUEST['id']))));
         });
 
@@ -100,6 +112,12 @@ class WOOCS_SMART_DESIGNER {
 
     //ajax
     public function create() {
+        if (!current_user_can('manage_woocommerce')) {
+            die('0');
+        }		
+		if (!(isset($_POST['wpnonce_sd']) && wp_verify_nonce($_POST['wpnonce_sd'], 'woocs_wpnonce_sd'))) {
+            die();
+        }		
         $designs = $this->get_designs();
 
         if (empty($designs)) {
@@ -118,10 +136,20 @@ class WOOCS_SMART_DESIGNER {
 
     //ajax
     public function save() {
+        if (!current_user_can('manage_woocommerce')) {
+            die('0');
+        }		
+		if (!(isset($_POST['wpnonce_sd']) && wp_verify_nonce($_POST['wpnonce_sd'], 'woocs_wpnonce_sd'))) {
+            die();
+        }
+			
         $data = json_decode(stripslashes($_REQUEST['options']), true);
+		$data = wc_clean($data);
+		$data_to_int = array_intersect_key($data, array_flip(array('width_p100', 'show_title', 'title_bold', 'show_description', 'show_img','img_pos')));
+		$data = array_merge($data, array_map('intval', $data_to_int));
+		
         update_option('woocs_sd_' . intval($_REQUEST['id']), $data);
     }
-
     public function get($id) {
         if (get_option('woocs_sd_' . $id, -1) === -1) {
             return -1;

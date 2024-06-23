@@ -7,6 +7,10 @@
 
 if( !function_exists('pure_wc_archive_swatches') ){
     function pure_wc_archive_swatches(){
+		$get_options = TP_Wvs_Helper::get_option('tpwvs_shop');
+		if(!$get_options['enable_swatches']){
+			return;
+		}
         global $product;
 
 		if ( ! $product->is_type( 'variable' ) ) {
@@ -31,19 +35,18 @@ if( !function_exists('pure_wc_archive_swatches') ){
 			<?php if ( empty( $available_variations ) && false !== $available_variations ) { ?>
 				<p class="stock out-of-stock"><?php echo esc_html( apply_filters( 'woocommerce_out_of_stock_message', __( 'This product is currently out of stock and unavailable.', 'pure-wc-swatches' ) ) ); ?></p>
 			<?php } else { ?>
-				<table class="tpwvs-shop-variations variations" cellspacing="0">
-					<tbody>
+				<div class="tpwvs-shop-variations variations" cellspacing="0">
+					<ul>
 						<?php foreach ( $attributes as $attribute_name => $options ) { ?>
-							<tr>
+							<li>
 								<?php if ( get_option('label') ) { ?>
-									<td class="label woocommerce-loop-product__title"><label for="<?php echo esc_attr( sanitize_title( $attribute_name ) ); ?>">
+									<div class="label woocommerce-loop-product__title">
+										<label for="<?php echo esc_attr( sanitize_title( $attribute_name ) ); ?>">
 											<?php echo esc_html( wc_attribute_label( $attribute_name ) ); ?>
 										</label>
-									</td>
+									</div>
 								<?php } ?>
-							</tr>
-							<tr>
-								<td class="value">
+								<div class="value">
 									<?php
 									wc_dropdown_variation_attribute_options(
 										array(
@@ -54,11 +57,11 @@ if( !function_exists('pure_wc_archive_swatches') ){
 									);
 									echo end( $attribute_keys ) === $attribute_name ? wp_kses_post( apply_filters( 'woocommerce_reset_variations_link', '' ) ) : '';
 									?>
-								</td>
-							</tr>
+								</div>
+							</li>
 						<?php } ?>
-					</tbody>
-				</table>
+					</ul>
+				</div>
 			<?php } ?>
 		</div>
 		<?php
