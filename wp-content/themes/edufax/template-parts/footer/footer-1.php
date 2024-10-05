@@ -82,7 +82,9 @@ switch ($footer_columns) {
 
 
 <footer>
-    <section class="tf__footer" style="background: url(<?php echo get_template_directory_uri(); ?>/assets/images/footer_bg.png);" data-bg-color="<?php print esc_attr($bg_color); ?>">
+    <section class="tf__footer"
+        style="background: url(<?php echo get_template_directory_uri(); ?>/assets/images/footer_bg.png);"
+        data-bg-color="<?php print esc_attr($bg_color); ?>">
         <?php if (is_active_sidebar('footer-1') or is_active_sidebar('footer-2') or is_active_sidebar('footer-3') or is_active_sidebar('footer-4')) : ?>
             <div class="tf__footer_overlay pt_120 xs_pt_80">
                 <div class="container">
@@ -120,11 +122,7 @@ switch ($footer_columns) {
                         <div class="col-12">
                             <div class="tf__footer_bottom">
                                 <p><?php print edufax_copyright_text(); ?></p>
-                                <ul>
-                                    <li><a href="#">Privacy Policy </a></li>
-                                    <li><a href="#"> Terms & Conditions</a></li>
-                                    <li><a href="#">Support</a></li>
-                                </ul>
+                                <?php edufax_footer_menu(); ?>
                             </div>
                         </div>
                     </div>

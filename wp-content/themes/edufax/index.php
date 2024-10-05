@@ -15,7 +15,7 @@
 
 get_header();
 
-$blog_column = is_active_sidebar('blog-sidebar') ? 'col-xl-9 col-lg-8' : 'col-xl-12 col-lg-12';
+$blog_column = is_active_sidebar('blog-sidebar') ? 'col-xl-8 col-lg-8 wow fadeInUp' : 'col-xl-12 col-lg-12';
 
 ?>
 
@@ -47,19 +47,23 @@ $blog_column = is_active_sidebar('blog-sidebar') ? 'col-xl-9 col-lg-8' : 'col-xl
 						<?php
 						endwhile;
 						?>
-						<div class="tp-pagination mt-20">
-							<?php edufax_pagination('<i class="fal fa-arrow-left"></i>', '<i class="fal fa-arrow-right"></i>', '', ['class' => '']); ?>
+						<div class="tf__pagination mt_60">
+							<nav class="Page navigation example">
+								<?php edufax_pagination('<i class="far fa-chevron-left"></i>', '<i class="far fa-chevron-right"></i>', '', ['class' => '']); ?>
+							</nav>
 						</div>
-					<?php
-					else :
+					<?php else :
 						get_template_part('template-parts/content', 'none');
 					endif;
 					?>
 				</div>
 			</div>
 
+			<!-- add Blog Sidebar -->
+
+
 			<?php if (is_active_sidebar('blog-sidebar')) : ?>
-				<div class="col-xl-3 col-lg-4">
+				<div class="col-xl-4 col-lg-4">
 					<div class="tp-sidebar-wrapper tp-sidebar-ml--24">
 						<?php get_sidebar(); ?>
 					</div>

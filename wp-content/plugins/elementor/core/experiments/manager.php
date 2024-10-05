@@ -335,22 +335,6 @@ class Manager extends Base_Object {
 
 	private function add_default_features() {
 		$this->add_feature( [
-			'name' => 'e_optimized_assets_loading',
-			'title' => esc_html__( 'Improved Asset Loading', 'elementor' ),
-			'tag' => esc_html__( 'Performance', 'elementor' ),
-			'description' => sprintf(
-				'%1$s <a href="https://go.elementor.com/wp-dash-improved-asset-loading/" target="_blank">%2$s</a>',
-				esc_html__( 'Please Note! The "Improved Asset Loading" mode reduces the amount of code that is loaded on the page by default. When activated, parts of the infrastructure code will be loaded dynamically, only when needed. Keep in mind that activating this experiment may cause conflicts with incompatible plugins.', 'elementor' ),
-				esc_html__( 'Learn more', 'elementor' )
-			),
-			static::TYPE_HIDDEN => true,
-			'mutable' => false,
-			'release_status' => self::RELEASE_STATUS_STABLE,
-			'default' => self::STATE_ACTIVE,
-			'generator_tag' => true,
-		] );
-
-		$this->add_feature( [
 			'name' => 'e_optimized_css_loading',
 			'title' => esc_html__( 'Improved CSS Loading', 'elementor' ),
 			'tag' => esc_html__( 'Performance', 'elementor' ),
@@ -360,10 +344,9 @@ class Manager extends Base_Object {
 				esc_html__( 'Learn more', 'elementor' )
 			),
 			'release_status' => self::RELEASE_STATUS_STABLE,
-			'new_site' => [
-				'default_active' => true,
-				'minimum_installation_version' => '3.3.0',
-			],
+			'default' => self::STATE_INACTIVE,
+			static::TYPE_HIDDEN => true,
+			'mutable' => false,
 			'generator_tag' => true,
 		] );
 
@@ -387,7 +370,6 @@ class Manager extends Base_Object {
 		$this->add_feature( [
 			'name' => 'additional_custom_breakpoints',
 			'title' => esc_html__( 'Additional Custom Breakpoints', 'elementor' ),
-			'tag' => esc_html__( 'Performance', 'elementor' ),
 			'description' => sprintf(
 				'%1$s <a href="https://go.elementor.com/wp-dash-additional-custom-breakpoints/" target="_blank">%2$s</a>',
 				esc_html__( 'Get pixel-perfect design for every screen size. You can now add up to 6 customizable breakpoints beyond the default desktop setting: mobile, mobile extra, tablet, tablet extra, laptop, and widescreen.', 'elementor' ),
@@ -459,10 +441,7 @@ class Manager extends Base_Object {
 			'description' => esc_html__( 'Improve the performance of the Nested widgets.', 'elementor' ),
 			static::TYPE_HIDDEN => true,
 			'release_status' => self::RELEASE_STATUS_DEV,
-			'default' => self::STATE_INACTIVE,
-			'new_site' => [
-				'default_active' => false,
-			],
+			'default' => self::STATE_ACTIVE,
 		] );
 
 		$this->add_feature( [
@@ -486,6 +465,13 @@ class Manager extends Base_Object {
 			'description' => esc_html__( 'Reduce the DOM size by eliminating HTML tags in various elements and widgets. This experiment includes markup changes so it might require updating custom CSS/JS code and cause compatibility issues with third party plugins.', 'elementor' ),
 			static::TYPE_HIDDEN => true,
 			'release_status' => self::RELEASE_STATUS_DEV,
+			'default' => self::STATE_INACTIVE,
+		] );
+
+		$this->add_feature( [
+			'name' => 'e_swiper_css_conditional_loading',
+			'title' => esc_html__( 'Conditionally load Swiper CSS files', 'elementor' ),
+			static::TYPE_HIDDEN => true,
 			'default' => self::STATE_INACTIVE,
 		] );
 

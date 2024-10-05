@@ -78,21 +78,21 @@ function edufax_breadcrumb_func()
         $breadcrumb_padding_bottom = !empty($breadcrumb_padding['padding-bottom']) ? $breadcrumb_padding['padding-bottom'] : '';
 
 ?>
-
-
-        <section class="tf__breadcrumb" style="background: url(images/breadcrumb_bg.jpg);" data-padding-top="<?php print esc_attr($breadcrumb_padding_top); ?>" data-padding-bottom="<?php print esc_attr($breadcrumb_padding_bottom); ?>" class="breadcrumb__area include-bg pt-150 pb-150 breadcrumb__overlay breadcrumb__style-3 <?php print esc_attr($breadcrumb_class); ?>" data-background="<?php print esc_attr($bg_main_img); ?>">
+        <section class="tf__breadcrumb <?php print esc_attr($breadcrumb_class); ?>"
+            style="background: url(<?php print esc_attr($bg_main_img); ?>);"
+            data-padding-top="<?php print esc_attr($breadcrumb_padding_top); ?>"
+            data-padding-bottom="<?php print esc_attr($breadcrumb_padding_bottom); ?>"
+            data-background="<?php print esc_attr($bg_main_img); ?>">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
                         <div class="tf__breadcrumb_text">
                             <h1><?php echo edufax_kses($title); ?></h1>
-                            <div class="base">
-                                <?php
-                                if (function_exists('bcn_display')) {
-                                    bcn_display();
-                                }
-                                ?>
-                            </div>
+                            <?php
+                            if (function_exists('bcn_display')) {
+                                bcn_display();
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>

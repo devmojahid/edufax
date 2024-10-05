@@ -27,7 +27,6 @@
 
     <?php wp_body_open(); ?>
 
-
     <?php
     $edufax_preloader = get_theme_mod('edufax_preloader_switch', false);
     $edufax_preloader_text = get_theme_mod('edufax_preloader_text', __('Edufax', 'edufax'));

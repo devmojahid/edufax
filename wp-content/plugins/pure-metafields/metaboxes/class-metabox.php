@@ -156,7 +156,7 @@ class tpmeta_meta_box {
 		
 		<?php if(isset($meta['post_format']) && $meta['post_format'] != ""): ?>
 		<script type="text/javascript">
-			(function( $, document ){
+			(function( $, document, wp ){
 				"use scrict";
 				$(document).ready(function(){
 					if(wp.data == undefined){
@@ -168,14 +168,16 @@ class tpmeta_meta_box {
 							}
 						})
 					}else{
-						wp.data.subscribe( function () {
-							var getFormat = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'format' )
-							if(getFormat == '<?php echo esc_html($meta['post_format']); ?>'){
-								$('#<?php echo esc_html(esc_html($meta['metabox_id'])); ?>').show()
-							}else{
-								$('#<?php echo esc_html(esc_html($meta['metabox_id'])); ?>').hide()
-							}
-						})
+						if(typeof wp !== 'undefined' && wp.data && wp.data.select('core/editor')){
+							wp.data.subscribe( function () {
+								var getFormat = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'format' )
+								if(getFormat == '<?php echo esc_html($meta['post_format']); ?>'){
+									$('#<?php echo esc_html(esc_html($meta['metabox_id'])); ?>').show()
+								}else{
+									$('#<?php echo esc_html(esc_html($meta['metabox_id'])); ?>').hide()
+								}
+							})
+						}
 					}
 					
 				})

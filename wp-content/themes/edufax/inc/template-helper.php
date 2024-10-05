@@ -114,7 +114,8 @@ function edufax_header_lang_defualt()
 ?>
 
     <div class="tp-header-top-menu-item tp-header-lang">
-        <span class="tp-header-lang-toggle" id="tp-header-lang-toggle"><?php print esc_html__('English', 'edufax'); ?></span>
+        <span class="tp-header-lang-toggle"
+            id="tp-header-lang-toggle"><?php print esc_html__('English', 'edufax'); ?></span>
         <?php do_action('edufax_language'); ?>
     </div>
 <?php
@@ -173,11 +174,13 @@ function edufax_offcanvas_lang_defualt()
     <div class="offcanvas__select language">
         <div class="offcanvas__lang d-flex align-items-center justify-content-md-end">
             <div class="offcanvas__lang-img mr-15">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/icon/language-flag.png" alt="<?php echo esc_attr__('language', 'edufax'); ?>">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/icon/language-flag.png"
+                    alt="<?php echo esc_attr__('language', 'edufax'); ?>">
             </div>
 
             <div class="offcanvas__lang-wrapper">
-                <span class="offcanvas__lang-selected-lang tp-lang-toggle" id="tp-offcanvas-lang-toggle"><?php echo esc_html__('English', 'edufax'); ?></span>
+                <span class="offcanvas__lang-selected-lang tp-lang-toggle"
+                    id="tp-offcanvas-lang-toggle"><?php echo esc_html__('English', 'edufax'); ?></span>
                 <?php do_action('edufax_offcanvas_language'); ?>
             </div>
         </div>
@@ -263,11 +266,13 @@ function edufax_header_logo()
 
     <?php if ($edufax_logo_on == 'on') : ?>
         <a class="secondary-logo navbar-brand" href="<?php print esc_url(home_url('/')); ?>">
-            <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto" src="<?php print esc_url($edufax_secondary_logo); ?>" alt="<?php print esc_attr__('logo', 'edufax'); ?>" />
+            <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto"
+                src="<?php print esc_url($edufax_secondary_logo); ?>" alt="<?php print esc_attr__('logo', 'edufax'); ?>" />
         </a>
     <?php else : ?>
         <a class="standard-logo navbar-brand" href="<?php print esc_url(home_url('/')); ?>">
-            <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto" src="<?php print esc_url($edufax_site_logo); ?>" alt="<?php print esc_attr__('logo', 'edufax'); ?>" />
+            <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto"
+                src="<?php print esc_url($edufax_site_logo); ?>" alt="<?php print esc_attr__('logo', 'edufax'); ?>" />
         </a>
     <?php endif; ?>
 <?php
@@ -288,8 +293,10 @@ function edufax_header_double_logo()
     ?>
 
     <a href="<?php print esc_url(home_url('/')); ?>">
-        <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto" class="logo-light" src="<?php print esc_url($edufax_logo_white); ?>" alt="<?php print esc_attr__('logo', 'edufax'); ?>">
-        <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto" class="logo-dark" src="<?php print esc_url($edufax_site_logo); ?>" alt="<?php print esc_attr__('logo', 'edufax'); ?>">
+        <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto" class="logo-light"
+            src="<?php print esc_url($edufax_logo_white); ?>" alt="<?php print esc_attr__('logo', 'edufax'); ?>">
+        <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto" class="logo-dark"
+            src="<?php print esc_url($edufax_site_logo); ?>" alt="<?php print esc_attr__('logo', 'edufax'); ?>">
     </a>
 <?php
 }
@@ -309,11 +316,13 @@ function edufax_footer_logo()
 
     <?php if (!empty($edufax_foooter_logo)) : ?>
         <a href="<?php print esc_url(home_url('/')); ?>">
-            <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto" src="<?php print esc_url($edufax_foooter_logo); ?>" alt="<?php print esc_attr__('logo', 'edufax'); ?>" />
+            <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto"
+                src="<?php print esc_url($edufax_foooter_logo); ?>" alt="<?php print esc_attr__('logo', 'edufax'); ?>" />
         </a>
     <?php else : ?>
         <a href="<?php print esc_url(home_url('/')); ?>">
-            <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto" src="<?php print esc_url($edufax_footer_logo_default); ?>" alt="<?php print esc_attr__('logo', 'edufax'); ?>" />
+            <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto"
+                src="<?php print esc_url($edufax_footer_logo_default); ?>" alt="<?php print esc_attr__('logo', 'edufax'); ?>" />
         </a>
     <?php endif; ?>
 <?php
@@ -331,12 +340,15 @@ function edufax_header_sticky_logo()
     ?>
     <?php if (!empty($edufax_sticky_logo)) : ?>
         <a href="<?php print esc_url(home_url('/')); ?>">
-            <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto" class="logo-dark" src="<?php print esc_url($edufax_sticky_logo); ?>" alt="logo">
+            <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto" class="logo-dark"
+                src="<?php print esc_url($edufax_sticky_logo); ?>" alt="logo">
         </a>
     <?php else : ?>
         <a href="<?php print esc_url(home_url('/')); ?>">
-            <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto" class="logo-dark" src="<?php print esc_url($edufax_logo); ?>" alt="logo">
-            <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto" class="logo-light" src="<?php print esc_url($edufax_secondary_logo); ?>" alt="logo">
+            <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto" class="logo-dark"
+                src="<?php print esc_url($edufax_logo); ?>" alt="logo">
+            <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto" class="logo-light"
+                src="<?php print esc_url($edufax_secondary_logo); ?>" alt="logo">
         </a>
     <?php endif; ?>
 <?php
@@ -381,19 +393,23 @@ function edufax_header_social_profiles()
         <?php endif; ?>
 
         <?php if (!empty($edufax_topbar_twitter_url)) : ?>
-            <li><a href="<?php print esc_url($edufax_topbar_twitter_url); ?>"><span><i class="fab fa-twitter"></i></span></a></li>
+            <li><a href="<?php print esc_url($edufax_topbar_twitter_url); ?>"><span><i class="fab fa-twitter"></i></span></a>
+            </li>
         <?php endif; ?>
 
         <?php if (!empty($edufax_topbar_instagram_url)) : ?>
-            <li><a href="<?php print esc_url($edufax_topbar_instagram_url); ?>"><span><i class="fab fa-instagram"></i></span></a></li>
+            <li><a href="<?php print esc_url($edufax_topbar_instagram_url); ?>"><span><i
+                            class="fab fa-instagram"></i></span></a></li>
         <?php endif; ?>
 
         <?php if (!empty($edufax_topbar_linkedin_url)) : ?>
-            <li><a href="<?php print esc_url($edufax_topbar_linkedin_url); ?>"><span><i class="fab fa-linkedin"></i></span></a></li>
+            <li><a href="<?php print esc_url($edufax_topbar_linkedin_url); ?>"><span><i class="fab fa-linkedin"></i></span></a>
+            </li>
         <?php endif; ?>
 
         <?php if (!empty($edufax_topbar_youtube_url)) : ?>
-            <li><a href="<?php print esc_url($edufax_topbar_youtube_url); ?>"><span><i class="fab fa-youtube"></i></span></a></li>
+            <li><a href="<?php print esc_url($edufax_topbar_youtube_url); ?>"><span><i class="fab fa-youtube"></i></span></a>
+            </li>
         <?php endif; ?>
     </ul>
 
@@ -714,9 +730,9 @@ if (!function_exists('edufax_pagination')) {
         $pagi = '';
         if (paginate_links($pagination) != '') {
             $paginations = paginate_links($pagination);
-            $pagi .= '<ul>';
+            $pagi .= '<ul class="pagination">';
             foreach ($paginations as $key => $pg) {
-                $pagi .= '<li>' . $pg . '</li>';
+                $pagi .= '<li class="page-item">' . $pg . '</li>';
             }
             $pagi .= '</ul>';
         }

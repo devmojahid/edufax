@@ -97,6 +97,7 @@ class Modules_Manager {
 			'shapes',
 			'favorites',
 			'admin-top-bar',
+			'checklist',
 			'element-manager',
 			'nested-elements',
 			// Depends on Nested Elements module
@@ -111,13 +112,19 @@ class Modules_Manager {
 			'image-loading-optimization',
 			'kit-elements-defaults',
 			'announcements',
+			'editor-app-bar',
 			'site-navigation',
 			'styleguide',
 			'element-cache',
 			'apps',
 			'home',
-			'conversion-center',
+			'link-in-bio',
+			'floating-buttons',
 			'content-sanitizer',
+			'editor-events',
+			'atomic-widgets',
+			'wc-product-editor',
+			'checklist',
 		];
 	}
 

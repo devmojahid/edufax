@@ -213,8 +213,13 @@ require_once EDUFAX_THEME_INC . '/common/edufax-widgets.php';
 if (class_exists('WooCommerce')) {
     require_once EDUFAX_THEME_INC . '/woocommerce/tp-woocommerce.php';
 }
-if (function_exists('tpmeta_kick')) {
-    require_once EDUFAX_THEME_INC . 'tp-metabox.php';
+// if (function_exists('tpmeta_kick')) {
+//     require_once EDUFAX_THEME_INC . 'ms-metabox.php';
+// }
+
+// if carbonfields inialized then include the file
+if (class_exists('Carbon_Fields\Carbon_Fields')) {
+    require_once EDUFAX_THEME_INC . 'ms-metabox.php';
 }
 
 /**
@@ -248,7 +253,8 @@ if (!function_exists('edufax_comment')) {
                     <div class="tp-postbox-details-comment-top d-flex justify-content-between align-items-start">
                         <div class="tp-postbox-details-comment-avater">
                             <h4 class="tp-postbox-details-comment-avater-title"><?php print get_comment_author_link(); ?></h4>
-                            <span class="tp-postbox-details-avater-meta"><?php comment_time(get_option('date_format')); ?></span>
+                            <span
+                                class="tp-postbox-details-avater-meta"><?php comment_time(get_option('date_format')); ?></span>
                         </div>
                         <div class="tp-postbox-details-comment-reply">
                             <?php comment_reply_link(array_merge($args, ['depth' => $depth, 'max_depth' => $args['max_depth']])); ?>

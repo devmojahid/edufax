@@ -1,10 +1,12 @@
-/*
-  Theme Name: Shofy - Multipurpose eCommerce WordPress Theme
-  Author: Theme_Pure
-  Support: https://help.themepure.net/login
-  Description: Shofy - Multipurpose eCommerce WordPress Theme
-  Version: 1.0.0
-*/
+/* 
+***************************************
+Template Name: EduFax - Online Courses & Education HTML Template
+Author: ThemeFax 
+Author Email: themefaxbd@gmail.com
+website: http://www.themefax.com/
+Version: 1.0
+Description: EduFax - Online Courses & Education HTML Template is a Modern, Creative, and Responsive. Template Design suitable for Educational Institutions like Universities and Colleges, Online Courses / Online Learning, and Events. Clean, crisp, and simple design that can easily be adapted and used for similar niche websites. EduFax Template has a fully responsive layout. It fits perfectly on various displays and resolutions from regular desktop screens to tablets, iPads, iPhones, and small mobile devices.
+***************************************
 
 /* CSS Index
 -----------------------------------
@@ -1382,4 +1384,241 @@ ul.wp-block-social-links{
 
 .wp-block-table.is-style-stripes tbody tr:nth-child(2n+1) {
 	background-color: #f0f0f0;
+}
+
+
+.tf__footer_content form select{
+	width: 100%;
+}
+
+.tf__sidebar form select{
+	width: 100%;
+}
+
+.tagcloud a {
+    font-size: 16px !important;
+    color: var(--tp-text-1);
+    padding: 8px 26px;
+    display: inline-block;
+    background: #F6F6F9;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+}
+
+.tp-footer-widget .tagcloud a:hover {
+	background: #F6F6F9;
+	color: #FF9B24;
+}
+
+.tf__sidebar_search .wp-block-search__button {
+    position: absolute;
+	top: 25px !important;
+    right: 0;
+    width: 80px;
+    height: 49px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 8px;
+    background: var(--colorPrimary);
+    color: var(--colorWhite);
+    transition: all linear .3s;
+}
+
+.tf__sidebar_post ul li{
+	display: block;
+}
+
+.tf__sidebar_post ul li .children li{
+	margin-left: 15px;
+}
+
+.footer_link ul li .rsswidget{
+	font-family: var(--tp-ff-p);
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--tp-common-white);
+    background-image: linear-gradient(#f1f1f5, #f3f3f8), linear-gradient(#f3f3f7, #f2f2f7);
+    background-size: 0% 1px, 0 1px;
+    background-position: 100% 100%, 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.2s linear;
+}
+
+.footer_link ul li {
+    color: #d3c6c6;
+}
+
+.tp-postbox-item.sticky {
+    border-top: 2px solid #FF9B24;
+}
+.sticky {
+    border: 2px solid #FF9B24;
+    padding: 30px;
+}
+
+.tf__pagination nav ul li .current {
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+	display: inline-block;
+    text-align: center;
+    padding: 0;
+    margin: 0px 10px;
+    border-radius: 50% !important;
+    font-weight: 600;
+    font-size: 16px;
+    background: var(--colorPrimary) !important;
+    border-color: var(--colorPrimary) !important;
+    color: var(--colorWhite) !important;
+    transition: all linear .3s;
+}
+
+.wp-block-latest-comments__comment-author{
+	color: inherit;
+}
+
+.wp-block-latest-comments__comment-link{
+	color: inherit;
+}
+
+/* nice select */
+
+.tf__sidebar select, .tf__footer_content select{
+    -webkit-tap-highlight-color: transparent;
+    background-color: #fff;
+    border-radius: 5px;
+    border: solid 1px #e8e8e8;
+    box-sizing: border-box;
+    clear: both;
+    cursor: pointer;
+    display: block;
+    float: left;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: normal;
+    height: 42px;
+    line-height: 40px;
+    outline: none;
+    padding-left: 18px;
+    padding-right: 30px;
+    position: relative;
+    text-align: left !important;
+    transition: all 0.2s ease-in-out;
+    user-select: none;
+    white-space: nowrap;
+    width: auto;
+	margin-bottom: 10px;	
+}
+
+.tf__sidebar select:hover, .tf__footer_content select:hover {
+    border-color: #dbdbdb;
+}
+
+.tf__sidebar select:active,
+.tf__sidebar select.open,
+.tf__sidebar select:focus,
+.tf__footer_content select:active,
+.tf__footer_content select.open,
+.tf__footer_content select:focus {
+    border-color: #999;
+}
+
+.tf__sidebar select::after,
+.tf__footer_content select::after {
+    background-color: transparent;
+    content: '\f107';
+    font-family: var(--tp-ff-fontawesome);
+    color: var(--tp-common-black);
+    font-weight: 500;
+    height: auto;
+    width: auto;
+    transform: translateY(-50%);
+    position: absolute;
+    right: 10px;
+}
+
+.tf__sidebar select.open::after,
+.tf__footer_content select.open::after {
+    transform: translateY(-50%) rotate(-180deg);
+}
+
+.tf__sidebar select.open .list,
+.tf__footer_content select.open .list {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1) translateY(0);
+}
+
+.tf__sidebar select.disabled,
+.tf__footer_content select.disabled {
+    border-color: #ededed;
+    color: #999;
+    pointer-events: none;
+}
+
+.tf__sidebar select.disabled::after,
+.tf__footer_content select.disabled::after {
+    border-color: #cccccc;
+}
+
+.tf__sidebar select.wide,
+.tf__footer_content select.wide {
+    width: 100%;
+}
+
+.tf__sidebar select.right,
+.tf__footer_content select.right {
+    float: right;
+}
+
+.tf__sidebar select.small,
+.tf__footer_content select.small {
+    font-size: 12px;
+    height: 36px;
+    line-height: 34px;
+}
+
+.tf__sidebar select.small::after {
+    height: 4px;
+    width: 4px;
+}
+
+.tf__sidebar select.small .option,
+.tf__footer_content select.small .option {
+    line-height: 34px;
+    min-height: 34px;
+}
+
+.tf__sidebar select .list,
+.tf__footer_content select .list {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 0 1px rgba(68, 68, 68, 0.11);
+    box-sizing: border-box;
+    margin-top: 4px;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    transform: scale(0.75) translateY(-21px);
+    transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
+    z-index: 9;
+}
+
+.tf__sidebar select .option,
+.tf__footer_content select .option {
+    cursor: pointer;
+    font-weight: 400;
+    line-height: 40px;
+    list-style: none;
+    min-height: 40px;
+    padding-left: 18px;
+}
+
+.tp-footer-widget-title{
+	display: inline-block;
 }

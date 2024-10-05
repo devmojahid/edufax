@@ -1,24 +1,40 @@
-.tf__breadcrumb_text base>span,
-.tf__breadcrumb_text base>span a,
-.tf__breadcrumb_text base>span>a>span {
+.tf__breadcrumb_text span,
+.tf__breadcrumb_text span a,
+.tf__breadcrumb_text span>a>span {
     font-weight: 700;
     font-size: 14px;
     text-transform: uppercase;
-    color: var(--colorWhite);
-    padding-right: 30px;
+    color: #fff;
     position: relative;
     transition: all linear .3s;
-    -webkit-transition: all linear .3s;
-    -moz-transition: all linear .3s;
-    -ms-transition: all linear .3s;
-    -o-transition: all linear .3s;
 }
 
-.tf__breadcrumb_text base {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    align-items: center !important;
+
+.tf__breadcrumb_text {
+    color: #fff;
+    text-align: center;
     position: relative !important;
     z-index: 1 !important;
 }
+
+
+.menupop.with-avatar{
+    display: none;
+}
+
+/* .tf__main_menu .tf__droap_menu > {
+    left: 100%;
+} */
+
+.tf__main_menu .tf__droap_menu > .tf__main_menu .tf__droap_menu{
+    opacity: 0;
+    visibility: hidden;
+    z-index: 999;
+    transform-origin: top;
+}
+.navbar-nav .menu-item:hover > .tf__main_menu .tf__droap_menu {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* breadcrumb */

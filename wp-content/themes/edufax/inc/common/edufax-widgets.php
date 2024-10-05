@@ -21,24 +21,9 @@ function edufax_widgets_init()
         'name'          => esc_html__('Blog Sidebar', 'edufax'),
         'id'            => 'blog-sidebar',
         'description'   => esc_html__('Set Your Blog Widget', 'edufax'),
-        'before_widget' => '<div id="%1$s" class="tp-sidebar-widget mb-35 %2$s">',
+        'before_widget' => '<div id="%1$s" class="tf__sidebar mb-35 %2$s tf__sidebar_categories tf__sidebar_post tf__sidebar_search">',
         'after_widget'  => '</div>',
-        'before_title'  => '<h3 class="tp-sidebar-widget-title">',
-        'after_title'   => '</h3>',
-    ]);
-
-
-
-    /**
-     * product sidebar
-     */
-    register_sidebar([
-        'name'          => esc_html__('Product Sidebar', 'edufax'),
-        'id'            => 'product-sidebar',
-        'description'          => esc_html__('Set Your Product Widget', 'edufax'),
-        'before_widget' => '<div id="%1$s" class="tp-shop-widget mb-50 %2$s">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h3 class="tp-shop-widget-title">',
+        'before_title'  => '<h3>',
         'after_title'   => '</h3>',
     ]);
 
@@ -51,8 +36,8 @@ function edufax_widgets_init()
             'name'          => sprintf(esc_html__('Footer %1$s', 'edufax'), $num),
             'id'            => 'footer-' . $num,
             'description'   => sprintf(esc_html__('Footer column %1$s', 'edufax'), $num),
-            'before_widget' => '<div id="%1$s" class="tf__footer_content tp-footer-widget mb-50 footer-col-' . $num . ' %2$s">',
-            'after_widget'  => '</div>',
+            'before_widget' => '<div id="%1$s" class="tf__footer_content tp-footer-widget mb-50 footer-col-' . $num . ' %2$s"><div class="footer_link">',
+            'after_widget'  => '</div></div>',
             'before_title'  => '<h3 class="tp-footer-widget-title">',
             'after_title'   => '</h3>',
         ]);

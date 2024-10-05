@@ -1,4 +1,4 @@
-/*! elementor - v3.22.0 - 17-06-2024 */
+/*! elementor - v3.24.0 - 23-09-2024 */
 (self["webpackChunkelementor"] = self["webpackChunkelementor"] || []).push([["frontend-modules"],{
 
 /***/ "../assets/dev/js/editor/utils/is-instanceof.js":
@@ -123,11 +123,14 @@ class NestedTitleKeyboardHandler extends _base.default {
     this.directionPrevious = 'previous';
     this.focusableElementSelector = 'audio, button, canvas, details, iframe, input, select, summary, textarea, video, [accesskey], [contenteditable], [href], [tabindex]:not([tabindex="-1"])';
   }
+  getWidgetNumber() {
+    return this.$element.find('> .elementor-widget-container > .e-n-tabs, > .e-n-tabs').attr('data-widget-number');
+  }
   getDefaultSettings() {
     return {
       selectors: {
-        itemTitle: '.e-n-tab-title',
-        itemContainer: '.e-n-tabs-content > .e-con'
+        itemTitle: `[id*="e-n-tab-title-${this.getWidgetNumber()}"]`,
+        itemContainer: `[id*="e-n-tab-content-${this.getWidgetNumber()}"]`
       },
       ariaAttributes: {
         titleStateAttribute: 'aria-selected',
@@ -195,8 +198,8 @@ class NestedTitleKeyboardHandler extends _base.default {
     this.elements.$focusableContainerElements.on(this.getContentElementEvents());
   }
   unbindEvents() {
-    this.elements.$itemTitles.off();
-    this.elements.$itemContainers.children().off();
+    this.elements.$itemTitles.off(this.getTitleEvents());
+    this.elements.$focusableContainerElements.children().off(this.getContentElementEvents());
   }
   getTitleEvents() {
     return {
@@ -471,15 +474,18 @@ class CarouselHandlerBase extends _baseSwiper.default {
     if (!this.elements.$swiperContainer.length || 2 > this.elements.$slides.length) {
       return;
     }
+    await this.initSwiper();
+    const elementSettings = this.getElementSettings();
+    if ('yes' === elementSettings.pause_on_hover) {
+      this.togglePauseOnHover(true);
+    }
+  }
+  async initSwiper() {
     const Swiper = elementorFrontend.utils.swiper;
     this.swiper = await new Swiper(this.elements.$swiperContainer, this.getSwiperSettings());
 
     // Expose the swiper instance in the frontend
     this.elements.$swiperContainer.data('swiper', this.swiper);
-    const elementSettings = this.getElementSettings();
-    if ('yes' === elementSettings.pause_on_hover) {
-      this.togglePauseOnHover(true);
-    }
   }
   bindEvents() {
     this.elements.$swiperArrows.on('keydown', this.onDirectionArrowKeydown.bind(this));
@@ -584,8 +590,8 @@ class CarouselHandlerBase extends _baseSwiper.default {
     $widget.attr('aria-label', elementorFrontend.config.i18n.a11yCarouselWrapperAriaLabel);
   }
   a11ySetPaginationTabindex() {
-    const bulletClass = this.swiper?.params.pagination.bulletClass,
-      activeBulletClass = this.swiper?.params.pagination.bulletActiveClass;
+    const bulletClass = this.swiper?.params?.pagination.bulletClass,
+      activeBulletClass = this.swiper?.params?.pagination.bulletActiveClass;
     this.getPaginationBullets().forEach(bullet => {
       if (!bullet.classList?.contains(activeBulletClass)) {
         bullet.removeAttribute('tabindex');
@@ -1011,7 +1017,8 @@ var _baseSwiper = _interopRequireDefault(__webpack_require__(/*! ./handlers/base
 var _baseCarousel = _interopRequireDefault(__webpack_require__(/*! ./handlers/base-carousel */ "../assets/dev/js/frontend/handlers/base-carousel.js"));
 var _nestedTabs = _interopRequireDefault(__webpack_require__(/*! elementor/modules/nested-tabs/assets/js/frontend/handlers/nested-tabs */ "../modules/nested-tabs/assets/js/frontend/handlers/nested-tabs.js"));
 var _nestedAccordion = _interopRequireDefault(__webpack_require__(/*! elementor/modules/nested-accordion/assets/js/frontend/handlers/nested-accordion */ "../modules/nested-accordion/assets/js/frontend/handlers/nested-accordion.js"));
-var _contactButtons = _interopRequireDefault(__webpack_require__(/*! elementor/modules/conversion-center/assets/js/frontend/handlers/contact-buttons */ "../modules/conversion-center/assets/js/frontend/handlers/contact-buttons.js"));
+var _contactButtons = _interopRequireDefault(__webpack_require__(/*! elementor/modules/floating-buttons/assets/js/floating-buttons/frontend/handlers/contact-buttons */ "../modules/floating-buttons/assets/js/floating-buttons/frontend/handlers/contact-buttons.js"));
+var _floatingBars = _interopRequireDefault(__webpack_require__(/*! elementor/modules/floating-buttons/assets/js/floating-bars/frontend/handlers/floating-bars */ "../modules/floating-buttons/assets/js/floating-bars/frontend/handlers/floating-bars.js"));
 var _nestedTitleKeyboardHandler = _interopRequireDefault(__webpack_require__(/*! ./handlers/accessibility/nested-title-keyboard-handler */ "../assets/dev/js/frontend/handlers/accessibility/nested-title-keyboard-handler.js"));
 _modules.default.frontend = {
   Document: _document.default,
@@ -1026,7 +1033,8 @@ _modules.default.frontend = {
     NestedTabs: _nestedTabs.default,
     NestedAccordion: _nestedAccordion.default,
     NestedTitleKeyboardHandler: _nestedTitleKeyboardHandler.default,
-    ContactButtonsHandler: _contactButtons.default
+    ContactButtonsHandler: _contactButtons.default,
+    FloatingBarsHandler: _floatingBars.default
   }
 };
 
@@ -1717,25 +1725,25 @@ class Scroll {
   static scrollObserver(obj) {
     let lastScrollY = 0;
 
-    // Generating threshholds points along the animation height
-    // More threshholds points = more trigger points of the callback
-    const buildThreshholds = function () {
+    // Generating thresholds points along the animation height
+    // More thresholds points = more trigger points of the callback
+    const buildThresholds = function () {
       let sensitivityPercentage = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-      const threshholds = [];
+      const thresholds = [];
       if (sensitivityPercentage > 0 && sensitivityPercentage <= 100) {
         const increment = 100 / sensitivityPercentage;
         for (let i = 0; i <= 100; i += increment) {
-          threshholds.push(i / 100);
+          thresholds.push(i / 100);
         }
       } else {
-        threshholds.push(0);
+        thresholds.push(0);
       }
-      return threshholds;
+      return thresholds;
     };
     const options = {
       root: obj.root || null,
       rootMargin: obj.offset || '0px',
-      threshold: buildThreshholds(obj.sensitivity)
+      threshold: buildThresholds(obj.sensitivity)
     };
     function handleIntersect(entries) {
       const currentScrollY = entries[0].boundingClientRect.y,
@@ -1863,10 +1871,49 @@ exports["default"] = _default;
 
 /***/ }),
 
-/***/ "../modules/conversion-center/assets/js/frontend/handlers/contact-buttons.js":
-/*!***********************************************************************************!*\
-  !*** ../modules/conversion-center/assets/js/frontend/handlers/contact-buttons.js ***!
-  \***********************************************************************************/
+/***/ "../modules/floating-buttons/assets/js/floating-bars/frontend/classes/floatin-bar-dom.js":
+/*!***********************************************************************************************!*\
+  !*** ../modules/floating-buttons/assets/js/floating-bars/frontend/classes/floatin-bar-dom.js ***!
+  \***********************************************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = void 0;
+class FloatingBarDomHelper {
+  constructor($element) {
+    this.$element = $element;
+  }
+  maybeMoveToTop() {
+    const el = this.$element[0];
+    const widget = el.querySelector('.e-floating-bars');
+    if (elementorFrontend.isEditMode()) {
+      widget.classList.add('is-sticky');
+      return;
+    }
+    if (el.dataset.widget_type.startsWith('floating-bars') && widget.classList.contains('has-vertical-position-top') && !widget.classList.contains('is-sticky')) {
+      const wpAdminBar = document.getElementById('wpadminbar');
+      const elementToInsert = el.closest('.elementor');
+      if (wpAdminBar) {
+        wpAdminBar.after(elementToInsert);
+      } else {
+        document.body.prepend(elementToInsert);
+      }
+    }
+  }
+}
+exports["default"] = FloatingBarDomHelper;
+
+/***/ }),
+
+/***/ "../modules/floating-buttons/assets/js/floating-bars/frontend/handlers/floating-bars.js":
+/*!**********************************************************************************************!*\
+  !*** ../modules/floating-buttons/assets/js/floating-bars/frontend/handlers/floating-bars.js ***!
+  \**********************************************************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -1878,6 +1925,254 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports["default"] = void 0;
 var _base = _interopRequireDefault(__webpack_require__(/*! elementor-frontend/handlers/base */ "../assets/dev/js/frontend/handlers/base.js"));
+var _floatinBarDom = _interopRequireDefault(__webpack_require__(/*! ../classes/floatin-bar-dom */ "../modules/floating-buttons/assets/js/floating-bars/frontend/classes/floatin-bar-dom.js"));
+var _clickTracking = _interopRequireDefault(__webpack_require__(/*! ../../../shared/frontend/handlers/click-tracking */ "../modules/floating-buttons/assets/js/shared/frontend/handlers/click-tracking.js"));
+class FloatingBarsHandler extends _base.default {
+  getDefaultSettings() {
+    return {
+      selectors: {
+        main: '.e-floating-bars',
+        closeButton: '.e-floating-bars__close-button',
+        ctaButton: '.e-floating-bars__cta-button'
+      },
+      constants: {
+        ctaEntranceAnimation: 'style_cta_button_animation',
+        ctaEntranceAnimationDelay: 'style_cta_button_animation_delay',
+        hasEntranceAnimation: 'has-entrance-animation',
+        visible: 'visible',
+        isSticky: 'is-sticky',
+        hasVerticalPositionTop: 'has-vertical-position-top',
+        hasVerticalPositionBottom: 'has-vertical-position-bottom',
+        isHidden: 'is-hidden',
+        animated: 'animated'
+      }
+    };
+  }
+  getDefaultElements() {
+    const selectors = this.getSettings('selectors');
+    return {
+      main: this.$element[0].querySelector(selectors.main),
+      mainAll: this.$element[0].querySelectorAll(selectors.main),
+      closeButton: this.$element[0].querySelector(selectors.closeButton),
+      ctaButton: this.$element[0].querySelector(selectors.ctaButton)
+    };
+  }
+  onElementChange(property) {
+    const changedProperties = ['advanced_vertical_position'];
+    if (changedProperties.includes(property)) {
+      this.initDefaultState();
+    }
+  }
+  getResponsiveSetting(controlName) {
+    const currentDevice = elementorFrontend.getCurrentDeviceMode();
+    return elementorFrontend.utils.controls.getResponsiveControlValue(this.getElementSettings(), controlName, '', currentDevice);
+  }
+  bindEvents() {
+    if (this.elements.closeButton) {
+      this.elements.closeButton.addEventListener('click', this.closeFloatingBar.bind(this));
+    }
+    if (this.elements.ctaButton) {
+      this.elements.ctaButton.addEventListener('animationend', this.handleAnimationEnd.bind(this));
+    }
+    if (this.elements.main) {
+      window.addEventListener('keyup', this.onDocumentKeyup.bind(this));
+    }
+    if (this.hasStickyElements()) {
+      window.addEventListener('resize', this.handleStickyElements.bind(this));
+    }
+  }
+  isStickyTop() {
+    const {
+      isSticky,
+      hasVerticalPositionTop
+    } = this.getSettings('constants');
+    return this.elements.main.classList.contains(isSticky) && this.elements.main.classList.contains(hasVerticalPositionTop);
+  }
+  isStickyBottom() {
+    const {
+      isSticky,
+      hasVerticalPositionBottom
+    } = this.getSettings('constants');
+    return this.elements.main.classList.contains(isSticky) && this.elements.main.classList.contains(hasVerticalPositionBottom);
+  }
+  hasStickyElements() {
+    const stickyElements = document.querySelectorAll('.elementor-sticky');
+    return stickyElements.length > 0;
+  }
+  focusOnLoad() {
+    this.elements.main.setAttribute('tabindex', '0');
+    this.elements.main.focus({
+      focusVisible: true
+    });
+  }
+  applyBodyPadding() {
+    const mainHeight = this.elements.main.offsetHeight;
+    document.body.style.paddingTop = `${mainHeight}px`;
+  }
+  removeBodyPadding() {
+    document.body.style.paddingTop = '0';
+  }
+  handleWPAdminBar() {
+    const wpAdminBar = elementorFrontend.elements.$wpAdminBar;
+    if (wpAdminBar.length) {
+      this.elements.main.style.top = `${wpAdminBar.height()}px`;
+    }
+  }
+  handleStickyElements() {
+    const mainHeight = this.elements.main.offsetHeight;
+    const wpAdminBar = elementorFrontend.elements.$wpAdminBar;
+    const stickyElements = document.querySelectorAll('.elementor-sticky:not(.elementor-sticky__spacer)');
+    if (0 === stickyElements.length) {
+      return;
+    }
+    stickyElements.forEach(stickyElement => {
+      const dataSettings = stickyElement.getAttribute('data-settings');
+      const stickyPosition = JSON.parse(dataSettings)?.sticky;
+      const isTop = '0px' === stickyElement.style.top || 'top' === stickyPosition;
+      const isBottom = '0px' === stickyElement.style.bottom || 'bottom' === stickyPosition;
+      if (this.isStickyTop() && isTop) {
+        if (wpAdminBar.length) {
+          stickyElement.style.top = `${mainHeight + wpAdminBar.height()}px`;
+        } else {
+          stickyElement.style.top = `${mainHeight}px`;
+        }
+      } else if (this.isStickyBottom() && isBottom) {
+        stickyElement.style.bottom = `${mainHeight}px`;
+      }
+      if (elementorFrontend.isEditMode()) {
+        if (isTop) {
+          stickyElement.style.top = this.isStickyTop() ? `${mainHeight}px` : '0px';
+        } else if (isBottom) {
+          stickyElement.style.bottom = this.isStickyBottom() ? `${mainHeight}px` : '0px';
+        }
+      }
+    });
+    document.querySelectorAll('.elementor-sticky__spacer').forEach(stickySpacer => {
+      const dataSettings = stickySpacer.getAttribute('data-settings');
+      const stickyPosition = JSON.parse(dataSettings)?.sticky;
+      const isTop = '0px' === stickySpacer.style.top || 'top' === stickyPosition;
+      if (this.isStickyTop() && isTop) {
+        stickySpacer.style.marginBottom = `${mainHeight}px`;
+      }
+    });
+  }
+  closeFloatingBar() {
+    const {
+      isHidden
+    } = this.getSettings('constants');
+    if (!elementorFrontend.isEditMode()) {
+      this.elements.main.classList.add(isHidden);
+      if (this.hasStickyElements()) {
+        this.handleStickyElements();
+      } else if (this.isStickyTop()) {
+        this.removeBodyPadding();
+      }
+    }
+  }
+  initEntranceAnimation() {
+    const {
+      animated,
+      ctaEntranceAnimation,
+      ctaEntranceAnimationDelay,
+      hasEntranceAnimation
+    } = this.getSettings('constants');
+    const entranceAnimationClass = this.getResponsiveSetting(ctaEntranceAnimation);
+    const entranceAnimationDelay = this.getResponsiveSetting(ctaEntranceAnimationDelay) || 0;
+    const setTimeoutDelay = entranceAnimationDelay + 500;
+    this.elements.ctaButton.classList.add(animated);
+    this.elements.ctaButton.classList.add(entranceAnimationClass);
+    setTimeout(() => {
+      this.elements.ctaButton.classList.remove(hasEntranceAnimation);
+    }, setTimeoutDelay);
+  }
+  handleAnimationEnd() {
+    this.removeEntranceAnimationClasses();
+    this.focusOnLoad();
+  }
+  removeEntranceAnimationClasses() {
+    if (!this.elements.ctaButton) {
+      return;
+    }
+    const {
+      animated,
+      ctaEntranceAnimation,
+      visible
+    } = this.getSettings('constants');
+    const entranceAnimationClass = this.getResponsiveSetting(ctaEntranceAnimation);
+    this.elements.ctaButton.classList.remove(animated);
+    this.elements.ctaButton.classList.remove(entranceAnimationClass);
+    this.elements.ctaButton.classList.add(visible);
+  }
+  onDocumentKeyup(event) {
+    // Bail if not ESC key
+    if (event.keyCode !== 27 || !this.elements.main) {
+      return;
+    }
+
+    /* eslint-disable @wordpress/no-global-active-element */
+    if (this.elements.main.contains(document.activeElement)) {
+      this.closeFloatingBar();
+    }
+    /* eslint-enable @wordpress/no-global-active-element */
+  }
+
+  initDefaultState() {
+    const {
+      hasEntranceAnimation
+    } = this.getSettings('constants');
+    if (this.isStickyTop()) {
+      this.handleWPAdminBar();
+    }
+    if (this.hasStickyElements()) {
+      this.handleStickyElements();
+    } else if (this.isStickyTop()) {
+      this.applyBodyPadding();
+    }
+    if (this.elements.main && !this.elements.ctaButton.classList.contains(hasEntranceAnimation) && !elementorFrontend.isEditMode()) {
+      this.focusOnLoad();
+    }
+  }
+  setupInnerContainer() {
+    this.elements.main.closest('.e-con-inner').classList.add('e-con-inner--floating-bars');
+    this.elements.main.closest('.e-con').classList.add('e-con--floating-bars');
+  }
+  onInit() {
+    const {
+      hasEntranceAnimation
+    } = this.getSettings('constants');
+    super.onInit(...arguments);
+    this.clickTrackingHandler = new _clickTracking.default({
+      $element: this.$element
+    });
+    const domHelper = new _floatinBarDom.default(this.$element);
+    domHelper.maybeMoveToTop();
+    if (this.elements.ctaButton && this.elements.ctaButton.classList.contains(hasEntranceAnimation)) {
+      this.initEntranceAnimation();
+    }
+    this.initDefaultState();
+    this.setupInnerContainer();
+  }
+}
+exports["default"] = FloatingBarsHandler;
+
+/***/ }),
+
+/***/ "../modules/floating-buttons/assets/js/floating-buttons/frontend/handlers/contact-buttons.js":
+/*!***************************************************************************************************!*\
+  !*** ../modules/floating-buttons/assets/js/floating-buttons/frontend/handlers/contact-buttons.js ***!
+  \***************************************************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = void 0;
+var _base = _interopRequireDefault(__webpack_require__(/*! elementor-frontend/handlers/base */ "../assets/dev/js/frontend/handlers/base.js"));
+var _clickTracking = _interopRequireDefault(__webpack_require__(/*! ../../../shared/frontend/handlers/click-tracking */ "../modules/floating-buttons/assets/js/shared/frontend/handlers/click-tracking.js"));
 class ContactButtonsHandler extends _base.default {
   getDefaultSettings() {
     return {
@@ -1899,6 +2194,7 @@ class ContactButtonsHandler extends _base.default {
         reverse: 'reverse',
         hidden: 'hidden',
         hasAnimations: 'has-animations',
+        hasEntranceAnimation: 'has-entrance-animation',
         none: 'none'
       }
     };
@@ -1919,11 +2215,60 @@ class ContactButtonsHandler extends _base.default {
     return elementorFrontend.utils.controls.getResponsiveControlValue(this.getElementSettings(), controlName, '', currentDevice);
   }
   bindEvents() {
-    this.elements.closeButton.addEventListener('click', this.closeChatBox.bind(this));
-    this.elements.chatButton.addEventListener('click', this.onChatButtonClick.bind(this));
-    this.elements.content.addEventListener('animationend', this.removeAnimationClasses.bind(this));
+    if (this.elements.closeButton) {
+      this.elements.closeButton.addEventListener('click', this.closeChatBox.bind(this));
+    }
+    if (this.elements.chatButton) {
+      this.elements.chatButton.addEventListener('click', this.onChatButtonClick.bind(this));
+      this.elements.chatButton.addEventListener('animationend', this.removeChatButtonAnimationClasses.bind(this));
+    }
+    if (this.elements.content) {
+      this.elements.content.addEventListener('animationend', this.removeAnimationClasses.bind(this));
+    }
+    if (this.elements.contentWrapper) {
+      window.addEventListener('keyup', this.onDocumentKeyup.bind(this));
+    }
   }
+  contentWrapperIsHidden(hide) {
+    if (!this.elements.contentWrapper) {
+      return false;
+    }
+    const {
+      hidden
+    } = this.getSettings('constants');
+
+    // Set current state
+    if (true === hide) {
+      this.elements.contentWrapper.classList.add(hidden);
+      this.elements.contentWrapper.setAttribute('aria-hidden', 'true');
+      return;
+    }
+    if (false === hide) {
+      this.elements.contentWrapper.classList.remove(hidden);
+      this.elements.contentWrapper.setAttribute('aria-hidden', 'false');
+      return;
+    }
+
+    // Get current state
+    return this.elements.contentWrapper.classList.contains(hidden);
+  }
+  onDocumentKeyup(event) {
+    // Bail if not ESC key
+    if (event.keyCode !== 27 || !this.elements.main) {
+      return;
+    }
+
+    /* eslint-disable @wordpress/no-global-active-element */
+    if (!this.contentWrapperIsHidden() && this.elements.main.contains(document.activeElement)) {
+      this.closeChatBox();
+    }
+    /* eslint-enable @wordpress/no-global-active-element */
+  }
+
   removeAnimationClasses() {
+    if (!this.elements.content) {
+      return;
+    }
     const {
       reverse,
       entranceAnimation,
@@ -1937,11 +2282,15 @@ class ContactButtonsHandler extends _base.default {
     if (isExitAnimation) {
       this.elements.content.classList.remove(animated);
       this.elements.content.classList.remove(reverse);
-      this.elements.content.classList.remove(exitAnimationClass);
+      if (exitAnimationClass) {
+        this.elements.content.classList.remove(exitAnimationClass);
+      }
       this.elements.content.classList.remove(visible);
     } else {
       this.elements.content.classList.remove(animated);
-      this.elements.content.classList.remove(openAnimationClass);
+      if (openAnimationClass) {
+        this.elements.content.classList.remove(openAnimationClass);
+      }
       this.elements.content.classList.add(visible);
     }
   }
@@ -1953,12 +2302,16 @@ class ContactButtonsHandler extends _base.default {
       none
     } = this.getSettings('constants');
     const entranceAnimationControl = this.getResponsiveSetting(entranceAnimation);
-    if (none === entranceAnimationControl) {
+    if (!entranceAnimationControl || none === entranceAnimationControl) {
       return;
     }
-    this.elements.content.classList.add(animated);
-    this.elements.content.classList.add(entranceAnimationControl);
-    this.elements.contentWrapper.classList.remove(animatedWrapper);
+    if (this.elements.content) {
+      this.elements.content.classList.add(animated);
+      this.elements.content.classList.add(entranceAnimationControl);
+    }
+    if (this.elements.contentWrapper) {
+      this.elements.contentWrapper.classList.remove(animatedWrapper);
+    }
   }
   chatBoxExitAnimation() {
     const {
@@ -1969,80 +2322,236 @@ class ContactButtonsHandler extends _base.default {
       none
     } = this.getSettings('constants');
     const exitAnimationControl = this.getResponsiveSetting(exitAnimation);
-    if (none === exitAnimationControl) {
+    if (!exitAnimationControl || none === exitAnimationControl) {
       return;
     }
-    this.elements.content.classList.add(animated);
-    this.elements.content.classList.add(reverse);
-    this.elements.content.classList.add(exitAnimationControl);
-    this.elements.contentWrapper.classList.add(animatedWrapper);
+    if (this.elements.content) {
+      this.elements.content.classList.add(animated);
+      this.elements.content.classList.add(reverse);
+      this.elements.content.classList.add(exitAnimationControl);
+    }
+    if (this.elements.contentWrapper) {
+      this.elements.contentWrapper.classList.add(animatedWrapper);
+    }
   }
   openChatBox() {
     const {
       hasAnimations,
-      visible,
-      hidden
+      visible
     } = this.getSettings('constants');
-    if (this.elements.main.classList.contains(hasAnimations)) {
+    if (this.elements.main && this.elements.main.classList.contains(hasAnimations)) {
       this.chatBoxEntranceAnimation();
-    } else {
+    } else if (this.elements.content) {
       this.elements.content.classList.add(visible);
     }
-    this.elements.contentWrapper.classList.remove(hidden);
+    if (this.elements.contentWrapper) {
+      this.contentWrapperIsHidden(false);
+      if (!elementorFrontend.isEditMode()) {
+        this.elements.contentWrapper.setAttribute('tabindex', '0');
+        this.elements.contentWrapper.focus({
+          focusVisible: true
+        });
+      }
+    }
+    if (this.elements.chatButton) {
+      this.elements.chatButton.setAttribute('aria-expanded', 'true');
+    }
+    if (this.elements.closeButton) {
+      this.elements.closeButton.setAttribute('aria-expanded', 'true');
+    }
   }
   closeChatBox() {
     const {
       hasAnimations,
-      visible,
-      hidden
+      visible
     } = this.getSettings('constants');
-    if (this.elements.main.classList.contains(hasAnimations)) {
+    if (this.elements.main && this.elements.main.classList.contains(hasAnimations)) {
       this.chatBoxExitAnimation();
-    } else {
+    } else if (this.elements.content) {
       this.elements.content.classList.remove(visible);
     }
-    this.elements.contentWrapper.classList.add(hidden);
+    if (this.elements.contentWrapper) {
+      this.contentWrapperIsHidden(true);
+    }
+    if (this.elements.chatButton) {
+      this.elements.chatButton.setAttribute('aria-expanded', 'false');
+      this.elements.chatButton.focus({
+        focusVisible: true
+      });
+    }
+    if (this.elements.closeButton) {
+      this.elements.closeButton.setAttribute('aria-expanded', 'false');
+    }
   }
   onChatButtonClick() {
-    const {
-      hidden
-    } = this.getSettings('constants');
-    if (this.elements.contentWrapper.classList.contains(hidden)) {
+    if (this.elements.contentWrapper && this.contentWrapperIsHidden()) {
       this.openChatBox();
     } else {
       this.closeChatBox();
     }
   }
   initMessageBubbleTime() {
+    if (!this.elements.messageBubbleTime) {
+      return;
+    }
     const messageBubbleTimeFormat = this.elements.messageBubbleTime.dataset.timeFormat;
     const is12hFormat = '12h' === messageBubbleTimeFormat;
-    const time = new Intl.DateTimeFormat('default', {
+    this.elements.messageBubbleTime.innerHTML = new Intl.DateTimeFormat('default', {
       hour12: is12hFormat,
       hour: 'numeric',
       minute: 'numeric'
     }).format(new Date());
-    this.elements.messageBubbleTime.innerHTML = time;
+  }
+  removeChatButtonAnimationClasses() {
+    if (!this.elements.chatButton) {
+      return;
+    }
+    const {
+      chatButtonAnimation,
+      visible
+    } = this.getSettings('constants');
+    this.elements.chatButton.classList.remove(chatButtonAnimation);
+    this.elements.chatButton.classList.add(visible);
   }
   initChatButtonEntranceAnimation() {
     const {
       none,
-      chatButtonAnimation,
-      animated
+      chatButtonAnimation
     } = this.getSettings('constants');
     const entranceAnimationControl = this.getResponsiveSetting(chatButtonAnimation);
-    if (none === entranceAnimationControl) {
+    if (!entranceAnimationControl || none === entranceAnimationControl) {
       return;
     }
-    this.elements.chatButton.classList.add(animated);
     this.elements.chatButton.classList.add(entranceAnimationControl);
   }
+  initDefaultState() {
+    // Manage accessibility
+    if (this.elements.contentWrapper) {
+      const isHidden = this.contentWrapperIsHidden();
+      if (this.elements.chatButton) {
+        this.elements.chatButton.setAttribute('aria-expanded', !isHidden);
+      }
+      if (this.elements.closeButton) {
+        this.elements.closeButton.setAttribute('aria-expanded', !isHidden);
+      }
+    }
+    if (elementorFrontend.isEditMode() && 'floating-buttons' === elementor?.config?.document?.type) {
+      this.openChatBox();
+    }
+  }
+  setupInnerContainer() {
+    this.elements.main.closest('.e-con-inner').classList.add('e-con-inner--floating-buttons');
+  }
   onInit() {
+    const {
+      hasEntranceAnimation
+    } = this.getSettings('constants');
     super.onInit(...arguments);
-    this.initMessageBubbleTime();
-    this.initChatButtonEntranceAnimation();
+    this.clickTrackingHandler = new _clickTracking.default({
+      $element: this.$element
+    });
+    if (this.elements.messageBubbleTime) {
+      this.initMessageBubbleTime();
+    }
+    this.initDefaultState();
+    if (this.elements.chatButton) {
+      if (this.elements.chatButton.classList.contains(hasEntranceAnimation)) {
+        this.initChatButtonEntranceAnimation();
+      }
+    }
+    this.setupInnerContainer();
   }
 }
 exports["default"] = ContactButtonsHandler;
+
+/***/ }),
+
+/***/ "../modules/floating-buttons/assets/js/shared/frontend/handlers/click-tracking.js":
+/*!****************************************************************************************!*\
+  !*** ../modules/floating-buttons/assets/js/shared/frontend/handlers/click-tracking.js ***!
+  \****************************************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = void 0;
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "../node_modules/@babel/runtime/helpers/defineProperty.js"));
+var _base = _interopRequireDefault(__webpack_require__(/*! elementor-frontend/handlers/base */ "../assets/dev/js/frontend/handlers/base.js"));
+class ClickTrackingHandler extends _base.default {
+  constructor() {
+    super(...arguments);
+    (0, _defineProperty2.default)(this, "clicks", []);
+  }
+  getDefaultSettings() {
+    return {
+      selectors: {
+        contentWrapper: '.e-contact-buttons__content-wrapper',
+        contactButtonCore: '.e-contact-buttons__send-button',
+        contentWrapperFloatingBars: '.e-floating-bars',
+        floatingBarCTAButton: '.e-floating-bars__cta-button',
+        elementorWrapper: '[data-elementor-type="floating-buttons"]'
+      }
+    };
+  }
+  getDefaultElements() {
+    const selectors = this.getSettings('selectors');
+    return {
+      contentWrapper: this.$element[0].querySelector(selectors.contentWrapper),
+      contentWrapperFloatingBars: this.$element[0].querySelector(selectors.contentWrapperFloatingBars)
+    };
+  }
+  bindEvents() {
+    if (this.elements.contentWrapper) {
+      this.elements.contentWrapper.addEventListener('click', this.onChatButtonTrackClick.bind(this));
+    }
+    if (this.elements.contentWrapperFloatingBars) {
+      this.elements.contentWrapperFloatingBars.addEventListener('click', this.onChatButtonTrackClick.bind(this));
+    }
+    window.addEventListener('beforeunload', () => {
+      if (this.clicks.length > 0) {
+        this.sendClicks();
+      }
+    });
+  }
+  onChatButtonTrackClick(event) {
+    const targetElement = event.target || event.srcElement;
+    const selectors = this.getSettings('selectors');
+    if (targetElement.matches(selectors.contactButtonCore) || targetElement.closest(selectors.contactButtonCore) || targetElement.matches(selectors.floatingBarCTAButton) || targetElement.closest(selectors.floatingBarCTAButton)) {
+      this.getDocumentIdAndTrack(targetElement, selectors);
+    }
+  }
+  getDocumentIdAndTrack(targetElement, selectors) {
+    const documentId = targetElement.closest(selectors.elementorWrapper).dataset.elementorId;
+    this.trackClick(documentId);
+  }
+  trackClick(documentId) {
+    if (!documentId) {
+      return;
+    }
+    this.clicks.push(documentId);
+    if (this.clicks.length >= 10) {
+      this.sendClicks();
+    }
+  }
+  sendClicks() {
+    const formData = new FormData();
+    formData.append('action', 'elementor_send_clicks');
+    formData.append('_nonce', elementorFrontendConfig?.nonces?.floatingButtonsClickTracking);
+    this.clicks.forEach(documentId => formData.append('clicks[]', documentId));
+    fetch(elementorFrontendConfig?.urls?.ajaxurl, {
+      method: 'POST',
+      body: formData
+    }).then(() => {
+      this.clicks = [];
+    });
+  }
+}
+exports["default"] = ClickTrackingHandler;
 
 /***/ }),
 
@@ -2155,7 +2664,7 @@ class NestedAccordion extends _base.default {
   }
   onInit() {
     super.onInit(...arguments);
-    if (elementorFrontend.isEditMode()) {
+    if (elementorFrontend.isEditMode() && !elementorCommon.config.experimentalFeatures.e_nested_atomic_repeaters) {
       this.interlaceContainers();
     }
     this.injectKeyboardHandler();
@@ -2337,18 +2846,13 @@ exports["default"] = void 0;
 var _base = _interopRequireDefault(__webpack_require__(/*! elementor-frontend/handlers/base */ "../assets/dev/js/frontend/handlers/base.js"));
 var _flexHorizontalScroll = __webpack_require__(/*! elementor-frontend-utils/flex-horizontal-scroll */ "../assets/dev/js/frontend/utils/flex-horizontal-scroll.js");
 class NestedTabs extends _base.default {
-  constructor() {
-    super(...arguments);
-    this.resizeListenerNestedTabs = null;
-  }
-
   /**
    * @param {string|number} tabIndex
    *
    * @return {string}
    */
   getTabTitleFilterSelector(tabIndex) {
-    return `[data-tab-index="${tabIndex}"]`;
+    return `[${this.getSettings('dataAttributes').tabIndex}="${tabIndex}"]`;
   }
 
   /**
@@ -2366,20 +2870,35 @@ class NestedTabs extends _base.default {
    * @return {string}
    */
   getTabIndex(tabTitleElement) {
-    return tabTitleElement.getAttribute('data-tab-index');
+    return tabTitleElement.getAttribute(this.getSettings('dataAttributes').tabIndex);
+  }
+  getActiveTabIndex() {
+    const settings = this.getSettings(),
+      activeTitleFilter = settings.ariaAttributes.activeTitleSelector,
+      tabIndexSelector = settings.dataAttributes.tabIndex,
+      $activeTitle = this.elements.$tabTitles.filter(activeTitleFilter);
+    return $activeTitle.attr(tabIndexSelector) || null;
+  }
+  getWidgetNumber() {
+    return this.$element.find('> .elementor-widget-container > .e-n-tabs, > .e-n-tabs').attr('data-widget-number');
   }
   getDefaultSettings() {
+    const widgetNumber = this.getWidgetNumber();
     return {
       selectors: {
-        widgetContainer: '.e-n-tabs',
-        tabTitle: '.e-n-tab-title',
-        tabTitleText: '.e-n-tab-title-text',
-        tabContent: '.e-n-tabs-content > .e-con',
-        headingContainer: '.e-n-tabs-heading',
-        activeTabContentContainers: '.e-con.e-active'
+        widgetContainer: `[data-widget-number="${widgetNumber}"]`,
+        tabTitle: `[aria-controls*="e-n-tab-content-${widgetNumber}"]`,
+        tabTitleIcon: `[id*="e-n-tab-title-${widgetNumber}"] > .e-n-tab-icon`,
+        tabTitleText: `[id*="e-n-tab-title-${widgetNumber}"] > .e-n-tab-title-text`,
+        tabContent: `[data-widget-number="${widgetNumber}"] > .e-n-tabs-content > .e-con`,
+        headingContainer: `[data-widget-number="${widgetNumber}"] > .e-n-tabs-heading`,
+        activeTabContentContainers: `[id*="e-n-tab-content-${widgetNumber}"].e-active`
       },
       classes: {
         active: 'e-active'
+      },
+      dataAttributes: {
+        tabIndex: 'data-tab-index'
       },
       ariaAttributes: {
         titleStateAttribute: 'aria-selected',
@@ -2395,7 +2914,7 @@ class NestedTabs extends _base.default {
   getDefaultElements() {
     const selectors = this.getSettings('selectors');
     return {
-      $wdigetContainer: this.findElement(selectors.widgetContainer),
+      $widgetContainer: this.findElement(selectors.widgetContainer),
       $tabTitles: this.findElement(selectors.tabTitle),
       $tabContents: this.findElement(selectors.tabContent),
       $headingContainer: this.findElement(selectors.headingContainer)
@@ -2421,7 +2940,7 @@ class NestedTabs extends _base.default {
 
     // Return back original toggle effects
     this.setSettings(originalToggleMethods);
-    this.elements.$wdigetContainer.addClass('e-activated');
+    this.elements.$widgetContainer.addClass('e-activated');
   }
   deactivateActiveTab(newTabIndex) {
     const settings = this.getSettings(),
@@ -2474,11 +2993,14 @@ class NestedTabs extends _base.default {
     elementorFrontend.elements.$window.trigger('elementor/bg-video/recalc');
   }
   isActiveTab(tabIndex) {
-    return 'true' === this.elements.$tabTitles.filter('[data-tab-index="' + tabIndex + '"]').attr(this.getSettings('ariaAttributes').titleStateAttribute);
+    const settings = this.getSettings(),
+      isActiveTabTitle = 'true' === this.elements.$tabTitles.filter(`[${settings.dataAttributes.tabIndex}="${tabIndex}"]`).attr(settings.ariaAttributes.titleStateAttribute),
+      isActiveTabContent = this.elements.$tabContents.filter(this.getTabContentFilterSelector(tabIndex)).hasClass(this.getActiveClass());
+    return isActiveTabTitle && isActiveTabContent;
   }
   onTabClick(event) {
     event.preventDefault();
-    this.changeActiveTab(event.currentTarget?.getAttribute('data-tab-index'), true);
+    this.changeActiveTab(event.currentTarget?.getAttribute(this.getSettings('dataAttributes').tabIndex), true);
   }
   getTabEvents() {
     return {
@@ -2497,14 +3019,7 @@ class NestedTabs extends _base.default {
   bindEvents() {
     this.elements.$tabTitles.on(this.getTabEvents());
     this.elements.$headingContainer.on(this.getHeadingEvents());
-    const settingsObject = {
-      element: this.elements.$headingContainer[0],
-      direction: this.getTabsDirection(),
-      justifyCSSVariable: '--n-tabs-heading-justify-content',
-      horizontalScrollStatus: this.getHorizontalScrollSetting()
-    };
-    this.resizeListenerNestedTabs = _flexHorizontalScroll.setHorizontalScrollAlignment.bind(this, settingsObject);
-    elementorFrontend.elements.$window.on('resize', this.resizeListenerNestedTabs);
+    elementorFrontend.elements.$window.on('resize', this.onResizeUpdateHorizontalScrolling.bind(this));
     elementorFrontend.elements.$window.on('resize', this.setTouchMode.bind(this));
     elementorFrontend.elements.$window.on('elementor/nested-tabs/activate', this.reInitSwipers);
     elementorFrontend.elements.$window.on('elementor/nested-elements/activate-by-keyboard', this.changeActiveTabByKeyboard.bind(this));
@@ -2514,8 +3029,11 @@ class NestedTabs extends _base.default {
     this.elements.$tabTitles.off();
     this.elements.$headingContainer.off();
     this.elements.$tabContents.children().off();
-    elementorFrontend.elements.$window.off('resize');
-    elementorFrontend.elements.$window.off('elementor/nested-tabs/activate');
+    elementorFrontend.elements.$window.off('resize', this.onResizeUpdateHorizontalScrolling.bind(this));
+    elementorFrontend.elements.$window.off('resize', this.setTouchMode.bind(this));
+    elementorFrontend.elements.$window.off('elementor/nested-tabs/activate', this.reInitSwipers);
+    elementorFrontend.elements.$window.off('elementor/nested-elements/activate-by-keyboard', this.changeActiveTabByKeyboard.bind(this));
+    elementorFrontend.elements.$window.off('elementor/nested-container/atomic-repeater', this.linkContainer.bind(this));
   }
 
   /**
@@ -2542,13 +3060,7 @@ class NestedTabs extends _base.default {
     if (this.getSettings('autoExpand')) {
       this.activateDefaultTab();
     }
-    const settingsObject = {
-      element: this.elements.$headingContainer[0],
-      direction: this.getTabsDirection(),
-      justifyCSSVariable: '--n-tabs-heading-justify-content',
-      horizontalScrollStatus: this.getHorizontalScrollSetting()
-    };
-    (0, _flexHorizontalScroll.setHorizontalScrollAlignment)(settingsObject);
+    (0, _flexHorizontalScroll.setHorizontalScrollAlignment)(this.getHorizontalScrollingSettings());
     this.setTouchMode();
     if ('nested-tabs.default' === this.getSettings('elementName')) {
       new elementorModules.frontend.handlers.NestedTitleKeyboardHandler(this.getKeyboardNavigationSettings());
@@ -2561,13 +3073,7 @@ class NestedTabs extends _base.default {
   }
   onElementChange(propertyName) {
     if (this.checkSliderPropsToWatch(propertyName)) {
-      const settingsObject = {
-        element: this.elements.$headingContainer[0],
-        direction: this.getTabsDirection(),
-        justifyCSSVariable: '--n-tabs-heading-justify-content',
-        horizontalScrollStatus: this.getHorizontalScrollSetting()
-      };
-      (0, _flexHorizontalScroll.setHorizontalScrollAlignment)(settingsObject);
+      (0, _flexHorizontalScroll.setHorizontalScrollAlignment)(this.getHorizontalScrollingSettings());
     }
   }
   checkSliderPropsToWatch(propertyName) {
@@ -2663,38 +3169,58 @@ class NestedTabs extends _base.default {
         container
       } = event.detail,
       id = container.model.get('id'),
-      currentId = this.$element.data('id');
+      currentId = this.$element.data('id'),
+      view = container.view.$el;
     if (id === currentId) {
       this.updateIndexValues();
-      this.updateListeners();
+      this.updateListeners(view);
       elementor.$preview[0].contentWindow.dispatchEvent(new CustomEvent('elementor/elements/link-data-bindings'));
     }
+    if (!this.getActiveTabIndex()) {
+      const targetIndex = event.detail.index + 1 || 1;
+      this.changeActiveTab(targetIndex);
+    }
   }
-  updateListeners() {
-    elementorFrontend.elementsHandler.runReadyTrigger(this.$element[0]);
+  updateListeners(view) {
+    this.elements.$tabContents = view.find(this.getSettings('selectors.tabContent'));
+    this.elements.$tabTitles = view.find(this.getSettings('selectors.tabTitle'));
+    this.elements.$tabTitles.on(this.getTabEvents());
   }
   updateIndexValues() {
     const {
+        $widgetContainer,
         $tabContents,
         $tabTitles
       } = this.getDefaultElements(),
       settings = this.getSettings(),
-      itemIdBase = $tabTitles[0].getAttribute('id').slice(0, -1),
-      containerIdBase = $tabContents[0].getAttribute('id').slice(0, -1);
+      dataTabIndex = settings.dataAttributes.tabIndex,
+      widgetNumber = $widgetContainer.data('widgetNumber');
     $tabTitles.each((index, element) => {
       const newIndex = index + 1,
-        updatedTabID = itemIdBase + newIndex,
-        updatedContainerID = containerIdBase + newIndex;
+        updatedTabID = `e-n-tab-title-${widgetNumber}${newIndex}`,
+        updatedContainerID = `e-n-tab-content-${widgetNumber}${newIndex}`;
       element.setAttribute('id', updatedTabID);
       element.setAttribute('style', `--n-tabs-title-order: ${newIndex}`);
-      element.setAttribute('data-tab-index', newIndex);
+      element.setAttribute(dataTabIndex, newIndex);
+      element.setAttribute('aria-controls', updatedContainerID);
+      element.querySelector(settings.selectors.tabTitleIcon)?.setAttribute('data-binding-index', newIndex);
       element.querySelector(settings.selectors.tabTitleText).setAttribute('data-binding-index', newIndex);
-      element.querySelector(settings.selectors.tabTitleText).setAttribute('aria-controls', updatedTabID);
       $tabContents[index].setAttribute('aria-labelledby', updatedTabID);
-      $tabContents[index].setAttribute('data-tab-index', updatedTabID);
+      $tabContents[index].setAttribute(dataTabIndex, newIndex);
       $tabContents[index].setAttribute('id', updatedContainerID);
       $tabContents[index].setAttribute('style', `--n-tabs-title-order: ${newIndex}`);
     });
+  }
+  onResizeUpdateHorizontalScrolling() {
+    (0, _flexHorizontalScroll.setHorizontalScrollAlignment)(this.getHorizontalScrollingSettings());
+  }
+  getHorizontalScrollingSettings() {
+    return {
+      element: this.elements.$headingContainer[0],
+      direction: this.getTabsDirection(),
+      justifyCSSVariable: '--n-tabs-heading-justify-content',
+      horizontalScrollStatus: this.getHorizontalScrollSetting()
+    };
   }
 }
 exports["default"] = NestedTabs;
@@ -4912,6 +5438,31 @@ exportWebAssemblyErrorCauseWrapper('RuntimeError', function (init) {
 
 /***/ }),
 
+/***/ "../node_modules/@babel/runtime/helpers/defineProperty.js":
+/*!****************************************************************!*\
+  !*** ../node_modules/@babel/runtime/helpers/defineProperty.js ***!
+  \****************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var toPropertyKey = __webpack_require__(/*! ./toPropertyKey.js */ "../node_modules/@babel/runtime/helpers/toPropertyKey.js");
+function _defineProperty(obj, key, value) {
+  key = toPropertyKey(key);
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+  return obj;
+}
+module.exports = _defineProperty, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
 /***/ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js":
 /*!***********************************************************************!*\
   !*** ../node_modules/@babel/runtime/helpers/interopRequireDefault.js ***!
@@ -4924,6 +5475,62 @@ function _interopRequireDefault(obj) {
   };
 }
 module.exports = _interopRequireDefault, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ "../node_modules/@babel/runtime/helpers/toPrimitive.js":
+/*!*************************************************************!*\
+  !*** ../node_modules/@babel/runtime/helpers/toPrimitive.js ***!
+  \*************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var _typeof = (__webpack_require__(/*! ./typeof.js */ "../node_modules/@babel/runtime/helpers/typeof.js")["default"]);
+function toPrimitive(t, r) {
+  if ("object" != _typeof(t) || !t) return t;
+  var e = t[Symbol.toPrimitive];
+  if (void 0 !== e) {
+    var i = e.call(t, r || "default");
+    if ("object" != _typeof(i)) return i;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return ("string" === r ? String : Number)(t);
+}
+module.exports = toPrimitive, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ "../node_modules/@babel/runtime/helpers/toPropertyKey.js":
+/*!***************************************************************!*\
+  !*** ../node_modules/@babel/runtime/helpers/toPropertyKey.js ***!
+  \***************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var _typeof = (__webpack_require__(/*! ./typeof.js */ "../node_modules/@babel/runtime/helpers/typeof.js")["default"]);
+var toPrimitive = __webpack_require__(/*! ./toPrimitive.js */ "../node_modules/@babel/runtime/helpers/toPrimitive.js");
+function toPropertyKey(t) {
+  var i = toPrimitive(t, "string");
+  return "symbol" == _typeof(i) ? i : String(i);
+}
+module.exports = toPropertyKey, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ "../node_modules/@babel/runtime/helpers/typeof.js":
+/*!********************************************************!*\
+  !*** ../node_modules/@babel/runtime/helpers/typeof.js ***!
+  \********************************************************/
+/***/ ((module) => {
+
+function _typeof(o) {
+  "@babel/helpers - typeof";
+
+  return (module.exports = _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) {
+    return typeof o;
+  } : function (o) {
+    return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o;
+  }, module.exports.__esModule = true, module.exports["default"] = module.exports), _typeof(o);
+}
+module.exports = _typeof, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ })
 

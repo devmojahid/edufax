@@ -4,8 +4,8 @@ Donate link: https://help.themepure.net/support/
 Tags: Metabox, Metafields, Custom Post Field, Post Metafield, Page Metabox
 Requires PHP: 7.4
 Requires at least: 5.6
-Tested up to: 6.4
-Stable tag: 1.3.1
+Tested up to: 6.6
+Stable tag: 1.3.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -495,7 +495,7 @@ Yes, contributions are welcome! If you have any ideas or improvements for the pl
 == Changelog ==
 
 
-= 1.3.1  =
+= 1.3  =
 
 * Update: No Update.
 
@@ -547,7 +547,7 @@ Yes, contributions are welcome! If you have any ideas or improvements for the pl
 
 * Update: Select field issue solved.
 
-= 1.1.3.1  =
+= 1.1.3  =
 
 * Update: Fields issue solved.
 
@@ -570,14 +570,14 @@ Yes, contributions are welcome! If you have any ideas or improvements for the pl
 = 1.1.9  =
 * Update: Repeater select field issue solved
 
-= 1.2  =
+= 1.2.0  =
 * Update: Multiselect field issue solved
 
-= 1.3  =
+= 1.3.0  =
 * Update: Multiselect field issue solved
 
-= 1.3.1  =
-* Update: Docs Updated
+= 1.3.2  =
+* Update: Editor Issue Fixed
 
 == Upgrade Notice ==
 = 1.0.0 =
