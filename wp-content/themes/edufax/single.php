@@ -258,19 +258,76 @@ if (function_exists('setPostViews')) {
 						the_post();
 					?>
                 <div class="tf__blog_details_area">
-                    <?php if (!empty($categories)) : ?>
-                    <div class="tp-postbox-details-category">
-                        <span>
-                            <a
-                                href="<?php print esc_url(get_category_link($categories[0]->term_id)); ?>"><?php echo esc_html($categories[0]->name); ?></a>
-                        </span>
+
+                    <div>
+                        <?php if (has_post_format('image')) : ?>
+
+                        <!-- if post has image -->
+                        <?php if (has_post_thumbnail()) : ?>
+                        <div class="tf__blog_details_img">
+                            <?php the_post_thumbnail('full', ['class' => 'img-fluid w-100']); ?>
+                        </div>
+                        <?php endif; ?>
+
+
+                        <!-- if post has video -->
+                        <?php elseif (has_post_format('video')) : ?>
+                        <?php if (has_post_thumbnail()) : ?>
+                        <div class="tp-postbox-details-thumb tp-postbox-details-video">
+                            <?php the_post_thumbnail('full', ['class' => 'img-responsive']); ?>
+                            <?php if (!empty($edufax_video_url)) : ?>
+                            <a href="<?php print esc_url($edufax_video_url); ?>"
+                                class="tp-postbox-video-btn popup-video"><i class="fas fa-play"></i></a>
+                            <?php endif; ?>
+                        </div>
+                        <?php endif; ?>
+
+                        <!-- if post has audio -->
+                        <?php elseif (has_post_format('audio')) : ?>
+                        <?php if (!empty($edufax_audio_url)) : ?>
+                        <div class="tp-postbox-details-thumb tp-postbox-details-audio">
+                            <?php echo wp_oembed_get($edufax_audio_url); ?>
+                        </div>
+                        <?php endif; ?>
+
+                        <!-- if post has gallery -->
+                        <?php elseif (has_post_format('gallery')) : ?>
+                        <?php if (!empty($gallery_images)) : ?>
+                        <div class="tp-postbox-thumb tp-postbox-slider swiper-container p-relative">
+                            <div class="swiper-wrapper">
+                                <?php foreach ($gallery_images as $key => $image) : ?>
+                                <div class="tp-postbox-slider-item swiper-slide">
+                                    <img src="<?php echo esc_url($image['url']); ?>"
+                                        alt="<?php echo esc_attr($image['alt']); ?>">
+                                </div>
+                                <?php endforeach; ?>
+                            </div>
+                            <div class="tp-postbox-nav">
+                                <button class="tp-postbox-slider-button-next"><i
+                                        class="fal fa-arrow-right"></i></button>
+                                <button class="tp-postbox-slider-button-prev"><i class="fal fa-arrow-left"></i></button>
+                            </div>
+                        </div>
+                        <?php endif; ?>
+                        <!-- defalut image format -->
+                        <?php else : ?>
+                        <?php if (has_post_thumbnail()) : ?>
+                        <div class="tp-postbox-details-thumb">
+                            <?php the_post_thumbnail('full', ['class' => 'img-responsive']); ?>
+                        </div>
+                        <?php endif; ?>
+
+                        <?php endif; ?>
                     </div>
+                    <?php if (!empty($categories)) : ?>
+
                     <?php endif; ?>
+
+					<?php get_template_part('template-parts/blog/blog-details-meta'); ?>
                     <div class="tf__blog_details_text">
                         <h2><?php the_title(); ?></h2>
                     </div>
 
-                    <?php get_template_part('template-parts/blog/blog-details-meta'); ?>
 
 
                 </div>
@@ -282,69 +339,6 @@ if (function_exists('setPostViews')) {
 				while (have_posts()) :
 					the_post();
 				?>
-
-            <div class="col-xl-12">
-                <?php if (has_post_format('image')) : ?>
-
-                <!-- if post has image -->
-                <?php if (has_post_thumbnail()) : ?>
-                <div class="tf__blog_details_img">
-                    <?php the_post_thumbnail('full', ['class' => 'img-responsive']); ?>
-                </div>
-                <?php endif; ?>
-
-
-                <!-- if post has video -->
-                <?php elseif (has_post_format('video')) : ?>
-                <?php if (has_post_thumbnail()) : ?>
-                <div class="tp-postbox-details-thumb tp-postbox-details-video">
-
-                    <?php the_post_thumbnail('full', ['class' => 'img-responsive']); ?>
-
-                    <?php if (!empty($edufax_video_url)) : ?>
-                    <a href="<?php print esc_url($edufax_video_url); ?>" class="tp-postbox-video-btn popup-video"><i
-                            class="fas fa-play"></i></a>
-                    <?php endif; ?>
-                </div>
-                <?php endif; ?>
-
-
-                <!-- if post has audio -->
-                <?php elseif (has_post_format('audio')) : ?>
-                <?php if (!empty($edufax_audio_url)) : ?>
-                <div class="tp-postbox-details-thumb tp-postbox-details-audio">
-                    <?php echo wp_oembed_get($edufax_audio_url); ?>
-                </div>
-                <?php endif; ?>
-
-                <!-- if post has gallery -->
-                <?php elseif (has_post_format('gallery')) : ?>
-                <?php if (!empty($gallery_images)) : ?>
-                <div class="tp-postbox-thumb tp-postbox-slider swiper-container p-relative">
-                    <div class="swiper-wrapper">
-                        <?php foreach ($gallery_images as $key => $image) : ?>
-                        <div class="tp-postbox-slider-item swiper-slide">
-                            <img src="<?php echo esc_url($image['url']); ?>"
-                                alt="<?php echo esc_attr($image['alt']); ?>">
-                        </div>
-                        <?php endforeach; ?>
-                    </div>
-                    <div class="tp-postbox-nav">
-                        <button class="tp-postbox-slider-button-next"><i class="fal fa-arrow-right"></i></button>
-                        <button class="tp-postbox-slider-button-prev"><i class="fal fa-arrow-left"></i></button>
-                    </div>
-                </div>
-                <?php endif; ?>
-                <!-- defalut image format -->
-                <?php else : ?>
-                <?php if (has_post_thumbnail()) : ?>
-                <div class="tp-postbox-details-thumb">
-                    <?php the_post_thumbnail('full', ['class' => 'img-responsive']); ?>
-                </div>
-                <?php endif; ?>
-
-                <?php endif; ?>
-            </div>
             <?php endwhile;  // End of the loop. 
 				?>
         </div>
