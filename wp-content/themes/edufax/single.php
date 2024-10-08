@@ -10,7 +10,7 @@
 
 get_header();
 
-$blog_column = is_active_sidebar('blog-sidebar') ? 'col-xl-9 col-lg-8' : 'col-xl-12 col-lg-12';
+$blog_column = is_active_sidebar('blog-sidebar') ? 'col-xl-8 col-lg-8' : 'col-xl-12 col-lg-12';
 $categories = get_the_terms($post->ID, 'category');
 $edufax_audio_url = function_exists('tpmeta_field') ? tpmeta_field('edufax_post_audio') : NULL;
 $gallery_images = function_exists('tpmeta_gallery_field') ? tpmeta_gallery_field('edufax_post_gallery') : '';
@@ -19,7 +19,7 @@ $edufax_video_url = function_exists('tpmeta_field') ? tpmeta_field('edufax_post_
 $enable_post_details_style_2 = function_exists('tpmeta_field') ? tpmeta_field('enable_post_details_style_2') : NULL;
 
 if (function_exists('setPostViews')) {
-	setPostViews(get_the_ID());
+    setPostViews(get_the_ID());
 }
 ?>
 
@@ -30,35 +30,35 @@ if (function_exists('setPostViews')) {
 <section class="postbox__area">
     <div class="postbox__wrapper postbox__style-2">
         <?php
-			while (have_posts()) :
-				the_post();
+            while (have_posts()) :
+                the_post();
 
-				global $post;
-				$categories = get_the_category($post->ID);
+                global $post;
+                $categories = get_the_category($post->ID);
 
-				$author_data = get_the_author_meta('description', get_query_var('author'));
-				$author_name = get_the_author_meta('edufax_write_by');
-				$facebook_url = get_the_author_meta('edufax_facebook');
-				$twitter_url = get_the_author_meta('edufax_twitter');
-				$linkedin_url = get_the_author_meta('edufax_linkedin');
-				$instagram_url = get_the_author_meta('edufax_instagram');
-				$edufax_url = get_the_author_meta('edufax_youtube');
-				$edufax_write_by = get_the_author_meta('edufax_write_by');
-				$author_bio_avatar_size = 180;
+                $author_data = get_the_author_meta('description', get_query_var('author'));
+                $author_name = get_the_author_meta('edufax_write_by');
+                $facebook_url = get_the_author_meta('edufax_facebook');
+                $twitter_url = get_the_author_meta('edufax_twitter');
+                $linkedin_url = get_the_author_meta('edufax_linkedin');
+                $instagram_url = get_the_author_meta('edufax_instagram');
+                $edufax_url = get_the_author_meta('edufax_youtube');
+                $edufax_write_by = get_the_author_meta('edufax_write_by');
+                $author_bio_avatar_size = 180;
 
 
-				$categories = get_the_terms($post->ID, 'category');
-				$edufax_blog_date = get_theme_mod('edufax_blog_date', true);
-				$edufax_blog_comments = get_theme_mod('edufax_blog_comments', true);
-				$edufax_blog_author = get_theme_mod('edufax_blog_author', true);
-				$edufax_blog_cat = get_theme_mod('edufax_blog_cat', false);
-				$edufax_blog_view = get_theme_mod('edufax_blog_view', false);
+                $categories = get_the_terms($post->ID, 'category');
+                $edufax_blog_date = get_theme_mod('edufax_blog_date', true);
+                $edufax_blog_comments = get_theme_mod('edufax_blog_comments', true);
+                $edufax_blog_author = get_theme_mod('edufax_blog_author', true);
+                $edufax_blog_cat = get_theme_mod('edufax_blog_cat', false);
+                $edufax_blog_view = get_theme_mod('edufax_blog_view', false);
 
-				if (function_exists('setPostViews')) {
-					setPostViews(get_the_ID());
-				}
+                if (function_exists('setPostViews')) {
+                    setPostViews(get_the_ID());
+                }
 
-			?>
+            ?>
         <div class="postbox__top">
             <div class="container">
                 <div class="row justify-content-center">
@@ -142,7 +142,7 @@ if (function_exists('setPostViews')) {
             </div>
         </div>
         <?php endwhile;  // End of the loop. 
-			?>
+            ?>
         <div class="postbox__main-wrapper pt-75">
             <div class="container">
                 <?php the_content(); ?>
@@ -155,12 +155,12 @@ if (function_exists('setPostViews')) {
                     <div class="col-xl-8 col-lg-10">
                         <?php
 
-							// If comments are open or we have at least one comment, load up the comment template.
-							if (comments_open() || get_comments_number()) :
-								comments_template();
-							endif;
+                            // If comments are open or we have at least one comment, load up the comment template.
+                            if (comments_open() || get_comments_number()) :
+                                comments_template();
+                            endif;
 
-							?>
+                            ?>
 
                     </div>
                 </div>
@@ -168,9 +168,9 @@ if (function_exists('setPostViews')) {
         </div>
 
         <?php if (get_previous_post_link() and get_next_post_link()) :
-				$prev_post = get_adjacent_post(false, '', true);
-				$next_post = get_adjacent_post(false, '', false);
-			?>
+                $prev_post = get_adjacent_post(false, '', true);
+                $next_post = get_adjacent_post(false, '', false);
+            ?>
         <div class="postbox__more-navigation postbox__more-navigation-2 grey-bg-7 d-none d-sm-block">
             <div class="container">
                 <div class="row">
@@ -251,96 +251,105 @@ if (function_exists('setPostViews')) {
 <section class="tf__blog_details_page pt_120 xs_pt_80 pb_120 xs_pb_80">
     <div class="container">
         <div class="row">
-            <div class="col-xl-8 col-lg-8 wow fadeInUp" data-wow-duration="1s"
+            <div class="<?php echo esc_attr($blog_column); ?> wow fadeInUp" data-wow-duration="1s"
                 style="visibility: visible; animation-duration: 1s; animation-name: fadeInUp;">
                 <?php
-					while (have_posts()) :
-						the_post();
-					?>
+                    while (have_posts()) :
+                        the_post();
+                    ?>
                 <div class="tf__blog_details_area">
+                    <!-- post format -->
+                    <?php if (has_post_format('image')) : ?>
 
-                    <div>
-                        <?php if (has_post_format('image')) : ?>
-
-                        <!-- if post has image -->
-                        <?php if (has_post_thumbnail()) : ?>
-                        <div class="tf__blog_details_img">
-                            <?php the_post_thumbnail('full', ['class' => 'img-fluid w-100']); ?>
-                        </div>
-                        <?php endif; ?>
-
-
-                        <!-- if post has video -->
-                        <?php elseif (has_post_format('video')) : ?>
-                        <?php if (has_post_thumbnail()) : ?>
-                        <div class="tp-postbox-details-thumb tp-postbox-details-video">
-                            <?php the_post_thumbnail('full', ['class' => 'img-responsive']); ?>
-                            <?php if (!empty($edufax_video_url)) : ?>
-                            <a href="<?php print esc_url($edufax_video_url); ?>"
-                                class="tp-postbox-video-btn popup-video"><i class="fas fa-play"></i></a>
-                            <?php endif; ?>
-                        </div>
-                        <?php endif; ?>
-
-                        <!-- if post has audio -->
-                        <?php elseif (has_post_format('audio')) : ?>
-                        <?php if (!empty($edufax_audio_url)) : ?>
-                        <div class="tp-postbox-details-thumb tp-postbox-details-audio">
-                            <?php echo wp_oembed_get($edufax_audio_url); ?>
-                        </div>
-                        <?php endif; ?>
-
-                        <!-- if post has gallery -->
-                        <?php elseif (has_post_format('gallery')) : ?>
-                        <?php if (!empty($gallery_images)) : ?>
-                        <div class="tp-postbox-thumb tp-postbox-slider swiper-container p-relative">
-                            <div class="swiper-wrapper">
-                                <?php foreach ($gallery_images as $key => $image) : ?>
-                                <div class="tp-postbox-slider-item swiper-slide">
-                                    <img src="<?php echo esc_url($image['url']); ?>"
-                                        alt="<?php echo esc_attr($image['alt']); ?>">
-                                </div>
-                                <?php endforeach; ?>
-                            </div>
-                            <div class="tp-postbox-nav">
-                                <button class="tp-postbox-slider-button-next"><i
-                                        class="fal fa-arrow-right"></i></button>
-                                <button class="tp-postbox-slider-button-prev"><i class="fal fa-arrow-left"></i></button>
-                            </div>
-                        </div>
-                        <?php endif; ?>
-                        <!-- defalut image format -->
-                        <?php else : ?>
-                        <?php if (has_post_thumbnail()) : ?>
-                        <div class="tp-postbox-details-thumb">
-                            <?php the_post_thumbnail('full', ['class' => 'img-responsive']); ?>
-                        </div>
-                        <?php endif; ?>
-
-                        <?php endif; ?>
+                    <!-- if post has image -->
+                    <?php if (has_post_thumbnail()) : ?>
+                    <div class="tf__blog_details_img">
+                        <?php the_post_thumbnail('full', ['class' => 'img-fluid w-100']); ?>
                     </div>
-                    <?php if (!empty($categories)) : ?>
-
                     <?php endif; ?>
 
-					<?php get_template_part('template-parts/blog/blog-details-meta'); ?>
+
+                    <!-- if post has video -->
+                    <?php elseif (has_post_format('video')) : ?>
+                    <?php if (has_post_thumbnail()) : ?>
+                    <div class="tp-postbox-details-thumb tp-postbox-details-video">
+                        <?php the_post_thumbnail('full', ['class' => 'img-fluid w-100']); ?>
+                        <?php if (!empty($edufax_video_url)) : ?>
+                        <a href="<?php print esc_url($edufax_video_url); ?>" class="tp-postbox-video-btn popup-video"><i
+                                class="fas fa-play"></i></a>
+                        <?php endif; ?>
+                    </div>
+                    <?php endif; ?>
+
+                    <!-- if post has audio -->
+                    <?php elseif (has_post_format('audio')) : ?>
+                    <?php if (!empty($edufax_audio_url)) : ?>
+                    <div class="tp-postbox-details-thumb tp-postbox-details-audio">
+                        <?php echo wp_oembed_get($edufax_audio_url); ?>
+                    </div>
+                    <?php endif; ?>
+
+                    <!-- if post has gallery -->
+                    <?php elseif (has_post_format('gallery')) : ?>
+                    <?php if (!empty($gallery_images)) : ?>
+                    <div class="tp-postbox-thumb tp-postbox-slider swiper-container p-relative">
+                        <div class="swiper-wrapper">
+                            <?php foreach ($gallery_images as $key => $image) : ?>
+                            <div class="tp-postbox-slider-item swiper-slide">
+                                <img src="<?php echo esc_url($image['url']); ?>"
+                                    alt="<?php echo esc_attr($image['alt']); ?>">
+                            </div>
+                            <?php endforeach; ?>
+                        </div>
+                        <div class="tp-postbox-nav">
+                            <button class="tp-postbox-slider-button-next"><i class="fal fa-arrow-right"></i></button>
+                            <button class="tp-postbox-slider-button-prev"><i class="fal fa-arrow-left"></i></button>
+                        </div>
+                    </div>
+                    <?php endif; ?>
+                    <!-- defalut image format -->
+                    <?php else : ?>
+                    <?php if (has_post_thumbnail()) : ?>
+                    <div class="tf__blog_details_img">
+                        <?php the_post_thumbnail('full', ['class' => 'img-fluid w-100']); ?>
+                    </div>
+                    <?php endif; ?>
+
+                    <?php endif; ?>
+                    <!-- end of post format -->
+                    <?php get_template_part('template-parts/blog/blog-details-meta'); ?>
+
                     <div class="tf__blog_details_text">
                         <h2><?php the_title(); ?></h2>
+                        <?php the_content(); ?>
+                    </div>
+                    <div class="tf__blog_details_tag_area">
+                        <ul class="tags d-flex flex-wrap">
+                            <li>Tags:</li>
+                            <li><a href="#">Education</a></li>
+                            <li><a href="#">College</a></li>
+                            <li><a href="#">Learning</a></li>
+                            <?php edufax_get_tag(); ?>
+                        </ul>
+                        <ul class="social d-flex flex-wrap">
+                            <li><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a class="linkedin" href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a class="pinterest" href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                        </ul>
                     </div>
 
-
-
                 </div>
+
                 <?php endwhile;  // End of the loop. 
-					?>
+                    ?>
             </div>
 
-            <?php
-				while (have_posts()) :
-					the_post();
-				?>
-            <?php endwhile;  // End of the loop. 
-				?>
+            <?php if (is_active_sidebar('blog-sidebar')) : ?>
+            <div class="col-xl-4 col-lg-4" style="position: relative;">
+                <?php get_sidebar(); ?>
+            </div>
+            <?php endif; ?>
         </div>
 
 
@@ -350,17 +359,17 @@ if (function_exists('setPostViews')) {
                 <div class="tp-postbox-details-main-wrapper">
                     <div class="tp-postbox-details-content postbox__text">
                         <?php
-							while (have_posts()) :
-								the_post();
+                            while (have_posts()) :
+                                the_post();
 
-								get_template_part('template-parts/content', get_post_format());
+                                get_template_part('template-parts/content', get_post_format());
 
-							?>
+                            ?>
 
                         <?php if (get_previous_post_link() and get_next_post_link()) :
-									$prev_post = get_adjacent_post(false, '', true);
-									$next_post = get_adjacent_post(false, '', false);
-								?>
+                                    $prev_post = get_adjacent_post(false, '', true);
+                                    $next_post = get_adjacent_post(false, '', false);
+                                ?>
 
                         <div
                             class="tp-postbox-details-navigation d-md-flex justify-content-between align-items-center flex-wrap">
@@ -421,15 +430,15 @@ if (function_exists('setPostViews')) {
                         <!-- navigation end -->
 
                         <?php
-								get_template_part('template-parts/biography', get_post_format());
+                                get_template_part('template-parts/biography', get_post_format());
 
-								// If comments are open or we have at least one comment, load up the comment template.
-								if (comments_open() || get_comments_number()) :
-									comments_template();
-								endif;
+                                // If comments are open or we have at least one comment, load up the comment template.
+                                if (comments_open() || get_comments_number()) :
+                                    comments_template();
+                                endif;
 
-							endwhile; // End of the loop.
-							?>
+                            endwhile; // End of the loop.
+                            ?>
                     </div>
                 </div>
 
