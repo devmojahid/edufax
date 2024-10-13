@@ -3039,7 +3039,7 @@ preloader css End
     margin-top: 25px;
 }
 
-.tf__blog_details_text ul li::after,
+/* .tf__blog_details_text ul li::after,
 .tf__blog_details_text ol li::after {
     position: absolute;
     content: "";
@@ -3051,7 +3051,7 @@ preloader css End
     height: 25px;
     top: 0px;
     left: 0;
-}
+} */
 
 .tf__blog_details_tag_area {
     border-top: 1px solid #CDD5DF;
