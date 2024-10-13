@@ -33,18 +33,11 @@ function edufax_register_required_plugins()
             'required' => true,
         ],
         [
-            'name'         => esc_html__('Edufax Core ', 'edufax'),
-            'slug'         => 'edufax-core',
-            'source'       => $url . 'edufax-core.zip',
+            'name'         => esc_html__('Mojar Core ', 'mojar'),
+            'slug'         => 'mojar-core',
+            'source'       => $url . 'mojar-core.zip',
             'required'     => true,
-            'external_url' => $url . 'edufax-core.zip',
-        ],
-        [
-            'name'         => esc_html__('Pure Metafields ', 'edufax'),
-            'slug'         => 'pure-metafields',
-            'source'       => $url . 'pure-metafields.zip',
-            'required'     => true,
-            'external_url' => $url . 'pure-metafields.zip',
+            'external_url' => $url . 'mojar-core.zip',
         ],
         [
             'name'     => esc_html__('WP Classic Editor', 'edufax'),
@@ -75,27 +68,7 @@ function edufax_register_required_plugins()
             'name'     => esc_html__('WooCommerce', 'edufax'),
             'slug'     => 'woocommerce',
             'required' => false,
-        ],
-        [
-            'name'               => esc_html__('WPC Smart Wishlist', 'edufax'),
-            'slug'               => 'woo-smart-wishlist',
-            'required'           => false,
-        ],
-        [
-            'name'               => esc_html__('WPC Smart Compare', 'edufax'),
-            'slug'               => 'woo-smart-compare',
-            'required'           => false,
-        ],
-        [
-            'name'               => esc_html__('WPC Smart Quick View', 'edufax'),
-            'slug'               => 'woo-smart-quick-view',
-            'required'           => false,
-        ],
-        [
-            'name'               => esc_html__('YITH WooCommerce Ajax Product Filter', 'edufax'),
-            'slug'               => 'yith-woocommerce-ajax-navigation',
-            'required'           => false,
-        ],
+        ]
     ];
     $config = [
         'id'           => 'edufax', // Unique ID for hashing notices for multiple instances of TGMPA.
