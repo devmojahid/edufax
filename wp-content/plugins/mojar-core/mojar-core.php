@@ -186,8 +186,6 @@ final class MS_Core
 
 		\Carbon_Fields\Carbon_Fields::boot();
 
-		new \MojarCore\Carbon_Fields_Init();
-
 
 		// Once we get here, We have passed all validation checks so we can safely include our plugin
 		require_once('plugin.php');
