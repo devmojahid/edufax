@@ -16,19 +16,17 @@ if (post_password_required()) {
 ?>
 
 <?php if (have_comments() || comments_open()) : ?>
-    <div id="comments" class="blog-post-comment tp-postbox-details-comment-wrapper">
+    <div id="comments" class="blog-post-comment tp-postbox-details-comment-wrapper tf__blog_comment_area">
 
         <?php if (get_comments_number() >= 1) : ?>
-            <div class="post-comments postbox__comment">
-
                 <?php
                 $comment_no = number_format_i18n(get_comments_number());
                 $comment_text = (!empty($comment_no) and ($comment_no > 1)) ? esc_html__(' Comments', 'edufax') : esc_html__(' Comment ', 'edufax');
-                $comment_no = (!empty($comment_no) and ($comment_no > 0)) ? '<h2 class="tp-postbox-details-comment-title">' . esc_html($comment_no . $comment_text) . '</h2>' : ' ';
+                $comment_no = (!empty($comment_no) and ($comment_no > 0)) ? '<h3>' . esc_html($comment_no . $comment_text) . '</h3>' : ' ';
                 print sprintf("%s", $comment_no);
                 ?>
 
-                <div class="tp-postbox-details-comment-inner latest-comments">
+                <div class="mb-5">
                     <ul>
                         <?php
                         wp_list_comments([
@@ -40,7 +38,6 @@ if (post_password_required()) {
                         ?>
                     </ul>
                 </div>
-            </div>
         <?php endif; ?>
 
         <?php if (get_comment_pages_count() > 1 && get_option('page_comments')) : ?>

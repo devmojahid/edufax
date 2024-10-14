@@ -20,7 +20,7 @@ $blog_tag_col = $edufax_blog_single_social ? 'col-xl-8 col-lg-6' : 'col-xl-12';
 
 if (is_single()) : ?>
     <!-- details start -->
-    <article id="post-<?php the_ID(); ?>" <?php post_class('tp-postbox-details-article'); ?>>
+    <article id="post-<?php the_ID(); ?>" <?php post_class('tp-postbox-details-article tf__blog_details_text'); ?>>
         <div class="tp-postbox-details-article-inner">
             <!-- content start -->
             <?php the_content(); ?>

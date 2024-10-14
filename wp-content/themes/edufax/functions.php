@@ -245,26 +245,17 @@ if (!function_exists('edufax_comment')) {
         $replayClass = 'comment-depth-' . esc_attr($depth);
 ?>
         <li id="comment-<?php comment_ID(); ?>">
-            <div class="comments-box tp-postbox-details-comment-box d-sm-flex align-items-start">
-                <div class="tp-postbox-details-comment-thumb">
-                    <?php print get_avatar($comment, 102, null, null, ['class' => []]); ?>
+            <div class="tf__single_comment">
+                <div class="tf__single_comment_img">
+                    <?php print get_avatar($comment, 102, null, null, ['class' => ['img-fluid w-100']]); ?>
                 </div>
-                <div class="tp-postbox-details-comment-content">
-                    <div class="tp-postbox-details-comment-top d-flex justify-content-between align-items-start">
-                        <div class="tp-postbox-details-comment-avater">
-                            <h4 class="tp-postbox-details-comment-avater-title"><?php print get_comment_author_link(); ?></h4>
-                            <span
-                                class="tp-postbox-details-avater-meta"><?php comment_time(get_option('date_format')); ?></span>
-                        </div>
-                        <div class="tp-postbox-details-comment-reply">
-                            <?php comment_reply_link(array_merge($args, ['depth' => $depth, 'max_depth' => $args['max_depth']])); ?>
-                        </div>
-                    </div>
-
-                    <?php comment_text(); ?>
-
+                <div class="tf__single_comment_text">
+                    <h4><?php print get_comment_author_link(); ?></h4>
+                    <p class="comment_time"><?php comment_time(get_option('date_format')); ?> <?php comment_reply_link(array_merge($args, ['depth' => $depth, 'max_depth' => $args['max_depth']])); ?></p>
+                    <p class="main_comment"><?php comment_text(); ?></p>
                 </div>
             </div>
+            
         </li>
 <?php
     }
