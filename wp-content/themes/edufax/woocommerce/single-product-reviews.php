@@ -26,9 +26,9 @@ if (!comments_open()) {
 
 ?>
 <div id="reviews" class="woocommerce-Reviews">
-	<div id="comments">
-		<h2 class="woocommerce-Reviews-title">
-			<?php
+    <div id="comments">
+        <h2 class="woocommerce-Reviews-title">
+            <?php
 			$count = $product->get_review_count();
 			if ($count && wc_review_ratings_enabled()) {
 				/* translators: 1: reviews count 2: product name */
@@ -38,14 +38,14 @@ if (!comments_open()) {
 				esc_html_e('Reviews', 'edufax');
 			}
 			?>
-		</h2>
+        </h2>
 
-		<?php if (have_comments()) : ?>
-			<ol class="commentlist">
-				<?php wp_list_comments(apply_filters('woocommerce_product_review_list_args', array('callback' => 'woocommerce_comments'))); ?>
-			</ol>
+        <?php if (have_comments()) : ?>
+        <ol class="commentlist">
+            <?php wp_list_comments(apply_filters('woocommerce_product_review_list_args', array('callback' => 'woocommerce_comments'))); ?>
+        </ol>
 
-			<?php
+        <?php
 			if (get_comment_pages_count() > 1 && get_option('page_comments')) :
 				echo '<nav class="woocommerce-pagination">';
 				paginate_comments_links(
@@ -61,15 +61,15 @@ if (!comments_open()) {
 				echo '</nav>';
 			endif;
 			?>
-		<?php else : ?>
-			<p class="woocommerce-noreviews"><?php esc_html_e('There are no reviews yet.', 'edufax'); ?></p>
-		<?php endif; ?>
-	</div>
+        <?php else : ?>
+        <p class="woocommerce-noreviews"><?php esc_html_e('There are no reviews yet.', 'edufax'); ?></p>
+        <?php endif; ?>
+    </div>
 
-	<?php if (get_option('woocommerce_review_rating_verification_required') === 'no' || wc_customer_bought_product('', get_current_user_id(), $product->get_id())) : ?>
-		<div id="review_form_wrapper">
-			<div id="review_form">
-				<?php
+    <?php if (get_option('woocommerce_review_rating_verification_required') === 'no' || wc_customer_bought_product('', get_current_user_id(), $product->get_id())) : ?>
+    <div id="review_form_wrapper">
+        <div id="review_form">
+            <?php
 				$commenter    = wp_get_current_commenter();
 				$comment_form = array(
 					/* translators: %s is product title */
@@ -136,11 +136,13 @@ if (!comments_open()) {
 
 				comment_form(apply_filters('woocommerce_product_review_comment_form_args', $comment_form));
 				?>
-			</div>
-		</div>
-	<?php else : ?>
-		<p class="woocommerce-verification-required"><?php esc_html_e('Only logged in customers who have purchased this product may leave a review.', 'edufax'); ?></p>
-	<?php endif; ?>
+        </div>
+    </div>
+    <?php else : ?>
+    <p class="woocommerce-verification-required">
+        <?php esc_html_e('Only logged in customers who have purchased this product may leave a review.', 'edufax'); ?>
+    </p>
+    <?php endif; ?>
 
-	<div class="clear"></div>
+    <div class="clear"></div>
 </div>

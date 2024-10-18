@@ -31,7 +31,7 @@ define('MSCORE_ADDONS_PATH', plugin_dir_path(__FILE__));
 define('MSCORE_ELEMENTS_PATH', MSCORE_ADDONS_DIR . '/include/elementor');
 define('MSCORE_WIDGET_PATH', MSCORE_ADDONS_DIR . '/include/widgets');
 define('MSCORE_INCLUDE_PATH', MSCORE_ADDONS_DIR . '/include');
-define('MS_API_URL', 'http://harry.test/elementor-block/');
+define('MS_API_URL', 'http://mojar.com/elementor-block/');
 define('MS_EXT_LOGO_URL', MSCORE_ADDONS_URL . 'include/elementor/templates/img/logo-black.svg');
 define('MS_EXT_LOGO_ICON_URL', MSCORE_ADDONS_URL . 'assets/img/logo.png');
 define('MS_ADDONS_FILE_', __FILE__);
