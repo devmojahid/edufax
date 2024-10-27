@@ -204,8 +204,7 @@ class MS_Blog_Post extends Widget_Base
                 <div class="tf__single_blog">
                     <?php if (has_post_thumbnail()) : ?>
                     <div class="tf__single_blog_img">
-                        <!-- <img src="images/blog_img_5.jpg" alt="blog" class="img-fluid w-100"> -->
-                        <?php the_post_thumbnail($post->ID, $settings['thumbnail_size']); ?>
+                        <?php the_post_thumbnail($post->ID); ?>
                     </div>
                     <?php endif; ?>
                     <div class="tf__single_blog_text">

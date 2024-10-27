@@ -86,6 +86,7 @@ include_once(MSCORE_ADDONS_DIR . '/include/menu/menu.php');
  * MS Custom Widget
  */
 include_once(MSCORE_WIDGET_PATH . '/ms-blog-post-sidebar.php');
+include_once(MSCORE_WIDGET_PATH . '/ms-populer-course-single.php');
 // include_once(MSCORE_WIDGET_PATH . '/ms-latest-posts-footer.php');
 // include_once(MSCORE_WIDGET_PATH . '/ms-footer-post-no-thumb.php');
 // include_once(MSCORE_WIDGET_PATH . '/ms-footer-post-thumb.php');

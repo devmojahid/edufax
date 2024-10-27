@@ -114,7 +114,9 @@ $enrolled = tutor_utils()->count_enrolled_users_by_course();
                     <div class="tf__sidebar_course_enrole">
                         <?php tutor_utils()->has_video_in_single() ? tutor_course_video() : get_tutor_course_thumbnail(); ?>
                         <?php tutor_load_template('single.course.course-entry-box'); ?>
-                        <!-- <?php tutor_course_requirements_html(); ?>  There comes populer course-->
+                        <?php if (is_active_sidebar('course-sidebar')) : ?>
+                        <?php dynamic_sidebar('course-sidebar'); ?>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

@@ -286,7 +286,7 @@ class MS_Course_List extends Widget_Base
                      $category = get_tutor_course_categories();
                      $rating = tutor_utils()->get_course_rating($course_id);
                      $students = tutor_utils()->count_enrolled_users_by_course($course_id);
-                     $price = tutor_utils()->get_course_price($course_id);
+                     $price = tutor_utils()->get_course_price($course_id) ?? "Free";
                ?>
             <div class="col-xl-4 col-md-6 wow fadeInUp" data-wow-duration="1s">
                 <div class="tf__single_courses">

@@ -3973,3 +3973,51 @@ img.alignright.size-thumbnail.wp-image-827 {
     color: #ffffff !important;
     margin-bottom: 40px !important;
 }
+
+
+.tf__sidebar_post.post-sidebar-sow ul li{
+	display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.tf__sidebar_courses.tf__sidebar_post ul li{
+	display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.tf__sidebar_post.post-sidebar-sow ul li a::after {
+    position: absolute;
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-radius: 50%;
+    top: 8px;
+    left: 0;
+}
+
+.tf__sidebar_courses.tf__sidebar_post ul li a::after {
+    position: absolute;
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-radius: 50%;
+    top: 8px;
+    left: 0;
+}
+
+.tf__sidebar_post.post-sidebar-sow ul li a {
+   padding-left: 0px;
+}
+
+.tf__sidebar_courses.tf__sidebar_post ul li a {
+   padding-left: 0px;
+}
+
+.tf__sidebar_courses.tf__sidebar_post ul li .text p span img{
+	width: 20px !important;
+	height: 20px !important;
+}

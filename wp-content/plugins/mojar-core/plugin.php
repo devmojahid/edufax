@@ -184,7 +184,7 @@ class MS_Core_Plugin
 			'video-popup',
 			'instructor-slider',
 			'course-list',
-			// 'contact-box',
+			'contact-box',
 			// 'blog-post-grid',
 			// 'testimonial-slider',
 			// 'hero-banner',

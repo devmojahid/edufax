@@ -27,6 +27,16 @@ function edufax_widgets_init()
         'after_title'   => '</h3>',
     ]);
 
+    register_sidebar([
+        'name'          => esc_html__('Course Single Sidebar', 'edufax'),
+        'id'            => 'course-sidebar',
+        'description'   => esc_html__('Popular Course Section Add', 'edufax'),
+        'before_widget' => '<div id="%1$s" class="tf__sidebar_courses tf__sidebar_post %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3>',
+        'after_title'   => '</h3>',
+    ]);
+
 
     $footer_widgets = get_theme_mod('footer_widget_number', 4);
 
