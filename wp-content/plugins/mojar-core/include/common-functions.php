@@ -1508,10 +1508,10 @@ trait MSCoreElementFunctions
         }
         $this->add_render_attribute('title_args', 'class', ' ' . $title_args . ' ms-el-title');
 ?>
-        <?php if (!empty($settings['ms_' . $control_id . '_before_title'])) : ?>
-            <span class="sub-title"><?php echo ms_kses_basic($settings['ms_' . $control_id . '_before_title']); ?></span>
-        <?php endif; ?>
-        <?php
+<?php if (!empty($settings['ms_' . $control_id . '_before_title'])) : ?>
+<span class="sub-title"><?php echo ms_kses_basic($settings['ms_' . $control_id . '_before_title']); ?></span>
+<?php endif; ?>
+<?php
         if ($settings['ms_' . $control_id . '_title_tag']) :
             printf(
                 '<%1$s %2$s><span>%3$s</span></%1$s>',
@@ -1521,9 +1521,9 @@ trait MSCoreElementFunctions
             );
         endif;
         ?>
-        <?php if (!empty($settings['ms_' . $control_id . '_desctiption'])) : ?>
-            <p><?php echo ms_kses_intermediate($settings['ms_' . $control_id . '_desctiption']); ?></p>
-        <?php endif; ?>
+<?php if (!empty($settings['ms_' . $control_id . '_desctiption'])) : ?>
+<p><?php echo ms_kses_intermediate($settings['ms_' . $control_id . '_desctiption']); ?></p>
+<?php endif; ?>
 <?php
     }
 

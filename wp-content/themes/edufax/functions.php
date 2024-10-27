@@ -193,6 +193,11 @@ if (class_exists('Kirki')) {
 include_once EDUFAX_THEME_INC . 'class-edufax-kirki.php';
 
 
+if (function_exists('tutor')) {
+    require EDUFAX_THEME_INC . 'edufax-tutor.php';
+}
+
+
 /**
  * Load Jetpack compatibility file.
  */
@@ -251,11 +256,13 @@ if (!function_exists('edufax_comment')) {
                 </div>
                 <div class="tf__single_comment_text">
                     <h4><?php print get_comment_author_link(); ?></h4>
-                    <p class="comment_time"><?php comment_time(get_option('date_format')); ?> <?php comment_reply_link(array_merge($args, ['depth' => $depth, 'max_depth' => $args['max_depth']])); ?></p>
+                    <p class="comment_time"><?php comment_time(get_option('date_format')); ?>
+                        <?php comment_reply_link(array_merge($args, ['depth' => $depth, 'max_depth' => $args['max_depth']])); ?>
+                    </p>
                     <p class="main_comment"><?php comment_text(); ?></p>
                 </div>
             </div>
-            
+
         </li>
 <?php
     }

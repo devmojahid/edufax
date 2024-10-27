@@ -113,11 +113,11 @@ function edufax_header_lang_defualt()
 {
 ?>
 
-    <div class="tp-header-top-menu-item tp-header-lang">
-        <span class="tp-header-lang-toggle"
-            id="tp-header-lang-toggle"><?php print esc_html__('English', 'edufax'); ?></span>
-        <?php do_action('edufax_language'); ?>
-    </div>
+<div class="tp-header-top-menu-item tp-header-lang">
+    <span class="tp-header-lang-toggle"
+        id="tp-header-lang-toggle"><?php print esc_html__('English', 'edufax'); ?></span>
+    <?php do_action('edufax_language'); ?>
+</div>
 <?php
 }
 
@@ -171,20 +171,20 @@ function edufax_offcanvas_lang_defualt()
 {
 ?>
 
-    <div class="offcanvas__select language">
-        <div class="offcanvas__lang d-flex align-items-center justify-content-md-end">
-            <div class="offcanvas__lang-img mr-15">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/icon/language-flag.png"
-                    alt="<?php echo esc_attr__('language', 'edufax'); ?>">
-            </div>
+<div class="offcanvas__select language">
+    <div class="offcanvas__lang d-flex align-items-center justify-content-md-end">
+        <div class="offcanvas__lang-img mr-15">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/icon/language-flag.png"
+                alt="<?php echo esc_attr__('language', 'edufax'); ?>">
+        </div>
 
-            <div class="offcanvas__lang-wrapper">
-                <span class="offcanvas__lang-selected-lang tp-lang-toggle"
-                    id="tp-offcanvas-lang-toggle"><?php echo esc_html__('English', 'edufax'); ?></span>
-                <?php do_action('edufax_offcanvas_language'); ?>
-            </div>
+        <div class="offcanvas__lang-wrapper">
+            <span class="offcanvas__lang-selected-lang tp-lang-toggle"
+                id="tp-offcanvas-lang-toggle"><?php echo esc_html__('English', 'edufax'); ?></span>
+            <?php do_action('edufax_offcanvas_language'); ?>
         </div>
     </div>
+</div>
 <?php
 }
 function _edufax_offcanvas_language($mar)
@@ -253,7 +253,7 @@ add_action('edufax_footer_language', 'edufax_footer_language_list');
 // header logo
 function edufax_header_logo()
 { ?>
-    <?php
+<?php
     $edufax_logo_on = function_exists('tpmeta_field') ? tpmeta_field('edufax_en_secondary_logo') : NULL;
     $edufax_logo = get_template_directory_uri() . '/assets/images/logo.png';
     $edufax_logo_white = get_template_directory_uri() . '/assets/img/logo/logo-white.svg';
@@ -264,24 +264,24 @@ function edufax_header_logo()
     $edufax_secondary_logo = get_theme_mod('header_secondary_logo', $edufax_logo_white);
     ?>
 
-    <?php if ($edufax_logo_on == 'on') : ?>
-        <a class="secondary-logo navbar-brand" href="<?php print esc_url(home_url('/')); ?>">
-            <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto"
-                src="<?php print esc_url($edufax_secondary_logo); ?>" alt="<?php print esc_attr__('logo', 'edufax'); ?>" />
-        </a>
-    <?php else : ?>
-        <a class="standard-logo navbar-brand" href="<?php print esc_url(home_url('/')); ?>">
-            <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto"
-                src="<?php print esc_url($edufax_site_logo); ?>" alt="<?php print esc_attr__('logo', 'edufax'); ?>" />
-        </a>
-    <?php endif; ?>
+<?php if ($edufax_logo_on == 'on') : ?>
+<a class="secondary-logo navbar-brand" href="<?php print esc_url(home_url('/')); ?>">
+    <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto"
+        src="<?php print esc_url($edufax_secondary_logo); ?>" alt="<?php print esc_attr__('logo', 'edufax'); ?>" />
+</a>
+<?php else : ?>
+<a class="standard-logo navbar-brand" href="<?php print esc_url(home_url('/')); ?>">
+    <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto"
+        src="<?php print esc_url($edufax_site_logo); ?>" alt="<?php print esc_attr__('logo', 'edufax'); ?>" />
+</a>
+<?php endif; ?>
 <?php
 }
 
 // header logo
 function edufax_header_double_logo()
 { ?>
-    <?php
+<?php
     $edufax_logo = get_template_directory_uri() . '/assets/img/logo/logo.svg';
     $edufax_logo_white = get_template_directory_uri() . '/assets/img/logo/logo-white.svg';
 
@@ -292,12 +292,12 @@ function edufax_header_double_logo()
 
     ?>
 
-    <a href="<?php print esc_url(home_url('/')); ?>">
-        <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto" class="logo-light"
-            src="<?php print esc_url($edufax_logo_white); ?>" alt="<?php print esc_attr__('logo', 'edufax'); ?>">
-        <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto" class="logo-dark"
-            src="<?php print esc_url($edufax_site_logo); ?>" alt="<?php print esc_attr__('logo', 'edufax'); ?>">
-    </a>
+<a href="<?php print esc_url(home_url('/')); ?>">
+    <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto" class="logo-light"
+        src="<?php print esc_url($edufax_logo_white); ?>" alt="<?php print esc_attr__('logo', 'edufax'); ?>">
+    <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto" class="logo-dark"
+        src="<?php print esc_url($edufax_site_logo); ?>" alt="<?php print esc_attr__('logo', 'edufax'); ?>">
+</a>
 <?php
 }
 
@@ -305,7 +305,7 @@ function edufax_header_double_logo()
 // edufax_footer_logo
 function edufax_footer_logo()
 { ?>
-    <?php
+<?php
     $edufax_foooter_logo = function_exists('get_field') ? get_field('edufax_footer_logo') : NULL;
 
     $edufax_logo = get_template_directory_uri() . '/assets/img/logo/logo.svg';
@@ -314,17 +314,17 @@ function edufax_footer_logo()
     $edufax_site_logo_width = get_theme_mod('edufax_logo_width', '120');
     ?>
 
-    <?php if (!empty($edufax_foooter_logo)) : ?>
-        <a href="<?php print esc_url(home_url('/')); ?>">
-            <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto"
-                src="<?php print esc_url($edufax_foooter_logo); ?>" alt="<?php print esc_attr__('logo', 'edufax'); ?>" />
-        </a>
-    <?php else : ?>
-        <a href="<?php print esc_url(home_url('/')); ?>">
-            <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto"
-                src="<?php print esc_url($edufax_footer_logo_default); ?>" alt="<?php print esc_attr__('logo', 'edufax'); ?>" />
-        </a>
-    <?php endif; ?>
+<?php if (!empty($edufax_foooter_logo)) : ?>
+<a href="<?php print esc_url(home_url('/')); ?>">
+    <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto"
+        src="<?php print esc_url($edufax_foooter_logo); ?>" alt="<?php print esc_attr__('logo', 'edufax'); ?>" />
+</a>
+<?php else : ?>
+<a href="<?php print esc_url(home_url('/')); ?>">
+    <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto"
+        src="<?php print esc_url($edufax_footer_logo_default); ?>" alt="<?php print esc_attr__('logo', 'edufax'); ?>" />
+</a>
+<?php endif; ?>
 <?php
 }
 
@@ -332,25 +332,25 @@ function edufax_footer_logo()
 // header logo
 function edufax_header_sticky_logo()
 { ?>
-    <?php
+<?php
     $edufax_sticky_logo = function_exists('get_field') ? get_field('edufax_sticky_logo') : NULL;
     $edufax_logo = get_theme_mod('edufax_sticky_logo', get_template_directory_uri() . '/assets/img/logo/logo-black-solid.svg');
     $edufax_secondary_logo = get_theme_mod('seconday_logo',  get_template_directory_uri() . '/assets/img/logo/logo.svg');
     $edufax_site_logo_width = get_theme_mod('edufax_logo_width', '120');
     ?>
-    <?php if (!empty($edufax_sticky_logo)) : ?>
-        <a href="<?php print esc_url(home_url('/')); ?>">
-            <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto" class="logo-dark"
-                src="<?php print esc_url($edufax_sticky_logo); ?>" alt="logo">
-        </a>
-    <?php else : ?>
-        <a href="<?php print esc_url(home_url('/')); ?>">
-            <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto" class="logo-dark"
-                src="<?php print esc_url($edufax_logo); ?>" alt="logo">
-            <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto" class="logo-light"
-                src="<?php print esc_url($edufax_secondary_logo); ?>" alt="logo">
-        </a>
-    <?php endif; ?>
+<?php if (!empty($edufax_sticky_logo)) : ?>
+<a href="<?php print esc_url(home_url('/')); ?>">
+    <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto" class="logo-dark"
+        src="<?php print esc_url($edufax_sticky_logo); ?>" alt="logo">
+</a>
+<?php else : ?>
+<a href="<?php print esc_url(home_url('/')); ?>">
+    <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto" class="logo-dark"
+        src="<?php print esc_url($edufax_logo); ?>" alt="logo">
+    <img data-width="<?php echo esc_attr($edufax_site_logo_width); ?>" height="auto" class="logo-light"
+        src="<?php print esc_url($edufax_secondary_logo); ?>" alt="logo">
+</a>
+<?php endif; ?>
 <?php
 }
 
@@ -363,13 +363,13 @@ function edufax_mobile_logo()
 
 ?>
 
-    <?php if (!empty($edufax_mobile_logo_hide)) : ?>
-        <div class="side__logo mb-25">
-            <a class="sideinfo-logo" href="<?php print esc_url(home_url('/')); ?>">
-                <img src="<?php print esc_url($edufax_site_logo); ?>" alt="<?php print esc_attr__('logo', 'edufax'); ?>" />
-            </a>
-        </div>
-    <?php endif; ?>
+<?php if (!empty($edufax_mobile_logo_hide)) : ?>
+<div class="side__logo mb-25">
+    <a class="sideinfo-logo" href="<?php print esc_url(home_url('/')); ?>">
+        <img src="<?php print esc_url($edufax_site_logo); ?>" alt="<?php print esc_attr__('logo', 'edufax'); ?>" />
+    </a>
+</div>
+<?php endif; ?>
 
 
 
@@ -387,34 +387,35 @@ function edufax_header_social_profiles()
     $edufax_topbar_linkedin_url = get_theme_mod('edufax_topbar_linkedin_url', __('#', 'edufax'));
     $edufax_topbar_youtube_url = get_theme_mod('edufax_topbar_youtube_url', __('#', 'edufax'));
 ?>
-    <ul>
-        <?php if (!empty($edufax_topbar_fb_url)) : ?>
-            <li><a href="<?php print esc_url($edufax_topbar_fb_url); ?>"><span><i class="fab fa-facebook-f"></i></span></a></li>
-        <?php endif; ?>
+<ul>
+    <?php if (!empty($edufax_topbar_fb_url)) : ?>
+    <li><a href="<?php print esc_url($edufax_topbar_fb_url); ?>"><span><i class="fab fa-facebook-f"></i></span></a></li>
+    <?php endif; ?>
 
-        <?php if (!empty($edufax_topbar_twitter_url)) : ?>
-            <li><a href="<?php print esc_url($edufax_topbar_twitter_url); ?>"><span><i class="fab fa-twitter"></i></span></a>
-            </li>
-        <?php endif; ?>
+    <?php if (!empty($edufax_topbar_twitter_url)) : ?>
+    <li><a href="<?php print esc_url($edufax_topbar_twitter_url); ?>"><span><i class="fab fa-twitter"></i></span></a>
+    </li>
+    <?php endif; ?>
 
-        <?php if (!empty($edufax_topbar_instagram_url)) : ?>
-            <li><a href="<?php print esc_url($edufax_topbar_instagram_url); ?>"><span><i
-                            class="fab fa-instagram"></i></span></a></li>
-        <?php endif; ?>
+    <?php if (!empty($edufax_topbar_instagram_url)) : ?>
+    <li><a href="<?php print esc_url($edufax_topbar_instagram_url); ?>"><span><i
+                    class="fab fa-instagram"></i></span></a></li>
+    <?php endif; ?>
 
-        <?php if (!empty($edufax_topbar_linkedin_url)) : ?>
-            <li><a href="<?php print esc_url($edufax_topbar_linkedin_url); ?>"><span><i class="fab fa-linkedin"></i></span></a>
-            </li>
-        <?php endif; ?>
+    <?php if (!empty($edufax_topbar_linkedin_url)) : ?>
+    <li><a href="<?php print esc_url($edufax_topbar_linkedin_url); ?>"><span><i class="fab fa-linkedin"></i></span></a>
+    </li>
+    <?php endif; ?>
 
-        <?php if (!empty($edufax_topbar_youtube_url)) : ?>
-            <li><a href="<?php print esc_url($edufax_topbar_youtube_url); ?>"><span><i class="fab fa-youtube"></i></span></a>
-            </li>
-        <?php endif; ?>
-    </ul>
+    <?php if (!empty($edufax_topbar_youtube_url)) : ?>
+    <li><a href="<?php print esc_url($edufax_topbar_youtube_url); ?>"><span><i class="fab fa-youtube"></i></span></a>
+    </li>
+    <?php endif; ?>
+</ul>
 
 <?php
 }
+
 
 /**
  * [edufax_offcanvas_social_profiles description]
@@ -429,25 +430,25 @@ function edufax_offcanvas_social_profiles()
     $edufax_offcanvas_linkedin_url = get_theme_mod('edufax_offcanvas_linkedin_url', __('#', 'edufax'));
     $edufax_offcanvas_youtube_url = get_theme_mod('edufax_offcanvas_youtube_url', __('#', 'edufax'));
 ?>
-    <?php if (!empty($edufax_offcanvas_fb_url)) : ?>
-        <a href="<?php print esc_url($edufax_offcanvas_fb_url); ?>"><span><i class="fab fa-facebook-f"></i></span></a>
-    <?php endif; ?>
+<?php if (!empty($edufax_offcanvas_fb_url)) : ?>
+<a href="<?php print esc_url($edufax_offcanvas_fb_url); ?>"><span><i class="fab fa-facebook-f"></i></span></a>
+<?php endif; ?>
 
-    <?php if (!empty($edufax_offcanvas_twitter_url)) : ?>
-        <a href="<?php print esc_url($edufax_offcanvas_twitter_url); ?>"><span><i class="fab fa-twitter"></i></span></a>
-    <?php endif; ?>
+<?php if (!empty($edufax_offcanvas_twitter_url)) : ?>
+<a href="<?php print esc_url($edufax_offcanvas_twitter_url); ?>"><span><i class="fab fa-twitter"></i></span></a>
+<?php endif; ?>
 
-    <?php if (!empty($edufax_offcanvas_instagram_url)) : ?>
-        <a href="<?php print esc_url($edufax_offcanvas_instagram_url); ?>"><span><i class="fab fa-instagram"></i></span></a>
-    <?php endif; ?>
+<?php if (!empty($edufax_offcanvas_instagram_url)) : ?>
+<a href="<?php print esc_url($edufax_offcanvas_instagram_url); ?>"><span><i class="fab fa-instagram"></i></span></a>
+<?php endif; ?>
 
-    <?php if (!empty($edufax_offcanvas_linkedin_url)) : ?>
-        <a href="<?php print esc_url($edufax_offcanvas_linkedin_url); ?>"><span><i class="fab fa-linkedin"></i></span></a>
-    <?php endif; ?>
+<?php if (!empty($edufax_offcanvas_linkedin_url)) : ?>
+<a href="<?php print esc_url($edufax_offcanvas_linkedin_url); ?>"><span><i class="fab fa-linkedin"></i></span></a>
+<?php endif; ?>
 
-    <?php if (!empty($edufax_offcanvas_youtube_url)) : ?>
-        <a href="<?php print esc_url($edufax_offcanvas_youtube_url); ?>"><span><i class="fab fa-youtube"></i></span></a>
-    <?php endif; ?>
+<?php if (!empty($edufax_offcanvas_youtube_url)) : ?>
+<a href="<?php print esc_url($edufax_offcanvas_youtube_url); ?>"><span><i class="fab fa-youtube"></i></span></a>
+<?php endif; ?>
 <?php
 }
 
@@ -460,35 +461,35 @@ function edufax_footer_social_profiles()
     $edufax_footer_youtube_url = get_theme_mod('edufax_footer_youtube_url', __('#', 'edufax'));
 ?>
 
-    <?php if (!empty($edufax_footer_fb_url)) : ?>
-        <a href="<?php print esc_url($edufax_footer_fb_url); ?>">
-            <i class="fab fa-facebook-f"></i>
-        </a>
-    <?php endif; ?>
+<?php if (!empty($edufax_footer_fb_url)) : ?>
+<a href="<?php print esc_url($edufax_footer_fb_url); ?>">
+    <i class="fab fa-facebook-f"></i>
+</a>
+<?php endif; ?>
 
-    <?php if (!empty($edufax_footer_twitter_url)) : ?>
-        <a href="<?php print esc_url($edufax_footer_twitter_url); ?>">
-            <i class="fab fa-twitter"></i>
-        </a>
-    <?php endif; ?>
+<?php if (!empty($edufax_footer_twitter_url)) : ?>
+<a href="<?php print esc_url($edufax_footer_twitter_url); ?>">
+    <i class="fab fa-twitter"></i>
+</a>
+<?php endif; ?>
 
-    <?php if (!empty($edufax_footer_instagram_url)) : ?>
-        <a href="<?php print esc_url($edufax_footer_instagram_url); ?>">
-            <i class="fab fa-instagram"></i>
-        </a>
-    <?php endif; ?>
+<?php if (!empty($edufax_footer_instagram_url)) : ?>
+<a href="<?php print esc_url($edufax_footer_instagram_url); ?>">
+    <i class="fab fa-instagram"></i>
+</a>
+<?php endif; ?>
 
-    <?php if (!empty($edufax_footer_linkedin_url)) : ?>
-        <a href="<?php print esc_url($edufax_footer_linkedin_url); ?>">
-            <i class="fab fa-linkedin"></i>
-        </a>
-    <?php endif; ?>
+<?php if (!empty($edufax_footer_linkedin_url)) : ?>
+<a href="<?php print esc_url($edufax_footer_linkedin_url); ?>">
+    <i class="fab fa-linkedin"></i>
+</a>
+<?php endif; ?>
 
-    <?php if (!empty($edufax_footer_youtube_url)) : ?>
-        <a href="<?php print esc_url($edufax_footer_youtube_url); ?>">
-            <i class="fab fa-youtube"></i>
-        </a>
-    <?php endif; ?>
+<?php if (!empty($edufax_footer_youtube_url)) : ?>
+<a href="<?php print esc_url($edufax_footer_youtube_url); ?>">
+    <i class="fab fa-youtube"></i>
+</a>
+<?php endif; ?>
 <?php
 }
 
@@ -500,7 +501,7 @@ function edufax_footer_social_profiles()
 function edufax_header_menu()
 {
 ?>
-    <?php
+<?php
     wp_nav_menu([
         'theme_location' => 'main-menu',
         'menu_class'     => 'navbar-nav ms-auto',
@@ -535,7 +536,7 @@ function edufax_footer_menu()
 function edufax_category_menu()
 {
 ?>
-    <?php
+<?php
     wp_nav_menu([
         'theme_location' => 'category-menu',
         'menu_class'     => '',
@@ -554,7 +555,7 @@ function edufax_category_menu()
 function edufax_grocery_menu()
 {
 ?>
-    <?php
+<?php
     wp_nav_menu([
         'theme_location' => 'grocery-menu',
         'menu_class'     => '',
@@ -573,7 +574,7 @@ function edufax_grocery_menu()
 function edufax_header_search_menu()
 {
 ?>
-    <?php
+<?php
     wp_nav_menu([
         'theme_location' => 'header-search-menu',
         'menu_class'     => '',

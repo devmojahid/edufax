@@ -177,15 +177,21 @@ class MS_Core_Plugin
 			'hero-slider',
 			'home-about-section',
 			'testimonial',
+			'events',
+			'course-category-list',
+			'brand',
+			'blog-post',
+			'video-popup',
+			'instructor-slider',
+			'course-list',
+			// 'contact-box',
+			// 'blog-post-grid',
 			// 'testimonial-slider',
 			// 'hero-banner',
 			// 'features',
 			// 'instagram-post',
 			// 'page-title',
 			// 'banner-box',
-			// 'banner',
-			// 'blog-post',
-			// 'blog-post-grid',
 			// 'newsletter',
 			// 'app-download',
 			// 'side-banner',
@@ -194,9 +200,7 @@ class MS_Core_Plugin
 			// 'info-box',
 			// 'author-quote',
 			// 'ms-breadcrumb',
-			// 'brand',
 			// 'about',
-			// 'contact-box',
 
 			// // mega menu widgets
 			// 'menu-demo',
@@ -208,7 +212,6 @@ class MS_Core_Plugin
 
 			// // product related
 			// 'product-offer-banner',
-			// 'product-category-list',
 			// 'product-category',
 			// 'product-banner-slider',
 			// 'product-featured',
@@ -221,14 +224,37 @@ class MS_Core_Plugin
 		];
 	}
 
+	// campaign_template_fun
+	public function campaign_template_fun($campaign_template)
+	{
+
+		if ((get_post_type() == 'campaign') && is_single()) {
+			$campaign_template_file_path = __DIR__ . '/include/template/single-campaign.php';
+			$campaign_template           = $campaign_template_file_path;
+		}
+		if ((get_post_type() == 'tribe_events') && is_single()) {
+			$campaign_template_file_path = __DIR__ . '/include/template/single-event.php';
+			$campaign_template           = $campaign_template_file_path;
+		}
+		if ((get_post_type() == 'etn') && is_single()) {
+			$campaign_template_file_path = __DIR__ . '/include/template/single-etn.php';
+			$campaign_template           = $campaign_template_file_path;
+		}
+
+		if (! $campaign_template) {
+			return $campaign_template;
+		}
+		return $campaign_template;
+	}
+
 	// mscore_widget_list_woo
 	public function mscore_widget_list_woo()
 	{
 		return [
-			'ms-product',
-			'ms-product-2',
-			'ms-product-3',
-			'ms-product-tab',
+			// 'ms-product',
+			// 'ms-product-2',
+			// 'ms-product-3',
+			// 'ms-product-tab',
 		];
 	}
 
@@ -491,6 +517,8 @@ class MS_Core_Plugin
 		// $this->ms_add_custom_icons_tab();
 
 		add_action('elementor/editor/after_enqueue_scripts', [$this, 'ms_enqueue_editor_scripts']);
+
+		add_filter('template_include', [$this, 'campaign_template_fun'], 99);
 
 		// $this->add_page_settings_controls();
 

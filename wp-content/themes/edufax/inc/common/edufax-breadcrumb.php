@@ -15,6 +15,7 @@ function edufax_breadcrumb_func()
     global $post;
     $breadcrumb_class = '';
     $breadcrumb_show = 1;
+    $title = ''; // Initialize $title variable
 
     if (is_front_page() && is_home()) {
         $title = get_theme_mod('breadcrumb_blog_title', __('Blog', 'edufax'));
@@ -38,9 +39,12 @@ function edufax_breadcrumb_func()
         $title = esc_html__('Page not Found', 'edufax');
     } elseif (is_archive()) {
         $title = get_the_archive_title();
+    } elseif (function_exists('tutor_utils') && tutor_utils()->is_tutor_dashboard()) {
+        $title = esc_html__('Student Profile', 'edufax');
     } else {
         $title = get_the_title();
     }
+
 
 
     $_id = get_the_ID();
@@ -78,26 +82,26 @@ function edufax_breadcrumb_func()
         $breadcrumb_padding_bottom = !empty($breadcrumb_padding['padding-bottom']) ? $breadcrumb_padding['padding-bottom'] : '';
 
 ?>
-        <section class="tf__breadcrumb <?php print esc_attr($breadcrumb_class); ?>"
-            style="background: url(<?php print esc_attr($bg_main_img); ?>);"
-            data-padding-top="<?php print esc_attr($breadcrumb_padding_top); ?>"
-            data-padding-bottom="<?php print esc_attr($breadcrumb_padding_bottom); ?>"
-            data-background="<?php print esc_attr($bg_main_img); ?>">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="tf__breadcrumb_text">
-                            <h1><?php echo edufax_kses($title); ?></h1>
-                            <?php
+<section class="tf__breadcrumb <?php print esc_attr($breadcrumb_class); ?>"
+    style="background: url(<?php print esc_attr($bg_main_img); ?>);"
+    data-padding-top="<?php print esc_attr($breadcrumb_padding_top); ?>"
+    data-padding-bottom="<?php print esc_attr($breadcrumb_padding_bottom); ?>"
+    data-background="<?php print esc_attr($bg_main_img); ?>">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="tf__breadcrumb_text">
+                    <h1><?php echo edufax_kses($title); ?></h1>
+                    <?php
                             if (function_exists('bcn_display')) {
                                 bcn_display();
                             }
                             ?>
-                        </div>
-                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
 <?php
     }
